@@ -1,29 +1,140 @@
 body {
-    background-color: whitesmoke;
-    font-family: Calibri;
+    background-color: white;
+    font-family: sans-serif;
     margin-left: 15px;
     margin-right: 15px;
-}
-
-h1 {}
-
-h2 {}
-
-h3 {
-    background-color: #97C2DC;
-    color: aliceblue;
-}
-
-
-/*PROFILE HEADER*/
-.cvHeader {
-    background-color: #0E2246;
-    color: whitesmoke;
+  }
+  footer {
+    font-size: small;
+    text-align: right;
+  }
+  p {
+    padding-left: 15px;
+    font-family: Calibri;
+  }
+  
+  
+  h3 {
+    background-color: #97c2dc;
     border-radius: 25px;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  
+  h4 {
+    padding-left: 15px;
+    background-color: lightblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 25px;
+  }
+  
+  li {
+    display: block;
+  }
+  
+  .profileHeader {
     padding: 15px;
-}
-.profilePic {
+    background-color: #0e2246;
+    border-radius: 25px;
+    color:whitesmoke;
+  }
+  .profilePic {
     float: right;
     padding: 15px;
     max-height: 125px;
-}
+  }
+  
+  
+  .progressBar {
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .div-side-by-side {
+      display: inline-block;
+      width: 50%;
+  }
+  
+  .list {
+    padding-top: 3px;
+  }
+  .sublist {
+    font-size: small;
+  }
+  
+  
+  .educHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .educSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .educList {
+    display: inline-block;
+  }
+  .educText {
+    font-style: normal;
+  }
+  .educImgITBA {
+    width: 100%;
+    max-width: 250px;
+  }
+  .educImg {
+    width: 50%;
+    max-width: 150px;
+  }
+  
+  
+  .workHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .workSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .workList {
+    display: inline-block;
+  }
+  .workText {
+    padding-top: 5px;
+  }
+  .workImg {
+    float: right;
+    width: 50%;
+    max-width: 180px;
+  }
+  .workCurrent {
+    color: #0e2246;
+    border-color: #0e2246;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: white;
+  }
+  .workPrevious {
+    color: darkslategray;
+  }
+  
+  
+  .certHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .certSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .certList {
+    display: inline-block;
+    width: 30%;
+  }
+  .certImg {
+    max-width: 190px;
+    height: 140px;
+  }
