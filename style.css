@@ -13,3 +13,17 @@ h3 {
     background-color: #97C2DC;
     color: aliceblue;
 }
+
+
+/*PROFILE HEADER*/
+.cvHeader {
+    background-color: #0E2246;
+    color: whitesmoke;
+    border-radius: 25px;
+    padding: 15px;
+}
+.profilePic {
+    float: right;
+    padding: 15px;
+    max-height: 125px;
+}
