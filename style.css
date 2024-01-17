@@ -13,7 +13,9 @@ body {
     font-family: Calibri;
   }
   
-  
+  h1{
+    text-align: center;
+  }
   h3 {
     background-color: #97c2dc;
     border-radius: 25px;
