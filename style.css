@@ -16,14 +16,16 @@ body {
 
   h3 {
     background-color: #3a3b55;
+    color: antiquewhite;
     border-radius: 25px;
     padding-left: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
   }
   h4 {
-    padding-left: 15px;
+    padding-left: 25px;
     background-color: #6d6e88;
+    color: antiquewhite
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 25px;
