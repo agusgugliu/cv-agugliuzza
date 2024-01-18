@@ -141,4 +141,5 @@ body {
 
 .chatWhatsapp {
   max-height: 30px;
+  float: right;
 }
