@@ -38,6 +38,7 @@ body {
     background-color: #0e2246;
     border-radius: 25px;
     color:whitesmoke;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
   .profilePic {
     float: right;
