@@ -13,29 +13,30 @@ body {
     font-family: Calibri;
   }
   
+
   h3 {
-    background-color: #97c2dc;
+    background-color: #80625f;
     border-radius: 25px;
     padding-left: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
   }
-  
   h4 {
     padding-left: 15px;
-    background-color: lightblue;
+    background-color: #d5a39e;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 25px;
   }
   
+
   li {
     display: block;
   }
   
   .profileHeader {
     padding: 15px;
-    background-color: #0e2246;
+    background-color: #2b2120;
     border-radius: 25px;
     color:whitesmoke;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
