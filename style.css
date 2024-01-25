@@ -147,3 +147,33 @@ body {
   max-height: 30px;
   float: right;
 }
+
+
+progress {
+  /* Tamaño */
+  width: 100%;
+  height: 20px;
+
+  /* Color y Bordes */
+  color: #6d6e88; /* Color de la barra en algunos navegadores */
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+
+  /* Sombra */
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para Webkit/Blink */
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+}
+
+progress::-webkit-progress-value {
+  background-color: #6d6e88;
+}
+
+/* Estilo para Firefox */
+progress::-moz-progress-bar {
+  background-color: #6d6e88;
+}
