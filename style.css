@@ -155,7 +155,7 @@ progress {
   height: 20px;
 
   /* Color y Bordes */
-  color: #6d6e88; /* Color de la barra en algunos navegadores */
+  color: #3a3b55; /* Color de la barra en algunos navegadores */
   background-color: #e0e0e0;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -170,10 +170,10 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #6d6e88;
+  background-color: #3a3b55;
 }
 
 /* Estilo para Firefox */
 progress::-moz-progress-bar {
-  background-color: #6d6e88;
+  background-color: #3a3b55;
 }
