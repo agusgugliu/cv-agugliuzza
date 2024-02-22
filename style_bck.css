@@ -1,0 +1,179 @@
+body {
+    background-color: white;
+    font-family: sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  footer {
+    font-size: small;
+    text-align: right;
+  }
+  p {
+    padding-left: 15px;
+    font-family: Calibri;
+  }
+  
+
+  h3 {
+    background-color: #3a3b55;
+    color: antiquewhite;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  h4 {
+    padding-left: 25px;
+    background-color: #6d6e88;
+    color: antiquewhite;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 25px;
+  }
+  
+
+  li {
+    display: block;
+  }
+  
+  .profileHeader {
+    padding: 15px;
+    background-color: #000000;
+    border-radius: 25px;
+    color:whitesmoke;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .profilePic {
+    float: right;
+    padding: 15px;
+    max-height: 125px;
+  }
+  
+  
+  .progressBar {
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .div-side-by-side {
+      display: inline-block;
+      width: 50%;
+  }
+  
+  .list {
+    padding-top: 3px;
+  }
+  .sublist {
+    font-size: small;
+  }
+  
+  
+  .educHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .educSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .educList {
+    display: inline-block;
+  }
+  .educText {
+    font-style: normal;
+  }
+  .educImgITBA {
+    width: 100%;
+    max-width: 250px;
+  }
+  .educImg {
+    width: 50%;
+    max-width: 150px;
+  }
+  
+  
+  .workHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .workSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .workList {
+    display: inline-block;
+  }
+  .workText {
+    padding-top: 5px;
+  }
+  .workImg {
+    float: right;
+    width: 50%;
+    max-width: 180px;
+  }
+  .workCurrent {
+    color: #3a3b55;
+    border-color: #3a3b55;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: white;
+  }
+  .workPrevious {
+    color: #717171;
+  }
+  
+  
+  .certHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+  .certSubHeader {
+    font-size: medium;
+    font-weight: bold;
+  }
+  .certList {
+    display: inline-block;
+    width: 25%;
+    display: flex;
+  }
+  .certImg {
+    max-width: 190px;
+    height: 140px;
+  }
+
+.chatWhatsapp {
+  max-height: 30px;
+  float: right;
+}
+
+
+progress {
+  /* Tamaño */
+  width: 100%;
+  height: 20px;
+
+  /* Color y Bordes */
+  color: #3a3b55; /* Color de la barra en algunos navegadores */
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+
+  /* Sombra */
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para Webkit/Blink */
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+}
+
+progress::-webkit-progress-value {
+  background-color: #3a3b55;
+}
+
+/* Estilo para Firefox */
+progress::-moz-progress-bar {
+  background-color: #3a3b55;
+}
