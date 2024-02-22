@@ -1,179 +1,381 @@
-body {
-    background-color: white;
-    font-family: sans-serif;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-  footer {
-    font-size: small;
-    text-align: right;
-  }
-  p {
-    padding-left: 15px;
-    font-family: Calibri;
-  }
-  
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.header, .footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+.header {
+  top: 0;
+  height: fit-content;
+}
+.footer {
+  bottom: 0;
+  height: fit-content;
+}
+.content {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+  position: relative;
+  top: 150px;
+}
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 150px; 
+  width: 200px;
+  height: calc(100% - 100px); 
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  padding: 10px;
+  overflow-y: auto;
+}
+.main-content {
+  margin-left: 250px;
+  padding: 5px;
+}
 
-  h3 {
-    background-color: #3a3b55;
-    color: antiquewhite;
-    border-radius: 25px;
-    padding-left: 10px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-  }
-  h4 {
-    padding-left: 25px;
-    background-color: #6d6e88;
-    color: antiquewhite;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 25px;
-  }
-  
+h3 {
+  font-family: Calibri;
+}
 
-  li {
-    display: block;
-  }
-  
-  .profileHeader {
-    padding: 15px;
-    background-color: #000000;
-    border-radius: 25px;
-    color:whitesmoke;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-  .profilePic {
-    float: right;
-    padding: 15px;
-    max-height: 125px;
-  }
-  
-  
-  .progressBar {
-    font-size: medium;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .div-side-by-side {
-      display: inline-block;
-      width: 50%;
-  }
-  
-  .list {
-    padding-top: 3px;
-  }
-  .sublist {
-    font-size: small;
-  }
-  
-  
-  .educHeader {
-    font-size: larger;
-    font-weight: bold;
-  }
-  .educSubHeader {
-    font-size: medium;
-    font-weight: bold;
-  }
-  .educList {
-    display: inline-block;
-  }
-  .educText {
-    font-style: normal;
-  }
-  .educImgITBA {
-    width: 100%;
-    max-width: 250px;
-  }
-  .educImg {
-    width: 50%;
-    max-width: 150px;
-  }
-  
-  
-  .workHeader {
-    font-size: larger;
-    font-weight: bold;
-  }
-  .workSubHeader {
-    font-size: medium;
-    font-weight: bold;
-  }
-  .workList {
-    display: inline-block;
-  }
-  .workText {
-    padding-top: 5px;
-  }
-  .workImg {
-    float: right;
-    width: 50%;
-    max-width: 180px;
-  }
-  .workCurrent {
-    color: #3a3b55;
-    border-color: #3a3b55;
-    border-style: solid;
-    padding: 10px;
-    border-radius: 25px;
-    background-color: white;
-  }
-  .workPrevious {
-    color: #717171;
-  }
-  
-  
-  .certHeader {
-    font-size: larger;
-    font-weight: bold;
-  }
-  .certSubHeader {
-    font-size: medium;
-    font-weight: bold;
-  }
-  .certList {
-    display: inline-block;
-    width: 25%;
-    display: flex;
-  }
-  .certImg {
-    max-width: 190px;
-    height: 140px;
-  }
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: small;
+}
 
-.chatWhatsapp {
-  max-height: 30px;
+table {
+  width: fit-content;
+  font-size: small;
+  border: solid 0.5px lightslategray;
+}
+th {
+  text-align: center;
+  vertical-align: center;
+  border-left: solid 0.25px lightgray;
+  border-right: solid 0.25px lightgray;
+  border-bottom: solid 0.25px lightgray;
+}
+td {
+  border-left: solid 0.25px lightgray;
+  border-right: solid 0.25px lightgray;
+  border-bottom: solid 0.25px lightgray;
+}
+.notas {
+  text-align: center;
+  vertical-align: center;
+}
+
+a {
+  color: gray;
+  font-style: normal;
+}
+
+.tab {
+  margin-left: 5%;
+}
+
+.aboutMe {
+  font-size: small;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 0px;
+}
+
+.contactInfo {
+  display: inline-block;
+  
+}
+.imgFlag {
+  height: 10px;
+  width: 15px;
+}
+
+.skills {
+  font-size: small;
+}
+.skillList {
+  font-size: smaller;
+}
+
+.workExperience {
+  font-size: small;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+.workExp {
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 5px 0 5px 0;
+  margin-left: 10px;
+}
+.workTime {
+  color: black;
+  background-color: lightslategray;
+  border: solid black 1px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: medium;
+  font: small-caps;
+}
+.workTitle {
+  font-weight: bolder;
+  font: icon;
+  color: black;
+}
+.workPlace {
+  font: status-bar;
+  color:grey
+}
+
+.list {
+  margin-left: 5%;
+  margin-right: 5%;
+  list-style-type: circle;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+.sublist {
+  list-style-type: square;
+  margin-left: 5px;
+}
+
+.certList {
+  font-size: medium;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  margin-bottom: 30px;
+}
+.certHeader {
+  font-weight: bold;
+}
+.certImg {
+  max-height: 5%;
+  max-width: 20%;
+  text-align: center;
+}
+
+
+.imgPrf {
   float: right;
+  max-width: 100px;
+  margin-right: 50px;
+  margin-top: 12px;
+  background-color: beige;
+  padding: 5px;
+  border-radius: 50%;
 }
 
 
 progress {
-  /* Tamaño */
-  width: 100%;
-  height: 20px;
-
-  /* Color y Bordes */
-  color: #3a3b55; /* Color de la barra en algunos navegadores */
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-
-  /* Sombra */
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  accent-color: black;    
 }
-
-/* Estilo para Webkit/Blink */
 progress::-webkit-progress-bar {
-  background-color: #e0e0e0;
+  background-color: gray;
 }
-
 progress::-webkit-progress-value {
-  background-color: #3a3b55;
+  background-color: blue;
+}
+progress::-moz-progress-bar {
+  background-color: blue;
 }
 
-/* Estilo para Firefox */
-progress::-moz-progress-bar {
-  background-color: #3a3b55;
+
+
+
+@media only screen and (max-width: 600px) {
+  body {
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .container, .containerCol {
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
+  .imgPrf {
+    float: right;
+    display: block;
+    margin: 0 auto; 
+    max-height: 5%;
+    max-width: 10%;
+    margin-right: 3%;
+    padding: 2%;
+    border-radius: 50%;
+    background-color: beige;
+  }
+
+  .item, .itemCol {
+    text-align: center;
+  }
+
+  h1, h2 {
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
+  } 
+  h1 {
+    color: beige;
+    font-size: large;
+  }
+  h2 {
+    color: black;
+    font-size: large;
+  }
+  h3 {
+    font-size: large;
+    border-bottom: solid 1px;
+  }
+  h4 {
+    font-size: small;
+  }
+  ul {
+    width: 100%;
+  }
+  progress {
+    width: 80%;
+    accent-color: black;    
+  }
+  table {
+    font-size: small;
+    margin: auto;
+  }
+
+  .expImg {
+    max-width: 50%; 
+  }
+
+  .header {
+    height: fit-content;
+    order: 1; 
+    position: sticky;
+  }
+
+  .sidebar {
+    order: 2; 
+    width: auto; 
+    margin: 0; 
+    position: sticky;
+    top: auto;
+    left: 0;
+    height: fit-content;
+    box-shadow: none;
+    background: none;
+  }
+
+  .content {
+    order: 3; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .main-content {
+    left: 0;
+    top: 0;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 0;
+  }
+
+  .personalInfo {
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skills {
+    margin: auto;
+  }
+  .skillList {
+    font-size: smaller;
+  }
+  
+  hr {
+    display: none;
+  }
+
+  .workExp {
+    margin-left: 0;
+    background-color: whitesmoke;
+    border: none;
+    line-height: 150%;
+  }
+  .workTime {
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    background-color: burlywood;
+  }
+  .workTitle {
+    font-size: medium;
+    font: normal;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .workPlace {
+    font-size: medium;
+    font: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: slategray;
+  }
+
+  .list {
+    display: block;
+    column-count: 1;
+  }
+
+  .certList {
+    display: flex;
+    flex-direction: column;
+    line-height: 100%;
+  }
+  .certImg {
+    max-width: 30%;
+    max-height: 75%;
+    margin-bottom: 10px;
+  }
+  /*.certImg:hover {
+    transform: none;
+    z-index: none;
+  }*/
+
+  .footer {
+    position: sticky;
+  }
+
+  .imgFlag {
+    border-radius: 25%;
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: gray;
+  }
+  progress::-webkit-progress-value {
+    background-color: blue;
+  }
+  progress::-moz-progress-bar {
+    background-color: blue;
+  }
 }
