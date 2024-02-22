@@ -1,248 +1,466 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>CV Agustín Gugliuzza</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="profileHeader">
-      <img src="https://i.postimg.cc/fRP02Cwh/FBB9961-F-0343-4-FAD-92-FD-61720100-B7-F4.png" height="100%" class="profilePic">
-    <h1 style="text-align:center">Agustín Gugliuzza Piccinini</h1>
-    <h2 style="text-align:center">BI, Finance & HR - Software Development Team Leader</h2>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Agustín Gugliuzza Piccinini</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <img class="imgPrf" src="images/initials.PNG">
+        <h1>AGUSTIN GUGLIUZZA PICCININI</h1>
+        <h2>Business Intelligence & Analytics | Project Management | Strategic Planning</h2>
     </div>
-
-
-    <div class="personalInfo">
-      <h3>PERSONAL INFORMATION</h3>
-      <ul class="personalList">
-        <li><strong>Date of Birth:</strong> 09 April, 1995</li>
-        <li><strong>Age:</strong> <span id="currentAge"></span></li>
-    <script>
-        function calculateAge(birthDate) {
-            const currentDate = new Date();
-            const dateOfBirth = new Date(birthDate);
-            let age = currentDate.getFullYear() - dateOfBirth.getFullYear();
-            const month = currentDate.getMonth() - dateOfBirth.getMonth();
-
-            if (month < 0 || (month === 0 && today.getDate() < dateOfBirth.getDate())) {
-                age--;
-            }
-
-            return age;
-        }
-
-        function updateAge() {
-            const age = calculateAge('1995-04-09');
-            document.getElementById('currentAge').innerText = age + ' years';
-        }
-
-        window.onload = updateAge;
-    </script>
-        <li><strong>Place of Birth:</strong> Veracruz, Mexico</li>
-        <li><strong>Nationality:</strong> Argentina</li>
-        <li><strong>Place of Residence:</strong> Buenos Aires, Argentina</li>
-      </ul>
-    </div>
-
-
-    <div class="contactInfo">
-      <h3>CONTACT INFORMATION</h3>
-      <ul>
-        <li><strong>E-Mail:</strong> agusgugliuzza@gmail.com</li>
-        <li><strong>Mobile:</strong> (+549) 11-6506-3175</li>
-        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/agust%C3%ADn-gugliuzza-piccinini">https://www.linkedin.com/in/agustin-gugliuzza-piccinini</a></li>
-        <a aria-label="Chat on WhatsApp" href="https://wa.me/5491165063175"><img class="chatWhatsapp" alt="Chat on WhatsApp" src="images/WhatsAppButtonGreenLarge.png"/></a>
-      </ul>
-    </div>
-    <hr>
     
-    
-    <div class="aboutMe">
-      <h3>ABOUT ME</h3>
-      <p style="background-color:#f9f9f9;padding:15px;border-radius:15px;">
-        Experienced professional specializing in Business Intelligence, with a strong focus on end-to-end project management and software development. Born on April 9, 1995, in Veracruz, Mexico, holds Argentinian citizenship and resides in Buenos Aires. Multilingual, proficient in Spanish, English, and Portuguese, with basic French skills. Graduated from <strong>Instituto Tecnológico de Buenos Aires</strong> with a degree in Administration and Systems. Career includes roles at <strong>Prudential Seguros</strong> and <strong>MicroStrategy</strong>, where he developed skills in Business Intelligence & Analytics, Microsoft Office, MicroSoft SQL Server, Python, and JavaScript. He has a broad range of technical competencies, including MSTR Mobile Development, Performance Tuning, Dashboard Development, Transaction Services, Schema Objects, Data Modeling, Relational Database Management, and Big Data.
-      </p>
+    <div class="sidebar">
+        <h3>Personal Information</h3>
+        <div class="personalInfo">
+            <table>
+                <tr>
+                  <th>Date of Birth:</th>
+                  <td>  </td>
+                  <td>April 9<sup>th</sup>, 1995</td>
+                </tr>
+                <tr>
+                  <th>Place of Birth:</th>
+                  <td>  </td>
+                  <td>Veracruz, Mexico</td>
+                </tr>
+                <tr>
+                    <th>Nationality:</th>
+                    <td>  </td>
+                    <td>Argentina</td>
+                </tr>
+                <tr>
+                    <th>Place of Residence:</th>
+                    <td>  </td>
+                    <td>Buenos Aires, Argentina</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Skills</h3>
+        <div class="skills">
+            <ul>
+                <h4>Languages</h4>
+                <li class="skillList"><label for='lgSpan'><img class="imgFlag" src="images/flags/spain.png"> </label><progress id="lgSpan" value="10" max="10">100%</progress></progress></li>
+                <li class="skillList"><label for='lgEng'><img class="imgFlag" src="images/flags/uk.png"> </label><progress id="lgEng" value="10" max="10">100%</progress></progress></li>
+                <li class="skillList"><label for='lgPort'><img class="imgFlag" src="images/flags/portugal.svg"> </label><progress id="lgPort" value="6" max="10">60%</progress></progress></li>
+                <li class="skillList"><label for='lgFrn'><img class="imgFlag" src="images/flags/france.jpg"> </label><progress id="lgFrn" value="4" max="10">40%</progress></progress></li>
+            </ul>
+
+            <ul>
+                <h4>Techical</h4>
+                <li class="skillList"><label for='busInt'>Business Intelligence & Analytics:</label><br><progress id="busInt" value="100" max="100">100%</progress></progress></li>
+                <li class="skillList"><label for='sqlMgm'>SQL & Database Management:</label><br><progress id="sqlMgm" value="90" max="100">90%</progress></progress></li>
+                <li class="skillList"><label for='mcfOff'>MicroSoft Office:</label><br><progress id="mcfOff" value="90" max="100">90%</progress></progress></li>
+                <li class="skillList"><label for='dbMod'>Database Modelling:</label><br><progress id="dbMod" value="90" max="100">90%</progress></progress></li>
+                <li class="skillList"><label for='pytPr'>Python:</label><br><progress id="pytPr" value="70" max="100">70%</progress></progress></li>
+                <li class="skillList"><label for='webDev'>HTML, CSS & JavaScript:</label><br><progress id="webDev" value="60" max="100">60%</progress></progress></li>
+            </ul>
+            
+            <ul>
+                <h4>Soft</h4>
+                <li class="skillList"><label for='sfPMg'>Project Management:</label><br><progress id="sfPMg" value="9" max="10">90%</progress></progress></li>
+                <li class="skillList"><label for='sfAgM'>Agile Methodologies:</label><br><progress id="sfAgM" value="9" max="10">90%</progress></progress></li>
+                <li class="skillList"><label for='sfTLd'>Team Leadership:</label><br><progress id="sfTLd" value="9" max="10">90%</progress></progress></li>
+                <li class="skillList"><label for='sfPbR'>Problem Resolution:</label><br><progress id="sfPbR" value="8" max="10">80%</progress></progress></li>
+            </ul>
+        </div>
+
     </div>
-    <hr>
 
+    <div class="content">
+        <div class="main-content">
+            <h3>About Me</h3>
+            <div class="aboutMe">
+                <p>Experienced professional specializing in Business Intelligence, with a strong focus on end-to-end project management and software development. Multilingual, proficient in Spanish, English, and Portuguese, with basic French skills. Graduated from <strong>Instituto Tecnológico de Buenos Aires</strong> with a degree in Administration and Systems. Career includes roles at <strong>Prudential Seguros</strong> and <strong>MicroStrategy</strong>, where he developed skills in Business Intelligence & Analytics, Microsoft Office, MicroSoft SQL Server, Python, and JavaScript. He has a broad range of technical competencies, including MSTR Mobile Development, Performance Tuning, Dashboard Development, Transaction Services, Schema Objects, Data Modeling, Relational Database Management, and Big Data.</p>
+            </div>
+            <hr>
+            <h3>Experience</h3>
+            <div class="workExperience">
+                <h3 class="workExp">
+                    <span class="workTime">APR.22 - NOW</span> 
+                    <span class="workTitle">BI, Finance & HR - Software Dev. Team Lead</span>
+                    <span class="workPlace"><i class="fa-solid fa-angles-right"></i> Prudential Seguros</span>
+                </h3>
+                <p>
+                    As a Project Manager and Team Leader in software development, specializing in <strong>Business Intelligence and Database Management</strong>, my role is integral to guiding our team through complex projects. I excel in orchestrating the project lifecycle, ensuring that everything from initial planning to final delivery aligns with our goals. My expertise in BI allows me to effectively manage large datasets and optimize our database systems.<br>I'm also deeply involved in implementing <strong>Agile Methodologies</strong>, a key aspect of our team's approach to adaptive and efficient project management. This includes regular sprint planning and maintaining clear communication channels within the team and with stakeholders.
+                    <br>Additionally, I oversee web development projects, ensuring that they are on track and meet our high standards of quality. Utilizing tools like <strong>JIRA</strong>, I monitor progress and swiftly address any challenges that arise. My role encompasses not just technical oversight but also team leadership, fostering a collaborative and productive environment.
+                    <br>In summary, my job is a dynamic blend of technical prowess, strategic planning, and team leadership, driving our projects to successful and timely completions.
+                    <ul class="list">
+                        <li>Agile Methodologies</li>
+                        <li>Project Management</li>
+                        <li>Business Intelligence & Analytics</li>
+                        <li>Database Management & Administration</li>
+                        <li>Web Development</li>
+                        <li>Team Management</li>
+                        <li>Resource Planning</li>
+                        <li>Objectives Definition & Tracking </li>
+                    </ul>
+                </p>
+                
+                <h3 class="workExp">
+                    <span class="workTime">AUG.17 - MAR.22</span> 
+                    <span class="workTitle">Business Intelligence Consultant</span>
+                    <span class="workPlace"><i class="fa-solid fa-angles-right"></i> MicroStrategy</span>
+                </h3>
+                <p>
+                    As a MicroStrategy Senior Consultant with a project management focus, my experience spans various industries, working with numerous clients to deliver bespoke <strong>Business Intelligence</strong> solutions. My expertise includes database modeling, MicroStrategy schema building, and crafting insightful reports and dashboards tailored to each client's specific needs.
+                    <br>A key part of my role is leveraging predictive analytics, utilizing tools like <strong>RScript and Python</strong> to glean forward-looking insights from data. This proficiency enables me to go beyond traditional reporting, offering clients advanced analytical capabilities. My skill set is not just technical but also consultative, ensuring that each solution is strategically aligned with the client's business objectives and industry nuances. My goal is to empower businesses with data-driven decision-making tools that drive tangible results.
+                    <ul class="list">
+                        <li>End-to-End Analytics Projects</li>
+                        <li>Scope & Acceptance Criteria Definition</li>
+                        <li>MicroStrategy Architect</li>
+                        <li>MicroStrategy Reports</li>
+                        <li>MicroStrategy Dashboards & Documents</li>
+                        <li>MicroStrategy Transaction Services</li>
+                        <li>Database Modelling</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </p>
+                <hr>
+                <h3 class="workExp">
+                    <span class="workTime">AUG.13 - JUL.17</span> 
+                    <span class="workTitle">Degree in Business & Systems Administration</span>
+                    <span class="workPlace"><i class="fa-solid fa-caret-right"></i> Instituto Tecnológico de Buenos Aires</span>
+                </h3>
+                <p>
+                    The Degree in Business & Systems Administration at ITBA is a four-year, on-campus degree program. It provides a comprehensive education that integrates knowledge and creativity essential for addressing the challenges of today’s business world.<br>
+                    The curriculum is designed to develop competencies necessary for leading companies and creating new businesses in a changing and competitive context, placing a fundamental emphasis on information technology. Students can successfully work in various sectors ranging from Marketing to Finance and Information Systems. They are well-prepared to lead in consumer goods, banking and finance, IT technology, consulting, retail, energy, and internet sectors.
+					<table>
+						<tr>
+							<th>COD</th>
+							<th>MATERIA</th>
+							<th>CURSADA</td>
+							<th>FINAL</td>
+						</tr>
+						<tr>
+							<th>71.80</th>
+							<td>Utilitarios en Informática</td>
+							<td class="notas">10<sup>00</sup></td>
+							<td class="notas">10<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.02</th>
+							<td>Introducción a la Licenciatura en Adm. & Sist.</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.07</th>
+							<td>Sistemas Contables</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>93.21</th>
+							<td>Álgebra</td>
+							<td class="notas">6<sup>00</sup></td>
+							<td class="notas">7<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th> </th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<th>71.85</th>
+							<td>Programación</td>
+							<td class="notas">8<sup>50</sup></td>
+							<td class="notas">8<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>81.08</th>
+							<td>Aplicación a las Telecomunicaciones</td>
+							<td class="notas">6<sup>50</sup></td>
+							<td class="notas">7<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>93.20</th>
+							<td>Análisis Matemático</td>
+							<td class="notas">5<sup>00</sup></td>
+							<td class="notas">6<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>94.60</th>
+							<td>Panorama Histórico Global</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">7<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>94.61</th>
+							<td>Filosofía</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th> </th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<th>61.81</th>
+							<td>Microeconomía</td>
+							<td class="notas">6<sup>00</sup></td>
+							<td class="notas">6<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.11</th>
+							<td>Contabilidad Gerencial</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.52</th>
+							<td>Negocios & Tecnología en Internet</td>
+							<td class="notas">6<sup>50</sup></td>
+							<td class="notas">6<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>93.39</th>
+							<td>Estadística</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>94.62</th>
+							<td>Ética en los Negocios</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th> </th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<th>61.12</th>
+							<td>Gestión Financiera</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">6<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>61.82</th>
+							<td>Macroeconomía</td>
+							<td class="notas">4<sup>50</sup></td>
+							<td class="notas">4<sup>25</sup></td>
+						</tr>
+						<tr>
+							<th>61.90</th>
+							<td>Derecho Público & Privado</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.20</th>
+							<td>Comercialización</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>94.63</th>
+							<td>Epistemología & Heurística</td>
+							<td class="notas">5<sup>50</sup></td>
+							<td class="notas">7<sup>25</sup></td>
+						</tr>
+						<tr>
+							<th>11.83</th>
+							<td>Gestión de Operaciones</td>
+							<td class="notas">6<sup>50</sup></td>
+							<td class="notas">5<sup>25</sup></td>
+						</tr>
+						<tr>
+							<th>81.21</th>
+							<td>Gestión de Ventas</td>
+							<td class="notas">5<sup>50</sup></td>
+							<td class="notas">6<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>81.30</th>
+							<td>Análisis & Modelado de Procesos de Negocios</td>
+							<td class="notas">9<sup>50</sup></td>
+							<td class="notas">9<sup>25</sup></td>
+						</tr>
+						<tr>
+							<th>81.39</th>
+							<td>Sistemas Integrados de Gestión Empresaria<sup>I</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+							<td class="notas">7<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>94.40</th>
+							<td>Estructura de las Organizaciones</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th> </th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<th>11.84</th>
+							<td>Gestión de Proyectos</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">7<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>11.85</th>
+							<td>Toma de Decisiones</td>
+							<td class="notas">7<sup>75</sup></td>
+							<td class="notas">7<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>81.31</th>
+							<td>Análisis & Diseño de Aplicaciones Informáticas</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.36</th>
+							<td>Sistemas Integrados de Gestión Empresaria<sup>II</sup></td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>94.41</th>
+							<td>Gestión de los Recursos Humanos</td>
+							<td class="notas">8<sup>50</sup></td>
+							<td class="notas">8<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th> </th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<th>10.09</th>
+							<td>Formación para Emprendedores</td>
+							<td class="notas">A</td>
+							<td class="notas">A</td>
+						</tr>
+						<tr>
+							<th>81.26</th>
+							<td>Comercio Exterior</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">6<sup>00</sup></td>
+						</tr>
+						<tr>
+							<th>81.41</th>
+							<td>Estrategia Empresaria</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.56</th>
+							<td>Arquitectura de la Tecnología Informática</td>
+							<td class="notas">7<sup>50</sup></td>
+							<td class="notas">8<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>81.23</th>
+							<td>Comercio Electrónico</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.27</th>
+							<td>Impuestos</td>
+							<td class="notas">A</td>
+							<td class="notas">A</td>
+						</tr>
+						<tr>
+							<th>81.45</th>
+							<td>Seminario de Actualización</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">7<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.55</th>
+							<td>Diagnóstico Empresario & Plan de Acción</td>
+							<td class="notas">8<sup>00</sup></td>
+							<td class="notas">8<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.46</th>
+							<td>Auditoría General & de Sistemas</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">7<sup>50</sup></td>
+						</tr>
+						<!--tr>
+							<th>81.56</th>
+							<td>Arquitectura de la Tecnología Informática</td>
+							<td class="notas">7<sup>50</sup></td>
+							<td class="notas">8<sup>75</sup></td>
+						</tr-->
+						<tr>
+							<th>81.60</th>
+							<td>Sistemas Integrados de Gestión en la Industria de Servicios</td>
+							<td class="notas">7<sup>50</sup></td>
+							<td class="notas">7<sup>75</sup></td>
+						</tr>
+						<tr>
+							<th>81.38</th>
+							<td>Integración de Procesos de Negocio & Aplicaciones Informáticas</td>
+							<td class="notas">9<sup>00</sup></td>
+							<td class="notas">9<sup>50</sup></td>
+						</tr>
+						<tr>
+							<th>81.61</th>
+							<td>Modelado Avanzado de Procesos & Inteligencia de Negocios</td>
+							<td class="notas">7<sup>00</sup></td>
+							<td class="notas">7<sup>50</sup></td>
+						</tr>
+					</table>
+                </p>
+                <hr>
+                <h3 class="workExp">
+                    <span class="workTime">MAR.11 - DEC.12</span> 
+                    <span class="workTitle">International Baccalaurate</span>
+                    <span class="workPlace"><i class="fa-solid fa-caret-right"></i> Colegio Lincoln Hall</span>
+                </h3>
+                <h3 class="workExp">
+                    <span class="workTime">MAR.04 - DEC.10</span> 
+                    <span class="workTitle">Secondary Scool</span>
+                    <span class="workPlace"><i class="fa-solid fa-caret-right"></i> St. John's School</span>
+                </h3>
+            </div>
+            <hr><hr>
+            <h3>Certifications</h3>
+            <ul class="certList">
+                <img class="certImg" src="images/certificates/microstrategy_architect.jpg">
+                <li class="certHeader">MSTR Certified Architect</li>
+                <li class="certSubHeader">MicroStrategy</li>
+                <li><br></li>
+                <img class="certImg" src="images/certificates/coderhouse_python.jpg">
+                <li class="certHeader">Python Web Development</li>
+                <li class="certSubHeader">CoderHouse</li>
+                <li><br></li>
+                <img class="certImg" src="images/certificates/cambridge_ib.jpg">
+                <li class="certHeader">International Baccalaurate</li>
+                <li class="certSubHeader">Cambridge</li>
+              </ul>
+        </div>
+    </div>
 
-    <div class="personalSkills">
-      <h3>SKILLS</h3>
-      <div>
-        <h4>CODING & TECHNICAL</h4>
-        <ul class="skillList">
-          <li><label for='busInt'>Business Intelligence & Analytics: </label><progress id="busInt" value="100" max="100">100%</progress></progress></li>
-          <li><label for='sqlMgm'>SQL & Database Management: </label><progress id="sqlMgm" value="90" max="100">90%</progress></progress></li>
-          <li><label for='mcfOff'>MicroSoft Office: </label><progress id="mcfOff" value="90" max="100">90%</progress></progress></li>
-          <li><label for='dbMod'>Database Modelling: </label><progress id="dbMod" value="90" max="100">90%</progress></progress></li>
-          <li><label for='pytPr'>Python: </label><progress id="pytPr" value="70" max="100">70%</progress></progress></li>
-          <li><label for='webDev'>HTML, CSS & JavaScript: </label><progress id="webDev" value="60" max="100">60%</progress></progress></li>
-        </ul>
-      </div>
-      <div>
-        <h4>LANGUAGES</h4>
+    <div class="footer">
         <ul>
-          <!--li>Spanish: <span class=
-          "progressBar">■■■■■■■■■■</span></li>
-          <li>English: <span class=
-          "progressBar">■■■■■■■■■■</span></li>
-          <li>Portuguese: <span class=
-          "progressBar">■■■■■■□□□□</span></li>
-          <li>French: <span class=
-          "progressBar">■■■■□□□□□□</span></li-->
-          <li><label for='lgSpan'>Spanish: </label><progress id="lgSpan" value="10" max="10">100%</progress></progress></li>
-          <li><label for='lgEng'>English: </label><progress id="lgEng" value="10" max="10">100%</progress></progress></li>
-          <li><label for='lgPort'>Portuguese: </label><progress id="lgPort" value="6" max="10">60%</progress></progress></li>
-          <li><label for='lgFrn'>French: </label><progress id="lgFrn" value="3" max="10">30%</progress></progress></li>
+            <li class="contactInfo"><strong>E-Mail: </strong><a href="mailto:agusgugliuzza@gmail.com">agusgugliuzza@gmail.com</a></li>
+            <li class="contactInfo"> | </li>
+            <li class="contactInfo"><strong>Mobile: </strong><a href="https://wa.me/5491165063175">(+549)11-6506-3175</a></li>
+            <li class="contactInfo"> | </li>
+            <li class="contactInfo"><strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/agust%C3%ADn-gugliuzza-piccinini">https://www.linkedin.com/in/agustin-gugliuzza-piccinini</a></li>
         </ul>
-      </div>
-      <div>
-        <h4>SOFT & THEORICAL</h4>
-        <ul>
-          <!--li>Project Management: <span class=
-          "progressBar">■■■■■■■■■□</span></li>
-          <li>Agile Methodologies: <span class=
-          "progressBar">■■■■■■■■■□</span></li>
-          <li>Team Leadership: <span class=
-          "progressBar">■■■■■■■■■□</span></li>
-          <li>Problem Resolution: <span class=
-          "progressBar">■■■■■■■■□□</span></li-->
-          <li><label for='sfPMg'>Project Management: </label><progress id="sfPMg" value="9" max="10">90%</progress></progress></li>
-          <li><label for='sfAgM'>Agile Methodologies: </label><progress id="sfAgM" value="9" max="10">90%</progress></progress></li>
-          <li><label for='sfTLd'>Team Leadership: </label><progress id="sfTLd" value="9" max="10">90%</progress></progress></li>
-          <li><label for='sfPbR'>Problem Resolution: </label><progress id="sfPbR" value="8" max="10">80%</progress></progress></li>
-        </ul>
-      </div>
-    </div>
-    <hr>
-
-    <div class="personalExperience">
-      <h3>EXPERIENCE</h3>
-      <ul class="workList workCurrent">
-        <img src="https://i.postimg.cc/GhgFhHDP/IMG-0221.png" class="workImg" style="float:right">
-        <li class="workHeader">Prudential Seguros S.A.</li>
-        <li class="workSubHeader">BI, Finance & HR Team Lead</li>
-        <li class="workDates"><strong>From:</strong> April 2022 - <strong>To:</strong> </li>
-        <li class="workText">
-          As a Project Manager and Team Leader in software development, specializing in <strong>Business Intelligence and Database Management</strong>, my role is integral to guiding our team through complex projects. I excel in orchestrating the project lifecycle, ensuring that everything from initial planning to final delivery aligns with our goals. My expertise in BI allows me to effectively manage large datasets and optimize our database systems.<br>I'm also deeply involved in implementing <strong>Agile Methodologies</strong>, a key aspect of our team's approach to adaptive and efficient project management. This includes regular sprint planning and maintaining clear communication channels within the team and with stakeholders.<br>Additionally, I oversee web development projects, ensuring that they are on track and meet our high standards of quality. Utilizing tools like <strong>JIRA</strong>, I monitor progress and swiftly address any challenges that arise. My role encompasses not just technical oversight but also team leadership, fostering a collaborative and productive environment.<br>In summary, my job is a dynamic blend of technical prowess, strategic planning, and team leadership, driving our projects to successful and timely completions.
-          <ul class="list">
-            <li>- Agile Methodologies</li>
-            <li>- Project Management</li>
-              <ul class="sublist">
-                <li>Scope Definition</li>
-                <li>Task Planning & Calendarization</li>
-                <li>Acceptance Criteria Definition</li>
-                <li>Project Prioritization</li>
-                <li>Resource Management</li>
-                <li>Project Tracking</li>
-                <li>Project Documentation</li>
-              </ul>
-            <li>- Business Intelligence & Analytics</li>
-            <li>- Database Management & Administration</li>
-            <li>- Web Development</li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="workList workPrevious">
-        <img src="https://i.postimg.cc/8zFhFNd2/IMG-0223.png" class="workImg" style="max-width:100px">
-        <li class="workHeader">MicroStrategy</li>
-        <li class="workSubHeader">Business Intelligence Consultant</li>
-        <li class="workDates"><strong>From:</strong> August 2017 - <strong>To:</strong> March 2022</li>
-        <li class="workText">
-          As a MicroStrategy Senior Consultant with a project management focus, my experience spans various industries, working with numerous clients to deliver bespoke <strong>Business Intelligence</strong> solutions. My expertise includes database modeling, MicroStrategy schema building, and crafting insightful reports and dashboards tailored to each client's specific needs.<br>A key part of my role is leveraging predictive analytics, utilizing tools like <strong>RScript and Python</strong> to glean forward-looking insights from data. This proficiency enables me to go beyond traditional reporting, offering clients advanced analytical capabilities. My skill set is not just technical but also consultative, ensuring that each solution is strategically aligned with the client's business objectives and industry nuances. My goal is to empower businesses with data-driven decision-making tools that drive tangible results.
-          <ul class="list">
-            <li>- End-to-End Project</li>
-              <ul class="sublist">
-                <li>Meeting with customers</li>
-                <li>Scope definition</li>
-                <li>Project tracking with customers</li>
-                <li>Acceptance criteria definition</li>
-                <li>Knowledge transfer to new hires</li>
-                <li>Workshops with customers</li>
-              </ul>
-            <li>- MicroStrategy</li>
-              <ul class="sublist">
-                <li>MicroStrategy Architect</li>
-                <li>MicroStrategy Object Manager</li>
-                <li>MicroStrategy Server Manager</li>
-                <li>MicroStrategy Schema Objects</li>
-                <li>MicroStrategy Reporting & Dashboard</li>
-              </ul>
-            <li>- Predictive Analytics</li>
-              <ul class="sublist">
-                <li>RScript</li>
-                <li>Python</li>
-              </ul>
-            <li>- Database Modeling</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <hr>
-
-
-    <div class="personalEducation">
-      <h3>EDUCATION</h3>
-      <h4>COLLEGE</h4>
-      <ul class="educList">
-        <img src="https://i.postimg.cc/C1ZyXZbv/IMG-0217.png" class="educImgITBA">
-        <li class="educHeader">Instituto Tecnológico de Buenos Aires</li>
-        <li class="educSubHeader">Degree in Business & Systems Administration</li>
-        <li class="educDates"><strong>From:</strong> 2013 - <strong>To:</strong> 2017</li>
-        <li class="educText">
-          The Degree in Business & Systems Administration at ITBA is a four-year, on-campus degree program. It provides a comprehensive education that integrates knowledge and creativity essential for addressing the challenges of today’s business world.<br>The curriculum is designed to develop competencies necessary for leading companies and creating new businesses in a changing and competitive context, placing a fundamental emphasis on information technology. Students can successfully work in various sectors ranging from Marketing to Finance and Information Systems. They are well-prepared to lead in consumer goods, banking and finance, IT technology, consulting, retail, energy, and internet sectors.
-        </li>
-      </ul>
-        <h4>SCHOOL</h4>
-      <ul class="educList">
-        <img src="https://i.postimg.cc/qB3VG3Jq/IMG-0218.png" class="educImg">
-        <li class="educHeader">Colegio Lincoln Hall</li>
-        <li class="educSubHeader">International Baccalaurate</li>
-        <li class="educDates"><strong>From:</strong> 2011 - <strong>To:</strong> 2012</li>
-        <li class="educText"></li>
-      </ul>
-      <ul class="educList">
-        <img src="https://i.postimg.cc/0yNVcTYn/IMG-0219.jpg" class="educImg">
-        <li class="educHeader">Saint John's School</li>
-        <li class="educSubHeader">Secondary School</li>
-        <li class="educDates"><strong>From:</strong> 2004 - <strong>To:</strong> 2010</li>
-        <li class="educText"></li>
-      </ul>
-      <ul class="educList">
-        <img src="https://i.postimg.cc/Vk5FjjwH/IMG-0220.webp" class="educImg">
-        <li class="educHeader">Colegio Americano de Veracruz</li>
-        <li class="educSubHeader">Primary School</li>
-        <li class="educDates"><strong>From:</strong> 1998 - <strong>To:</strong> 2004</li>
-        <li class="educText"></li>
-      </ul>
-    </div>
-    <hr>
-
-
-    <div class="personalCert">
-      <h3>CERTIFICATIONS</h3>
-      <ul class="educList">
-        <img class="certImg" src="https://i.postimg.cc/Yq9yBnD9/IMG-0231.jpg">
-        <li class="educHeader">MSTR Certified Architect</li><br>
-        <li class="educSubHeader">MicroStrategy</li>
-      </ul>
-      <ul class="educList">
-        <img class="certImg" src="https://i.postimg.cc/m25pLYKS/241ab05e-2be4-4dd8-8df0-e2ae51d2dba8.jpg">
-        <li class="educHeader">Python Web Development</li><br>
-        <li class="educSubHeader">CoderHouse</li>
-      </ul>
-      <ul class="educList">
-        <img class="certImg" src="https://i.postimg.cc/jSngLWbY/IMG-0232.jpg" style="border-style: solid;">
-        <li class="educHeader">International Baccalaurate</li><br>
-        <li class="educSubHeader">Cambridge</li>
-      </ul>
     </div>
 
-
-    <script src="script.js"></script>
-  </body>
-  <footer>
-    <p><strong>E-Mail:</strong> agusgugliuzza@gmail.com - <strong>Phone:</strong> (+549) 11-6506-3175</p>
-  </footer>
+    <script src="https://kit.fontawesome.com/294fa9cb4a.js" crossorigin="anonymous"></script>
+</body>
 </html>
