@@ -4,10 +4,11 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #e0c097;
 }
 .header, .footer {
-  background-color: #0e2246;
-  color: #fff;
+  background-color: #2d2424;
+  color: #e0c097;
   text-align: center;
   padding: 10px 0;
   position: fixed;
@@ -231,7 +232,7 @@ z
     margin-right: 2%;
   } 
   h1 {
-    color: bisque;
+    color: #b85c38;
     font-size: large;
   }
   h2 {
@@ -250,7 +251,7 @@ z
   }
   progress {
     width: 80%;
-    accent-color: black;    
+    accent-color: #b85c38;    
   }
   table {
     font-size: small;
@@ -325,7 +326,7 @@ z
     text-align: left;
     border: none;
     border-radius: 5px;
-    background-color: burlywood;
+    background-color: #b85c38;
   }
   .workTitle {
     font-size: medium;
@@ -336,7 +337,7 @@ z
     font-size: medium;
     font: italic;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: slategray;
+    color: #5c3d2e;
   }
 
   .list {
