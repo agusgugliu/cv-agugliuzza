@@ -124,9 +124,9 @@ a {
   margin-left: 10px;
 }
 .workTime {
-  color: black;
-  background-color: lightslategray;
-  border: solid black 1px;
+  color: #e0c097;
+  background-color: #2d2424;
+  border: solid #2d2424 1px;
   border-radius: 5px;
   padding: 5px;
   font-size: medium;
@@ -139,7 +139,7 @@ a {
 }
 .workPlace {
   font: status-bar;
-  color:grey
+  color:#e0c097;
 }
 
 .list {
