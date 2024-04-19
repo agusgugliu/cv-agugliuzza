@@ -78,6 +78,9 @@ td {
   text-align: center;
   vertical-align: center;
 }
+.notasITBA {
+  column-count: 20;
+}
 
 a {
   color: gray;
@@ -141,12 +144,44 @@ a {
   font: status-bar;
   color:#e0c097;
 }
+
+.workExpNOW {
+  background-color: #2d2424;
+  border-radius: 10px;
+  padding: 5px 0 5px 0;
+  margin-left: 10px;
+}
+.workTimeNOW {
+  color: #2d2424;
+  background-color: #b85c38;
+  /*border: solid #2d2424 1px;*/
+  border-radius: 5px;
+  padding: 5px;
+  font-size: large;
+  font: bolder;
+}
+.workTitleNOW {
+  font-weight: bolder;
+  font: icon;
+  color: #e0c097;
+  padding-left: 10px;
+}
+.workPlaceNOW {
+  font: status-bar;
+  color:#b85c38;
+}
+.workImgNOW {
+  max-height: 17px;
+  padding-left: 5px;
+}
+
 .workImg {
   float: right;
   box-sizing: content-box;
   margin-right: 3%;
   max-height: 70px;
 }
+
 
 .educImg {
   float: right;
