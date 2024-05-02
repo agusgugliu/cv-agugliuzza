@@ -7,8 +7,8 @@ body, html {
   background-color: white;
 }
 .header, .footer {
-  background-color: #2d2424;
-  color: #e0c097;
+  background-color: black;
+  color: whitesmoke;
   text-align: center;
   padding: 10px 0;
   position: fixed;
@@ -34,7 +34,7 @@ body, html {
   position: fixed;
   left: 0;
   top: 150px; 
-  width: 200px;
+  width: 220px;
   height: calc(100% - 100px); 
   background-color: lightgray;
   box-shadow: 2px 0 5px rgba(0,0,0,0.5);
@@ -121,15 +121,15 @@ a {
   align-items: center;*/
 }
 .workExp {
-  background-color: #b85c38;
+  background-color: lightgrey;
   border-radius: 10px;
   padding: 5px 0 5px 0;
   margin-left: 10px;
 }
 .workTime {
-  color: #e0c097;
-  background-color: #2d2424;
-  border: solid #2d2424 1px;
+  color: lightgoldenrodyellow;
+  background-color: #0e2246;
+  border: solid slategrey 1px;
   border-radius: 5px;
   padding: 5px;
   font-size: medium;
@@ -138,11 +138,19 @@ a {
 .workTitle {
   font-weight: bolder;
   font: icon;
-  color: black;
+  color: slategrey;
 }
 .workPlace {
   font: status-bar;
-  color:#e0c097;
+  color:black;
+}
+
+.workExperienceNOW {
+  font-size: small;
+  background-color: white;
+  color: #0e2246;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
 }
 
 .workExpNOW {
@@ -152,8 +160,8 @@ a {
   margin-left: 10px;
 }
 .workTimeNOW {
-  color: #2d2424;
-  background-color: #b85c38;
+  color: whitesmoke;
+  background-color: slategray;
   /*border: solid #2d2424 1px;*/
   border-radius: 5px;
   padding: 5px;
@@ -163,12 +171,12 @@ a {
 .workTitleNOW {
   font-weight: bolder;
   font: icon;
-  color: #e0c097;
+  color: whitesmoke;
   padding-left: 10px;
 }
 .workPlaceNOW {
   font: status-bar;
-  color:#b85c38;
+  color:lightgrey;
 }
 .workImgNOW {
   max-height: 17px;
@@ -179,6 +187,13 @@ a {
   float: right;
   box-sizing: content-box;
   margin-right: 3%;
+}
+.imgHor {
+  padding: 10px;
+  max-width: 150px;
+}
+.imgSquare {
+  padding: 10px;
   max-height: 70px;
 }
 
@@ -227,16 +242,15 @@ a {
   margin-top: 12px;
   padding: 5px;
   border-radius: 50%;
-  background-color: whitesmoke;
 }
 
 
 progress {
   width: 80%;
-  accent-color: black;    
+  accent-color: slategray;    
 }
 progress::-webkit-progress-bar {
-  background-color: gray;
+  background-color: white;
 }
 progress::-webkit-progress-value {
   background-color: blue;
