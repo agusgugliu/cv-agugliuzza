@@ -28,8 +28,8 @@
     <div class="right">
       <label for="langSelect" class="sr-only">Idioma</label>
       <select id="langSelect" aria-label="Selector de idioma">
-        <option value="es">Español</option>
-        <option value="en" selected>English</option>
+        <option value="es" selected>Español</option>
+        <option value="en">English</option>
       </select>
       <button id="invertBtn" type="button" title="Tema claro/oscuro">Tema</button>
     </div>
@@ -90,7 +90,8 @@
       skills: "Habilidades",
       languages: "Idiomas",
       projects: "Proyectos",
-      other: "Otros"
+      other: "Otros",
+      certifications: "Certificaciones"
     },
     education: [
       { school: "IE Business School", location: "Madrid, España", degree: "International MBA", dates: "Esperado Jul 2026" },
@@ -135,7 +136,7 @@
             ]
           },
           {
-            title: "Associate Consultant",
+            title: "Associate Consultant → Senior Associate Consultant",
             dates: "Ago 2017 – Oct 2019",
             bullets: [
               "Ascenso acelerado por sobrecumplir entregas.",
@@ -147,11 +148,17 @@
     ],
     skills: ["MicroStrategy","Power BI","Azure","SQL","Cloudera","Oracle","MS Project","Python","R","HTML","CSS","Java"],
     languages: ["Español (nativo)","Inglés (bilingüe)","Portugués (intermedio)"],
+    certifications: [
+        "MicroStrategy Certified Architect (MicroStrategy)", 
+        "Python Developer (CoderHouse)",
+        "International Baccalaurate Diploma (Cambridge)",
+        "Advanced English CEFR C1 (Duolingo)"
+      ],
     other: [
       "2 medias maratones; fútbol y pádel competitivo.",
       "Compositor e intérprete: piano y guitarra."
-    ],
-    projects: []
+    ]
+    
   };
 
   // Datos en Inglés
@@ -170,7 +177,8 @@
       skills: "Skills",
       languages: "Languages",
       projects: "Projects",
-      other: "Other"
+      other: "Other",
+      certifications: "Certifications"
     },
     education: [
       { school: "IE Business School", location: "Madrid, Spain", degree: "International MBA", dates: "Expected Jul 2026" },
@@ -215,7 +223,7 @@
             ]
           },
           {
-            title: "Associate Consultant",
+            title: "Associate Consultant → Senior Associate Consultant",
             dates: "Aug 2017 – Oct 2019",
             bullets: [
               "Accelerated promotion by exceeding delivery targets.",
@@ -227,6 +235,12 @@
     ],
     skills: ["MicroStrategy","Power BI","Azure","SQL","Cloudera","Oracle","MS Project","Python","R","HTML","CSS","Java"],
     languages: ["Spanish (native)","English (bilingual)","Portuguese (intermediate)"],
+    certifications: [
+        "MicroStrategy Certified Architect (MicroStrategy)", 
+        "Python Developer (CoderHouse)",
+        "International Baccalaurate Diploma (Cambridge)",
+        "Advanced English CEFR C1 (Duolingo)"
+      ],
     other: [
       "2 half-marathons; competitive soccer and padel.",
       "Composer and performer: piano and guitar."
@@ -348,6 +362,10 @@
     // Projects
     if((data.projects||[]).length){
       parts.push(section(s.projects || "Proyectos", projBlock(data.projects)));
+    }
+    // Certifications
+    if((data.certifications||[]).length){
+      parts.push(section(s.certifications || "Certificaciones", listBlock(data.certifications)));
     }
     // Other
     if((data.other||[]).length){
