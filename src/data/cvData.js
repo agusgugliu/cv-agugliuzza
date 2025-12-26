@@ -5,6 +5,7 @@ export const dataEN = {
     phone: "+34 610 01 05 76",
     email: "agustin.gugliuzza.piccinini@gmail.com",
     linkedin: "linkedin.com/in/agustin-gugliuzza",
+    calendly: "https://calendly.com/agusgugliu",
     summary: "Project Manager with 5+ years in multinational tech and financial companies. Expert in predictive analytics, database management, and end-to-end delivery of data-driven solutions.",
     titles: {
         experience: "Professional Experience",
@@ -80,12 +81,13 @@ export const dataEN = {
 };
 
 export const dataES = {
-    name: "Agustín Gugliuzza Piccinini",
+    name: "Agustín Gugliuzza",
     headline: "Project Manager | Datos y Analítica | IMBA @IE",
     location: "Madrid, España",
     phone: "+34 610 01 05 76",
     email: "agustin.gugliuzza.piccinini@gmail.com",
     linkedin: "linkedin.com/in/agustin-gugliuzza",
+    calendly: "https://calendly.com/agusgugliu",
     summary: "Project Manager con más de 5 años en compañías tecnológicas y financieras multinacionales. Experto en analítica predictiva y entrega de soluciones basadas en datos.",
     titles: {
         experience: "Experiencia Profesional",

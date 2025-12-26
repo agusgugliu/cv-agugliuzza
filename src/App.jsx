@@ -4,7 +4,7 @@ import {
     Mail, Phone, Linkedin, MapPin,
     Briefcase, GraduationCap, Code,
     Globe, Heart, Download, Sun, Moon,
-    Copy
+    Copy, Calendar
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { dataEN, dataES } from './data/cvData';
@@ -127,6 +127,12 @@ const App = () => {
                                     icon: MapPin,
                                     val: data.location,
                                     label: "Location"
+                                },
+                                {
+                                    icon: Calendar,
+                                    val: "Schedule a Meeting",
+                                    label: "Calendly",
+                                    link: data.calendly
                                 }
                             ].map((item, i) => (
                                 <motion.div
