@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agustín Gugliuzza | Interactive CV</title>
+  <meta name="description" content="Official Portfolio & Curriculum Vitae of Agustín Gugliuzza Piccinini" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="mesh-bg"></div>
+
+  <div class="app-container">
+    <!-- Navigation / Controls -->
+    <nav class="controls-bar">
+      <div class="control-group">
+        <button id="editBtn" class="btn-secondary" title="Open JSON Editor">
+          <i data-lucide="code"></i> JSON Editor
+        </button>
+        <button id="printBtn" class="btn-secondary">
+          <i data-lucide="download"></i> PDF
+        </button>
+      </div>
+      <div class="control-group">
+        <select id="langSelect" aria-label="Language">
+          <option value="es">Español</option>
+          <option value="en" selected>English</option>
+        </select>
+        <button id="themeBtn" class="btn-secondary" title="Toggle Theme">
+          <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="hero-card">
+      <div class="photo-container">
+        <img id="photo" src="assets/photo.PNG" class="photo-img" alt="Agustín Gugliuzza" />
+      </div>
+      <div class="hero-info">
+        <h1 id="name">Agustín Gugliuzza Piccinini</h1>
+        <div id="headline" class="headline">Software Development Project Manager | Data & Analytics Expert</div>
+        <div class="contact-grid" id="contactGrid">
+          <!-- Contact pills will be injected here -->
+        </div>
+      </div>
+      <div class="logos-container">
+        <img src="assets/ie_logo_orig.png" alt="IE University" class="logo-item" style="max-height: 80px;">
+        <img src="assets/madrid_logo_orig.png" alt="Madrid" class="logo-item">
+      </div>
+    </header>
+
+    <div class="sections-grid">
+      <!-- Main Content -->
+      <main id="mainContent">
+        <!-- Experience Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="briefcase"></i>
+            <h2 id="titleExperience">Professional Experience</h2>
+          </div>
+          <div id="experienceList"></div>
+        </section>
+
+        <!-- Projects Section (Optional/Empty based on data) -->
+        <section id="projectsSection" class="section-card reveal" style="display:none;">
+          <div class="section-header">
+            <i data-lucide="layers"></i>
+            <h2 id="titleProjects">Key Projects</h2>
+          </div>
+          <div id="projectsList"></div>
+        </section>
+      </main>
+
+      <!-- Sidebar Content -->
+      <aside>
+        <!-- Summary Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="user"></i>
+            <h2 id="titleSummary">Summary</h2>
+          </div>
+          <p id="summaryText" class="text-secondary"></p>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="graduation-cap"></i>
+            <h2 id="titleEducation">Education</h2>
+          </div>
+          <div id="educationList"></div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="command"></i>
+            <h2 id="titleSkills">Technical Skills</h2>
+          </div>
+          <div id="skillsPills" class="skills-container"></div>
+        </section>
+
+        <!-- Languages Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="globe"></i>
+            <h2 id="titleLanguages">Languages</h2>
+          </div>
+          <div id="languagesList" class="skills-container"></div>
+        </section>
+
+        <!-- Other Info Section -->
+        <section class="section-card reveal">
+          <div class="section-header">
+            <i data-lucide="plus-circle"></i>
+            <h2 id="titleOther">Interests</h2>
+          </div>
+          <div id="otherList" class="text-secondary" style="font-size: 0.95rem;"></div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <!-- JSON Editor Modal -->
+  <div id="editorWrap" class="editor-wrap">
+    <div class="editor-header">
+      <h3 style="color:white">Live Resume Editor</h3>
+      <div class="control-group">
+        <button id="applyBtn" class="btn-primary">Save & Sync</button>
+        <button id="closeEditorBtn" class="btn-secondary">Close</button>
+      </div>
+    </div>
+    <textarea id="jsonArea" spellcheck="false"></textarea>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // ========= Accurate Data from CV Image =========
+    const dataEN = {
+      name: "Agustín Gugliuzza Piccinini",
+      headline: "Project Manager | Data & Analytics | IMBA Candidate @IE",
+      location: "Madrid, Spain",
+      phone: "+34 610 01 05 76",
+      email: "agustin.gugliuzza.piccinini@gmail.com",
+      linkedin: "linkedin.com/in/agustin-gugliuzza",
+      summary: "Project Manager with 5+ years in multinational tech and financial companies, leading software development and analytics projects. Expert in predictive analytics, database management, and end-to-end delivery of data-driven solutions in bilingual environments.",
+      titles: {
+        summary: "Summary",
+        experience: "Experience",
+        education: "Education",
+        skills: "Technical Skills",
+        languages: "Languages",
+        projects: "Projects",
+        other: "Interests"
+      },
+      education: [
+        { school: "IE Business School", location: "Madrid, Spain", degree: "International MBA", dates: "Expected July 2026" },
+        { school: "ITBA (Instituto Tecnológico de Buenos Aires)", location: "Buenos Aires, Argentina", degree: "Bachelor in Business & Systems Administration", dates: "July 2017" }
+      ],
+      experience: [
+        {
+          company: "Life Seguros (formerly Prudential Seguros)",
+          location: "Buenos Aires, Argentina",
+          roles: [
+            {
+              title: "Software Development Project Manager (IT Department)",
+              dates: "May 2024 - July 2025",
+              bullets: [
+                "Spearheaded the 'Independent Agents' cross-company initiative, bringing together IT, Finance, Operations, Legal, and Marketing.",
+                "Designed and implemented a premium-return calculator integrated into the quotation tool, replacing fragmented Excel processes.",
+                "Co-led the Corporate Data Lake initiative for Grupo ST to centralize key metrics and dashboards into a single data source."
+              ]
+            },
+            {
+              title: "Software Development Team Lead (IT Department)",
+              dates: "April 2022 - April 2024",
+              bullets: [
+                "Directed BI and analytics development projects, delivering multiple reporting tools cutting manual data processing time by up to 30%.",
+                "Mentored a team of junior developers in SQL, technical design, and ETL best practices.",
+                "Introduced Agile sprint planning and standardized code review processes, increasing delivery rate by 18%."
+              ]
+            }
+          ]
+        },
+        {
+          company: "MicroStrategy Inc",
+          location: "Buenos Aires, Argentina",
+          roles: [
+            {
+              title: "Consultant → Senior Consultant",
+              dates: "October 2019 - March 2022",
+              bullets: [
+                "Managed global BI projects end-to-end, mentoring junior consultants and improving LATAM delivery standards.",
+                "Delivered interactive dashboards and analytics solutions that reduced manual reporting by up to 60%.",
+                "Guided a predictive analytics initiative for Prudential Seguros, reducing churn by 12% in four months.",
+                "Designed an executive dashboard for Banco Patagonia consolidating sales, profitability, and segmentation data, cutting report preparation to under one day."
+              ]
+            },
+            {
+              title: "Associate Consultant",
+              dates: "August 2017 - October 2019",
+              bullets: [
+                "Fast-tracked from Associate to Senior Associate in under two years by consistently exceeding delivery targets.",
+                "Developed advanced skills in MicroStrategy, SQL, and dashboard design within the first year.",
+                "Supported high-profile accounts including Prudential Seguros, Banco Hipotecario, and Swiss Medical."
+              ]
+            }
+          ]
+        }
+      ],
+      skills: ["MicroStrategy", "Power BI", "Azure", "SQL", "Cloudera", "Oracle DB", "Python", "R & RScript", "HTML", "CSS", "Java", "Jira", "Asana", "Trello"],
+      languages: [
+        { name: "Spanish", level: "Native" },
+        { name: "English", level: "Bilingual" },
+        { name: "Portuguese", level: "Intermediate" }
+      ],
+      other: [
+        "Completed 2 half-marathons (Buenos Aires - 2022, 2023) and consistently engaged in competitive soccer and padel.",
+        "Composed and performed original music for 16 years on piano and 6 years on guitar (2008-present)."
+      ]
+    };
+
+    const dataES = {
+      name: "Agustín Gugliuzza Piccinini",
+      headline: "Project Manager de Software | Experto en Datos y Analítica | Candidato IMBA @IE",
+      location: "Madrid, España",
+      phone: "+34 610 01 05 76",
+      email: "agustin.gugliuzza.piccinini@gmail.com",
+      linkedin: "linkedin.com/in/agustin-gugliuzza",
+      summary: "Project Manager con más de 5 años en compañías tecnológicas y financieras multinacionales. Experto en analítica predictiva, gestión de bases de datos y entrega end-to-end de soluciones basadas en datos en entornos bilingües.",
+      titles: {
+        summary: "Resumen",
+        experience: "Experiencia Profesional",
+        education: "Educación",
+        skills: "Habilidades Técnicas",
+        languages: "Idiomas",
+        projects: "Proyectos",
+        other: "Intereses"
+      },
+      education: [
+        { school: "IE Business School", location: "Madrid, España", degree: "International MBA", dates: "Esperado Julio 2026" },
+        { school: "ITBA (Instituto Tecnológico de Buenos Aires)", location: "Buenos Aires, Argentina", degree: "Lic. en Administración y Sistemas", dates: "Julio 2017" }
+      ],
+      experience: [
+        {
+          company: "Life Seguros (ex Prudential Seguros)",
+          location: "Buenos Aires, Argentina",
+          roles: [
+            {
+              title: "Project Manager de Desarrollo de Software (IT)",
+              dates: "Mayo 2024 - Julio 2025",
+              bullets: [
+                "Lideré la iniciativa 'Agentes Independientes', unificando IT, Finanzas, Operaciones, Legal y Marketing.",
+                "Diseñé e implementé una calculadora de devolución de prima integrada, reemplazando procesos fragmentados en Excel.",
+                "Co-lideré el Data Lake Corporativo del Grupo ST para centralizar KPIs en una única fuente de verdad."
+              ]
+            }
+          ]
+        },
+        {
+          company: "MicroStrategy Inc",
+          location: "Buenos Aires, Argentina",
+          roles: [
+            {
+              title: "Consultor → Senior Consultor",
+              dates: "Octubre 2019 - Marzo 2022",
+              bullets: [
+                "Gestión de proyectos BI globales y mentoría regional.",
+                "Desarrollo de dashboards que redujeron reportes manuales en un 60%.",
+                "Iniciativa predictiva para Prudential Seguros que bajó el churn 12% en 4 meses."
+              ]
+            }
+          ]
+        }
+      ],
+      skills: ["MicroStrategy", "Power BI", "Azure", "SQL", "Cloudera", "Oracle DB", "Python", "R", "HTML", "CSS", "Java", "Jira", "Asana", "Trello"],
+      languages: [
+        { name: "Español", level: "Nativo" },
+        { name: "Inglés", level: "Bilingüe" },
+        { name: "Portugués", level: "Intermedio" }
+      ],
+      other: [
+        "Completé 2 medias maratones (Buenos Aires - 2022, 2023). Fútbol y padel competitivo.",
+        "Compositor e intérprete: 16 años de piano y 6 años de guitarra (2008-presente)."
+      ]
+    };
+
+    // State
+    let currentLang = "en";
+    let activeData = structuredClone(dataEN);
+
+    // DOM Elements
+    const $ = (id) => document.getElementById(id);
+
+    function render() {
+      const d = activeData;
+      const t = d.titles;
+
+      // Titles
+      $("titleExperience").textContent = t.experience;
+      $("titleSummary").textContent = t.summary;
+      $("titleEducation").textContent = t.education;
+      $("titleSkills").textContent = t.skills;
+      $("titleLanguages").textContent = t.languages;
+      $("titleOther").textContent = t.other;
+
+      // Header
+      $("name").textContent = d.name;
+      $("headline").textContent = d.headline;
+      $("summaryText").textContent = d.summary;
+
+      // Icons update
+      lucide.createIcons();
+
+      // Contact Pills
+      const contactHtml = `
+        <a href="mailto:${d.email}" class="contact-pill"><i data-lucide="mail"></i> ${d.email}</a>
+        <a href="tel:${d.phone}" class="contact-pill"><i data-lucide="phone"></i> ${d.phone}</a>
+        <a href="https://${d.linkedin}" target="_blank" class="contact-pill"><i data-lucide="linkedin"></i> LinkedIn</a>
+        <div class="contact-pill"><i data-lucide="map-pin"></i> ${d.location}</div>
+      `;
+      $("contactGrid").innerHTML = contactHtml;
+
+      // Experience
+      $("experienceList").innerHTML = d.experience.map(exp => `
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-company">${exp.company}</div>
+          <div class="exp-loc">${exp.location}</div>
+          ${exp.roles.map(role => `
+            <div class="role-block">
+              <div class="role-title">${role.title}</div>
+              <div class="role-dates">${role.dates}</div>
+              <ul class="role-bullets">
+                ${role.bullets.map(b => `<li>${b}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+
+      // Education
+      $("educationList").innerHTML = d.education.map(edu => `
+        <div class="edu-item">
+          <div class="edu-school">${edu.school}</div>
+          <div class="edu-degree">${edu.degree} — ${edu.dates}</div>
+        </div>
+      `).join('');
+
+      // Skills
+      $("skillsPills").innerHTML = d.skills.map(s => `
+        <span class="skill-pill">${s}</span>
+      `).join('');
+
+      // Languages
+      $("languagesList").innerHTML = d.languages.map(l => `
+        <span class="skill-pill" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2);">
+          ${l.name} - ${l.level}
+        </span>
+      `).join('');
+
+      // Other
+      $("otherList").innerHTML = d.other.map(o => `
+        <p style="margin-bottom: 8px;">• ${o}</p>
+      `).join('');
+
+      // Sync Editor
+      $("jsonArea").value = JSON.stringify(d, null, 2);
+      lucide.createIcons();
+    }
+
+    // Controls
+    $("langSelect").onchange = (e) => {
+      currentLang = e.target.value;
+      activeData = structuredClone(currentLang === "en" ? dataEN : dataES);
+      render();
+    };
+
+    $("editBtn").onclick = () => {
+      $("editorWrap").style.display = "flex";
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    };
+    $("closeEditorBtn").onclick = () => $("editorWrap").style.display = "none";
+
+    $("applyBtn").onclick = () => {
+      try {
+        activeData = JSON.parse($("jsonArea").value);
+        render();
+        alert("Changes applied successfully!");
+        $("editorWrap").style.display = "none";
+      } catch (e) {
+        alert("Invalid JSON format.");
+      }
+    };
+
+    $("printBtn").onclick = () => window.print();
+
+    $("themeBtn").onclick = () => {
+      document.documentElement.classList.toggle("light");
+      const isLight = document.documentElement.classList.contains("light");
+      $("themeIcon").setAttribute("data-lucide", isLight ? "sun" : "moon");
+      lucide.createIcons();
+    };
+
+    // Reveal on scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, observerOptions);
+
+    window.addEventListener("scroll", () => {
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    });
+
+    // Initial Render
+    render();
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
