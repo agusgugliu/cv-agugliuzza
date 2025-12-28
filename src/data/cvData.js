@@ -12,6 +12,7 @@ export const dataEN = {
         education: "Education",
         skills: "Technical Skills",
         languages: "Languages",
+        softSkills: "Soft Skills",
         other: "Interests"
     },
     experience: [
@@ -74,6 +75,7 @@ export const dataEN = {
         { name: "Spanish", level: "Native" },
         { name: "English", level: "Bilingual" }
     ],
+    softSkills: ["Project Management", "SCRUM Master", "Problem Solving", "Analytical Thinking", "Leadership"],
     other: [
         "2x Half-marathon finisher",
         "Pianist & Guitarist (16+ years)"
@@ -94,6 +96,7 @@ export const dataES = {
         education: "Educación",
         skills: "Habilidades Técnicas",
         languages: "Idiomas",
+        softSkills: "Habilidades Blandas",
         other: "Intereses"
     },
     experience: [
@@ -156,6 +159,7 @@ export const dataES = {
         { name: "Español", level: "Nativo" },
         { name: "Inglés", level: "Bilingüe" }
     ],
+    softSkills: ["Gestión de Proyectos", "SCRUM Master", "Resolución de Problemas", "Pensamiento Analítico", "Liderazgo"],
     other: [
         "Maratonista (2x media maratón)",
         "Pianista y Guitarrista (16+ años)"
