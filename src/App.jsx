@@ -4,7 +4,7 @@ import {
     Mail, Phone, Linkedin, MapPin,
     Briefcase, GraduationCap, Code,
     Globe, Heart, Download, Sun, Moon,
-    Copy, Calendar
+    Copy, Calendar, Users
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { dataEN, dataES } from './data/cvData';
@@ -208,19 +208,35 @@ const App = () => {
                         </Section>
                     </div>
 
-                    <Section title={data.titles.skills} icon={Code} delay={0.6}>
-                        <div className="skills-grid">
-                            {data.skills.map((s, i) => (
-                                <motion.span
-                                    key={i}
-                                    className="skill-tag"
-                                    whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
-                                >
-                                    {s}
-                                </motion.span>
-                            ))}
-                        </div>
-                    </Section>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                        <Section title={data.titles.skills} icon={Code} delay={0.6}>
+                            <div className="skills-grid">
+                                {data.skills.map((s, i) => (
+                                    <motion.span
+                                        key={i}
+                                        className="skill-tag"
+                                        whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
+                                    >
+                                        {s}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </Section>
+
+                        <Section title={data.titles.softSkills} icon={Users} delay={0.65}>
+                            <div className="skills-grid">
+                                {data.softSkills.map((s, i) => (
+                                    <motion.span
+                                        key={i}
+                                        className="skill-tag"
+                                        whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
+                                    >
+                                        {s}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </Section>
+                    </div>
 
                     <Section title={data.titles.other} icon={Heart} delay={0.7}>
                         {data.other.map((o, i) => (
