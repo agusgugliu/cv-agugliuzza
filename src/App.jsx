@@ -4,7 +4,7 @@ import {
     Mail, Phone, Linkedin, MapPin,
     Briefcase, GraduationCap, Code,
     Globe, Heart, Download, Sun, Moon,
-    Copy, Calendar, Users
+    Copy, Calendar, Users, Flag
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { dataEN, dataES } from './data/cvData';
@@ -40,6 +40,17 @@ const App = () => {
     const showToast = (msg) => {
         setToast(msg);
         setTimeout(() => setToast(null), 3000);
+    };
+
+    const calculateAge = (dob) => {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     };
 
     const copyToClipboard = (text, label) => {
@@ -106,27 +117,38 @@ const App = () => {
                         <div className="contact-list">
                             {[
                                 {
+                                    icon: Calendar,
+                                    val: `${data.birthDate} (${calculateAge(data.dob)} ${lang === 'en' ? 'years' : 'años'})`,
+                                    label: lang === 'en' ? "Age & DOB" : "Edad y Fecha de Nac."
+                                },
+                                {
+                                    icon: MapPin,
+                                    val: data.location,
+                                    label: lang === 'en' ? "Location" : "Ubicación"
+                                },
+                                {
+                                    icon: Flag,
+                                    val: data.nationality,
+                                    label: lang === 'en' ? "Nationality" : "Nacionalidad"
+                                },
+                                {
+                                    icon: Linkedin,
+                                    val: data.linkedin,
+                                    label: "LinkedIn",
+                                    link: data.linkedinUrl
+                                },
+                                {
                                     icon: Mail,
                                     val: data.email,
                                     label: "Email",
-                                    link: `mailto:${data.email}`
+                                    link: `mailto:${data.email}`,
+                                    fullWidth: true
                                 },
                                 {
                                     icon: Phone,
                                     val: data.phone,
                                     label: "WhatsApp",
                                     link: `https://wa.me/${data.phone.replace(/[^\d]/g, '')}`
-                                },
-                                {
-                                    icon: Linkedin,
-                                    val: data.linkedin,
-                                    label: "LinkedIn",
-                                    link: `https://${data.linkedin}`
-                                },
-                                {
-                                    icon: MapPin,
-                                    val: data.location,
-                                    label: "Location"
                                 },
                                 {
                                     icon: Calendar,
@@ -146,7 +168,7 @@ const App = () => {
                                     </div>
                                     <div className="contact-text">
                                         <span className="contact-label">{item.label}</span>
-                                        <div className="contact-val">{item.val}</div>
+                                        <div className="contact-val" style={item.fullWidth ? { whiteSpace: 'normal', overflow: 'visible', textOverflow: 'clip', maxWidth: 'none', wordBreak: 'break-all' } : {}}>{item.val}</div>
                                     </div>
                                     {item.link ? (
                                         <div className="external-hint">

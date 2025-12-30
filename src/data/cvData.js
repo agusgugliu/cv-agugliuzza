@@ -1,10 +1,14 @@
 export const dataEN = {
     name: "Agustín Gugliuzza Piccinini",
     headline: "Project Manager | Data & Analytics | IMBA @IE",
+    nationality: "Argentina & Italy",
+    birthDate: "April 9th, 1995",
+    dob: "1995-04-09",
     location: "Madrid, Spain",
     phone: "+34 610 01 05 76",
     email: "agustin.gugliuzza.piccinini@gmail.com",
-    linkedin: "linkedin.com/in/agustin-gugliuzza",
+    linkedin: "agustin-gugliuzza",
+    linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://calendly.com/agusgugliu",
     summary: "Project Manager with 5+ years in multinational tech and financial companies. Expert in predictive analytics, database management, and end-to-end delivery of data-driven solutions.",
     titles: {
@@ -85,10 +89,14 @@ export const dataEN = {
 export const dataES = {
     name: "Agustín Gugliuzza",
     headline: "Project Manager | Datos y Analítica | IMBA @IE",
+    nationality: "Argentina & Italia",
+    birthDate: "9 de Abril de 1995",
+    dob: "1995-04-09",
     location: "Madrid, España",
     phone: "+34 610 01 05 76",
     email: "agustin.gugliuzza.piccinini@gmail.com",
-    linkedin: "linkedin.com/in/agustin-gugliuzza",
+    linkedin: "agustin-gugliuzza",
+    linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://calendly.com/agusgugliu",
     summary: "Project Manager con más de 5 años en compañías tecnológicas y financieras multinacionales. Experto en analítica predictiva y entrega de soluciones basadas en datos.",
     titles: {
