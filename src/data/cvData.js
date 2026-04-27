@@ -9,7 +9,7 @@ export const dataEN = {
     email: "agustin.gugliuzza.piccinini@gmail.com",
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
-    calendly: "https://calendly.com/agusgugliu",
+    calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
     summary: "Project Manager & Strategy Consultant with 5+ years of experience in multinational environments, leading end-to-end digital and operational transformation programs. Track record of driving measurable outcomes: reduced time-to-market by 20% through structured PMO governance and milestone-based delivery controls. IE MBA (2026) with strong analytical foundation in systems, business administration, and data analytics. AI-literate and data-driven professional with hands-on experience in BI, analytics, and Agile delivery. Fluent in Spanish and English; EU work authorization.",
     titles: {
         summary: "Professional Summary",
@@ -173,7 +173,7 @@ export const dataES = {
     email: "agustin.gugliuzza.piccinini@gmail.com",
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
-    calendly: "https://calendly.com/agusgugliu",
+    calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
     summary: "Project Manager y Consultor de Estrategia con más de 5 años de experiencia en entornos multinacionales, liderando programas integrales de transformación digital y operativa. Resultados medibles: reducción del time-to-market en un 20% mediante gobierno PMO estructurado y controles de entrega basados en hitos. MBA en IE (2026) con sólida base analítica en sistemas, administración de empresas y analítica de datos. Profesional orientado a datos, con experiencia práctica en BI, analítica y entrega Agile. Bilingüe español/inglés; autorización de trabajo en la UE.",
     titles: {
         summary: "Resumen Profesional",

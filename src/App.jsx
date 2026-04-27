@@ -154,7 +154,7 @@ const App = () => {
                                 {
                                     icon: Calendar,
                                     val: "Schedule a Meeting",
-                                    label: "Calendly",
+                                    label: "Schedule",
                                     link: data.calendly
                                 }
                             ].map((item, i) => (
