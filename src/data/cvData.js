@@ -64,26 +64,66 @@ export const dataEN = {
             dates: "Sep 2025 - Expected Jul 2026",
             location: "Madrid, Spain",
             specialization: "Specialization: Digital Business Transformation & Innovation",
-            coursework: [
-                "Digital strategy, platform economics, and AI-driven competitive positioning.",
-                "Applied data analytics: regression, Monte Carlo simulation, and customer/financial modeling.",
-                "AI for business: machine learning, generative AI, and LLM-based solutions.",
-                "Operational excellence through Lean/Six Sigma, RPA, and digital process optimization.",
-                "Technology product management: opportunity discovery, MVP development, and go-to-market strategy.",
-                "Human-centered digital services design using service blueprints and behavioral science."
+            courseworkByTerm: [
+                {
+                    term: "Term 1 - Foundations",
+                    dates: "Sep-Dec 2025",
+                    items: [
+                        "Strategy: industry analysis, sources of competitive advantage, platform and ecosystem models, diversification and vertical integration.",
+                        "Innovation in a Digital World: enterprise architecture, digital business models, and the techno-socio-economic forces driving digital transformation.",
+                        "Marketing Management: segmentation, targeting and positioning, marketing mix (4Ps), and data-informed marketing planning.",
+                        "Operations Management: process design, operations strategy, and supply chain configuration across services and manufacturing.",
+                        "Financial Reporting & Analysis: accounting principles, financial statement preparation, and reading statements to support business decisions.",
+                        "Financial Markets: time value of money, DCF, and quantitative frameworks for investment and corporate finance decisions.",
+                        "Managerial Economics: micro and macroeconomic policy, market structures, and firm-government-consumer interactions.",
+                        "Entrepreneurship: opportunity recognition, business model design and validation, fundraising, and scaling new ventures."
+                    ]
+                },
+                {
+                    term: "Term 2 - Advanced Core",
+                    dates: "Jan-Mar 2026",
+                    items: [
+                        "Managerial Accounting: cost analysis, budgeting, and management control systems for operational decisions.",
+                        "Corporate Finance: business valuation (WACC, DCF, multiples), capital structure, payout policy, and M&A.",
+                        "Leading People & Change: leadership competencies, organizational design, motivation, and conflict management.",
+                        "Data Analytics for Managers: quantitative decision models, regression, and applying analytics to managerial problems.",
+                        "Supply Chain Management: integrated supply chain strategy, sustainability, and breaking the functional-silo view.",
+                        "Business, Government & Sustainability: nonmarket strategy, regulatory and political risk, and integrating ESG considerations."
+                    ]
+                },
+                {
+                    term: "Term 3 - Digital Specialization",
+                    dates: "Mar-Jun 2026, in progress",
+                    items: [
+                        "Digital Business Strategy: multi-sided platforms, data monetization, digital risk, and AI's impact on competitive positioning.",
+                        "Applied Data Analytics: regression, Monte Carlo simulation, and quantitative models applied across finance, marketing, and operations.",
+                        "Artificial Intelligence for Business: machine learning, generative AI, responsible AI, and data-driven decision making for non-technical managers.",
+                        "Operational Excellence & Digitalization: process mapping, Lean diagnostics, the optimization toolkit, and analytics-driven operations.",
+                        "Technology Product Management: opportunity discovery, MVP development, product strategy, and managing software teams.",
+                        "Digital Services Design: human-centered service design, behavioral science, and AI in service delivery."
+                    ]
+                },
+                {
+                    term: "Industry Skills Accelerator",
+                    dates: "cross-term, 10 modules",
+                    items: [
+                        "Project Management (Agile/Scrum + classic), Critical Thinking, Creative Thinking, Problem Solving, AI for Productivity, Data Fluency (Tableau), Power & Influence (negotiation), Storytelling & Public Speaking, High-Performance Team Building, Self-Transformation."
+                    ]
+                }
             ]
         },
         {
             school: "ITBA (Buenos Aires Institute of Technology)",
-            degree: "Bachelor's Degree - Systems & Business Administration",
+            degree: "Bachelor's Degree - Business Administration & Information Systems",
             dates: "Jul 2017",
             location: "Buenos Aires, Argentina",
             coursework: [
-                "Systems analysis & design, software engineering, and database management.",
-                "Operations research, quantitative methods, and statistical modeling.",
-                "Financial management, accounting, and microeconomics/macroeconomics.",
-                "Business process modeling, organizational design, and strategic planning.",
-                "Programming fundamentals (Java, SQL, Python) and IT infrastructure."
+                "Systems analysis and design, IT architecture, and enterprise resource integration.",
+                "Programming (Java, SQL, Python), data management, and telecommunications.",
+                "Quantitative methods: statistics, financial modeling, business process modeling, and decision-making models.",
+                "Financial reporting, managerial accounting, corporate finance, and micro/macroeconomics.",
+                "Business strategy, organizational structure, HR, marketing, and entrepreneurship.",
+                "Final thesis: Diagnóstico Empresario y Plan de Acción - capstone consulting project applying integrated business and systems frameworks to a real organization."
             ]
         }
     ],
@@ -188,26 +228,66 @@ export const dataES = {
             dates: "Sep 2025 - Esperado Jul 2026",
             location: "Madrid, España",
             specialization: "Especialización: Transformación Digital e Innovación de Negocio",
-            coursework: [
-                "Estrategia digital, economía de plataformas y posicionamiento competitivo basado en IA.",
-                "Analítica de datos aplicada: regresión, simulación Monte Carlo y modelado financiero/de clientes.",
-                "IA para negocio: machine learning, IA generativa y soluciones basadas en LLMs.",
-                "Excelencia operacional con Lean/Six Sigma, RPA y optimización de procesos digitales.",
-                "Gestión de productos tecnológicos: descubrimiento de oportunidades, MVPs y go-to-market.",
-                "Diseño de servicios digitales centrado en el usuario con service blueprints y ciencias del comportamiento."
+            courseworkByTerm: [
+                {
+                    term: "Trimestre 1 - Fundamentos",
+                    dates: "Sep-Dic 2025",
+                    items: [
+                        "Strategy: análisis de industria, fuentes de ventaja competitiva, modelos de plataforma y ecosistema, decisiones de diversificación e integración vertical.",
+                        "Innovation in a Digital World: arquitectura empresarial, modelos de negocio digitales y los factores tecno-socio-económicos detrás de la transformación digital.",
+                        "Marketing Management: segmentación, targeting y posicionamiento, marketing mix (4Ps) y planificación de marketing basada en datos.",
+                        "Operations Management: diseño de procesos, estrategia de operaciones y configuración de supply chain en servicios y manufactura.",
+                        "Financial Reporting & Analysis: principios contables, preparación de estados financieros y lectura de los mismos para decisiones de negocio.",
+                        "Financial Markets: valor temporal del dinero, DCF y frameworks cuantitativos para decisiones de inversión y finanzas corporativas.",
+                        "Managerial Economics: políticas micro y macroeconómicas, estructuras de mercado e interacciones empresa-gobierno-consumidor.",
+                        "Entrepreneurship: identificación de oportunidades, diseño y validación de modelos de negocio, fundraising y escalado de nuevos emprendimientos."
+                    ]
+                },
+                {
+                    term: "Trimestre 2 - Núcleo Avanzado",
+                    dates: "Ene-Mar 2026",
+                    items: [
+                        "Managerial Accounting: análisis de costos, presupuestación y sistemas de control de gestión para decisiones operativas.",
+                        "Corporate Finance: valoración de empresas (WACC, DCF, múltiplos), estructura de capital, política de dividendos y M&A.",
+                        "Leading People & Change: competencias de liderazgo, diseño organizacional, motivación y gestión de conflictos.",
+                        "Data Analytics for Managers: modelos cuantitativos de decisión, regresión y aplicación de analítica a problemas de gestión.",
+                        "Supply Chain Management: estrategia integrada de supply chain, sostenibilidad y superación de la visión de silos funcionales.",
+                        "Business, Government & Sustainability: estrategia no-de-mercado, riesgo regulatorio y político, e integración de criterios ESG."
+                    ]
+                },
+                {
+                    term: "Trimestre 3 - Especialización Digital",
+                    dates: "Mar-Jun 2026, en curso",
+                    items: [
+                        "Digital Business Strategy: plataformas multi-side, monetización de datos, riesgo digital y el impacto de la IA en el posicionamiento competitivo.",
+                        "Applied Data Analytics: regresión, simulación Monte Carlo y modelos cuantitativos aplicados a finanzas, marketing y operaciones.",
+                        "Artificial Intelligence for Business: machine learning, IA generativa, IA responsable y toma de decisiones basada en datos para managers no técnicos.",
+                        "Operational Excellence & Digitalization: mapeo de procesos, diagnóstico Lean, toolkit de optimización y operaciones data-driven.",
+                        "Technology Product Management: descubrimiento de oportunidades, desarrollo de MVPs, estrategia de producto y gestión de equipos de software.",
+                        "Digital Services Design: diseño de servicios centrado en el usuario, ciencias del comportamiento e IA en la prestación de servicios."
+                    ]
+                },
+                {
+                    term: "Industry Skills Accelerator",
+                    dates: "transversal, 10 módulos",
+                    items: [
+                        "Project Management (Agile/Scrum + clásico), Critical Thinking, Creative Thinking, Problem Solving, AI for Productivity, Data Fluency (Tableau), Power & Influence (negociación), Storytelling & Public Speaking, High-Performance Team Building, Self-Transformation."
+                    ]
+                }
             ]
         },
         {
             school: "ITBA (Instituto Tecnológico de Buenos Aires)",
-            degree: "Licenciatura - Sistemas y Administración de Empresas",
+            degree: "Licenciatura en Administración y Sistemas",
             dates: "Jul 2017",
             location: "Buenos Aires, Argentina",
             coursework: [
-                "Análisis y diseño de sistemas, ingeniería de software y gestión de bases de datos.",
-                "Investigación operativa, métodos cuantitativos y modelado estadístico.",
-                "Gestión financiera, contabilidad y micro/macroeconomía.",
-                "Modelado de procesos de negocio, diseño organizacional y planificación estratégica.",
-                "Fundamentos de programación (Java, SQL, Python) e infraestructura IT."
+                "Análisis y diseño de sistemas, arquitectura de TI e integración de recursos empresariales.",
+                "Programación (Java, SQL, Python), gestión de datos y telecomunicaciones.",
+                "Métodos cuantitativos: estadística, modelado financiero, modelado de procesos de negocio y modelos de toma de decisiones.",
+                "Reporting financiero, contabilidad gerencial, finanzas corporativas y micro/macroeconomía.",
+                "Estrategia de negocio, estructura organizacional, RRHH, marketing y emprendimiento.",
+                "Trabajo final: Diagnóstico Empresario y Plan de Acción - proyecto de consultoría capstone aplicando frameworks integrados de negocio y sistemas a una organización real."
             ]
         }
     ],

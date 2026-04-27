@@ -228,6 +228,23 @@ const App = () => {
                                         {edu.specialization}
                                     </div>
                                 )}
+                                {edu.courseworkByTerm && edu.courseworkByTerm.map((group, gi) => (
+                                    <div key={gi} style={{ marginTop: gi === 0 ? '6px' : '10px' }}>
+                                        <div style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--accent)', marginBottom: '4px' }}>
+                                            {group.term}
+                                            {group.dates && (
+                                                <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}> · {group.dates}</span>
+                                            )}
+                                        </div>
+                                        <ul style={{ listStyle: 'none', paddingLeft: '4px', marginTop: 0 }}>
+                                            {group.items.map((c, k) => (
+                                                <li key={k} style={{ marginBottom: '4px', fontSize: '0.9rem', color: 'var(--text-secondary)', display: 'flex', gap: '8px' }}>
+                                                    <span style={{ color: 'var(--accent)' }}>•</span> {c}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
                                 {edu.coursework && (
                                     <ul style={{ listStyle: 'none', paddingLeft: '4px', marginTop: '4px' }}>
                                         {edu.coursework.map((c, k) => (
