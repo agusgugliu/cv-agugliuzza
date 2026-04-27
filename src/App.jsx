@@ -4,7 +4,8 @@ import {
     Mail, Phone, Linkedin, MapPin,
     Briefcase, GraduationCap, Code,
     Globe, Heart, Download, Sun, Moon,
-    Copy, Calendar, Users, Flag
+    Copy, Calendar, Users, Flag,
+    User, Award
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { dataEN, dataES } from './data/cvData';
@@ -185,6 +186,14 @@ const App = () => {
 
                 {/* Main Content */}
                 <main>
+                    {data.summary && (
+                        <Section title={data.titles.summary} icon={User} delay={0.15}>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                                {data.summary}
+                            </p>
+                        </Section>
+                    )}
+
                     <Section title={data.titles.experience} icon={Briefcase} delay={0.2}>
                         {data.experience.map((exp, i) => (
                             <div key={i} className="exp-row">
@@ -208,18 +217,53 @@ const App = () => {
                         ))}
                     </Section>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-                        <Section title={data.titles.education} icon={GraduationCap} delay={0.4}>
-                            {data.education.map((edu, i) => (
-                                <div key={i} style={{ marginBottom: '16px' }}>
-                                    <div style={{ fontWeight: 700 }}>{edu.school}</div>
-                                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{edu.degree}</div>
-                                    <div style={{ color: 'var(--accent)', fontSize: '0.8rem' }}>{edu.dates} • {edu.location}</div>
-                                </div>
-                            ))}
-                        </Section>
+                    <Section title={data.titles.education} icon={GraduationCap} delay={0.4}>
+                        {data.education.map((edu, i) => (
+                            <div key={i} style={{ marginBottom: '20px' }}>
+                                <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>{edu.school}</div>
+                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{edu.degree}</div>
+                                <div style={{ color: 'var(--accent)', fontSize: '0.8rem', marginBottom: '6px' }}>{edu.dates} • {edu.location}</div>
+                                {edu.specialization && (
+                                    <div style={{ color: 'var(--text-secondary)', fontStyle: 'italic', fontSize: '0.85rem', marginBottom: '6px' }}>
+                                        {edu.specialization}
+                                    </div>
+                                )}
+                                {edu.coursework && (
+                                    <ul style={{ listStyle: 'none', paddingLeft: '4px', marginTop: '4px' }}>
+                                        {edu.coursework.map((c, k) => (
+                                            <li key={k} style={{ marginBottom: '4px', fontSize: '0.9rem', color: 'var(--text-secondary)', display: 'flex', gap: '8px' }}>
+                                                <span style={{ color: 'var(--accent)' }}>•</span> {c}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        ))}
+                    </Section>
 
-                        <Section title={data.titles.languages} icon={Globe} delay={0.5}>
+                    <Section title={data.titles.skills} icon={Code} delay={0.5}>
+                        {data.skills.map((cat, i) => (
+                            <div key={i} style={{ marginBottom: '14px' }}>
+                                <div style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '6px' }}>
+                                    {cat.category}
+                                </div>
+                                <div className="skills-grid">
+                                    {cat.items.map((s, j) => (
+                                        <motion.span
+                                            key={j}
+                                            className="skill-tag"
+                                            whileHover={{ scale: 1.08, backgroundColor: 'var(--accent)', color: 'white' }}
+                                        >
+                                            {s}
+                                        </motion.span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </Section>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                        <Section title={data.titles.languages} icon={Globe} delay={0.55}>
                             <div className="skills-grid">
                                 {data.languages.map((l, i) => (
                                     <span key={i} className="skill-tag" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10b981' }}>
@@ -228,24 +272,8 @@ const App = () => {
                                 ))}
                             </div>
                         </Section>
-                    </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-                        <Section title={data.titles.skills} icon={Code} delay={0.6}>
-                            <div className="skills-grid">
-                                {data.skills.map((s, i) => (
-                                    <motion.span
-                                        key={i}
-                                        className="skill-tag"
-                                        whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
-                                    >
-                                        {s}
-                                    </motion.span>
-                                ))}
-                            </div>
-                        </Section>
-
-                        <Section title={data.titles.softSkills} icon={Users} delay={0.65}>
+                        <Section title={data.titles.softSkills} icon={Users} delay={0.6}>
                             <div className="skills-grid">
                                 {data.softSkills.map((s, i) => (
                                     <motion.span
@@ -259,6 +287,22 @@ const App = () => {
                             </div>
                         </Section>
                     </div>
+
+                    {data.certifications && data.certifications.length > 0 && (
+                        <Section title={data.titles.certifications} icon={Award} delay={0.65}>
+                            <div className="skills-grid">
+                                {data.certifications.map((c, i) => (
+                                    <motion.span
+                                        key={i}
+                                        className="skill-tag"
+                                        whileHover={{ scale: 1.08, backgroundColor: 'var(--accent)', color: 'white' }}
+                                    >
+                                        {c}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </Section>
+                    )}
 
                     <Section title={data.titles.other} icon={Heart} delay={0.7}>
                         {data.other.map((o, i) => (

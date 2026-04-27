@@ -1,7 +1,7 @@
 export const dataEN = {
     name: "Agustín Gugliuzza Piccinini",
-    headline: "Project Manager | Data & Analytics | IMBA @IE",
-    nationality: "Argentina & Italy",
+    headline: "Project Manager & Strategy Consultant | Digital Transformation | IMBA @IE",
+    nationality: "Argentine & Italian (EU work authorization)",
     birthDate: "April 9th, 1995",
     dob: "1995-04-09",
     location: "Madrid, Spain",
@@ -10,76 +10,112 @@ export const dataEN = {
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://calendly.com/agusgugliu",
-    summary: "Project Manager with 5+ years in multinational tech and financial companies. Expert in predictive analytics, database management, and end-to-end delivery of data-driven solutions.",
+    summary: "Project Manager & Strategy Consultant with 5+ years of experience in multinational environments, leading end-to-end digital and operational transformation programs. Track record of driving measurable outcomes: reduced time-to-market by 20% through structured PMO governance and milestone-based delivery controls. IE MBA (2026) with strong analytical foundation in systems, business administration, and data analytics. AI-literate and data-driven professional with hands-on experience in BI, analytics, and Agile delivery. Fluent in Spanish and English; EU work authorization.",
     titles: {
+        summary: "Professional Summary",
         experience: "Professional Experience",
         education: "Education",
-        skills: "Technical Skills",
+        skills: "Skills & Expertise",
         languages: "Languages",
         softSkills: "Soft Skills",
+        certifications: "Certifications",
         other: "Interests"
     },
     experience: [
         {
-            company: "Life Seguros (formerly Prudential Seguros)",
+            company: "LIFE SEGUROS (Prudential Seguros)",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
-                    title: "Software Development Project Manager (IT Department)",
-                    dates: "May 2024 - July 2025",
+                    title: "Software Development Project Manager - PMO / IT Division",
+                    dates: "Apr 2022 - Jul 2025",
                     bullets: [
-                        "Spearheaded the \"Independent Agents\" cross-company initiative, bringing together IT, Finance, Operations, Legal, and Marketing to develop a new policy quotation tool for external sellers, delivering MVP in 4 months, 43% ahead of schedule.",
-                        "Designed and implemented a premium-return calculator integrated into the quotation tool, replacing fragmented Excel processes with a centralized platform that ensured real-time, accurate calculations across the sales network.",
-                        "Co-led the Corporate Data Lake initiative for Grupo ST, collaborating with directors from multiple companies to centralize key metrics and dashboards into a single data source, enhancing KPI tracking and group-level decision-making."
-                    ]
-                },
-                {
-                    title: "Software Development Team Lead (IT Department)",
-                    dates: "April 2022 - April 2024",
-                    bullets: [
-                        "Directed BI and analytics development projects, coordinating between IT and business stakeholders to align scope, timelines, and quality standards. Delivered multiple reporting and automation tools that reduced manual data processing time by up to 30%.",
-                        "Mentored a team of junior developers in SQL, technical design, and ETL best practices, cutting onboarding time from 2 months to 4 weeks and improving deliverable quality in client-facing dashboards.",
-                        "Introduced Agile sprint planning and standardized code review processes, increasing on-time delivery rate by 18% and reducing post-release defects by 25%."
+                        "End-to-End Portfolio Management: Led the full ICT project portfolio (10+ initiatives), integrating new projects, defining WBS structures, and ensuring disciplined, structured execution across multi-vendor environments.",
+                        "Operational Transformation: Managed full project lifecycle (planning, milestone tracking, risk & issue management), achieving a 20% reduction in time-to-market through process standardization and continuous improvement.",
+                        "Financial Governance: Oversaw budget execution with milestone-based billing controls and rigorous vendor payment tracking, ensuring financial transparency and alignment with strategic objectives.",
+                        "Executive Reporting & Strategic Alignment: Delivered technical and financial portfolio reports to senior leadership, enabling data-driven decision-making and proactive risk mitigation.",
+                        "PMO Standards & Document Control: Optimized collaborative tools and document management processes to ensure delivery quality and compliance with PMO best practices.",
+                        "Cross-Functional Team Leadership: Coordinated PMs and technical teams across complex, high-stakes projects, fostering a culture of accountability, compliance, and continuous improvement."
                     ]
                 }
             ]
         },
         {
-            company: "MicroStrategy Inc",
+            company: "MICROSTRATEGY INC",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
-                    title: "Consultant → Senior Consultant",
-                    dates: "October 2019 - March 2022",
+                    title: "Senior Business Intelligence Consultant",
+                    dates: "Aug 2017 - Mar 2022",
                     bullets: [
-                        "Managed global BI projects end-to-end, mentoring junior consultants and improving LATAM delivery standards.",
-                        "Delivered interactive dashboards and analytics solutions for enterprise clients that reduced manual reporting by up to 60% and decision cycles from weeks to days.",
-                        "Guided a predictive analytics initiative for Prudential Seguros, enabling targeted retention strategies that reduced churn by 12% in four months.",
-                        "Designed an executive dashboard for Banco Patagonia consolidating sales, profitability, and segmentation data, cutting report preparation from two weeks to under one day."
-                    ]
-                },
-                {
-                    title: "Associate Consultant",
-                    dates: "August 2017 - October 2019",
-                    bullets: [
-                        "Fast-tracked from Associate to Senior Associate in under two years by consistently exceeding delivery targets and taking ownership of client-facing work ahead of schedule.",
-                        "Developed advanced skills in MicroStrategy, SQL, and dashboard design within the first year, enabling contributions to complex, high-visibility client projects typically handled by more senior consultants.",
-                        "Supported high-profile accounts including Prudential Seguros, Banco Hipotecario, and Swiss Medical, delivering dashboards and BI applications that enabled faster and more accurate decision-making."
+                        "Client Stakeholder Management: Built and maintained strategic relationships with enterprise clients including MercadoLibre and Banco Patagonia, supporting the design and deployment of enterprise information systems.",
+                        "Analytics & Digital Transformation Leadership: Managed end-to-end analytics projects, coordinating cross-functional deliverables and ensuring objectives were met on scope, time, and quality.",
+                        "Vendor & Supplier Coordination: Negotiated and managed results-oriented agreements for the implementation of BI and Data Analytics solutions, ensuring value realization and supplier accountability.",
+                        "Agile & Data-Driven Delivery: Applied Agile methodologies (Scrum) and analytics tools (SQL, Python, MicroStrategy) to prioritize workstreams, track KPIs, and continuously improve delivery performance."
                     ]
                 }
             ]
         }
     ],
     education: [
-        { school: "IE Business School", degree: "International MBA", dates: "Expected 2026", location: "Madrid" },
-        { school: "ITBA", degree: "Bachelor in Business & Systems", dates: "2017", location: "Buenos Aires" }
+        {
+            school: "IE Business School",
+            degree: "International MBA - Master in Business Administration",
+            dates: "Sep 2025 - Expected Jul 2026",
+            location: "Madrid, Spain",
+            specialization: "Specialization: Digital Business Transformation & Innovation",
+            coursework: [
+                "Digital strategy, platform economics, and AI-driven competitive positioning.",
+                "Applied data analytics: regression, Monte Carlo simulation, and customer/financial modeling.",
+                "AI for business: machine learning, generative AI, and LLM-based solutions.",
+                "Operational excellence through Lean/Six Sigma, RPA, and digital process optimization.",
+                "Technology product management: opportunity discovery, MVP development, and go-to-market strategy.",
+                "Human-centered digital services design using service blueprints and behavioral science."
+            ]
+        },
+        {
+            school: "ITBA (Buenos Aires Institute of Technology)",
+            degree: "Bachelor's Degree - Systems & Business Administration",
+            dates: "Jul 2017",
+            location: "Buenos Aires, Argentina",
+            coursework: [
+                "Systems analysis & design, software engineering, and database management.",
+                "Operations research, quantitative methods, and statistical modeling.",
+                "Financial management, accounting, and microeconomics/macroeconomics.",
+                "Business process modeling, organizational design, and strategic planning.",
+                "Programming fundamentals (Java, SQL, Python) and IT infrastructure."
+            ]
+        }
     ],
-    skills: ["MicroStrategy", "Power BI", "Azure", "SQL", "Python", "R", "Java", "Jira"],
+    skills: [
+        {
+            category: "Strategy & Digital Transformation",
+            items: ["Digital business strategy", "Platform economics", "Business model innovation", "Competitive analysis", "Market entry strategy", "Change management"]
+        },
+        {
+            category: "Project & Operations Management",
+            items: ["PMBOK", "ICT Portfolio Management", "Agile (Scrum, SAFe)", "Lean / Six Sigma", "Risk management", "WBS / EDT", "PMO governance", "Procurement & vendor management"]
+        },
+        {
+            category: "AI, Data & Analytics",
+            items: ["Machine learning", "Generative AI (LLMs, prompt engineering)", "Power BI", "MicroStrategy", "SQL", "Python", "Monte Carlo simulation", "Regression analysis"]
+        },
+        {
+            category: "Product & Service Design",
+            items: ["Technology product management", "MVP development", "Go-to-market strategy", "Human-centered design", "Service blueprinting", "Customer journey mapping"]
+        },
+        {
+            category: "Tools & Technology",
+            items: ["MS Excel (Advanced)", "Jira", "Trello", "Redmine", "SharePoint", "Microsoft Teams"]
+        }
+    ],
     languages: [
         { name: "Spanish", level: "Native" },
-        { name: "English", level: "Bilingual" }
+        { name: "English", level: "Bilingual" },
+        { name: "Portuguese", level: "Intermediate" }
     ],
-    softSkills: ["Project Management", "SCRUM Master", "Problem Solving", "Analytical Thinking", "Leadership"],
+    softSkills: ["Cross-Functional Leadership", "Executive Reporting", "Stakeholder Management", "Negotiation", "Multicultural Collaboration", "Problem Solving", "Analytical Thinking"],
+    certifications: ["BI Developer", "Python Developer", "AI Developer (aligned to PMP best practices)"],
     other: [
         "2x Half-marathon finisher",
         "Pianist & Guitarist (16+ years)"
@@ -87,9 +123,9 @@ export const dataEN = {
 };
 
 export const dataES = {
-    name: "Agustín Gugliuzza",
-    headline: "Project Manager | Datos y Analítica | IMBA @IE",
-    nationality: "Argentina & Italia",
+    name: "Agustín Gugliuzza Piccinini",
+    headline: "Project Manager & Consultor de Estrategia | Transformación Digital | IMBA @IE",
+    nationality: "Argentina e Italia (autorización de trabajo en la UE)",
     birthDate: "9 de Abril de 1995",
     dob: "1995-04-09",
     location: "Madrid, España",
@@ -98,76 +134,112 @@ export const dataES = {
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://calendly.com/agusgugliu",
-    summary: "Project Manager con más de 5 años en compañías tecnológicas y financieras multinacionales. Experto en analítica predictiva y entrega de soluciones basadas en datos.",
+    summary: "Project Manager y Consultor de Estrategia con más de 5 años de experiencia en entornos multinacionales, liderando programas integrales de transformación digital y operativa. Resultados medibles: reducción del time-to-market en un 20% mediante gobierno PMO estructurado y controles de entrega basados en hitos. MBA en IE (2026) con sólida base analítica en sistemas, administración de empresas y analítica de datos. Profesional orientado a datos, con experiencia práctica en BI, analítica y entrega Agile. Bilingüe español/inglés; autorización de trabajo en la UE.",
     titles: {
+        summary: "Resumen Profesional",
         experience: "Experiencia Profesional",
         education: "Educación",
-        skills: "Habilidades Técnicas",
+        skills: "Habilidades y Expertise",
         languages: "Idiomas",
         softSkills: "Habilidades Blandas",
+        certifications: "Certificaciones",
         other: "Intereses"
     },
     experience: [
         {
-            company: "Life Seguros (ex Prudential Seguros)",
+            company: "LIFE SEGUROS (Prudential Seguros)",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
-                    title: "Project Manager de Desarrollo de Software (IT)",
-                    dates: "Mayo 2024 - Julio 2025",
+                    title: "Project Manager de Desarrollo de Software - PMO / División de IT",
+                    dates: "Abr 2022 - Jul 2025",
                     bullets: [
-                        "Lideré la iniciativa cross-company 'Agentes Independientes', unificando IT, Finanzas, Operaciones, Legal y Marketing para desarrollar un nuevo cotizador; entrega del MVP en 4 meses (43% antes de lo previsto).",
-                        "Diseñé e implementé una calculadora de devolución de prima integrada, reemplazando procesos fragmentados en Excel con una plataforma centralizada que aseguró cálculos precisos en tiempo real.",
-                        "Co-lideré la iniciativa del Data Lake Corporativo para el Grupo ST, colaborando con directores de múltiples empresas para centralizar KPIs y tableros en una única fuente de datos."
-                    ]
-                },
-                {
-                    title: "Team Lead de Desarrollo de Software (IT)",
-                    dates: "Abril 2022 - Abril 2024",
-                    bullets: [
-                        "Dirigí proyectos de desarrollo de BI y analítica, coordinando entre IT y stakeholders de negocio. Entregué múltiples herramientas que redujeron el tiempo de procesamiento manual de datos en un 30%.",
-                        "Mentoreé a un equipo de desarrolladores junior en SQL, diseño técnico y mejores prácticas de ETL, reduciendo el tiempo de onboarding de 2 meses a 4 semanas.",
-                        "Introduje la planificación de sprints Agile y procesos estandarizados de revisión de código, incrementando la tasa de entrega a tiempo en un 18%."
+                        "Gestión integral del portfolio: Lideré el portfolio completo de proyectos ICT (más de 10 iniciativas), integrando nuevos proyectos, definiendo estructuras WBS y asegurando una ejecución disciplinada en entornos multi-proveedor.",
+                        "Transformación operativa: Gestioné el ciclo de vida completo (planificación, seguimiento de hitos, gestión de riesgos e incidencias), logrando una reducción del 20% en time-to-market mediante estandarización de procesos y mejora continua.",
+                        "Gobierno financiero: Supervisé la ejecución del presupuesto con controles de facturación por hitos y un seguimiento riguroso de pagos a proveedores, asegurando transparencia y alineamiento estratégico.",
+                        "Reporting ejecutivo y alineamiento estratégico: Elaboré reportes técnicos y financieros para la alta dirección, habilitando decisiones basadas en datos y mitigación proactiva de riesgos.",
+                        "Estándares PMO y control documental: Optimicé herramientas colaborativas y procesos de gestión documental para garantizar calidad de entrega y cumplimiento de buenas prácticas PMO.",
+                        "Liderazgo de equipos cross-funcionales: Coordiné PMs y equipos técnicos en proyectos complejos y de alto impacto, fomentando una cultura de accountability, compliance y mejora continua."
                     ]
                 }
             ]
         },
         {
-            company: "MicroStrategy Inc",
+            company: "MICROSTRATEGY INC",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
-                    title: "Consultor → Consultor Senior",
-                    dates: "Octubre 2019 - Marzo 2022",
+                    title: "Consultor Senior de Business Intelligence",
+                    dates: "Ago 2017 - Mar 2022",
                     bullets: [
-                        "Gestión de proyectos BI globales y mentoría regional.",
-                        "Desarrollo de dashboards que redujeron reportes manuales en un 60%.",
-                        "Iniciativa predictiva para Prudential Seguros que bajó el churn 12% en 4 meses.",
-                        "Diseño de dashboard ejecutivo para Banco Patagonia consolidando datos de ventas y rentabilidad."
-                    ]
-                },
-                {
-                    title: "Consultor Asociado",
-                    dates: "Agosto 2017 - Octubre 2019",
-                    bullets: [
-                        "Ascenso acelerado por sobrecumplir objetivos de entrega.",
-                        "Desarrollo de habilidades avanzadas en MicroStrategy y SQL.",
-                        "Soporte a cuentas de alto perfil como Prudential Seguros y Swiss Medical."
+                        "Gestión de stakeholders: Construí y mantuve relaciones estratégicas con clientes corporativos como MercadoLibre y Banco Patagonia, apoyando el diseño y despliegue de sistemas de información empresariales.",
+                        "Liderazgo de analítica y transformación digital: Gestioné proyectos integrales de analítica, coordinando entregables cross-funcionales y asegurando el cumplimiento de objetivos en alcance, tiempo y calidad.",
+                        "Coordinación de proveedores: Negocié y gestioné acuerdos orientados a resultados para la implementación de soluciones BI y Data Analytics, asegurando captura de valor y accountability del proveedor.",
+                        "Entrega Agile y data-driven: Apliqué metodologías Agile (Scrum) y herramientas analíticas (SQL, Python, MicroStrategy) para priorizar flujos de trabajo, medir KPIs y mejorar el desempeño de entrega."
                     ]
                 }
             ]
         }
     ],
     education: [
-        { school: "IE Business School", degree: "International MBA", dates: "Esperado 2026", location: "Madrid" },
-        { school: "ITBA", degree: "Lic. en Administración y Sistemas", dates: "2017", location: "Buenos Aires" }
+        {
+            school: "IE Business School",
+            degree: "International MBA - Máster en Administración de Empresas",
+            dates: "Sep 2025 - Esperado Jul 2026",
+            location: "Madrid, España",
+            specialization: "Especialización: Transformación Digital e Innovación de Negocio",
+            coursework: [
+                "Estrategia digital, economía de plataformas y posicionamiento competitivo basado en IA.",
+                "Analítica de datos aplicada: regresión, simulación Monte Carlo y modelado financiero/de clientes.",
+                "IA para negocio: machine learning, IA generativa y soluciones basadas en LLMs.",
+                "Excelencia operacional con Lean/Six Sigma, RPA y optimización de procesos digitales.",
+                "Gestión de productos tecnológicos: descubrimiento de oportunidades, MVPs y go-to-market.",
+                "Diseño de servicios digitales centrado en el usuario con service blueprints y ciencias del comportamiento."
+            ]
+        },
+        {
+            school: "ITBA (Instituto Tecnológico de Buenos Aires)",
+            degree: "Licenciatura - Sistemas y Administración de Empresas",
+            dates: "Jul 2017",
+            location: "Buenos Aires, Argentina",
+            coursework: [
+                "Análisis y diseño de sistemas, ingeniería de software y gestión de bases de datos.",
+                "Investigación operativa, métodos cuantitativos y modelado estadístico.",
+                "Gestión financiera, contabilidad y micro/macroeconomía.",
+                "Modelado de procesos de negocio, diseño organizacional y planificación estratégica.",
+                "Fundamentos de programación (Java, SQL, Python) e infraestructura IT."
+            ]
+        }
     ],
-    skills: ["MicroStrategy", "Power BI", "Azure", "SQL", "Python", "R", "Java", "Jira"],
+    skills: [
+        {
+            category: "Estrategia y Transformación Digital",
+            items: ["Estrategia de negocio digital", "Economía de plataformas", "Innovación de modelos de negocio", "Análisis competitivo", "Estrategia de entrada al mercado", "Gestión del cambio"]
+        },
+        {
+            category: "Project & Operations Management",
+            items: ["PMBOK", "Gestión de portfolio ICT", "Agile (Scrum, SAFe)", "Lean / Six Sigma", "Gestión de riesgos", "WBS / EDT", "Gobierno PMO", "Procurement y gestión de proveedores"]
+        },
+        {
+            category: "IA, Datos y Analítica",
+            items: ["Machine learning", "IA generativa (LLMs, prompt engineering)", "Power BI", "MicroStrategy", "SQL", "Python", "Simulación Monte Carlo", "Análisis de regresión"]
+        },
+        {
+            category: "Diseño de Producto y Servicios",
+            items: ["Gestión de productos tecnológicos", "Desarrollo de MVPs", "Go-to-market", "Diseño centrado en el usuario", "Service blueprinting", "Customer journey mapping"]
+        },
+        {
+            category: "Herramientas y Tecnología",
+            items: ["MS Excel (Avanzado)", "Jira", "Trello", "Redmine", "SharePoint", "Microsoft Teams"]
+        }
+    ],
     languages: [
         { name: "Español", level: "Nativo" },
-        { name: "Inglés", level: "Bilingüe" }
+        { name: "Inglés", level: "Bilingüe" },
+        { name: "Portugués", level: "Intermedio" }
     ],
-    softSkills: ["Gestión de Proyectos", "SCRUM Master", "Resolución de Problemas", "Pensamiento Analítico", "Liderazgo"],
+    softSkills: ["Liderazgo Cross-Funcional", "Reporting Ejecutivo", "Gestión de Stakeholders", "Negociación", "Colaboración Multicultural", "Resolución de Problemas", "Pensamiento Analítico"],
+    certifications: ["BI Developer", "Python Developer", "AI Developer (alineado a buenas prácticas PMP)"],
     other: [
         "Maratonista (2x media maratón)",
         "Pianista y Guitarrista (16+ años)"
