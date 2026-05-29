@@ -69,15 +69,17 @@ const APPS = [
     }
 ];
 
+const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
+
 const LOGOS_BAND = [
-    { name: 'IE Business School', domain: 'ie.edu' },
-    { name: 'LIFE Seguros', domain: 'lifeseguros.com.ar' },
-    { name: 'Prudential', domain: 'prudential.com.ar' },
-    { name: 'MicroStrategy', domain: 'microstrategy.com' },
+    { name: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png') },
+    { name: 'LIFE Seguros', domain: 'lifeseguros.com.ar', logo: EXP_LOGO('lifeseguros_logo.png') },
+    { name: 'Prudential', domain: 'prudential.com.ar', logo: EXP_LOGO('prudential_logo.png') },
+    { name: 'MicroStrategy', domain: 'microstrategy.com', logo: EXP_LOGO('microstrategy_logo.png') },
+    { name: 'KS Advisory', domain: null, logo: EXP_LOGO('ksadvisory_logo.png') },
+    { name: 'ITBA', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png') },
     { name: 'Mercado Libre', domain: 'mercadolibre.com' },
-    { name: 'Techint', domain: 'techint.com' },
-    { name: 'Arcor', domain: 'arcor.com' },
-    { name: 'ITBA', domain: 'itba.edu.ar' }
+    { name: 'Techint', domain: 'techint.com' }
 ];
 
 export const portfolioEN = {
@@ -131,6 +133,7 @@ export const portfolioEN = {
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
+                logo: EXP_LOGO('ksadvisory_logo.png'),
                 dates: 'Apr 2026 – Present · Madrid',
                 stat: '5+',
                 statLabel: 'Live mandates',
@@ -142,6 +145,7 @@ export const portfolioEN = {
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
+                logo: EXP_LOGO('iebusinessschool_logo.png'),
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Class of 2026',
@@ -153,6 +157,7 @@ export const portfolioEN = {
                 role: 'IT Team Lead & Project Manager',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
+                logo: EXP_LOGO('lifeseguros_logo.png'),
                 dates: 'Aug 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
@@ -164,6 +169,7 @@ export const portfolioEN = {
                 role: 'IT Team Leader & Project Manager',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
+                logo: EXP_LOGO('prudential_logo.png'),
                 dates: 'Apr 2022 – Jul 2024 · Buenos Aires',
                 stat: 'Agile',
                 statLabel: 'Cross-functional teams',
@@ -175,6 +181,7 @@ export const portfolioEN = {
                 role: 'BI Consultant',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
+                logo: EXP_LOGO('microstrategy_logo.png'),
                 dates: 'Aug 2017 – Mar 2022 · LATAM',
                 stat: '13',
                 statLabel: 'Enterprise clients',
@@ -188,6 +195,7 @@ export const portfolioEN = {
                 role: 'Bachelor in Management & Information Systems',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
+                logo: EXP_LOGO('itba_logo.png'),
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Graduated',
@@ -332,6 +340,7 @@ export const portfolioES = {
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
+                logo: EXP_LOGO('ksadvisory_logo.png'),
                 dates: 'Abr 2026 – Presente · Madrid',
                 stat: '5+',
                 statLabel: 'Mandatos vivos',
@@ -343,6 +352,7 @@ export const portfolioES = {
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
+                logo: EXP_LOGO('iebusinessschool_logo.png'),
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Promoción 2026',
@@ -354,6 +364,7 @@ export const portfolioES = {
                 role: 'Líder de Equipo IT y Project Manager',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
+                logo: EXP_LOGO('lifeseguros_logo.png'),
                 dates: 'Ago 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
@@ -365,6 +376,7 @@ export const portfolioES = {
                 role: 'Líder de Equipo IT y Project Manager',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
+                logo: EXP_LOGO('prudential_logo.png'),
                 dates: 'Abr 2022 – Jul 2024 · Buenos Aires',
                 stat: 'Agile',
                 statLabel: 'Equipos cross-funcionales',
@@ -376,6 +388,7 @@ export const portfolioES = {
                 role: 'BI Consultant',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
+                logo: EXP_LOGO('microstrategy_logo.png'),
                 dates: 'Ago 2017 – Mar 2022 · LATAM',
                 stat: '13',
                 statLabel: 'Clientes enterprise',
@@ -389,6 +402,7 @@ export const portfolioES = {
                 role: 'Licenciatura en Administración y Sistemas',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
+                logo: EXP_LOGO('itba_logo.png'),
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Egresado',

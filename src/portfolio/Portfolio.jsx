@@ -22,10 +22,10 @@ const Editorial = ({ text }) => {
     );
 };
 
-/* Company logo via Clearbit, falls back to initial chip on error */
-const Logo = ({ domain, name, size = 'md' }) => {
-    const [errored, setErrored] = useState(false);
-    if (!domain || errored) {
+/* Company logo: prefer local file, fall back to Clearbit, then initial chip */
+const Logo = ({ src, domain, name, size = 'md' }) => {
+    const [stage, setStage] = useState(src ? 'local' : (domain ? 'clearbit' : 'chip'));
+    if (stage === 'chip' || (!src && !domain)) {
         const initial = (name || '?').charAt(0).toUpperCase();
         return (
             <span className={`pm-logo-chip pm-logo-chip--${size}`} title={name}>
@@ -33,14 +33,15 @@ const Logo = ({ domain, name, size = 'md' }) => {
             </span>
         );
     }
+    const url = stage === 'local' ? src : `https://logo.clearbit.com/${domain}`;
     return (
         <img
             className={`pm-logo-img pm-logo-img--${size}`}
-            src={`https://logo.clearbit.com/${domain}`}
+            src={url}
             alt={name}
             title={name}
             loading="lazy"
-            onError={() => setErrored(true)}
+            onError={() => setStage(stage === 'local' && domain ? 'clearbit' : 'chip')}
         />
     );
 };
@@ -215,7 +216,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                         >
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
-                                    <Logo domain={c.domain} name={c.org} size="md" />
+                                    <Logo src={c.logo} domain={c.domain} name={c.org} size="md" />
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
@@ -288,7 +289,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.logos.eyebrow}</div>
                     <div className="pm-logos-grid">
                         {data.logos.items.map((l, i) => (
-                            <Logo key={i} domain={l.domain} name={l.name} size="lg" />
+                            <Logo key={i} src={l.logo} domain={l.domain} name={l.name} size="lg" />
                         ))}
                     </div>
                 </section>
