@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download } from 'lucide-react';
+import { Download, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
 import './portfolio.css';
@@ -19,6 +19,29 @@ const Editorial = ({ text }) => {
                 return <span key={i}>{p}</span>;
             })}
         </>
+    );
+};
+
+/* Company logo via Clearbit, falls back to initial chip on error */
+const Logo = ({ domain, name, size = 'md' }) => {
+    const [errored, setErrored] = useState(false);
+    if (!domain || errored) {
+        const initial = (name || '?').charAt(0).toUpperCase();
+        return (
+            <span className={`pm-logo-chip pm-logo-chip--${size}`} title={name}>
+                {initial}
+            </span>
+        );
+    }
+    return (
+        <img
+            className={`pm-logo-img pm-logo-img--${size}`}
+            src={`https://logo.clearbit.com/${domain}`}
+            alt={name}
+            title={name}
+            loading="lazy"
+            onError={() => setErrored(true)}
+        />
     );
 };
 
@@ -83,13 +106,16 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
 
                     <div className="pm-nav-links">
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
-                            {lang === 'en' ? 'Work' : 'Trabajo'}
+                            {data.nav.work}
+                        </a>
+                        <a className="pm-nav-link" href="#apps" onClick={smoothScrollTo('apps')}>
+                            {data.nav.apps}
                         </a>
                         <a className="pm-nav-link" href="#ideas" onClick={smoothScrollTo('ideas')}>
-                            {lang === 'en' ? 'Ideas' : 'Ideas'}
+                            {data.nav.ideas}
                         </a>
                         <a className="pm-nav-link" href="#contact" onClick={smoothScrollTo('contact')}>
-                            {lang === 'en' ? 'Contact' : 'Contacto'}
+                            {data.nav.contact}
                         </a>
                     </div>
 
@@ -188,6 +214,9 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             transition={{ duration: 0.5 }}
                         >
                             <div className="pm-case-meta">
+                                <div className="pm-case-org-line">
+                                    <Logo domain={c.domain} name={c.org} size="md" />
+                                </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
                                 <div className="dates">{c.dates}</div>
@@ -202,9 +231,56 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                         <span key={j} className="pm-case-tag">{t}</span>
                                     ))}
                                 </div>
+                                {c.clients && (
+                                    <div className="pm-clients">
+                                        <div className="pm-clients-label">{c.clientsLabel}</div>
+                                        <div className="pm-clients-grid">
+                                            {c.clients.map((cl, k) => (
+                                                <div key={k} className="pm-client">
+                                                    <Logo domain={cl.domain} name={cl.name} size="sm" />
+                                                    <span className="pm-client-name">{cl.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </motion.div>
                     ))}
+                </section>
+
+                {/* Apps */}
+                <section className="pm-section pm-apps" id="apps">
+                    <div className="pm-eyebrow">{data.apps.eyebrow}</div>
+                    <h2><Editorial text={data.apps.heading} /></h2>
+                    <p className="pm-ai-lead">{data.apps.lead}</p>
+                    <div className="pm-apps-grid">
+                        {data.apps.items.map((a, i) => (
+                            <motion.a
+                                key={i}
+                                className="pm-app"
+                                href={a.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.45, delay: i * 0.05 }}
+                            >
+                                <div className="pm-app-icon" style={{ background: a.color }}>
+                                    {a.initial}
+                                </div>
+                                <div className="pm-app-body">
+                                    <div className="pm-app-name">
+                                        {a.name}
+                                        <ExternalLink size={13} className="pm-app-ext" />
+                                    </div>
+                                    <p className="pm-app-desc">{a.desc}</p>
+                                    <div className="pm-app-host">{new URL(a.url).host}</div>
+                                </div>
+                            </motion.a>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Logos */}
@@ -212,7 +288,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.logos.eyebrow}</div>
                     <div className="pm-logos-grid">
                         {data.logos.items.map((l, i) => (
-                            <span key={i} className="pm-logo-chip">{l}</span>
+                            <Logo key={i} domain={l.domain} name={l.name} size="lg" />
                         ))}
                     </div>
                 </section>

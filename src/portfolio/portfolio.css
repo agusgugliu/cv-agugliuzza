@@ -523,24 +523,178 @@
 .pm-logos-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 40px;
+    gap: 28px 44px;
     align-items: center;
     margin-top: 28px;
 }
 
-.pm-logo-chip {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--ink);
-    letter-spacing: -0.01em;
+/* ---------- Logo component (img + fallback chip) ---------- */
+.pm-logo-img {
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    padding: 6px;
+    transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
-.pm-logo-chip + .pm-logo-chip::before {
-    content: '·';
-    color: var(--hairline-strong);
-    margin-right: 40px;
-    font-style: normal;
+.pm-logo-img:hover {
+    border-color: var(--blue);
+    transform: translateY(-1px);
+}
+
+.pm-logo-img--sm { width: 32px; height: 32px; padding: 4px; border-radius: 6px; }
+.pm-logo-img--md { width: 56px; height: 56px; }
+.pm-logo-img--lg { width: 72px; height: 72px; padding: 8px; }
+
+.pm-logo-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.pm-logo-chip--sm { width: 32px; height: 32px; font-size: 0.8rem; border-radius: 6px; }
+.pm-logo-chip--md { width: 56px; height: 56px; font-size: 1.4rem; }
+.pm-logo-chip--lg { width: 72px; height: 72px; font-size: 1.7rem; }
+
+/* ---------- Case org logo line ---------- */
+.pm-case-org-line {
+    margin-bottom: 18px;
+}
+
+/* ---------- MSTR clients sub-grid ---------- */
+.pm-clients {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+}
+
+.pm-clients-label {
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+    margin-bottom: 18px;
+}
+
+.pm-clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+}
+
+.pm-client {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    background: #fff;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.pm-client:hover {
+    border-color: var(--blue);
+    transform: translateY(-1px);
+}
+
+.pm-client-name {
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+/* ---------- Apps section ---------- */
+.pm-apps h2 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    max-width: 28ch;
+}
+
+.pm-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+}
+
+.pm-app {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pm-app:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(11, 14, 20, 0.06);
+}
+
+.pm-app-icon {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.pm-app-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.pm-app-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.pm-app-ext {
+    color: var(--slate-2);
+    opacity: 0.7;
+}
+
+.pm-app-desc {
+    font-size: 0.88rem;
+    color: var(--slate-2);
+    line-height: 1.45;
+    margin: 0 0 8px;
+}
+
+.pm-app-host {
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.7rem;
+    color: var(--slate-2);
+    letter-spacing: 0.02em;
+    opacity: 0.7;
 }
 
 /* ---------- Principles ---------- */

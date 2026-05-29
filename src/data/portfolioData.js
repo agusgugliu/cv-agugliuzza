@@ -1,11 +1,94 @@
 // Portfolio mode content — editorial narrative, distinct from cvData.js
 // Words wrapped in {italic} render in Instrument Serif italic + blue accent.
 
+const MSTR_CLIENTS = [
+    { name: 'Prudential', domain: 'prudential.com.ar' },
+    { name: 'Mercado Libre', domain: 'mercadolibre.com' },
+    { name: 'Sullair', domain: 'sullair.com' },
+    { name: 'AGEA (Clarín)', domain: 'clarin.com' },
+    { name: 'Swiss Medical', domain: 'swissmedical.com.ar' },
+    { name: 'Arcor', domain: 'arcor.com' },
+    { name: 'Banco General de Panamá', domain: 'bgeneral.com' },
+    { name: 'Wawanesa Insurance', domain: 'wawanesa.com' },
+    { name: 'Banco Hipotecario', domain: 'hipotecario.com.ar' },
+    { name: 'Banco Supervielle', domain: 'supervielle.com.ar' },
+    { name: 'Banco Patagonia', domain: 'bancopatagonia.com.ar' },
+    { name: 'Grupo Techint', domain: 'techint.com' },
+    { name: 'AFIP', domain: 'afip.gob.ar' }
+];
+
+const APPS = [
+    {
+        name: 'Lect.io',
+        desc: { en: 'Intelligent reading companion for digital books.', es: 'Compañero de lectura inteligente para libros digitales.' },
+        url: 'https://agusgugliu-lectio.vercel.app',
+        initial: 'L',
+        color: '#1652F0'
+    },
+    {
+        name: 'Kick-Off Central',
+        desc: { en: 'Soccer hub with match schedules, stats and league management.', es: 'Hub de fútbol con fixtures, stats y gestión de ligas.' },
+        url: 'https://agusgugliu-soccer-hub.vercel.app',
+        initial: 'K',
+        color: '#0A2EAA'
+    },
+    {
+        name: 'Terranova',
+        desc: { en: 'Strategic platform for resource management and exploration.', es: 'Plataforma estratégica de gestión y exploración de recursos.' },
+        url: 'https://imba-s5-terranova.vercel.app',
+        initial: 'T',
+        color: '#0B0E14'
+    },
+    {
+        name: 'Neighborly',
+        desc: { en: 'Friendly local network to connect with your community.', es: 'Red local para conectar con tu comunidad.' },
+        url: 'https://neighborly-io.vercel.app',
+        initial: 'N',
+        color: '#1652F0'
+    },
+    {
+        name: 'Sanctuary 75',
+        desc: { en: 'Holistic wellness tracker for the 75-day challenge.', es: 'Tracker holístico para el reto de 75 días.' },
+        url: 'https://75-holistic.vercel.app',
+        initial: 'S',
+        color: '#0A2EAA'
+    },
+    {
+        name: 'GeoPulse',
+        desc: { en: 'Real-time geospatial analytics for data-driven decisions.', es: 'Analítica geoespacial en tiempo real para decisiones data-driven.' },
+        url: 'https://geopulse-app.vercel.app',
+        initial: 'G',
+        color: '#0B0E14'
+    },
+    {
+        name: 'YearView',
+        desc: { en: 'A full-year calendar view for better long-range planning.', es: 'Vista de calendario anual para mejor planificación a largo plazo.' },
+        url: 'https://yearviewcal.vercel.app',
+        initial: 'Y',
+        color: '#1652F0'
+    }
+];
+
+const LOGOS_BAND = [
+    { name: 'IE Business School', domain: 'ie.edu' },
+    { name: 'LIFE Seguros', domain: 'lifeseguros.com.ar' },
+    { name: 'Prudential', domain: 'prudential.com.ar' },
+    { name: 'MicroStrategy', domain: 'microstrategy.com' },
+    { name: 'Mercado Libre', domain: 'mercadolibre.com' },
+    { name: 'Techint', domain: 'techint.com' },
+    { name: 'Arcor', domain: 'arcor.com' },
+    { name: 'ITBA', domain: 'itba.edu.ar' }
+];
+
 export const portfolioEN = {
     nav: {
         portfolio: 'Portfolio',
         cv: 'CV view',
-        downloadPdf: 'PDF'
+        downloadPdf: 'PDF',
+        work: 'Work',
+        apps: 'Apps',
+        ideas: 'Ideas',
+        contact: 'Contact'
     },
     hero: {
         meta: ['Madrid, Spain', 'PM · Strategy · AI'],
@@ -41,23 +124,14 @@ export const portfolioEN = {
     },
     track: {
         eyebrow: 'Track record',
-        heading: 'Selected work across five years of {real delivery}.',
+        heading: 'A career built around {delivery}, across BI, PMO and strategy.',
         cta: 'See full CV',
         cases: [
             {
-                role: 'Project & Portfolio Lead',
-                org: 'LIFE Seguros · Prudential Group',
-                dates: '2022 – 2025 · Buenos Aires',
-                stat: '-20%',
-                statLabel: 'Time-to-market',
-                heading: 'Led a {10+ project ICT portfolio} from intake to close in a multi-vendor environment.',
-                body: 'Stood up the PMO governance, defined WBS structures for every initiative, and ran milestone-based delivery controls across internal teams and external vendors. The result was a measurable reduction in time-to-market and a portfolio leadership could actually steer.',
-                tags: ['PMO', 'Agile', 'Multi-vendor', 'Insurance', 'Digital transformation']
-            },
-            {
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
-                dates: '2026 – Present · Madrid',
+                domain: null,
+                dates: 'Apr 2026 – Present · Madrid',
                 stat: '5+',
                 statLabel: 'Live mandates',
                 heading: 'Advising on {deal screening, buyer matching, and fundraising diagnostics} for SMEs in LATAM and EU.',
@@ -65,20 +139,73 @@ export const portfolioEN = {
                 tags: ['M&A', 'Strategy', 'Due diligence', 'LATAM-EU']
             },
             {
-                role: 'IMBA · Final Integrative Exercise',
-                org: 'IE Business School · Aitaca Remote Tech',
-                dates: '2026 · Madrid',
-                stat: 'AI',
-                statLabel: 'Computer vision',
-                heading: 'Building the go-to-market thesis for an {AI body-measurement} product in jewelry and smart rings.',
-                body: 'Working with the corporate sponsor on positioning, pricing, and channel strategy for Virtual Sizer — the photo-based sizing engine reducing returns for online jewelers.',
-                tags: ['Go-to-market', 'Computer vision', 'Pricing', 'Capstone']
+                role: 'International MBA',
+                org: 'IE Business School',
+                domain: 'ie.edu',
+                dates: 'Sep 2025 – Jul 2026 · Madrid',
+                stat: 'IMBA',
+                statLabel: 'Class of 2026',
+                heading: 'Full-time {IMBA} with a Term 3 concentration in AI for business and digital strategy.',
+                body: 'Capstone with Aitaca Remote Tech on the go-to-market thesis for Virtual Sizer, an AI photo-based body-measurement product for jewelry and smart rings.',
+                tags: ['IMBA', 'AI for business', 'Digital strategy', 'Capstone']
+            },
+            {
+                role: 'IT Team Lead & Project Manager',
+                org: 'LIFE Seguros',
+                domain: 'lifeseguros.com.ar',
+                dates: 'Aug 2024 – Jul 2025 · Buenos Aires',
+                stat: '-20%',
+                statLabel: 'Time-to-market',
+                heading: 'Led the {ICT portfolio} through the M&A integration with Prudential Seguros.',
+                body: 'Ran governance, vendor coordination, and milestone-based delivery across a multi-vendor environment. Cut time-to-market by 20% while absorbing the operating model changes from the merger.',
+                tags: ['PMO', 'Team leadership', 'M&A integration', 'Insurance']
+            },
+            {
+                role: 'IT Team Leader & Project Manager',
+                org: 'Prudential Seguros',
+                domain: 'prudential.com.ar',
+                dates: 'Apr 2022 – Jul 2024 · Buenos Aires',
+                stat: 'Agile',
+                statLabel: 'Cross-functional teams',
+                heading: 'Cross-functional team leadership and {Agile delivery} for the insurance technology stack.',
+                body: 'First met Prudential as a MicroStrategy client; joined the team in-house to lead the BI and analytics workstream. Set up the Agile cadence, owned PowerBI reporting, and coordinated delivery across IT, operations, and the business.',
+                tags: ['PowerBI', 'Agile', 'Cross-functional leadership', 'Insurance']
+            },
+            {
+                role: 'BI Consultant',
+                org: 'MicroStrategy Inc.',
+                domain: 'microstrategy.com',
+                dates: 'Aug 2017 – Mar 2022 · LATAM',
+                stat: '13',
+                statLabel: 'Enterprise clients',
+                heading: 'Five years implementing {enterprise BI} for banks, insurers, retailers and the public sector across LATAM.',
+                body: 'Architected MicroStrategy deployments, designed semantic layers, and ran project delivery for clients across banking, insurance, retail, telco and the public sector. The base for everything that came after: how to talk to a CFO, how to land a dashboard, how to run a project.',
+                tags: ['MicroStrategy', 'SQL', 'Database architecture', 'Project Management', 'Strategy'],
+                clients: MSTR_CLIENTS,
+                clientsLabel: 'Selected clients'
+            },
+            {
+                role: 'Bachelor in Management & Information Systems',
+                org: 'ITBA — Instituto Tecnológico de Buenos Aires',
+                domain: 'itba.edu.ar',
+                dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
+                stat: '2017',
+                statLabel: 'Graduated',
+                heading: 'Five-year bachelor blending {management and information systems} at one of Argentina\'s top engineering schools.',
+                body: 'The dual focus — engineering rigor plus business framing — set the lane I have walked since: technology projects judged by what they actually deliver to the operation.',
+                tags: ['Management', 'Information Systems', 'ITBA']
             }
         ]
     },
+    apps: {
+        eyebrow: 'Things I have built',
+        heading: 'Side {projects} and apps shipped in the open.',
+        lead: 'Small products I built to test ideas, learn a stack, or just scratch an itch. All live on Vercel.',
+        items: APPS.map(a => ({ ...a, desc: a.desc.en }))
+    },
     logos: {
-        eyebrow: 'People I have worked with',
-        items: ['LIFE Seguros', 'Prudential', 'Mercado Libre', 'IE Business School', 'KS Advisory', 'Aitaca']
+        eyebrow: 'Companies and institutions',
+        items: LOGOS_BAND
     },
     principles: {
         eyebrow: 'How I think about delivery',
@@ -158,7 +285,11 @@ export const portfolioES = {
     nav: {
         portfolio: 'Portfolio',
         cv: 'Vista CV',
-        downloadPdf: 'PDF'
+        downloadPdf: 'PDF',
+        work: 'Trabajo',
+        apps: 'Apps',
+        ideas: 'Ideas',
+        contact: 'Contacto'
     },
     hero: {
         meta: ['Madrid, España', 'PM · Estrategia · IA'],
@@ -194,23 +325,14 @@ export const portfolioES = {
     },
     track: {
         eyebrow: 'Track record',
-        heading: 'Trabajo seleccionado a lo largo de cinco años de {entrega real}.',
+        heading: 'Una carrera construida sobre {entrega real}, entre BI, PMO y estrategia.',
         cta: 'Ver CV completo',
         cases: [
             {
-                role: 'Líder de Proyectos y Portafolio',
-                org: 'LIFE Seguros · Grupo Prudential',
-                dates: '2022 – 2025 · Buenos Aires',
-                stat: '-20%',
-                statLabel: 'Time-to-market',
-                heading: 'Lideré un {portafolio ICT de 10+ proyectos} de intake a cierre en un entorno multi-vendor.',
-                body: 'Levanté la gobernanza PMO, definí estructuras WBS para cada iniciativa y corrí controles de delivery por milestones entre equipos internos y vendors externos. Resultado: reducción medible de time-to-market y un portafolio gobernable.',
-                tags: ['PMO', 'Agile', 'Multi-vendor', 'Seguros', 'Transformación digital']
-            },
-            {
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
-                dates: '2026 – Presente · Madrid',
+                domain: null,
+                dates: 'Abr 2026 – Presente · Madrid',
                 stat: '5+',
                 statLabel: 'Mandatos vivos',
                 heading: 'Asesoría en {screening de deals, matching de buyers y diagnóstico de fundraising} para PyMEs en LATAM y UE.',
@@ -218,20 +340,73 @@ export const portfolioES = {
                 tags: ['M&A', 'Estrategia', 'Due diligence', 'LATAM-EU']
             },
             {
-                role: 'IMBA · Final Integrative Exercise',
-                org: 'IE Business School · Aitaca Remote Tech',
-                dates: '2026 · Madrid',
-                stat: 'IA',
-                statLabel: 'Visión por computadora',
-                heading: 'Construyendo la tesis de go-to-market para un producto de {medición corporal por IA} en joyería y smart rings.',
-                body: 'Trabajo con el sponsor corporativo en posicionamiento, pricing y estrategia de canal para Virtual Sizer — el motor de sizing por foto que reduce devoluciones para joyería online.',
-                tags: ['Go-to-market', 'Computer vision', 'Pricing', 'Capstone']
+                role: 'International MBA',
+                org: 'IE Business School',
+                domain: 'ie.edu',
+                dates: 'Sep 2025 – Jul 2026 · Madrid',
+                stat: 'IMBA',
+                statLabel: 'Promoción 2026',
+                heading: 'IMBA full-time con concentración en Term 3 en {IA para negocios} y estrategia digital.',
+                body: 'Capstone con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer, un producto de medición corporal por IA para joyería y smart rings.',
+                tags: ['IMBA', 'IA para negocios', 'Estrategia digital', 'Capstone']
+            },
+            {
+                role: 'Líder de Equipo IT y Project Manager',
+                org: 'LIFE Seguros',
+                domain: 'lifeseguros.com.ar',
+                dates: 'Ago 2024 – Jul 2025 · Buenos Aires',
+                stat: '-20%',
+                statLabel: 'Time-to-market',
+                heading: 'Lideré el {portafolio ICT} durante la integración M&A con Prudential Seguros.',
+                body: 'Gobernanza, coordinación de vendors y delivery por milestones en entorno multi-vendor. Reduje time-to-market un 20% absorbiendo los cambios del modelo operativo del merger.',
+                tags: ['PMO', 'Liderazgo de equipos', 'Integración M&A', 'Seguros']
+            },
+            {
+                role: 'Líder de Equipo IT y Project Manager',
+                org: 'Prudential Seguros',
+                domain: 'prudential.com.ar',
+                dates: 'Abr 2022 – Jul 2024 · Buenos Aires',
+                stat: 'Agile',
+                statLabel: 'Equipos cross-funcionales',
+                heading: 'Liderazgo de equipos cross-funcionales y {entrega Agile} para el stack tecnológico del seguro.',
+                body: 'Conocí a Prudential primero como cliente de MicroStrategy; me sumé in-house a liderar el workstream de BI y analítica. Armé el ritmo Agile, owner de reporting PowerBI, y coordiné delivery entre IT, operaciones y negocio.',
+                tags: ['PowerBI', 'Agile', 'Liderazgo cross-funcional', 'Seguros']
+            },
+            {
+                role: 'BI Consultant',
+                org: 'MicroStrategy Inc.',
+                domain: 'microstrategy.com',
+                dates: 'Ago 2017 – Mar 2022 · LATAM',
+                stat: '13',
+                statLabel: 'Clientes enterprise',
+                heading: 'Cinco años implementando {BI enterprise} para bancos, aseguradoras, retail y sector público de LATAM.',
+                body: 'Arquitectura de despliegues MicroStrategy, diseño de capas semánticas y conducción de delivery para clientes en banca, seguros, retail, telco y sector público. La base de todo lo que vino después: cómo hablarle a un CFO, cómo aterrizar un dashboard, cómo correr un proyecto.',
+                tags: ['MicroStrategy', 'SQL', 'Arquitectura de datos', 'Project Management', 'Estrategia'],
+                clients: MSTR_CLIENTS,
+                clientsLabel: 'Clientes seleccionados'
+            },
+            {
+                role: 'Licenciatura en Administración y Sistemas',
+                org: 'ITBA — Instituto Tecnológico de Buenos Aires',
+                domain: 'itba.edu.ar',
+                dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
+                stat: '2017',
+                statLabel: 'Egresado',
+                heading: 'Cinco años combinando {administración y sistemas} en una de las escuelas de ingeniería más exigentes de Argentina.',
+                body: 'Ese doble foco —rigor de ingeniería más framing de negocio— marcó el carril en el que vengo caminando: proyectos de tecnología juzgados por lo que entregan a la operación.',
+                tags: ['Administración', 'Sistemas', 'ITBA']
             }
         ]
     },
+    apps: {
+        eyebrow: 'Cosas que construí',
+        heading: 'Side {projects} y apps en abierto.',
+        lead: 'Productos chicos para probar ideas, aprender un stack o sacar una espina. Todos viven en Vercel.',
+        items: APPS.map(a => ({ ...a, desc: a.desc.es }))
+    },
     logos: {
-        eyebrow: 'Con quién trabajé',
-        items: ['LIFE Seguros', 'Prudential', 'Mercado Libre', 'IE Business School', 'KS Advisory', 'Aitaca']
+        eyebrow: 'Empresas e instituciones',
+        items: LOGOS_BAND
     },
     principles: {
         eyebrow: 'Cómo pienso el delivery',
