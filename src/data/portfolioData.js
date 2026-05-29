@@ -128,8 +128,10 @@ export const portfolioEN = {
         eyebrow: 'Track record',
         heading: 'A career built around {delivery}, across BI, PMO and strategy.',
         cta: 'See full CV',
+        legend: { work: 'Work', education: 'Education' },
         cases: [
             {
+                kind: 'work',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
@@ -142,6 +144,7 @@ export const portfolioEN = {
                 tags: ['M&A', 'Strategy', 'Due diligence', 'LATAM-EU']
             },
             {
+                kind: 'education',
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
@@ -155,6 +158,7 @@ export const portfolioEN = {
             },
             {
                 role: 'IT Team Lead & Project Manager',
+                kind: 'work',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
@@ -167,6 +171,7 @@ export const portfolioEN = {
             },
             {
                 role: 'IT Team Leader & Project Manager',
+                kind: 'work',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
@@ -179,6 +184,7 @@ export const portfolioEN = {
             },
             {
                 role: 'BI Consultant',
+                kind: 'work',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
@@ -193,6 +199,7 @@ export const portfolioEN = {
             },
             {
                 role: 'Bachelor in Management & Information Systems',
+                kind: 'education',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),
@@ -335,8 +342,10 @@ export const portfolioES = {
         eyebrow: 'Track record',
         heading: 'Una carrera construida sobre {entrega real}, entre BI, PMO y estrategia.',
         cta: 'Ver CV completo',
+        legend: { work: 'Experiencia', education: 'Formación' },
         cases: [
             {
+                kind: 'work',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
@@ -349,6 +358,7 @@ export const portfolioES = {
                 tags: ['M&A', 'Estrategia', 'Due diligence', 'LATAM-EU']
             },
             {
+                kind: 'education',
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
@@ -362,6 +372,7 @@ export const portfolioES = {
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
+                kind: 'work',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
@@ -374,6 +385,7 @@ export const portfolioES = {
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
+                kind: 'work',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
@@ -386,6 +398,7 @@ export const portfolioES = {
             },
             {
                 role: 'BI Consultant',
+                kind: 'work',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
@@ -400,6 +413,7 @@ export const portfolioES = {
             },
             {
                 role: 'Licenciatura en Administración y Sistemas',
+                kind: 'education',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),

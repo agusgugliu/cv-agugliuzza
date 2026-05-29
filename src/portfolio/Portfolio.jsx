@@ -205,10 +205,21 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             {data.track.cta} &rarr;
                         </button>
                     </div>
+                    <div className="pm-track-legend">
+                        <span className="pm-track-legend-item">
+                            <span className="pm-track-legend-dot pm-track-legend-dot--work" />
+                            {data.track.legend.work}
+                        </span>
+                        <span className="pm-track-legend-item">
+                            <span className="pm-track-legend-dot pm-track-legend-dot--education" />
+                            {data.track.legend.education}
+                        </span>
+                    </div>
+                    <div className="pm-track-list">
                     {data.track.cases.map((c, i) => (
                         <motion.div
                             key={i}
-                            className="pm-case"
+                            className={`pm-case pm-case--${c.kind || 'work'}`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: '-80px' }}
@@ -248,6 +259,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             </div>
                         </motion.div>
                     ))}
+                    </div>
                 </section>
 
                 {/* Apps */}

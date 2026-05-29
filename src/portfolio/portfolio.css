@@ -528,6 +528,78 @@
     margin-top: 28px;
 }
 
+/* ---------- Track record: legend + vertical rail ---------- */
+.pm-track-legend {
+    display: flex;
+    gap: 28px;
+    margin: 8px 0 36px;
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+}
+
+.pm-track-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pm-track-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.pm-track-legend-dot--work { background: var(--blue); }
+.pm-track-legend-dot--education { background: var(--ink); }
+
+.pm-track-list {
+    position: relative;
+    padding-left: 40px;
+}
+
+.pm-track-list::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 18px;
+    bottom: 18px;
+    width: 1px;
+    background: var(--hairline-strong);
+}
+
+.pm-case {
+    position: relative;
+}
+
+.pm-case::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 12px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--blue);
+    z-index: 2;
+}
+
+.pm-case--education::before {
+    background: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink);
+}
+
+@media (max-width: 820px) {
+    .pm-track-list { padding-left: 28px; }
+    .pm-track-list::before { left: 6px; }
+    .pm-case::before { left: -28px; top: 8px; width: 13px; height: 13px; }
+}
+
 /* ---------- Logo component (img + fallback chip) ---------- */
 .pm-logo-img {
     object-fit: contain;
