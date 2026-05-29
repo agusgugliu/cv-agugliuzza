@@ -128,7 +128,7 @@ export const portfolioEN = {
         eyebrow: 'Track record',
         heading: 'A career built around {delivery}, across BI, PMO and strategy.',
         cta: 'See full CV',
-        legend: { work: 'Work', education: 'Education' },
+        legend: { work: 'Work', education: 'Education', workShort: 'WORK', educationShort: 'EDU' },
         cases: [
             {
                 kind: 'work',
@@ -342,7 +342,7 @@ export const portfolioES = {
         eyebrow: 'Track record',
         heading: 'Una carrera construida sobre {entrega real}, entre BI, PMO y estrategia.',
         cta: 'Ver CV completo',
-        legend: { work: 'Experiencia', education: 'Formación' },
+        legend: { work: 'Experiencia', education: 'Formación', workShort: 'TRAB', educationShort: 'EDU' },
         cases: [
             {
                 kind: 'work',
