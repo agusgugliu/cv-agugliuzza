@@ -119,7 +119,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                 <div className="pm-nav-inner">
                     <a className="pm-brand" href="#top" onClick={smoothScrollTo('top')}>
                         <img className="pm-brand-avatar" src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
-                        <span>agust&iacute;n gugliuzza<span className="pm-brand-dot">.</span></span>
+                        <span>Agust&iacute;n Gugliuzza<span className="pm-brand-dot">.</span></span>
                     </a>
 
                     <div className="pm-nav-links">
