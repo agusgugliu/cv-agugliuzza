@@ -7,6 +7,17 @@ const CUST_PAIR = (slug) => ({
     logoDark: CUST(`${slug}_logo_white.png`)
 });
 
+const MBA = (file) => `/assets/mba_logos/${file}`;
+const MBA_PAIR = (slug) => ({
+    logo: MBA(`${slug}_logo_blue.png`),
+    logoDark: MBA(`${slug}_logo_white.png`)
+});
+
+const MBA_PARTNERS = [
+    { name: 'Aitaca', domain: 'aitaca.io', ...MBA_PAIR('aitaca') },
+    { name: 'Microsoft', domain: 'microsoft.com', ...MBA_PAIR('microsoft') }
+];
+
 const MSTR_CLIENTS = [
     { name: 'Prudential', domain: 'prudential.com.ar', ...CUST_PAIR('prudential') },
     { name: 'Mercado Libre', domain: 'mercadolibre.com', ...CUST_PAIR('mercadolibre') },
@@ -99,40 +110,50 @@ export const portfolioEN = {
         contact: 'Contact'
     },
     hero: {
-        meta: ['Madrid, Spain', 'PM · Strategy · AI'],
+        meta: ['Madrid, Spain', 'PM · Strategy · AI Ops · Digital Transformation'],
         statement: 'Project and strategy leadership for companies turning {operations} into {outcomes}.',
         cta: 'Book a call',
-        ctaSecondary: 'Read the long form'
+        ctaSecondary: 'See the work'
     },
     problems: {
         eyebrow: 'What I help with',
-        heading: 'Four kinds of {problems} I solve well.',
+        heading: 'Six kinds of {problems} I solve well.',
         items: [
             {
                 num: '01',
-                title: 'From scattered initiatives to {PMO governance}.',
-                body: 'Bringing structure to portfolios that grew faster than the operating model around them: WBS, milestone tracking, stage gates, and the discipline to actually close projects.'
+                title: 'From transformation appetite to a {sequenced roadmap}.',
+                body: 'Turning the board\'s "we need to modernize" into a concrete, sequenced plan: which capability ships first, what it unlocks next, what the team commits to in 90 days.'
             },
             {
                 num: '02',
-                title: 'From manual workflows to an {operating rhythm}.',
-                body: 'Mapping the work people do every week, removing the duplication, and replacing it with simple automation and clearer ownership — without forcing a new tool stack on the team.'
+                title: 'From top-down rollout to {change people choose}.',
+                body: 'Bringing the operation along through the transition — listening to the floor, surfacing the trade-offs, turning sceptics into champions before the system goes live.'
             },
             {
                 num: '03',
-                title: 'From data silos to {decisions you can defend}.',
-                body: 'Turning fragmented sources into one reporting layer leadership can trust: KPI definitions, BI dashboards, and the analysis that goes with them.'
+                title: 'From manual repetition to {AI-assisted operations}.',
+                body: 'Embedding AI and automation into the workflows where they earn their place — drafting, triaging, summarizing — without losing the human judgment that keeps the work honest.'
             },
             {
                 num: '04',
-                title: 'From strategy on slides to {delivery on the ground}.',
-                body: 'Translating board-level intent into roadmaps, sequencing, and a delivery cadence that survives the first contact with reality.'
+                title: 'From big-bang releases to an {agile delivery cadence}.',
+                body: 'Shipping change in small, reversible increments: weekly demo, monthly value, quarterly course-correction. Less ceremony, more momentum.'
+            },
+            {
+                num: '05',
+                title: 'From data exhaust to {insight you can act on}.',
+                body: 'Building the analytics layer that turns operational noise into the two or three numbers leadership actually steers by. KPI design, dashboards people open weekly, and the analysis behind every chart.'
+            },
+            {
+                num: '06',
+                title: 'From "we should explore options" to {a deal with a shortlist}.',
+                body: 'Advising on transactions: screening opportunities, writing the blind teaser, mapping the buyer universe, pressure-testing the financial model. The work that turns intent into a closed round.'
             }
         ]
     },
     track: {
         eyebrow: 'Track record',
-        heading: 'A career built around {delivery}, across BI, PMO and strategy.',
+        heading: 'A career built across {digital transformation, data and deals}.',
         cta: 'See full CV',
         legend: { work: 'Work', education: 'Education', workShort: 'WORK', educationShort: 'EDU' },
         cases: [
@@ -147,7 +168,7 @@ export const portfolioEN = {
                 stat: '5+',
                 statLabel: 'Live mandates',
                 heading: 'Advising on {deal screening, buyer matching, and fundraising diagnostics} for SMEs in LATAM and EU.',
-                body: 'Screening opportunities, structuring blind teasers, mapping buyer universes, and pressure-testing financial models. Work spans construction, hospitality, jewelry, and renewables.',
+                body: 'Screening opportunities, structuring blind teasers, mapping buyer universes, and pressure-testing financial models. Work spans construction, hospitality, jewelry, and renewables. Currently co-building the firm\'s AI platform for deal analysis and tracking.',
                 tags: ['M&A', 'Strategy', 'Due diligence', 'LATAM-EU']
             },
             {
@@ -160,9 +181,11 @@ export const portfolioEN = {
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Class of 2026',
-                heading: 'Full-time {IMBA} with a Term 3 concentration in AI for business and digital strategy.',
-                body: 'Capstone with Aitaca Remote Tech on the go-to-market thesis for Virtual Sizer, an AI photo-based body-measurement product for jewelry and smart rings.',
-                tags: ['IMBA', 'AI for business', 'Digital strategy', 'Capstone']
+                heading: 'Full-time MBA with specialization in {Digital Business Innovation & Transformation}.',
+                body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Working with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body-measurement for jewelry and smart rings), and joining Microsoft for the Tech Lab module.',
+                tags: ['IMBA', 'Digital Business Innovation', 'Transformation'],
+                clients: MBA_PARTNERS,
+                clientsLabel: 'Worked with'
             },
             {
                 role: 'IT Team Lead & Project Manager',
@@ -320,40 +343,50 @@ export const portfolioES = {
         contact: 'Contacto'
     },
     hero: {
-        meta: ['Madrid, España', 'PM · Estrategia · IA'],
+        meta: ['Madrid, España', 'PM · Estrategia · AI Ops · Transformación Digital'],
         statement: 'Liderazgo de proyectos y estrategia para empresas que convierten {operación} en {resultados}.',
         cta: 'Agendar llamada',
-        ctaSecondary: 'Leer la versión larga'
+        ctaSecondary: 'Ver el trabajo'
     },
     problems: {
         eyebrow: 'Cómo ayudo',
-        heading: 'Cuatro tipos de {problemas} que resuelvo bien.',
+        heading: 'Seis tipos de {problemas} que resuelvo bien.',
         items: [
             {
                 num: '01',
-                title: 'De iniciativas dispersas a {gobernanza PMO}.',
-                body: 'Estructurar portafolios que crecieron más rápido que el modelo operativo: WBS, milestones, stage gates, y la disciplina para cerrar proyectos de verdad.'
+                title: 'Del apetito por transformarse a un {roadmap secuenciado}.',
+                body: 'Convertir el "tenemos que modernizarnos" del comité en un plan concreto y secuenciado: qué capacidad sale primero, qué desbloquea para la siguiente, qué se compromete el equipo a 90 días.'
             },
             {
                 num: '02',
-                title: 'De flujos manuales a un {ritmo operativo}.',
-                body: 'Mapear el trabajo semanal, eliminar duplicación y reemplazarlo con automatización simple y ownership claro — sin imponer un stack nuevo al equipo.'
+                title: 'De rollouts top-down a {cambios que la gente elige}.',
+                body: 'Llevar a la operación a través del cambio — escuchar al piso, exponer los trade-offs, convertir escépticos en aliados antes de que el sistema salga vivo.'
             },
             {
                 num: '03',
-                title: 'De silos de datos a {decisiones defendibles}.',
-                body: 'Convertir fuentes fragmentadas en una capa de reporting que el liderazgo pueda confiar: definiciones de KPIs, dashboards BI y el análisis que los acompaña.'
+                title: 'De repetición manual a {operación asistida por IA}.',
+                body: 'Meter IA y automatización en los flujos donde tienen sentido — draftear, triagear, resumir — sin perder el juicio humano que mantiene al trabajo honesto.'
             },
             {
                 num: '04',
-                title: 'De estrategia en slides a {ejecución en el terreno}.',
-                body: 'Traducir intención del comité a roadmaps, secuencia y un ritmo de delivery que sobreviva al primer contacto con la realidad.'
+                title: 'De releases big-bang a un {ritmo de delivery ágil}.',
+                body: 'Sacar el cambio en incrementos chicos y reversibles: demo semanal, valor mensual, correcciones trimestrales. Menos ceremonia, más momentum.'
+            },
+            {
+                num: '05',
+                title: 'Del data exhaust al {insight accionable}.',
+                body: 'Armar la capa analítica que convierte el ruido operativo en los dos o tres números que realmente mueven la decisión. Definición de KPIs, dashboards que se abren todas las semanas y el análisis detrás de cada gráfico.'
+            },
+            {
+                num: '06',
+                title: 'Del "deberíamos explorar opciones" a {un deal con shortlist}.',
+                body: 'Asesoría en transacciones: screening de oportunidades, redacción del blind teaser, mapeo del universo de buyers, stress-test del modelo. El trabajo que convierte intención en una ronda cerrada.'
             }
         ]
     },
     track: {
         eyebrow: 'Track record',
-        heading: 'Una carrera construida sobre {entrega real}, entre BI, PMO y estrategia.',
+        heading: 'Una carrera construida entre {transformación digital, datos y deals}.',
         cta: 'Ver CV completo',
         legend: { work: 'Experiencia', education: 'Formación', workShort: 'TRAB', educationShort: 'EDU' },
         cases: [
@@ -368,7 +401,7 @@ export const portfolioES = {
                 stat: '5+',
                 statLabel: 'Mandatos vivos',
                 heading: 'Asesoría en {screening de deals, matching de buyers y diagnóstico de fundraising} para PyMEs en LATAM y UE.',
-                body: 'Screening de oportunidades, estructura de teasers ciegos, mapeo de universos de buyers y stress-test de modelos. Sectores: construcción, hospitality, joyería y renovables.',
+                body: 'Screening de oportunidades, estructura de teasers ciegos, mapeo de universos de buyers y stress-test de modelos. Sectores: construcción, hospitality, joyería y renovables. En paralelo, co-construyendo la plataforma de IA del estudio para análisis y tracking de deals.',
                 tags: ['M&A', 'Estrategia', 'Due diligence', 'LATAM-EU']
             },
             {
@@ -381,9 +414,11 @@ export const portfolioES = {
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Promoción 2026',
-                heading: 'IMBA full-time con concentración en Term 3 en {IA para negocios} y estrategia digital.',
-                body: 'Capstone con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer, un producto de medición corporal por IA para joyería y smart rings.',
-                tags: ['IMBA', 'IA para negocios', 'Estrategia digital', 'Capstone']
+                heading: 'MBA full-time con especialización en {Innovación y Transformación Digital de Negocios}.',
+                body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajando con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings), y con Microsoft en el módulo Tech Lab.',
+                tags: ['IMBA', 'Innovación Digital', 'Transformación'],
+                clients: MBA_PARTNERS,
+                clientsLabel: 'Trabajé con'
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
