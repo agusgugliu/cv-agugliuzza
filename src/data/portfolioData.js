@@ -297,7 +297,7 @@ export const portfolioEN = {
         heading: 'For work, advisory, or a {coffee} in Madrid.',
         lead: 'Open to project leadership, strategy consulting, and advisory roles across LATAM and Europe. Currently completing the IMBA at IE Business School and based in Madrid.',
         links: [
-            { label: 'Email', value: 'agustin.gugliuzza.piccinini@gmail.com', href: 'mailto:agustin.gugliuzza.piccinini@gmail.com', action: 'Write' },
+            { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Write' },
             { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
             { label: 'Schedule', value: 'Book a 30-min call', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
@@ -518,7 +518,7 @@ export const portfolioES = {
         heading: 'Para trabajo, advisory o un {café} en Madrid.',
         lead: 'Abierto a roles de project leadership, consultoría estratégica y advisory en LATAM y Europa. Actualmente cursando el IMBA en IE Business School, con base en Madrid.',
         links: [
-            { label: 'Email', value: 'agustin.gugliuzza.piccinini@gmail.com', href: 'mailto:agustin.gugliuzza.piccinini@gmail.com', action: 'Escribir' },
+            { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Escribir' },
             { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
             { label: 'Agenda', value: 'Reservar 30 min', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
