@@ -90,7 +90,7 @@ const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
 
 const LOGOS_BAND = [
     { name: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png') },
-    { name: 'LIFE Seguros', domain: 'lifeseguros.com.ar', logo: EXP_LOGO('lifeseguros_logo.png') },
+    { name: 'Life Seguros', domain: 'lifeseguros.com.ar', logo: EXP_LOGO('lifeseguros_logo.png') },
     { name: 'Prudential', domain: 'prudential.com.ar', logo: EXP_LOGO('prudential_logo.png') },
     { name: 'MicroStrategy', domain: 'microstrategy.com', logo: EXP_LOGO('microstrategy_logo.png') },
     { name: 'KS Advisory', domain: null, logo: EXP_LOGO('ksadvisory_logo.png') },
@@ -191,15 +191,15 @@ export const portfolioEN = {
                 role: 'IT Team Lead & Project Manager',
                 kind: 'work',
                 startDate: 'Aug 2024',
-                org: 'LIFE Seguros',
+                org: 'Life Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
                 dates: 'Aug 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
-                heading: 'Led the {ICT portfolio} through the M&A integration with Prudential Seguros.',
-                body: 'Ran governance, vendor coordination, and milestone-based delivery across a multi-vendor environment. Cut time-to-market by 20% while absorbing the operating model changes from the merger.',
-                tags: ['PMO', 'Team leadership', 'M&A integration', 'Insurance']
+                heading: 'IT leadership, M&A change management, and a {corporate Data Lake} unifying the company\'s data.',
+                body: 'Three workstreams in parallel: leading the IT team and PM cadence; running change management for the Prudential Seguros M&A, including the systems integration between both insurers; and architecting the corporate Data Lake that brings every operational and analytical source into a single layer. Cut time-to-market by 20% along the way.',
+                tags: ['Team leadership', 'Change management', 'Systems integration', 'Data Lake']
             },
             {
                 role: 'IT Team Leader & Project Manager',
@@ -209,11 +209,11 @@ export const portfolioEN = {
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
                 dates: 'Apr 2022 – Jul 2024 · Buenos Aires',
-                stat: 'Agile',
-                statLabel: 'Cross-functional teams',
+                stat: 'IT + Analytics',
+                statLabel: 'Cross-functional leadership',
                 heading: 'Cross-functional team leadership and {Agile delivery} for the insurance technology stack.',
-                body: 'First met Prudential as a MicroStrategy client; joined the team in-house to lead the BI and analytics workstream. Set up the Agile cadence, owned PowerBI reporting, and coordinated delivery across IT, operations, and the business.',
-                tags: ['PowerBI', 'Agile', 'Cross-functional leadership', 'Insurance']
+                body: 'First met Prudential as a MicroStrategy client; joined the team in-house to lead the IT and analytics workstream. Set up the Agile cadence, kept MicroStrategy as the analytics backbone, and coordinated delivery across IT, operations, and the business.',
+                tags: ['MicroStrategy', 'Agile', 'Cross-functional leadership', 'IT Project Management']
             },
             {
                 role: 'BI Consultant',
@@ -226,8 +226,8 @@ export const portfolioEN = {
                 stat: '13',
                 statLabel: 'Enterprise clients',
                 heading: 'Five years implementing {enterprise BI} for banks, insurers, retailers and the public sector across LATAM.',
-                body: 'Architected MicroStrategy deployments, designed semantic layers, and ran project delivery for clients across banking, insurance, retail, telco and the public sector. The base for everything that came after: how to talk to a CFO, how to land a dashboard, how to run a project.',
-                tags: ['MicroStrategy', 'SQL', 'Database architecture', 'Project Management', 'Strategy'],
+                body: 'Consulted end-to-end on enterprise BI projects, working hand-in-hand with the client teams from project planning to data model design, reports and dashboards build, and end-user training. Built predictive models in Python and RScript, and led onboarding for new MicroStrategy consultants joining the LATAM practice. The base for everything that came after: how to talk to a CFO, how to land a dashboard, how to run a project.',
+                tags: ['MicroStrategy', 'SQL', 'Python', 'RScript', 'Data modeling', 'Project Management'],
                 clients: MSTR_CLIENTS,
                 clientsLabel: 'Selected clients'
             },
@@ -241,9 +241,9 @@ export const portfolioEN = {
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Graduated',
-                heading: 'Five-year bachelor blending {management and information systems} at one of Argentina\'s top engineering schools.',
-                body: 'The dual focus — engineering rigor plus business framing — set the lane I have walked since: technology projects judged by what they actually deliver to the operation.',
-                tags: ['Management', 'Information Systems', 'ITBA']
+                heading: 'Four-year bachelor blending {management and information systems} at one of Argentina\'s top engineering schools.',
+                body: 'Four-year bachelor combining business strategy and information systems: management, accounting, microeconomics and operations on one side; data structures, databases, programming, and systems design on the other. Built around the idea that technology decisions are business decisions, and vice versa.',
+                tags: ['Business + Tech', 'Information Systems', 'Decision-making']
             }
         ]
     },
@@ -424,15 +424,15 @@ export const portfolioES = {
                 role: 'Líder de Equipo IT y Project Manager',
                 kind: 'work',
                 startDate: 'Ago 2024',
-                org: 'LIFE Seguros',
+                org: 'Life Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
                 dates: 'Ago 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
-                heading: 'Lideré el {portafolio ICT} durante la integración M&A con Prudential Seguros.',
-                body: 'Gobernanza, coordinación de vendors y delivery por milestones en entorno multi-vendor. Reduje time-to-market un 20% absorbiendo los cambios del modelo operativo del merger.',
-                tags: ['PMO', 'Liderazgo de equipos', 'Integración M&A', 'Seguros']
+                heading: 'Liderazgo IT, change management del M&A y un {Data Lake corporativo} que unifica la información de la compañía.',
+                body: 'Tres workstreams en paralelo: liderazgo del equipo IT y ritmo de PM; change management del M&A con Prudential Seguros, incluyendo la integración de sistemas entre ambas aseguradoras; y arquitectura del Data Lake corporativo que centraliza todas las fuentes operativas y analíticas. Reduje time-to-market un 20% en el camino.',
+                tags: ['Liderazgo de equipos', 'Change management', 'Integración de sistemas', 'Data Lake']
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
@@ -442,11 +442,11 @@ export const portfolioES = {
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
                 dates: 'Abr 2022 – Jul 2024 · Buenos Aires',
-                stat: 'Agile',
-                statLabel: 'Equipos cross-funcionales',
+                stat: 'IT + Analytics',
+                statLabel: 'Liderazgo cross-funcional',
                 heading: 'Liderazgo de equipos cross-funcionales y {entrega Agile} para el stack tecnológico del seguro.',
-                body: 'Conocí a Prudential primero como cliente de MicroStrategy; me sumé in-house a liderar el workstream de BI y analítica. Armé el ritmo Agile, owner de reporting PowerBI, y coordiné delivery entre IT, operaciones y negocio.',
-                tags: ['PowerBI', 'Agile', 'Liderazgo cross-funcional', 'Seguros']
+                body: 'Conocí a Prudential primero como cliente de MicroStrategy; me sumé in-house a liderar el workstream de IT y analítica. Armé el ritmo Agile, mantuve MicroStrategy como columna analítica y coordiné delivery entre IT, operaciones y negocio.',
+                tags: ['MicroStrategy', 'Agile', 'Liderazgo cross-funcional', 'IT Project Management']
             },
             {
                 role: 'BI Consultant',
@@ -459,8 +459,8 @@ export const portfolioES = {
                 stat: '13',
                 statLabel: 'Clientes enterprise',
                 heading: 'Cinco años implementando {BI enterprise} para bancos, aseguradoras, retail y sector público de LATAM.',
-                body: 'Arquitectura de despliegues MicroStrategy, diseño de capas semánticas y conducción de delivery para clientes en banca, seguros, retail, telco y sector público. La base de todo lo que vino después: cómo hablarle a un CFO, cómo aterrizar un dashboard, cómo correr un proyecto.',
-                tags: ['MicroStrategy', 'SQL', 'Arquitectura de datos', 'Project Management', 'Estrategia'],
+                body: 'Consultoría end-to-end en proyectos BI enterprise, mano a mano con los equipos de cada cliente desde planificación del proyecto hasta diseño del modelo de datos, construcción de reportes y dashboards, y entrenamiento de usuarios finales. Modelos predictivos en Python y RScript, y onboarding de nuevos consultores MicroStrategy en la práctica LATAM. La base de todo lo que vino después: cómo hablarle a un CFO, cómo aterrizar un dashboard, cómo correr un proyecto.',
+                tags: ['MicroStrategy', 'SQL', 'Python', 'RScript', 'Modelado de datos', 'Project Management'],
                 clients: MSTR_CLIENTS,
                 clientsLabel: 'Clientes seleccionados'
             },
@@ -474,9 +474,9 @@ export const portfolioES = {
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Egresado',
-                heading: 'Cinco años combinando {administración y sistemas} en una de las escuelas de ingeniería más exigentes de Argentina.',
-                body: 'Ese doble foco —rigor de ingeniería más framing de negocio— marcó el carril en el que vengo caminando: proyectos de tecnología juzgados por lo que entregan a la operación.',
-                tags: ['Administración', 'Sistemas', 'ITBA']
+                heading: 'Cuatro años combinando {administración y sistemas} en una de las escuelas de ingeniería más exigentes de Argentina.',
+                body: 'Carrera de 4 años que combina estrategia de negocio y sistemas de información: management, contabilidad, microeconomía y operaciones por un lado; estructuras de datos, bases de datos, programación y diseño de sistemas por el otro. Construida alrededor de la idea de que las decisiones tecnológicas son decisiones de negocio, y viceversa.',
+                tags: ['Negocios + Tech', 'Sistemas de Información', 'Toma de decisiones']
             }
         ]
     },
