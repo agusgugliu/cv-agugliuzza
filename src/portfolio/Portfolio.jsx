@@ -22,8 +22,9 @@ const Editorial = ({ text }) => {
     );
 };
 
-/* Company logo: prefer local file, fall back to Clearbit, then initial chip */
-const Logo = ({ src, domain, name, size = 'md' }) => {
+/* Company logo: prefer local file, fall back to Clearbit, then initial chip.
+   If srcDark is provided, render a <picture> that swaps via prefers-color-scheme. */
+const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
     const [stage, setStage] = useState(src ? 'local' : (domain ? 'clearbit' : 'chip'));
     if (stage === 'chip' || (!src && !domain)) {
         const initial = (name || '?').charAt(0).toUpperCase();
@@ -34,6 +35,22 @@ const Logo = ({ src, domain, name, size = 'md' }) => {
         );
     }
     const url = stage === 'local' ? src : `https://logo.clearbit.com/${domain}`;
+    const onErr = () => setStage(stage === 'local' && domain ? 'clearbit' : 'chip');
+    if (stage === 'local' && srcDark) {
+        return (
+            <picture>
+                <source srcSet={srcDark} media="(prefers-color-scheme: dark)" />
+                <img
+                    className={`pm-logo-img pm-logo-img--${size}`}
+                    src={url}
+                    alt={name}
+                    title={name}
+                    loading="lazy"
+                    onError={onErr}
+                />
+            </picture>
+        );
+    }
     return (
         <img
             className={`pm-logo-img pm-logo-img--${size}`}
@@ -41,7 +58,7 @@ const Logo = ({ src, domain, name, size = 'md' }) => {
             alt={name}
             title={name}
             loading="lazy"
-            onError={() => setStage(stage === 'local' && domain ? 'clearbit' : 'chip')}
+            onError={onErr}
         />
     );
 };
@@ -250,7 +267,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                         <div className="pm-clients-grid">
                                             {c.clients.map((cl, k) => (
                                                 <div key={k} className="pm-client">
-                                                    <Logo domain={cl.domain} name={cl.name} size="sm" />
+                                                    <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" />
                                                     <span className="pm-client-name">{cl.name}</span>
                                                 </div>
                                             ))}

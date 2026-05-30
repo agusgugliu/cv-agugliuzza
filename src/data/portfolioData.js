@@ -1,20 +1,26 @@
 // Portfolio mode content — editorial narrative, distinct from cvData.js
 // Words wrapped in {italic} render in Instrument Serif italic + blue accent.
 
+const CUST = (file) => `/assets/customer_logos/${file}`;
+const CUST_PAIR = (slug) => ({
+    logo: CUST(`${slug}_logo_blue.png`),
+    logoDark: CUST(`${slug}_logo_white.png`)
+});
+
 const MSTR_CLIENTS = [
-    { name: 'Prudential', domain: 'prudential.com.ar' },
-    { name: 'Mercado Libre', domain: 'mercadolibre.com' },
-    { name: 'Sullair', domain: 'sullair.com' },
-    { name: 'AGEA (Clarín)', domain: 'clarin.com' },
-    { name: 'Swiss Medical', domain: 'swissmedical.com.ar' },
-    { name: 'Arcor', domain: 'arcor.com' },
-    { name: 'Banco General de Panamá', domain: 'bgeneral.com' },
-    { name: 'Wawanesa Insurance', domain: 'wawanesa.com' },
-    { name: 'Banco Hipotecario', domain: 'hipotecario.com.ar' },
-    { name: 'Banco Supervielle', domain: 'supervielle.com.ar' },
-    { name: 'Banco Patagonia', domain: 'bancopatagonia.com.ar' },
-    { name: 'Grupo Techint', domain: 'techint.com' },
-    { name: 'AFIP', domain: 'afip.gob.ar' }
+    { name: 'Prudential', domain: 'prudential.com.ar', ...CUST_PAIR('prudential') },
+    { name: 'Mercado Libre', domain: 'mercadolibre.com', ...CUST_PAIR('mercadolibre') },
+    { name: 'Sullair', domain: 'sullair.com', ...CUST_PAIR('sullair') },
+    { name: 'AGEA (Clarín)', domain: 'clarin.com', ...CUST_PAIR('clarin') },
+    { name: 'Swiss Medical', domain: 'swissmedical.com.ar', ...CUST_PAIR('swissmedical') },
+    { name: 'Arcor', domain: 'arcor.com', ...CUST_PAIR('arcor') },
+    { name: 'Banco General de Panamá', domain: 'bgeneral.com', ...CUST_PAIR('bancogeneral') },
+    { name: 'Wawanesa Insurance', domain: 'wawanesa.com', ...CUST_PAIR('wawanessa') },
+    { name: 'Banco Hipotecario', domain: 'hipotecario.com.ar', ...CUST_PAIR('hipotecario') },
+    { name: 'Banco Supervielle', domain: 'supervielle.com.ar', ...CUST_PAIR('supervielle') },
+    { name: 'Banco Patagonia', domain: 'bancopatagonia.com.ar', ...CUST_PAIR('patagonia') },
+    { name: 'Grupo Techint', domain: 'techint.com', ...CUST_PAIR('techint') },
+    { name: 'AFIP', domain: 'afip.gob.ar', ...CUST_PAIR('afip') }
 ];
 
 const APPS = [
