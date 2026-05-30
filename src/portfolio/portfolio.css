@@ -6,10 +6,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .portfolio-mode {
-    /* Brand tokens (from templates/agusgugliu-brand-kit/lib/brand.css) */
+    /* Brand tokens (light mode default; overridden under [data-theme="dark"]) */
     --ink: #0B0E14;
     --paper: #F4F5F7;
     --paper-2: #ECEEF2;
+    --card-bg: #FFFFFF;
     --slate: #2C3447;
     --slate-2: #5B6478;
     --hairline: rgba(11, 14, 20, 0.10);
@@ -34,6 +35,19 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+:root[data-theme="dark"] .portfolio-mode {
+    --ink: #F4F5F7;
+    --paper: #0B0E14;
+    --paper-2: #14181F;
+    --card-bg: #161A22;
+    --slate: #B8BFD0;
+    --slate-2: #8A93A8;
+    --hairline: rgba(244, 245, 247, 0.10);
+    --hairline-strong: rgba(244, 245, 247, 0.22);
+    --blue-deep: #5D85FF;
 }
 
 .portfolio-mode * {
@@ -638,7 +652,7 @@
 /* ---------- Logo component (img + fallback chip) ---------- */
 .pm-logo-img {
     object-fit: contain;
-    background: #fff;
+    background: var(--card-bg);
     border: 1px solid var(--hairline);
     border-radius: 8px;
     padding: 6px;
@@ -704,7 +718,7 @@
     padding: 8px 10px;
     border: 1px solid var(--hairline);
     border-radius: 8px;
-    background: #fff;
+    background: var(--card-bg);
     transition: border-color 0.18s ease, transform 0.18s ease;
     font: inherit;
     text-align: left;
@@ -742,7 +756,7 @@
 .pm-client-detail {
     margin-top: 18px;
     padding: 20px 22px;
-    background: #fff;
+    background: var(--card-bg);
     border: 1px solid var(--blue);
     border-radius: 12px;
 }
@@ -829,7 +843,7 @@
     display: flex;
     gap: 16px;
     padding: 20px;
-    background: #fff;
+    background: var(--card-bg);
     border: 1px solid var(--hairline);
     border-radius: 12px;
     text-decoration: none;
@@ -859,6 +873,7 @@
 }
 
 .pm-app-icon--favicon {
+    /* Favicons are designed for light backgrounds — keep white in both themes */
     background: #fff;
     border: 1px solid var(--hairline);
     padding: 8px;
@@ -1263,7 +1278,7 @@
 
 @media print {
     .portfolio-mode {
-        background: #fff;
+        background: var(--card-bg);
         color: #000;
     }
     .pm-nav,

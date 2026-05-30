@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon } from 'lucide-react';
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
@@ -24,9 +24,9 @@ const Editorial = ({ text }) => {
     );
 };
 
-/* Company logo: prefer local file, fall back to Clearbit, then initial chip.
-   If srcDark is provided, render a <picture> that swaps via prefers-color-scheme. */
-const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
+/* Company logo: prefer local file (theme-aware via src/srcDark), fall
+   back to Clearbit, then to a chip with the initial letter. */
+const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
     const [stage, setStage] = useState(src ? 'local' : (domain ? 'clearbit' : 'chip'));
     if (stage === 'chip' || (!src && !domain)) {
         const initial = (name || '?').charAt(0).toUpperCase();
@@ -36,12 +36,13 @@ const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
             </span>
         );
     }
-    const url = stage === 'local' ? src : `https://logo.clearbit.com/${domain}`;
     const onErr = () => setStage(stage === 'local' && domain ? 'clearbit' : 'chip');
-    if (stage === 'local' && srcDark) {
-        return (
-            <picture>
-                <source srcSet={srcDark} media="(prefers-color-scheme: dark)" />
+    if (stage === 'local') {
+        // If we have explicit theme + srcDark, render an <img> that swaps with it.
+        // Otherwise fall back to <picture> using prefers-color-scheme.
+        if (srcDark && theme) {
+            const url = theme === 'dark' ? srcDark : src;
+            return (
                 <img
                     className={`pm-logo-img pm-logo-img--${size}`}
                     src={url}
@@ -50,9 +51,25 @@ const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
                     loading="lazy"
                     onError={onErr}
                 />
-            </picture>
-        );
+            );
+        }
+        if (srcDark) {
+            return (
+                <picture>
+                    <source srcSet={srcDark} media="(prefers-color-scheme: dark)" />
+                    <img
+                        className={`pm-logo-img pm-logo-img--${size}`}
+                        src={src}
+                        alt={name}
+                        title={name}
+                        loading="lazy"
+                        onError={onErr}
+                    />
+                </picture>
+            );
+        }
     }
+    const url = stage === 'local' ? src : `https://logo.clearbit.com/${domain}`;
     return (
         <img
             className={`pm-logo-img pm-logo-img--${size}`}
@@ -117,7 +134,7 @@ const InfoBlock = ({ info, lang, variant = 'inline' }) => {
     );
 };
 
-const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
+const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
@@ -131,10 +148,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
 
     useEffect(() => {
         document.documentElement.classList.remove('light');
-        document.body.style.background = '#F4F5F7';
-        return () => {
-            document.body.style.background = '';
-        };
+        return () => { /* noop */ };
     }, []);
 
     const showToast = (msg) => {
@@ -215,6 +229,14 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                 ES
                             </button>
                         </div>
+                        <button
+                            className="pm-nav-btn pm-nav-icon"
+                            onClick={toggleTheme}
+                            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                        </button>
                         <button className="pm-nav-btn pm-nav-icon" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
@@ -307,7 +329,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             <span className="pm-case-rail-date">{c.startDate}</span>
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
-                                    <Logo src={c.logo} domain={c.domain} name={c.org} size="md" />
+                                    <Logo src={c.logo} domain={c.domain} name={c.org} size="md" theme={theme} />
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
@@ -338,7 +360,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                                         onClick={() => toggleClient(i, k)}
                                                         aria-expanded={isOpen}
                                                     >
-                                                        <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" />
+                                                        <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" theme={theme} />
                                                         <span className="pm-client-name">{cl.name}</span>
                                                         <ChevronDown size={13} className="pm-client-chev" />
                                                     </button>
@@ -354,6 +376,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                                         domain={c.clients[openClient.clientIdx].domain}
                                                         name={c.clients[openClient.clientIdx].name}
                                                         size="md"
+                                                        theme={theme}
                                                     />
                                                     <div className="pm-client-detail-name">{c.clients[openClient.clientIdx].name}</div>
                                                 </div>
@@ -408,7 +431,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             <div className="pm-logos-group-label">{g.label}</div>
                             <div className="pm-logos-grid">
                                 {g.items.map((l, i) => (
-                                    <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" />
+                                    <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" theme={theme} />
                                 ))}
                             </div>
                         </div>
