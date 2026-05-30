@@ -132,6 +132,7 @@ export const portfolioEN = {
         cases: [
             {
                 kind: 'work',
+                startDate: 'Apr 2026',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
@@ -145,6 +146,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'education',
+                startDate: 'Sep 2025',
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
@@ -159,6 +161,7 @@ export const portfolioEN = {
             {
                 role: 'IT Team Lead & Project Manager',
                 kind: 'work',
+                startDate: 'Aug 2024',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
@@ -172,6 +175,7 @@ export const portfolioEN = {
             {
                 role: 'IT Team Leader & Project Manager',
                 kind: 'work',
+                startDate: 'Apr 2022',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
@@ -185,6 +189,7 @@ export const portfolioEN = {
             {
                 role: 'BI Consultant',
                 kind: 'work',
+                startDate: 'Aug 2017',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
@@ -200,6 +205,7 @@ export const portfolioEN = {
             {
                 role: 'Bachelor in Management & Information Systems',
                 kind: 'education',
+                startDate: 'Jul 2013',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),
@@ -346,6 +352,7 @@ export const portfolioES = {
         cases: [
             {
                 kind: 'work',
+                startDate: 'Abr 2026',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
@@ -359,6 +366,7 @@ export const portfolioES = {
             },
             {
                 kind: 'education',
+                startDate: 'Sep 2025',
                 role: 'International MBA',
                 org: 'IE Business School',
                 domain: 'ie.edu',
@@ -373,6 +381,7 @@ export const portfolioES = {
             {
                 role: 'Líder de Equipo IT y Project Manager',
                 kind: 'work',
+                startDate: 'Ago 2024',
                 org: 'LIFE Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
@@ -386,6 +395,7 @@ export const portfolioES = {
             {
                 role: 'Líder de Equipo IT y Project Manager',
                 kind: 'work',
+                startDate: 'Abr 2022',
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
@@ -399,6 +409,7 @@ export const portfolioES = {
             {
                 role: 'BI Consultant',
                 kind: 'work',
+                startDate: 'Ago 2017',
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
@@ -414,6 +425,7 @@ export const portfolioES = {
             {
                 role: 'Licenciatura en Administración y Sistemas',
                 kind: 'education',
+                startDate: 'Jul 2013',
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),
