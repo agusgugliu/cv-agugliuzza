@@ -373,8 +373,15 @@ export const portfolioEN = {
         ]
     },
     footer: {
-        left: '© 2026 Agustín Gugliuzza · Madrid',
-        right: 'Built with React + framer-motion'
+        name: 'Agustín Gugliuzza.',
+        meta: 'Madrid · 2026',
+        credit: 'Crafted with React + Vite, hosted on Vercel.',
+        backToTop: 'Back to top',
+        socials: [
+            { platform: 'twitter', href: 'https://x.com/agusgugliu', label: 'Twitter' },
+            { platform: 'github', href: 'https://github.com/agusgugliu', label: 'GitHub' },
+            { platform: 'linkedin', href: 'https://linkedin.com/in/agustin-gugliuzza', label: 'LinkedIn' }
+        ]
     }
 };
 
@@ -623,7 +630,14 @@ export const portfolioES = {
         ]
     },
     footer: {
-        left: '© 2026 Agustín Gugliuzza · Madrid',
-        right: 'Hecho con React + framer-motion'
+        name: 'Agustín Gugliuzza.',
+        meta: 'Madrid · 2026',
+        credit: 'Hecho con React + Vite, hosteado en Vercel.',
+        backToTop: 'Volver arriba',
+        socials: [
+            { platform: 'twitter', href: 'https://x.com/agusgugliu', label: 'Twitter' },
+            { platform: 'github', href: 'https://github.com/agusgugliu', label: 'GitHub' },
+            { platform: 'linkedin', href: 'https://linkedin.com/in/agustin-gugliuzza', label: 'LinkedIn' }
+        ]
     }
 };

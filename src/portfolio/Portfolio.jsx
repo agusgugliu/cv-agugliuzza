@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin } from 'lucide-react';
+
+const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
 import './portfolio.css';
@@ -481,8 +483,34 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                 </section>
 
                 <footer className="pm-footer">
-                    <span>{data.footer.left}</span>
-                    <a href="#top">{lang === 'en' ? 'Back to top' : 'Volver arriba'} &uarr;</a>
+                    <div className="pm-footer-signature">
+                        <div className="pm-footer-name">{data.footer.name}</div>
+                        <div className="pm-footer-meta">{data.footer.meta}</div>
+                        <div className="pm-footer-credit">{data.footer.credit}</div>
+                    </div>
+                    <div className="pm-footer-utility">
+                        <div className="pm-footer-socials">
+                            {data.footer.socials.map((s, i) => {
+                                const Icon = SOCIAL_ICONS[s.platform];
+                                if (!Icon) return null;
+                                return (
+                                    <a
+                                        key={i}
+                                        className="pm-footer-social"
+                                        href={s.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        aria-label={s.label}
+                                    >
+                                        <Icon size={16} />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                        <a className="pm-footer-top" href="#top" onClick={smoothScrollTo('top')}>
+                            {data.footer.backToTop} &uarr;
+                        </a>
+                    </div>
                 </footer>
             </div>
         </div>

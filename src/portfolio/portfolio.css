@@ -1142,24 +1142,100 @@
 /* ---------- Footer ---------- */
 .pm-footer {
     border-top: 1px solid var(--hairline);
-    padding: 36px 0 60px;
+    padding: 48px 0 32px;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
     flex-wrap: wrap;
-    gap: 16px;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--slate-2);
 }
 
-.pm-footer a {
-    color: var(--ink);
+.pm-footer-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.pm-footer a:hover {
+.pm-footer-name {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1;
+}
+
+.pm-footer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+    margin-top: 2px;
+}
+
+.pm-footer-credit {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    color: var(--slate-2);
+    opacity: 0.7;
+    margin-top: 8px;
+    max-width: 28ch;
+    line-height: 1.4;
+}
+
+.pm-footer-utility {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.pm-footer-socials {
+    display: flex;
+    gap: 14px;
+}
+
+.pm-footer-social {
+    color: var(--slate-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.pm-footer-social:hover {
     color: var(--blue);
+    background: rgba(22, 82, 240, 0.06);
+}
+
+.pm-footer-top {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+.pm-footer-top:hover {
+    color: var(--blue);
+}
+
+@media (max-width: 640px) {
+    .pm-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .pm-footer-utility {
+        align-items: flex-start;
+    }
 }
 
 /* ---------- Toast ---------- */
