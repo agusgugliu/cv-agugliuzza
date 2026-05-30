@@ -13,25 +13,51 @@ const MBA_PAIR = (slug) => ({
     logoDark: MBA(`${slug}_logo_white.png`)
 });
 
+// Wikipedia-style fact sheet per entity (research output).
+// industry / country / founded / employees / revenue / extra / descEn / descEs
+const INFO = {
+    ks_advisory: { industry: 'Strategy & deal advisory', country: 'Spain', founded: null, employees: '~5', revenue: 'n/a', extra: 'Madrid-based boutique focused on SME M&A and fundraising in LATAM and EU', descEn: 'Boutique deal and strategy advisory firm working with SMEs on M&A, fundraising, and buyer matching across LATAM and EU.', descEs: 'Boutique de asesoría en estrategia y deals que trabaja con PyMEs en M&A, fundraising y búsqueda de compradores en LATAM y UE.' },
+    life_seguros: { industry: 'Life insurance', country: 'Argentina', founded: 1998, employees: 'n/a', revenue: 'n/a', extra: 'Acquired Prudential Seguros from Prudential Financial in May 2024 via parent Grupo ST', descEn: 'Argentine life insurance company headquartered in Buenos Aires, expanded in 2024 through the acquisition of Prudential Seguros.', descEs: 'Aseguradora de vida argentina con sede en Buenos Aires, expandida en 2024 con la adquisición de Prudential Seguros.' },
+    prudential_seguros: { industry: 'Life insurance', country: 'Argentina', founded: 1999, employees: '~400', revenue: '$120M (2024)', extra: 'Acquired by Grupo ST in May 2024 and rebranded as Life Group Seguros', descEn: 'Argentine life insurance subsidiary of Prudential Financial until May 2024, when Grupo ST acquired the operation and merged it into Life Seguros.', descEs: 'Subsidiaria argentina de Prudential Financial hasta mayo 2024, cuando Grupo ST adquirió la operación y la fusionó con Life Seguros.' },
+    microstrategy: { industry: 'Enterprise BI software', country: 'USA', founded: 1989, employees: '~1,900', revenue: '$463M (2024)', extra: 'Listed on NASDAQ:MSTR, largest corporate Bitcoin holder, rebranded as Strategy in 2025', descEn: 'US enterprise analytics and BI software company, also the largest corporate holder of Bitcoin and rebranded as Strategy in 2025.', descEs: 'Compañía estadounidense de software de analytics y BI empresarial, además el mayor tenedor corporativo de Bitcoin, rebautizada como Strategy en 2025.' },
+    ie_business_school: { industry: 'Higher education', country: 'Spain', founded: 1973, employees: '~500 faculty', revenue: 'n/a', extra: 'Part of IE University, consistently ranked among the top European business schools', descEn: 'Madrid-based graduate business school with over 6,000 students from 130+ nationalities, part of IE University since 2007.', descEs: 'Escuela de negocios de posgrado con sede en Madrid, más de 6.000 alumnos de 130+ nacionalidades, parte de IE University desde 2007.' },
+    itba: { industry: 'Higher education', country: 'Argentina', founded: 1959, employees: '~7,000 students', revenue: 'n/a', extra: 'The only private university in Argentina specialized in Technology, Engineering and Management', descEn: 'Private Buenos Aires university specialized in engineering, technology and management, with over 7,000 students across two campuses.', descEs: 'Universidad privada de Buenos Aires especializada en ingeniería, tecnología y management, con más de 7.000 alumnos en dos campus.' },
+    aitaca: { industry: 'AI / computer vision', country: 'Spain', founded: null, employees: 'n/a', revenue: 'n/a', extra: 'Maker of Virtual Sizer, an AI photo-based body-measurement engine for jewelry and smart rings', descEn: 'Madrid-based AI startup building photo-based body-measurement technology, with Virtual Sizer as its flagship product for jewelry and smart rings.', descEs: 'Startup de IA con sede en Madrid que construye tecnología de medición corporal por foto, con Virtual Sizer como producto insignia para joyería y smart rings.' },
+    microsoft: { industry: 'Software & cloud', country: 'USA', founded: 1975, employees: '228,000', revenue: '$245B (FY2024)', extra: 'Listed on NASDAQ:MSFT, among the world\'s most valuable companies', descEn: 'American multinational technology company best known for Windows, Office, Azure cloud services and Microsoft 365, founded by Bill Gates and Paul Allen.', descEs: 'Empresa tecnológica multinacional estadounidense conocida por Windows, Office, los servicios cloud de Azure y Microsoft 365, fundada por Bill Gates y Paul Allen.' },
+    prudential: { industry: 'Life insurance', country: 'Argentina', founded: 1999, employees: '~400', revenue: '$120M (2024)', extra: 'Acquired by Grupo ST in May 2024 and rebranded as Life Group Seguros', descEn: 'Argentine life insurance subsidiary of Prudential Financial until May 2024, when Grupo ST acquired the operation and merged it into Life Seguros.', descEs: 'Subsidiaria argentina de Prudential Financial hasta mayo 2024, cuando Grupo ST adquirió la operación y la fusionó con Life Seguros.' },
+    mercadolibre: { industry: 'E-commerce & fintech', country: 'Argentina', founded: 1999, employees: '84,200', revenue: '$21B (2024)', extra: 'Listed on NASDAQ:MELI, the largest e-commerce platform in Latin America', descEn: 'Argentine-founded e-commerce and fintech giant operating across 18 Latin American countries, with marketplace, payments, logistics and credit lines.', descEs: 'Gigante argentino de e-commerce y fintech con operaciones en 18 países latinoamericanos, con marketplace, pagos, logística y crédito.' },
+    sullair: { industry: 'Industrial compressors', country: 'USA', founded: 1965, employees: '~450', revenue: '$257M (2025)', extra: 'Acquired by Hitachi in July 2017, now part of Hitachi Global Air Power', descEn: 'US industrial air-compressor manufacturer headquartered in Indiana, part of Hitachi Global Air Power since 2017.', descEs: 'Fabricante estadounidense de compresores industriales de aire con sede en Indiana, parte de Hitachi Global Air Power desde 2017.' },
+    agea_clarin: { industry: 'Media & publishing', country: 'Argentina', founded: 1945, employees: '~1,000', revenue: 'n/a', extra: 'Publisher arm of Grupo Clarín, the largest media conglomerate in Argentina', descEn: 'Argentine publishing company owned by Grupo Clarín, behind Clarín, Olé, La Razón and 35+ other print and digital brands.', descEs: 'Editorial argentina del Grupo Clarín, detrás de Clarín, Olé, La Razón y más de 35 marcas impresas y digitales.' },
+    swissmedical: { industry: 'Private healthcare & insurance', country: 'Argentina', founded: 1989, employees: '~16,500', revenue: '$1.6B (2025)', extra: 'Leading private health and life-insurance group in Argentina', descEn: 'Argentine private healthcare group operating prepaid medical plans, hospitals, clinics and life insurance, founded in Buenos Aires in 1989.', descEs: 'Grupo argentino de salud privada que opera prepagas, hospitales, clínicas y seguros de vida, fundado en Buenos Aires en 1989.' },
+    arcor: { industry: 'Food & confectionery', country: 'Argentina', founded: 1951, employees: '~20,000', revenue: '$5B (2024)', extra: 'World\'s top hard-candy producer and 10th largest confectionery maker overall', descEn: 'Argentine multinational food company specialized in confectionery, cookies, chocolates and packaged foods, with operations across five continents.', descEs: 'Multinacional argentina de alimentos especializada en confitería, galletas, chocolates y alimentos empaquetados, con operaciones en cinco continentes.' },
+    bancogeneral: { industry: 'Retail banking', country: 'Panama', founded: 1955, employees: '~4,600', revenue: '$1.8B', extra: 'Largest bank in Panama by total assets ($19.4B)', descEn: 'Panama\'s largest commercial bank by assets, providing retail, corporate and investment banking through 72 branches and 625 ATMs.', descEs: 'Mayor banco comercial de Panamá por activos, ofreciendo banca minorista, corporativa y de inversión a través de 72 sucursales y 625 cajeros.' },
+    wawanesa: { industry: 'Mutual insurance', country: 'Canada', founded: 1896, employees: '~5,500', revenue: 'CAD$4B', extra: 'One of Canada\'s largest mutual insurers, headquartered in Winnipeg with $11.5B in assets', descEn: 'Canadian mutual insurance company founded in 1896, providing property, auto and life insurance across Canada and parts of the United States.', descEs: 'Aseguradora mutual canadiense fundada en 1896, ofreciendo seguros de propiedad, automotor y vida en Canadá y partes de Estados Unidos.' },
+    hipotecario: { industry: 'Banking & mortgages', country: 'Argentina', founded: 1886, employees: '~2,600', revenue: '$456M', extra: 'Founded by President Julio Roca to provide mortgage credit; today a full-service retail bank', descEn: 'Argentine bank originally created in 1886 as a national mortgage lender, today operating as a full-service retail and corporate bank.', descEs: 'Banco argentino creado en 1886 como prestamista hipotecario nacional, hoy un banco comercial y corporativo de servicios completos.' },
+    supervielle: { industry: 'Banking & financial services', country: 'Argentina', founded: 1887, employees: '~3,100', revenue: '$750M (2025)', extra: 'Listed on NYSE:SUPV through parent Grupo Supervielle', descEn: 'Argentine universal bank headquartered in Rosario, offering retail, SME and corporate banking through Grupo Supervielle.', descEs: 'Banco universal argentino con sede en Rosario, que ofrece banca minorista, PyME y corporativa a través de Grupo Supervielle.' },
+    patagonia: { industry: 'Retail banking', country: 'Argentina', founded: 1976, employees: '~2,800', revenue: 'n/a', extra: 'Majority-owned by Brazil\'s Banco do Brasil since 2010', descEn: 'Argentine commercial bank with around 200 service points nationwide, majority-owned by Banco do Brasil since 2010.', descEs: 'Banco comercial argentino con cerca de 200 puntos de atención en el país, mayoritariamente propiedad de Banco do Brasil desde 2010.' },
+    techint: { industry: 'Industrial conglomerate', country: 'Argentina / Italy', founded: 1945, employees: '~60,000', revenue: '~$30B', extra: 'Owner of Tenaris (NYSE:TS) and Ternium (NYSE:TX); second-largest privately held company in LATAM', descEn: 'Italo-Argentine industrial conglomerate active in steel (Ternium), seamless tubes (Tenaris), engineering, oil & gas, plant-making and healthcare.', descEs: 'Conglomerado industrial ítalo-argentino activo en acero (Ternium), tubos sin costura (Tenaris), ingeniería, petróleo y gas, plantas y salud.' },
+    afip: { industry: 'Public sector / tax authority', country: 'Argentina', founded: 1997, employees: '~22,000', revenue: 'n/a', extra: 'Dissolved in October 2024 and replaced by ARCA (Agencia de Recaudación y Control Aduanero)', descEn: 'Former Argentine federal tax and customs authority, dissolved in October 2024 and replaced by the slimmer ARCA agency.', descEs: 'Antigua autoridad federal argentina de impuestos y aduanas, disuelta en octubre 2024 y reemplazada por la nueva agencia ARCA.' }
+};
+
 const MBA_PARTNERS = [
-    { name: 'Aitaca', domain: 'aitaca.io', ...MBA_PAIR('aitaca') },
-    { name: 'Microsoft', domain: 'microsoft.com', ...MBA_PAIR('microsoft') }
+    { name: 'Aitaca', domain: 'aitaca.io', ...MBA_PAIR('aitaca'), info: INFO.aitaca },
+    { name: 'Microsoft', domain: 'microsoft.com', ...MBA_PAIR('microsoft'), info: INFO.microsoft }
 ];
 
 const MSTR_CLIENTS = [
-    { name: 'Prudential', domain: 'prudential.com.ar', ...CUST_PAIR('prudential') },
-    { name: 'Mercado Libre', domain: 'mercadolibre.com', ...CUST_PAIR('mercadolibre') },
-    { name: 'Sullair', domain: 'sullair.com', ...CUST_PAIR('sullair') },
-    { name: 'AGEA (Clarín)', domain: 'clarin.com', ...CUST_PAIR('clarin') },
-    { name: 'Swiss Medical', domain: 'swissmedical.com.ar', ...CUST_PAIR('swissmedical') },
-    { name: 'Arcor', domain: 'arcor.com', ...CUST_PAIR('arcor') },
-    { name: 'Banco General de Panamá', domain: 'bgeneral.com', ...CUST_PAIR('bancogeneral') },
-    { name: 'Wawanesa Insurance', domain: 'wawanesa.com', ...CUST_PAIR('wawanessa') },
-    { name: 'Banco Hipotecario', domain: 'hipotecario.com.ar', ...CUST_PAIR('hipotecario') },
-    { name: 'Banco Supervielle', domain: 'supervielle.com.ar', ...CUST_PAIR('supervielle') },
-    { name: 'Banco Patagonia', domain: 'bancopatagonia.com.ar', ...CUST_PAIR('patagonia') },
-    { name: 'Grupo Techint', domain: 'techint.com', ...CUST_PAIR('techint') },
-    { name: 'AFIP', domain: 'afip.gob.ar', ...CUST_PAIR('afip') }
+    { name: 'Prudential', domain: 'prudential.com.ar', ...CUST_PAIR('prudential'), info: INFO.prudential },
+    { name: 'Mercado Libre', domain: 'mercadolibre.com', ...CUST_PAIR('mercadolibre'), info: INFO.mercadolibre },
+    { name: 'Sullair', domain: 'sullair.com', ...CUST_PAIR('sullair'), info: INFO.sullair },
+    { name: 'AGEA (Clarín)', domain: 'clarin.com', ...CUST_PAIR('clarin'), info: INFO.agea_clarin },
+    { name: 'Swiss Medical', domain: 'swissmedical.com.ar', ...CUST_PAIR('swissmedical'), info: INFO.swissmedical },
+    { name: 'Arcor', domain: 'arcor.com', ...CUST_PAIR('arcor'), info: INFO.arcor },
+    { name: 'Banco General de Panamá', domain: 'bgeneral.com', ...CUST_PAIR('bancogeneral'), info: INFO.bancogeneral },
+    { name: 'Wawanesa Insurance', domain: 'wawanesa.com', ...CUST_PAIR('wawanessa'), info: INFO.wawanesa },
+    { name: 'Banco Hipotecario', domain: 'hipotecario.com.ar', ...CUST_PAIR('hipotecario'), info: INFO.hipotecario },
+    { name: 'Banco Supervielle', domain: 'supervielle.com.ar', ...CUST_PAIR('supervielle'), info: INFO.supervielle },
+    { name: 'Banco Patagonia', domain: 'bancopatagonia.com.ar', ...CUST_PAIR('patagonia'), info: INFO.patagonia },
+    { name: 'Grupo Techint', domain: 'techint.com', ...CUST_PAIR('techint'), info: INFO.techint },
+    { name: 'AFIP', domain: 'afip.gob.ar', ...CUST_PAIR('afip'), info: INFO.afip }
 ];
 
 const APPS = [
@@ -95,8 +121,8 @@ const LOGOS_BAND = [
     { name: 'MicroStrategy', domain: 'microstrategy.com', logo: EXP_LOGO('microstrategy_logo.png') },
     { name: 'KS Advisory', domain: null, logo: EXP_LOGO('ksadvisory_logo.png') },
     { name: 'ITBA', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png') },
-    { name: 'Mercado Libre', domain: 'mercadolibre.com' },
-    { name: 'Techint', domain: 'techint.com' }
+    { name: 'Mercado Libre', domain: 'mercadolibre.com', ...CUST_PAIR('mercadolibre') },
+    { name: 'Techint', domain: 'techint.com', ...CUST_PAIR('techint') }
 ];
 
 export const portfolioEN = {
@@ -164,6 +190,7 @@ export const portfolioEN = {
                 org: 'KS Advisory',
                 domain: null,
                 logo: EXP_LOGO('ksadvisory_logo.png'),
+                info: INFO.ks_advisory,
                 dates: 'Apr 2026 – Present · Madrid',
                 stat: '5+',
                 statLabel: 'Live mandates',
@@ -178,6 +205,7 @@ export const portfolioEN = {
                 org: 'IE Business School',
                 domain: 'ie.edu',
                 logo: EXP_LOGO('iebusinessschool_logo.png'),
+                info: INFO.ie_business_school,
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Class of 2026',
@@ -194,6 +222,7 @@ export const portfolioEN = {
                 org: 'Life Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
+                info: INFO.life_seguros,
                 dates: 'Aug 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
@@ -208,6 +237,7 @@ export const portfolioEN = {
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
+                info: INFO.prudential_seguros,
                 dates: 'Apr 2022 – Jul 2024 · Buenos Aires',
                 stat: 'IT + Analytics',
                 statLabel: 'Cross-functional leadership',
@@ -222,6 +252,7 @@ export const portfolioEN = {
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
+                info: INFO.microstrategy,
                 dates: 'Aug 2017 – Mar 2022 · LATAM',
                 stat: '13',
                 statLabel: 'Enterprise clients',
@@ -238,6 +269,7 @@ export const portfolioEN = {
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),
+                info: INFO.itba,
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Graduated',
@@ -397,6 +429,7 @@ export const portfolioES = {
                 org: 'KS Advisory',
                 domain: null,
                 logo: EXP_LOGO('ksadvisory_logo.png'),
+                info: INFO.ks_advisory,
                 dates: 'Abr 2026 – Presente · Madrid',
                 stat: '5+',
                 statLabel: 'Mandatos vivos',
@@ -411,6 +444,7 @@ export const portfolioES = {
                 org: 'IE Business School',
                 domain: 'ie.edu',
                 logo: EXP_LOGO('iebusinessschool_logo.png'),
+                info: INFO.ie_business_school,
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
                 stat: 'IMBA',
                 statLabel: 'Promoción 2026',
@@ -427,6 +461,7 @@ export const portfolioES = {
                 org: 'Life Seguros',
                 domain: 'lifeseguros.com.ar',
                 logo: EXP_LOGO('lifeseguros_logo.png'),
+                info: INFO.life_seguros,
                 dates: 'Ago 2024 – Jul 2025 · Buenos Aires',
                 stat: '-20%',
                 statLabel: 'Time-to-market',
@@ -441,6 +476,7 @@ export const portfolioES = {
                 org: 'Prudential Seguros',
                 domain: 'prudential.com.ar',
                 logo: EXP_LOGO('prudential_logo.png'),
+                info: INFO.prudential_seguros,
                 dates: 'Abr 2022 – Jul 2024 · Buenos Aires',
                 stat: 'IT + Analytics',
                 statLabel: 'Liderazgo cross-funcional',
@@ -455,6 +491,7 @@ export const portfolioES = {
                 org: 'MicroStrategy Inc.',
                 domain: 'microstrategy.com',
                 logo: EXP_LOGO('microstrategy_logo.png'),
+                info: INFO.microstrategy,
                 dates: 'Ago 2017 – Mar 2022 · LATAM',
                 stat: '13',
                 statLabel: 'Clientes enterprise',
@@ -471,6 +508,7 @@ export const portfolioES = {
                 org: 'ITBA — Instituto Tecnológico de Buenos Aires',
                 domain: 'itba.edu.ar',
                 logo: EXP_LOGO('itba_logo.png'),
+                info: INFO.itba,
                 dates: 'Jul 2013 – Jul 2017 · Buenos Aires',
                 stat: '2017',
                 statLabel: 'Egresado',

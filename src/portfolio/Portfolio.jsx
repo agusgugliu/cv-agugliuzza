@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, ExternalLink } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
 import './portfolio.css';
@@ -63,9 +63,48 @@ const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
     );
 };
 
+/* Compact factsheet rendered inline below a case body, or below the
+   clients grid when a client chip is expanded. */
+const InfoBlock = ({ info, lang, variant = 'inline' }) => {
+    if (!info) return null;
+    const desc = lang === 'es' ? info.descEs : info.descEn;
+    const tEmployees = lang === 'es' ? 'empleados' : 'employees';
+    const tFounded = lang === 'es' ? 'fundada' : 'founded';
+    const facts = [];
+    if (info.industry) facts.push(info.industry);
+    if (info.country) facts.push(info.country);
+    if (info.founded) facts.push(`${tFounded} ${info.founded}`);
+    if (info.employees && info.employees !== 'n/a') facts.push(`${info.employees} ${tEmployees}`);
+    if (info.revenue && info.revenue !== 'n/a') facts.push(info.revenue);
+    return (
+        <div className={`pm-info pm-info--${variant}`}>
+            {facts.length > 0 && (
+                <div className="pm-info-facts">
+                    {facts.map((f, i) => (
+                        <React.Fragment key={i}>
+                            {i > 0 && <span className="pm-info-dot">·</span>}
+                            <span>{f}</span>
+                        </React.Fragment>
+                    ))}
+                </div>
+            )}
+            <p className="pm-info-desc">{desc}</p>
+            {info.extra && <p className="pm-info-extra">{info.extra}</p>}
+        </div>
+    );
+};
+
 const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
+    const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
+    const toggleClient = (caseIdx, clientIdx) => {
+        setOpenClient((o) =>
+            o.caseIdx === caseIdx && o.clientIdx === clientIdx
+                ? { caseIdx: null, clientIdx: null }
+                : { caseIdx, clientIdx }
+        );
+    };
 
     useEffect(() => {
         document.documentElement.classList.remove('light');
@@ -256,6 +295,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                             <div className="pm-case-body">
                                 <h3><Editorial text={c.heading} /></h3>
                                 <p>{c.body}</p>
+                                <InfoBlock info={c.info} lang={lang} variant="inline" />
                                 <div className="pm-case-tags">
                                     {c.tags.map((t, j) => (
                                         <span key={j} className="pm-case-tag">{t}</span>
@@ -265,13 +305,38 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                     <div className="pm-clients">
                                         <div className="pm-clients-label">{c.clientsLabel}</div>
                                         <div className="pm-clients-grid">
-                                            {c.clients.map((cl, k) => (
-                                                <div key={k} className="pm-client">
-                                                    <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" />
-                                                    <span className="pm-client-name">{cl.name}</span>
-                                                </div>
-                                            ))}
+                                            {c.clients.map((cl, k) => {
+                                                const isOpen = openClient.caseIdx === i && openClient.clientIdx === k;
+                                                return (
+                                                    <button
+                                                        key={k}
+                                                        type="button"
+                                                        className={`pm-client ${isOpen ? 'is-open' : ''}`}
+                                                        onClick={() => toggleClient(i, k)}
+                                                        aria-expanded={isOpen}
+                                                    >
+                                                        <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" />
+                                                        <span className="pm-client-name">{cl.name}</span>
+                                                        <ChevronDown size={13} className="pm-client-chev" />
+                                                    </button>
+                                                );
+                                            })}
                                         </div>
+                                        {openClient.caseIdx === i && openClient.clientIdx !== null && c.clients[openClient.clientIdx] && (
+                                            <div className="pm-client-detail">
+                                                <div className="pm-client-detail-head">
+                                                    <Logo
+                                                        src={c.clients[openClient.clientIdx].logo}
+                                                        srcDark={c.clients[openClient.clientIdx].logoDark}
+                                                        domain={c.clients[openClient.clientIdx].domain}
+                                                        name={c.clients[openClient.clientIdx].name}
+                                                        size="md"
+                                                    />
+                                                    <div className="pm-client-detail-name">{c.clients[openClient.clientIdx].name}</div>
+                                                </div>
+                                                <InfoBlock info={c.clients[openClient.clientIdx].info} lang={lang} variant="detail" />
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -319,7 +384,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.logos.eyebrow}</div>
                     <div className="pm-logos-grid">
                         {data.logos.items.map((l, i) => (
-                            <Logo key={i} src={l.logo} domain={l.domain} name={l.name} size="lg" />
+                            <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" />
                         ))}
                     </div>
                 </section>

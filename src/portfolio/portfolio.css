@@ -690,6 +690,10 @@
     border-radius: 8px;
     background: #fff;
     transition: border-color 0.18s ease, transform 0.18s ease;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
 }
 
 .pm-client:hover {
@@ -697,10 +701,94 @@
     transform: translateY(-1px);
 }
 
+.pm-client.is-open {
+    border-color: var(--blue);
+    background: var(--paper);
+}
+
 .pm-client-name {
     font-size: 0.82rem;
     color: var(--ink);
     line-height: 1.2;
+    flex: 1;
+}
+
+.pm-client-chev {
+    color: var(--slate-2);
+    opacity: 0.6;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.pm-client:hover .pm-client-chev { opacity: 1; }
+.pm-client.is-open .pm-client-chev { transform: rotate(180deg); color: var(--blue); opacity: 1; }
+
+.pm-client-detail {
+    margin-top: 18px;
+    padding: 20px 22px;
+    background: #fff;
+    border: 1px solid var(--blue);
+    border-radius: 12px;
+}
+
+.pm-client-detail-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.pm-client-detail-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--ink);
+    line-height: 1;
+}
+
+/* ---------- Inline / detail info block ---------- */
+.pm-info {
+    margin: 18px 0 6px;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--hairline);
+}
+
+.pm-info--detail {
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+}
+
+.pm-info-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--slate);
+    margin-bottom: 10px;
+}
+
+.pm-info-dot {
+    color: var(--hairline-strong);
+}
+
+.pm-info-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--slate);
+    margin: 0 0 6px;
+}
+
+.pm-info-extra {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--slate-2);
+    font-style: italic;
+    margin: 0;
 }
 
 /* ---------- Apps section ---------- */
