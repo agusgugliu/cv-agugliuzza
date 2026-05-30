@@ -382,11 +382,16 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                 {/* Logos */}
                 <section className="pm-section pm-logos">
                     <div className="pm-eyebrow">{data.logos.eyebrow}</div>
-                    <div className="pm-logos-grid">
-                        {data.logos.items.map((l, i) => (
-                            <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" />
-                        ))}
-                    </div>
+                    {data.logos.groups.map((g, gi) => (
+                        <div key={gi} className="pm-logos-group">
+                            <div className="pm-logos-group-label">{g.label}</div>
+                            <div className="pm-logos-grid">
+                                {g.items.map((l, i) => (
+                                    <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" />
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </section>
 
                 {/* Principles */}

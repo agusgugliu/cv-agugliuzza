@@ -525,7 +525,23 @@
     flex-wrap: wrap;
     gap: 28px 44px;
     align-items: center;
+    margin-top: 18px;
+}
+
+.pm-logos-group {
+    margin-top: 36px;
+}
+
+.pm-logos-group:first-of-type {
     margin-top: 28px;
+}
+
+.pm-logos-group-label {
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-2);
 }
 
 /* ---------- Track record: legend + vertical rail + dates on the rail ---------- */
