@@ -296,60 +296,66 @@ export const portfolioEN = {
         ]
     },
     principles: {
-        eyebrow: 'How I think about delivery',
+        eyebrow: 'How I run a project',
         heading: 'A few {beliefs} that shape how I run a project.',
         items: [
             {
                 num: '01',
                 title: 'Delivery beats deck.',
-                body: 'A working v1 in production teaches you more than three months of polished planning. Move fast, then formalize the parts that proved themselves.'
+                body: 'A working v1 teaches you more than three months of planning. Ship, then formalize what works.'
             },
             {
                 num: '02',
                 title: 'Make the number argue first.',
-                body: 'Every recommendation starts with a metric. If the number does not make the case, no amount of narrative will.'
+                body: 'Every recommendation starts with a metric. If the number doesn\'t make the case, no narrative will.'
             },
             {
                 num: '03',
                 title: 'AI is a copilot, not a deliverable.',
-                body: 'I use AI daily to compress analysis, draft executive comms, and prototype automation — but a model never ships work without a human accountable for it.'
+                body: 'I use it daily — drafting, analyzing, prototyping. A model never ships work without a human on the hook.'
             },
             {
                 num: '04',
                 title: 'Cadence over heroics.',
-                body: 'Most projects fail in the in-between weeks, not at the milestones. The rhythm — weekly checkpoints, owners on every line — is what compounds.'
+                body: 'Projects fail in the in-between weeks. Weekly checkpoints, owners on every line — that\'s what compounds.'
             }
         ]
     },
     ai: {
-        eyebrow: 'How I work with AI',
-        heading: 'AI as a modern {operating layer}, grounded in business judgment.',
-        lead: 'I use AI every day to accelerate analysis, structure reporting, draft executive narrative, and explore automation. It changes the speed and the surface area — not the judgment.',
-        flow: ['01 Information', '02 Analysis', '03 Executive narrative', '04 Decision support'],
+        eyebrow: 'End-to-end AI projects',
+        heading: 'How I take an AI idea from {whiteboard to production}.',
+        lead: 'Five steps. Each one earns the next.',
+        flow: ['01 Discovery', '02 Data', '03 Build', '04 Adoption', '05 Iterate'],
         steps: [
             {
                 num: 'Step 01',
-                title: 'Information',
-                body: 'Turn messy exports, threads, and operational docs into structured context the workflow can act on.',
-                tools: 'Claude · ChatGPT · n8n'
+                title: 'Discovery & framing',
+                body: 'Talk to stakeholders, scope the problem honestly. Decide what AI solves and what doesn\'t.',
+                tools: 'Notion · Miro · 1:1 · Figma / Canva'
             },
             {
                 num: 'Step 02',
-                title: 'Analysis',
-                body: 'Run the math, the model, the comparison. Stress-test the assumptions and surface the edge cases.',
-                tools: 'Python · SQL · Tableau'
+                title: 'Data audit & prep',
+                body: 'Map sources, fix quality, set up the data layer the AI will sit on. No model survives bad data.',
+                tools: 'Databases · Python · dbt'
             },
             {
                 num: 'Step 03',
-                title: 'Executive narrative',
-                body: 'Compress findings into a one-pager or a deck section. Make the recommendation land in under 60 seconds.',
-                tools: 'Claude · DM Sans · Markdown'
+                title: 'POC → production',
+                body: 'Prompt design, model selection, pipelines, evals, monitoring. Ship the smallest useful thing, then harden.',
+                tools: 'Claude · OpenAI · Gemini · n8n'
             },
             {
                 num: 'Step 04',
-                title: 'Decision support',
-                body: 'Stand by the recommendation in the room. The model drafts; the operator decides and owns the outcome.',
-                tools: 'Notion · Obsidian · Loom'
+                title: 'Adoption & change',
+                body: 'Train users, embed in the workflow, document the playbook. AI that nobody runs is theatre.',
+                tools: 'Notion · Loom · Sessions'
+            },
+            {
+                num: 'Step 05',
+                title: 'Iterate & evolve',
+                body: 'Measure usage, capture feedback, retrain, retire what doesn\'t pull weight.',
+                tools: 'Feedback loops'
             }
         ]
     },
@@ -538,13 +544,13 @@ export const portfolioES = {
         ]
     },
     principles: {
-        eyebrow: 'Cómo pienso el delivery',
+        eyebrow: 'Cómo corro un proyecto',
         heading: 'Algunas {creencias} que moldean cómo corro un proyecto.',
         items: [
             {
                 num: '01',
                 title: 'Delivery le gana al deck.',
-                body: 'Una v1 funcionando en producción enseña más que tres meses de planning pulido. Avanzar rápido y formalizar después lo que se probó.'
+                body: 'Una v1 funcionando enseña más que tres meses de planning. Salir a producción, después formalizar lo que probó.'
             },
             {
                 num: '02',
@@ -554,44 +560,50 @@ export const portfolioES = {
             {
                 num: '03',
                 title: 'IA es copiloto, no entregable.',
-                body: 'Uso IA todos los días para comprimir análisis, redactar comms ejecutivas y prototipar automatización — pero un modelo nunca firma trabajo sin un humano que responda por él.'
+                body: 'La uso todos los días — drafting, análisis, prototipos. Un modelo nunca firma sin un humano que responda.'
             },
             {
                 num: '04',
                 title: 'Ritmo sobre heroísmo.',
-                body: 'La mayoría de los proyectos fallan en las semanas intermedias, no en los milestones. El ritmo —checkpoints semanales, owners por línea— es lo que compone.'
+                body: 'Los proyectos fallan en las semanas intermedias. Checkpoints semanales, owners por línea — eso es lo que compone.'
             }
         ]
     },
     ai: {
-        eyebrow: 'Cómo trabajo con IA',
-        heading: 'IA como {capa operativa moderna}, anclada en juicio de negocio.',
-        lead: 'Uso IA a diario para acelerar análisis, estructurar reporting, redactar narrativa ejecutiva y explorar automatización. Cambia la velocidad y la superficie — no el juicio.',
-        flow: ['01 Información', '02 Análisis', '03 Narrativa ejecutiva', '04 Soporte a decisiones'],
+        eyebrow: 'Proyectos E2E de IA',
+        heading: 'Cómo llevo una idea de IA del {whiteboard a producción}.',
+        lead: 'Cinco pasos. Cada uno se gana el siguiente.',
+        flow: ['01 Discovery', '02 Datos', '03 Build', '04 Adopción', '05 Iteración'],
         steps: [
             {
                 num: 'Paso 01',
-                title: 'Información',
-                body: 'Convertir exports desordenados, hilos de mail y docs operativos en contexto estructurado sobre el que se puede operar.',
-                tools: 'Claude · ChatGPT · n8n'
+                title: 'Discovery y framing',
+                body: 'Hablar con stakeholders, scopear el problema honestamente. Decidir qué resuelve la IA y qué no.',
+                tools: 'Notion · Miro · 1:1 · Figma / Canva'
             },
             {
                 num: 'Paso 02',
-                title: 'Análisis',
-                body: 'Correr la cuenta, el modelo, la comparación. Stress-testear supuestos y exponer edge cases.',
-                tools: 'Python · SQL · Tableau'
+                title: 'Auditoría y preparación de datos',
+                body: 'Mapear fuentes, limpiar calidad, armar la capa de datos sobre la que vive el modelo. Ningún modelo sobrevive a data mala.',
+                tools: 'Databases · Python · dbt'
             },
             {
                 num: 'Paso 03',
-                title: 'Narrativa ejecutiva',
-                body: 'Comprimir hallazgos en un one-pager o una sección de deck. Que la recomendación aterrice en menos de 60 segundos.',
-                tools: 'Claude · DM Sans · Markdown'
+                title: 'POC a producción',
+                body: 'Diseño de prompts, selección de modelos, pipelines, evals, monitoring. Sacar lo más chico útil, después endurecer.',
+                tools: 'Claude · OpenAI · Gemini · n8n'
             },
             {
                 num: 'Paso 04',
-                title: 'Soporte a decisiones',
-                body: 'Bancar la recomendación en la sala. El modelo redacta; el operador decide y se hace dueño del resultado.',
-                tools: 'Notion · Obsidian · Loom'
+                title: 'Adopción y cambio',
+                body: 'Entrenar usuarios, embeber en el flujo, documentar el playbook. IA que nadie usa es teatro.',
+                tools: 'Notion · Loom · Sesiones'
+            },
+            {
+                num: 'Paso 05',
+                title: 'Iteración y evolución',
+                body: 'Medir uso, capturar feedback, reentrenar, retirar lo que no aporta.',
+                tools: 'Feedback loops'
             }
         ]
     },
