@@ -362,11 +362,13 @@ export const portfolioEN = {
     contact: {
         eyebrow: 'Start a conversation',
         heading: 'For work, advisory, or a {coffee} in Madrid.',
-        lead: 'Open to project leadership, strategy consulting, and advisory roles across LATAM and Europe. Currently completing the IMBA at IE Business School and based in Madrid.',
+        lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Currently completing the IMBA at IE Business School and based in Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Write' },
             { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
+            { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Follow' },
+            { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Code' },
             { label: 'Schedule', value: 'Book a 30-min call', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
     },
@@ -610,11 +612,13 @@ export const portfolioES = {
     contact: {
         eyebrow: 'Hablemos',
         heading: 'Para trabajo, advisory o un {café} en Madrid.',
-        lead: 'Abierto a roles de project leadership, consultoría estratégica y advisory en LATAM y Europa. Actualmente cursando el IMBA en IE Business School, con base en Madrid.',
+        lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Actualmente cursando el IMBA en IE Business School, con base en Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Escribir' },
             { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
+            { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
+            { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Código' },
             { label: 'Agenda', value: 'Reservar 30 min', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
     },
