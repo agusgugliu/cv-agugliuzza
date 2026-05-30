@@ -63,6 +63,27 @@ const Logo = ({ src, srcDark, domain, name, size = 'md' }) => {
     );
 };
 
+/* App icon: tries Google's favicon service for the host, falls back
+   to a colored chip with the initial letter on error. */
+const AppIcon = ({ url, initial, color }) => {
+    const [errored, setErrored] = useState(false);
+    let host = '';
+    try { host = new URL(url).host; } catch { /* noop */ }
+    if (errored || !host) {
+        return <div className="pm-app-icon" style={{ background: color }}>{initial}</div>;
+    }
+    return (
+        <div className="pm-app-icon pm-app-icon--favicon">
+            <img
+                src={`https://www.google.com/s2/favicons?domain=${host}&sz=128`}
+                alt=""
+                loading="lazy"
+                onError={() => setErrored(true)}
+            />
+        </div>
+    );
+};
+
 /* Compact factsheet rendered inline below a case body, or below the
    clients grid when a client chip is expanded. */
 const InfoBlock = ({ info, lang, variant = 'inline' }) => {
@@ -363,9 +384,7 @@ const Portfolio = ({ lang, setLang, onSwitchToCV }) => {
                                 viewport={{ once: true, margin: '-80px' }}
                                 transition={{ duration: 0.45, delay: i * 0.05 }}
                             >
-                                <div className="pm-app-icon" style={{ background: a.color }}>
-                                    {a.initial}
-                                </div>
+                                <AppIcon url={a.url} initial={a.initial} color={a.color} />
                                 <div className="pm-app-body">
                                     <div className="pm-app-name">
                                         {a.name}
