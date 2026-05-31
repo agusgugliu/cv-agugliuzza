@@ -353,36 +353,37 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                             {c.clients.map((cl, k) => {
                                                 const isOpen = openClient.caseIdx === i && openClient.clientIdx === k;
                                                 return (
-                                                    <button
-                                                        key={k}
-                                                        type="button"
-                                                        className={`pm-client ${isOpen ? 'is-open' : ''}`}
-                                                        onClick={() => toggleClient(i, k)}
-                                                        aria-expanded={isOpen}
-                                                    >
-                                                        <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" theme={theme} />
-                                                        <span className="pm-client-name">{cl.name}</span>
-                                                        <ChevronDown size={13} className="pm-client-chev" />
-                                                    </button>
+                                                    <React.Fragment key={k}>
+                                                        <button
+                                                            type="button"
+                                                            className={`pm-client ${isOpen ? 'is-open' : ''}`}
+                                                            onClick={() => toggleClient(i, k)}
+                                                            aria-expanded={isOpen}
+                                                        >
+                                                            <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" theme={theme} />
+                                                            <span className="pm-client-name">{cl.name}</span>
+                                                            <ChevronDown size={13} className="pm-client-chev" />
+                                                        </button>
+                                                        {isOpen && (
+                                                            <div className="pm-client-detail">
+                                                                <div className="pm-client-detail-head">
+                                                                    <Logo
+                                                                        src={cl.logo}
+                                                                        srcDark={cl.logoDark}
+                                                                        domain={cl.domain}
+                                                                        name={cl.name}
+                                                                        size="md"
+                                                                        theme={theme}
+                                                                    />
+                                                                    <div className="pm-client-detail-name">{cl.name}</div>
+                                                                </div>
+                                                                <InfoBlock info={cl.info} lang={lang} variant="detail" />
+                                                            </div>
+                                                        )}
+                                                    </React.Fragment>
                                                 );
                                             })}
                                         </div>
-                                        {openClient.caseIdx === i && openClient.clientIdx !== null && c.clients[openClient.clientIdx] && (
-                                            <div className="pm-client-detail">
-                                                <div className="pm-client-detail-head">
-                                                    <Logo
-                                                        src={c.clients[openClient.clientIdx].logo}
-                                                        srcDark={c.clients[openClient.clientIdx].logoDark}
-                                                        domain={c.clients[openClient.clientIdx].domain}
-                                                        name={c.clients[openClient.clientIdx].name}
-                                                        size="md"
-                                                        theme={theme}
-                                                    />
-                                                    <div className="pm-client-detail-name">{c.clients[openClient.clientIdx].name}</div>
-                                                </div>
-                                                <InfoBlock info={c.clients[openClient.clientIdx].info} lang={lang} variant="detail" />
-                                            </div>
-                                        )}
                                     </div>
                                 )}
                             </div>
