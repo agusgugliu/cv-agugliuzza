@@ -115,17 +115,17 @@ const APPS = [
 const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
 
 const LOGOS_WORKED = [
-    { name: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png') },
-    { name: 'Life Seguros', domain: 'lifeseguros.com.ar', logo: EXP_LOGO('lifeseguros_logo.png') },
-    { name: 'Prudential', domain: 'prudential.com.ar', logo: EXP_LOGO('prudential_logo.png') },
-    { name: 'MicroStrategy', domain: 'microstrategy.com', logo: EXP_LOGO('microstrategy_logo.png') },
-    { name: 'KS Advisory', domain: null, logo: EXP_LOGO('ksadvisory_logo.png') },
-    { name: 'ITBA', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png') }
+    { name: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'), info: INFO.ie_business_school },
+    { name: 'Life Seguros', domain: 'lifeseguros.com.ar', logo: EXP_LOGO('lifeseguros_logo.png'), info: INFO.life_seguros },
+    { name: 'Prudential', domain: 'prudential.com.ar', logo: EXP_LOGO('prudential_logo.png'), info: INFO.prudential_seguros },
+    { name: 'MicroStrategy', domain: 'microstrategy.com', logo: EXP_LOGO('microstrategy_logo.png'), info: INFO.microstrategy },
+    { name: 'KS Advisory', domain: null, logo: EXP_LOGO('ksadvisory_logo.png'), info: INFO.ks_advisory },
+    { name: 'ITBA', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png'), info: INFO.itba }
 ];
 
 const LOGOS_PROJECTS = [
-    ...MSTR_CLIENTS.map(c => ({ name: c.name, domain: c.domain, logo: c.logo, logoDark: c.logoDark })),
-    ...MBA_PARTNERS.map(p => ({ name: p.name, domain: p.domain, logo: p.logo, logoDark: p.logoDark }))
+    ...MSTR_CLIENTS.map(c => ({ name: c.name, domain: c.domain, logo: c.logo, logoDark: c.logoDark, info: c.info })),
+    ...MBA_PARTNERS.map(p => ({ name: p.name, domain: p.domain, logo: p.logo, logoDark: p.logoDark, info: p.info }))
 ];
 
 export const portfolioEN = {

@@ -145,6 +145,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 : { caseIdx, clientIdx }
         );
     };
+    const [openBandLogo, setOpenBandLogo] = useState({ groupIdx: null, itemIdx: null });
+    const toggleBandLogo = (groupIdx, itemIdx) => {
+        setOpenBandLogo((o) =>
+            o.groupIdx === groupIdx && o.itemIdx === itemIdx
+                ? { groupIdx: null, itemIdx: null }
+                : { groupIdx, itemIdx }
+        );
+    };
 
     useEffect(() => {
         document.documentElement.classList.remove('light');
@@ -431,9 +439,38 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div key={gi} className="pm-logos-group">
                             <div className="pm-logos-group-label">{g.label}</div>
                             <div className="pm-logos-grid">
-                                {g.items.map((l, i) => (
-                                    <Logo key={i} src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" theme={theme} />
-                                ))}
+                                {g.items.map((l, i) => {
+                                    const isOpen = openBandLogo.groupIdx === gi && openBandLogo.itemIdx === i;
+                                    return (
+                                        <React.Fragment key={i}>
+                                            <button
+                                                type="button"
+                                                className={`pm-band-logo ${isOpen ? 'is-open' : ''}`}
+                                                onClick={() => toggleBandLogo(gi, i)}
+                                                aria-expanded={isOpen}
+                                                aria-label={l.name}
+                                            >
+                                                <Logo src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="lg" theme={theme} />
+                                            </button>
+                                            {isOpen && (
+                                                <div className="pm-band-detail">
+                                                    <div className="pm-band-detail-head">
+                                                        <Logo src={l.logo} srcDark={l.logoDark} domain={l.domain} name={l.name} size="md" theme={theme} />
+                                                        <div>
+                                                            <div className="pm-band-detail-name">{l.name}</div>
+                                                            {l.domain && (
+                                                                <a className="pm-band-detail-link" href={`https://${l.domain}`} target="_blank" rel="noreferrer">
+                                                                    {l.domain} <ExternalLink size={11} />
+                                                                </a>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <InfoBlock info={l.info} lang={lang} variant="detail" />
+                                                </div>
+                                            )}
+                                        </React.Fragment>
+                                    );
+                                })}
                             </div>
                         </div>
                     ))}
