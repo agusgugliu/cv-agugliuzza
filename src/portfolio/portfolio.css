@@ -1417,3 +1417,39 @@
         font-size: 0.7rem;
     }
 }
+
+/* ============================================================
+   Shared motion utilities (redesign 2026-06)
+   ============================================================ */
+
+/* Scroll reveal base — framer-motion drives the actual transition;
+   this is the no-JS / fallback resting state. */
+.pm-reveal {
+    will-change: transform, opacity;
+}
+
+/* Magnetic button target — JS sets --mx/--my on hover. */
+.pm-magnetic {
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 3D tilt card base — framer-motion sets rotateX/rotateY. */
+.pm-tilt {
+    transform-style: preserve-3d;
+    perspective: 900px;
+    will-change: transform;
+}
+
+/* Respect reduced-motion: neutralize all custom motion. */
+@media (prefers-reduced-motion: reduce) {
+    .pm-magnetic,
+    .pm-tilt {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .pm-reveal {
+        will-change: auto;
+    }
+}
