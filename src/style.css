@@ -56,6 +56,16 @@ body {
 @media (max-width: 1024px) {
     .app-wrapper {
         grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    /* On a single column the sticky sidebar overlaps the main content as it
+       scrolls. Make it a normal stacked block on smaller screens. */
+    .profile-section {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
     }
 }
 
