@@ -9,6 +9,7 @@ import HeroBackdrop from './HeroBackdrop';
 import Magnetic from './Magnetic';
 import Editorial from './Editorial';
 import ProjectsBento from './ProjectsBento';
+import FloatingWhatsApp from './FloatingWhatsApp';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
@@ -174,6 +175,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
     return (
         <div className="portfolio-mode">
+            <FloatingWhatsApp lang={lang} />
             <AnimatePresence>
                 {toast && (
                     <motion.div
@@ -557,6 +559,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <span className="action">{l.action} &rarr;</span>
                             </div>
                         ))}
+                    </div>
+                    <div className="pm-contact-qr">
+                        <img src="/assets/qr-portfolio.svg" alt="QR to agustin-gugliuzza.com" />
+                        <span className="pm-contact-qr-label">
+                            {lang === 'es' ? 'Escaneá para conectar' : 'Scan to connect'}
+                        </span>
                     </div>
                 </section>
 
