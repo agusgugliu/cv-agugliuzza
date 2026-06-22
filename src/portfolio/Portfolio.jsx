@@ -1,28 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon } from 'lucide-react';
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
+import HeroBackdrop from './HeroBackdrop';
+import Magnetic from './Magnetic';
+import Editorial from './Editorial';
+import ProjectsBento from './ProjectsBento';
+import FloatingWhatsApp from './FloatingWhatsApp';
+import CommandPalette from './CommandPalette';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
-
-/* Render text where {word} renders as italic Instrument Serif + blue */
-const Editorial = ({ text }) => {
-    const parts = text.split(/(\{[^}]+\})/g);
-    return (
-        <>
-            {parts.map((p, i) => {
-                if (p.startsWith('{') && p.endsWith('}')) {
-                    return <em key={i}>{p.slice(1, -1)}</em>;
-                }
-                return <span key={i}>{p}</span>;
-            })}
-        </>
-    );
-};
 
 /* Company logo: prefer local file (theme-aware via src/srcDark), fall
    back to Clearbit, then to a chip with the initial letter. */
@@ -137,6 +128,7 @@ const InfoBlock = ({ info, lang, variant = 'inline' }) => {
 const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
+    const [cmdOpen, setCmdOpen] = useState(false);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
     const toggleClient = (caseIdx, clientIdx) => {
         setOpenClient((o) =>
@@ -183,8 +175,26 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         confetti({ particleCount: 120, spread: 70, origin: { y: 0.85 } });
     };
 
+    const scrollToId = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const cmdActions = [
+        { id: 'cv', label: lang === 'es' ? 'Descargar CV' : 'Download CV', hint: 'PDF', run: downloadPDF },
+        { id: 'call', label: lang === 'es' ? 'Agendar llamada' : 'Book a call', hint: 'Reclaim', run: () => window.open(RECLAIM_URL, '_blank') },
+        { id: 'lang', label: lang === 'es' ? 'Cambiar idioma' : 'Switch language', hint: lang === 'es' ? 'EN' : 'ES', run: () => setLang(lang === 'en' ? 'es' : 'en') },
+        { id: 'theme', label: lang === 'es' ? 'Cambiar tema' : 'Toggle theme', hint: theme === 'dark' ? 'Light' : 'Dark', run: toggleTheme },
+        { id: 'projects', label: lang === 'es' ? 'Ir a Proyectos' : 'Go to Projects', run: () => scrollToId('projects') },
+        { id: 'ai', label: lang === 'es' ? 'Ir a IA' : 'Go to AI', run: () => scrollToId('ai') },
+        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
+        { id: 'contact', label: lang === 'es' ? 'Ir a Contacto' : 'Go to Contact', run: () => scrollToId('contact') }
+    ];
+
     return (
         <div className="portfolio-mode">
+          <MotionConfig reducedMotion="user">
+            <FloatingWhatsApp lang={lang} />
+            <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
             <AnimatePresence>
                 {toast && (
                     <motion.div
@@ -207,6 +217,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </a>
 
                     <div className="pm-nav-links">
+                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
+                            {data.nav.projects}
+                        </a>
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
                             {data.nav.work}
                         </a>
@@ -238,6 +251,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </button>
                         </div>
                         <button
+                            className="pm-nav-btn pm-cmdk-chip"
+                            onClick={() => setCmdOpen(true)}
+                            title={lang === 'es' ? 'Abrir paleta de comandos' : 'Open command palette'}
+                            aria-label="Command palette"
+                        >
+                            <span className="pm-cmdk-chip-key">&#8984;K</span>
+                        </button>
+                        <button
                             className="pm-nav-btn pm-nav-icon"
                             onClick={toggleTheme}
                             title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -258,29 +279,79 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             <div className="pm-shell" id="top">
                 {/* Hero */}
                 <section className="pm-section pm-hero">
+                    <HeroBackdrop theme={theme} />
                     <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        className="pm-hero-inner"
+                        initial="hidden"
+                        animate="show"
+                        variants={{
+                            hidden: {},
+                            show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
+                        }}
                     >
-                        <div className="pm-hero-meta">
+                        <motion.div
+                            className="pm-hero-meta"
+                            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+                        >
                             {data.hero.meta.map((m, i) => (
                                 <span key={i}>
                                     {i > 0 && <span className="dot"></span>}
                                     {m}
                                 </span>
                             ))}
-                        </div>
-                        <h1><Editorial text={data.hero.statement} /></h1>
-                        <div className="pm-hero-actions">
-                            <a className="pm-hero-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
+                        </motion.div>
+                        <motion.h1
+                            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+                        >
+                            <Editorial text={data.hero.statement} />
+                        </motion.h1>
+                        <motion.div
+                            className="pm-hero-actions"
+                            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+                        >
+                            <Magnetic className="pm-hero-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
                                 {data.hero.cta} <span className="arrow">&rarr;</span>
-                            </a>
-                            <a className="pm-hero-cta pm-hero-cta--ghost" href="#work" onClick={smoothScrollTo('work')}>
+                            </Magnetic>
+                            <Magnetic className="pm-hero-cta pm-hero-cta--ghost" href="#work" onClick={smoothScrollTo('work')}>
                                 {data.hero.ctaSecondary} <span className="arrow">&darr;</span>
-                            </a>
-                        </div>
+                            </Magnetic>
+                        </motion.div>
                     </motion.div>
+                </section>
+
+                {/* Selected Projects */}
+                <ProjectsBento data={data.projects} />
+
+                {/* AI end-to-end (elevated) */}
+                <section className="pm-section pm-ai" id="ai">
+                    <div className="pm-eyebrow">{data.ai.eyebrow}</div>
+                    <h2><Editorial text={data.ai.heading} /></h2>
+                    <p className="pm-ai-lead">{data.ai.lead}</p>
+                    <div className="pm-ai-flow">
+                        {data.ai.flow.map((f, i) => (
+                            <React.Fragment key={i}>
+                                <span>{f}</span>
+                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="pm-ai-stack">
+                        {data.ai.steps.map((s, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-ai-step"
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                            >
+                                <div className="pm-ai-step-num">{s.num}</div>
+                                <h5>{s.title}</h5>
+                                <p>{s.body}</p>
+                                <div className="pm-ai-tools">{s.tools}</div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Problems */}
@@ -498,31 +569,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </div>
                 </section>
 
-                {/* AI stack */}
-                <section className="pm-section pm-ai">
-                    <div className="pm-eyebrow">{data.ai.eyebrow}</div>
-                    <h2><Editorial text={data.ai.heading} /></h2>
-                    <p className="pm-ai-lead">{data.ai.lead}</p>
-                    <div className="pm-ai-flow">
-                        {data.ai.flow.map((f, i) => (
-                            <React.Fragment key={i}>
-                                <span>{f}</span>
-                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <div className="pm-ai-stack">
-                        {data.ai.steps.map((s, i) => (
-                            <div key={i} className="pm-ai-step">
-                                <div className="pm-ai-step-num">{s.num}</div>
-                                <h5>{s.title}</h5>
-                                <p>{s.body}</p>
-                                <div className="pm-ai-tools">{s.tools}</div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
                 {/* Contact */}
                 <section className="pm-section pm-contact" id="contact">
                     <div className="pm-eyebrow">{data.contact.eyebrow}</div>
@@ -540,6 +586,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <span className="action">{l.action} &rarr;</span>
                             </div>
                         ))}
+                    </div>
+                    <div className="pm-contact-qr">
+                        <img src="/assets/qr-portfolio.svg" alt="QR to agustin-gugliuzza.com" />
+                        <span className="pm-contact-qr-label">
+                            {lang === 'es' ? 'Escaneá para conectar' : 'Scan to connect'}
+                        </span>
                     </div>
                 </section>
 
@@ -574,6 +626,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </div>
                 </footer>
             </div>
+          </MotionConfig>
         </div>
     );
 };
