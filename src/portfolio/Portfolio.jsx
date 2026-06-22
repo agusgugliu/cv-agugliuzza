@@ -10,6 +10,7 @@ import Magnetic from './Magnetic';
 import Editorial from './Editorial';
 import ProjectsBento from './ProjectsBento';
 import FloatingWhatsApp from './FloatingWhatsApp';
+import CommandPalette from './CommandPalette';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
@@ -127,6 +128,7 @@ const InfoBlock = ({ info, lang, variant = 'inline' }) => {
 const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
+    const [cmdOpen, setCmdOpen] = useState(false);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
     const toggleClient = (caseIdx, clientIdx) => {
         setOpenClient((o) =>
@@ -173,9 +175,25 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         confetti({ particleCount: 120, spread: 70, origin: { y: 0.85 } });
     };
 
+    const scrollToId = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const cmdActions = [
+        { id: 'cv', label: lang === 'es' ? 'Descargar CV' : 'Download CV', hint: 'PDF', run: downloadPDF },
+        { id: 'call', label: lang === 'es' ? 'Agendar llamada' : 'Book a call', hint: 'Reclaim', run: () => window.open(RECLAIM_URL, '_blank') },
+        { id: 'lang', label: lang === 'es' ? 'Cambiar idioma' : 'Switch language', hint: lang === 'es' ? 'EN' : 'ES', run: () => setLang(lang === 'en' ? 'es' : 'en') },
+        { id: 'theme', label: lang === 'es' ? 'Cambiar tema' : 'Toggle theme', hint: theme === 'dark' ? 'Light' : 'Dark', run: toggleTheme },
+        { id: 'projects', label: lang === 'es' ? 'Ir a Proyectos' : 'Go to Projects', run: () => scrollToId('projects') },
+        { id: 'ai', label: lang === 'es' ? 'Ir a IA' : 'Go to AI', run: () => scrollToId('ai') },
+        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
+        { id: 'contact', label: lang === 'es' ? 'Ir a Contacto' : 'Go to Contact', run: () => scrollToId('contact') }
+    ];
+
     return (
         <div className="portfolio-mode">
             <FloatingWhatsApp lang={lang} />
+            <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
             <AnimatePresence>
                 {toast && (
                     <motion.div
@@ -231,6 +249,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 ES
                             </button>
                         </div>
+                        <button
+                            className="pm-nav-btn pm-cmdk-chip"
+                            onClick={() => setCmdOpen(true)}
+                            title={lang === 'es' ? 'Abrir paleta de comandos' : 'Open command palette'}
+                            aria-label="Command palette"
+                        >
+                            <span className="pm-cmdk-chip-key">&#8984;K</span>
+                        </button>
                         <button
                             className="pm-nav-btn pm-nav-icon"
                             onClick={toggleTheme}

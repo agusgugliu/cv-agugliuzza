@@ -1653,3 +1653,103 @@
         transition: none;
     }
 }
+
+/* ============================================================
+   Command palette (Cmd/Ctrl+K) (redesign 2026-06)
+   ============================================================ */
+.pm-cmdk-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pm-cmdk-chip-key {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+}
+
+.pm-cmdk-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 14vh;
+    background: rgba(11, 14, 20, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.pm-cmdk {
+    width: min(560px, 92vw);
+    background: var(--card-bg);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(11, 14, 20, 0.35);
+    overflow: hidden;
+}
+
+.pm-cmdk-input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.pm-cmdk-input::placeholder {
+    color: var(--slate-2);
+}
+
+.pm-cmdk-list {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.pm-cmdk-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 0.92rem;
+}
+
+.pm-cmdk-item.active {
+    background: var(--blue);
+    color: #fff;
+}
+
+.pm-cmdk-hint {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--slate-2);
+}
+
+.pm-cmdk-item.active .pm-cmdk-hint {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.pm-cmdk-empty {
+    padding: 14px;
+    color: var(--slate-2);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .pm-cmdk-chip {
+        display: none;
+    }
+}
