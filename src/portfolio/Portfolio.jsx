@@ -5,6 +5,8 @@ import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Mo
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
+import HeroBackdrop from './HeroBackdrop';
+import Magnetic from './Magnetic';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
@@ -258,28 +260,43 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             <div className="pm-shell" id="top">
                 {/* Hero */}
                 <section className="pm-section pm-hero">
+                    <HeroBackdrop theme={theme} />
                     <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        className="pm-hero-inner"
+                        initial="hidden"
+                        animate="show"
+                        variants={{
+                            hidden: {},
+                            show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
+                        }}
                     >
-                        <div className="pm-hero-meta">
+                        <motion.div
+                            className="pm-hero-meta"
+                            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+                        >
                             {data.hero.meta.map((m, i) => (
                                 <span key={i}>
                                     {i > 0 && <span className="dot"></span>}
                                     {m}
                                 </span>
                             ))}
-                        </div>
-                        <h1><Editorial text={data.hero.statement} /></h1>
-                        <div className="pm-hero-actions">
-                            <a className="pm-hero-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
+                        </motion.div>
+                        <motion.h1
+                            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+                        >
+                            <Editorial text={data.hero.statement} />
+                        </motion.h1>
+                        <motion.div
+                            className="pm-hero-actions"
+                            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+                        >
+                            <Magnetic className="pm-hero-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
                                 {data.hero.cta} <span className="arrow">&rarr;</span>
-                            </a>
-                            <a className="pm-hero-cta pm-hero-cta--ghost" href="#work" onClick={smoothScrollTo('work')}>
+                            </Magnetic>
+                            <Magnetic className="pm-hero-cta pm-hero-cta--ghost" href="#work" onClick={smoothScrollTo('work')}>
                                 {data.hero.ctaSecondary} <span className="arrow">&darr;</span>
-                            </a>
-                        </div>
+                            </Magnetic>
+                        </motion.div>
                     </motion.div>
                 </section>
 
