@@ -140,9 +140,52 @@ export const portfolioEN = {
     },
     hero: {
         meta: ['Madrid, Spain', 'PM · Strategy · AI Ops · Digital Transformation'],
-        statement: 'Project and strategy leadership for companies turning {operations} into {outcomes}.',
+        statement: 'I build with AI and redesign how work gets done, turning {operations} into {outcomes}.',
         cta: 'Book a call',
         ctaSecondary: 'See the work'
+    },
+    projects: {
+        eyebrow: 'Selected projects',
+        heading: 'Where I {build with AI} and redesign how work gets done.',
+        lead: 'Four projects where AI changed the process, not just the slide.',
+        items: [
+            {
+                title: 'Almazara Co-Pilot',
+                org: 'IE Tech Lab · Microsoft',
+                year: '2026',
+                outcome: 'An AI co-pilot for olive-oil mills that predicts oil grade at intake to cut downgrade losses.',
+                aiAngle: 'Computer vision and a grade model replace a manual, end-of-line quality call with a real-time, explainable prediction.',
+                tags: ['AI product', 'Computer vision', 'Azure', 'Process redesign'],
+                accent: '#1652F0'
+            },
+            {
+                title: 'KS Advisory AI Deal Platform',
+                org: 'KS Advisory',
+                year: '2026',
+                outcome: 'An AI agent system that runs screening, research and drafting across a USD 900M+ M&A pipeline.',
+                aiAngle: '38 specialized agents automate the research-to-memo workflow a deal team used to run by hand.',
+                tags: ['AI agents', 'M&A', 'Automation', 'Claude'],
+                accent: '#0A2EAA'
+            },
+            {
+                title: 'Aitaca M&A & Growth Strategy',
+                org: 'IE Final Project',
+                year: '2026',
+                outcome: 'M&A and market-entry strategy for Aitaca (AI computer-vision sizing) on a 2-3 year exit horizon.',
+                aiAngle: 'Field research and acquirer mapping turned into a board-ready exit narrative for an AI startup.',
+                tags: ['Strategy', 'M&A', 'Market entry', 'AI startup'],
+                accent: '#0B0E14'
+            },
+            {
+                title: 'Corporate Data Lake',
+                org: 'Life Seguros',
+                year: '2024-2025',
+                outcome: 'Architected the corporate Data Lake unifying every operational and analytical source into one layer.',
+                aiAngle: 'The single data foundation that makes company-wide analytics and AI possible. Cut time-to-market 20%.',
+                tags: ['Data Lake', 'Architecture', 'Analytics', 'Transformation'],
+                accent: '#5D85FF'
+            }
+        ]
     },
     problems: {
         eyebrow: 'What I help with',
@@ -283,9 +326,9 @@ export const portfolioEN = {
         ]
     },
     apps: {
-        eyebrow: 'Things I have built',
-        heading: 'Side {projects} and apps shipped in the open.',
-        lead: 'Small products I built to test ideas, learn a stack, or just scratch an itch. All live on Vercel.',
+        eyebrow: 'AI tools & automations I have shipped',
+        heading: 'Small {AI products} I build to take ideas to production.',
+        lead: 'Prototypes I ship to test an idea, automate a process, or prove an AI workflow end to end. All live on Vercel.',
         items: APPS.map(a => ({ ...a, desc: a.desc.en }))
     },
     logos: {
@@ -365,7 +408,7 @@ export const portfolioEN = {
         lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Currently completing the IMBA at IE Business School and based in Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Write' },
-            { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Message' },
+            { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Follow' },
             { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Code' },
@@ -397,9 +440,52 @@ export const portfolioES = {
     },
     hero: {
         meta: ['Madrid, España', 'PM · Estrategia · AI Ops · Transformación Digital'],
-        statement: 'Liderazgo de proyectos y estrategia para empresas que convierten {operación} en {resultados}.',
+        statement: 'Construyo con IA y rediseño cómo se hace el trabajo, convirtiendo {operación} en {resultados}.',
         cta: 'Agendar llamada',
         ctaSecondary: 'Ver el trabajo'
+    },
+    projects: {
+        eyebrow: 'Proyectos seleccionados',
+        heading: 'Donde {construyo con IA} y rediseño cómo se hace el trabajo.',
+        lead: 'Cuatro proyectos donde la IA cambió el proceso, no solo el slide.',
+        items: [
+            {
+                title: 'Almazara Co-Pilot',
+                org: 'IE Tech Lab · Microsoft',
+                year: '2026',
+                outcome: 'Un co-pilot de IA para almazaras que predice el grado del aceite en la recepción para reducir pérdidas por downgrade.',
+                aiAngle: 'Visión por computadora y un modelo de grado reemplazan un control de calidad manual y tardío por una predicción explicable en tiempo real.',
+                tags: ['Producto de IA', 'Visión por computadora', 'Azure', 'Rediseño de procesos'],
+                accent: '#1652F0'
+            },
+            {
+                title: 'KS Advisory AI Deal Platform',
+                org: 'KS Advisory',
+                year: '2026',
+                outcome: 'Un sistema de agentes de IA que corre screening, research y drafting sobre un pipeline de M&A de USD 900M+.',
+                aiAngle: '38 agentes especializados automatizan el flujo de research-a-memo que un equipo de deals hacía a mano.',
+                tags: ['Agentes de IA', 'M&A', 'Automatización', 'Claude'],
+                accent: '#0A2EAA'
+            },
+            {
+                title: 'Aitaca M&A & Growth Strategy',
+                org: 'Proyecto Final IE',
+                year: '2026',
+                outcome: 'Estrategia de M&A y entrada a mercado para Aitaca (sizing por visión de IA) en un horizonte de exit de 2-3 años.',
+                aiAngle: 'Field research y mapeo de adquirentes convertidos en una narrativa de exit lista para el board de una startup de IA.',
+                tags: ['Estrategia', 'M&A', 'Entrada a mercado', 'Startup de IA'],
+                accent: '#0B0E14'
+            },
+            {
+                title: 'Data Lake corporativo',
+                org: 'Life Seguros',
+                year: '2024-2025',
+                outcome: 'Arquitectura del Data Lake corporativo que unifica todas las fuentes operativas y analíticas en una sola capa.',
+                aiAngle: 'La base de datos única que habilita la analítica y la IA en toda la compañía. Reduje time-to-market 20%.',
+                tags: ['Data Lake', 'Arquitectura', 'Analítica', 'Transformación'],
+                accent: '#5D85FF'
+            }
+        ]
     },
     problems: {
         eyebrow: 'Cómo ayudo',
@@ -540,9 +626,9 @@ export const portfolioES = {
         ]
     },
     apps: {
-        eyebrow: 'Cosas que construí',
-        heading: 'Side {projects} y apps en abierto.',
-        lead: 'Productos chicos para probar ideas, aprender un stack o sacar una espina. Todos viven en Vercel.',
+        eyebrow: 'Herramientas de IA y automatizaciones que lancé',
+        heading: 'Pequeños {productos de IA} que construyo para llevar ideas a producción.',
+        lead: 'Prototipos que lanzo para testear una idea, automatizar un proceso o probar un flujo de IA de punta a punta. Todos viven en Vercel.',
         items: APPS.map(a => ({ ...a, desc: a.desc.es }))
     },
     logos: {
@@ -622,7 +708,7 @@ export const portfolioES = {
         lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Actualmente cursando el IMBA en IE Business School, con base en Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Escribir' },
-            { label: 'WhatsApp', value: '+54 9 11 6506 3175', href: 'https://wa.me/5491165063175', action: 'Mensaje' },
+            { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
             { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Código' },
