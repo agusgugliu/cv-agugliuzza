@@ -412,7 +412,6 @@ export const portfolioEN = {
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Follow' },
-            { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Code' },
             { label: 'Schedule', value: 'Book a 30-min call', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
     },
@@ -713,7 +712,6 @@ export const portfolioES = {
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
-            { label: 'GitHub', value: '/agusgugliu', href: 'https://github.com/agusgugliu', action: 'Código' },
             { label: 'Agenda', value: 'Reservar 30 min', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
     },

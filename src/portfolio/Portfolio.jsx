@@ -293,6 +293,38 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 {/* Selected Projects */}
                 <ProjectsBento data={data.projects} />
 
+                {/* AI end-to-end (elevated) */}
+                <section className="pm-section pm-ai" id="ai">
+                    <div className="pm-eyebrow">{data.ai.eyebrow}</div>
+                    <h2><Editorial text={data.ai.heading} /></h2>
+                    <p className="pm-ai-lead">{data.ai.lead}</p>
+                    <div className="pm-ai-flow">
+                        {data.ai.flow.map((f, i) => (
+                            <React.Fragment key={i}>
+                                <span>{f}</span>
+                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="pm-ai-stack">
+                        {data.ai.steps.map((s, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-ai-step"
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                            >
+                                <div className="pm-ai-step-num">{s.num}</div>
+                                <h5>{s.title}</h5>
+                                <p>{s.body}</p>
+                                <div className="pm-ai-tools">{s.tools}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* Problems */}
                 <section className="pm-section pm-problems" id="problems">
                     <div className="pm-eyebrow">{data.problems.eyebrow}</div>
@@ -504,31 +536,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <h4>{p.title}</h4>
                                 <p>{p.body}</p>
                             </motion.div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* AI stack */}
-                <section className="pm-section pm-ai">
-                    <div className="pm-eyebrow">{data.ai.eyebrow}</div>
-                    <h2><Editorial text={data.ai.heading} /></h2>
-                    <p className="pm-ai-lead">{data.ai.lead}</p>
-                    <div className="pm-ai-flow">
-                        {data.ai.flow.map((f, i) => (
-                            <React.Fragment key={i}>
-                                <span>{f}</span>
-                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <div className="pm-ai-stack">
-                        {data.ai.steps.map((s, i) => (
-                            <div key={i} className="pm-ai-step">
-                                <div className="pm-ai-step-num">{s.num}</div>
-                                <h5>{s.title}</h5>
-                                <p>{s.body}</p>
-                                <div className="pm-ai-tools">{s.tools}</div>
-                            </div>
                         ))}
                     </div>
                 </section>
