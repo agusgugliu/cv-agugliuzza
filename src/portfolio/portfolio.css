@@ -1469,3 +1469,127 @@
         will-change: auto;
     }
 }
+
+/* ============================================================
+   Selected Projects bento (redesign 2026-06)
+   ============================================================ */
+.pm-bento-head {
+    max-width: 720px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.pm-bento-lead {
+    color: var(--slate);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-top: 12px;
+}
+
+.pm-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.pm-bento-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 28px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pm-bento-card:hover {
+    border-color: var(--hairline-strong);
+    box-shadow: 0 18px 40px rgba(11, 14, 20, 0.10);
+}
+
+.pm-bento-card--0,
+.pm-bento-card--3 {
+    grid-column: span 2;
+}
+
+.pm-bento-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.pm-bento-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.pm-bento-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.pm-bento-org {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--slate-2);
+}
+
+.pm-bento-outcome {
+    font-size: 1.02rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.pm-bento-ai {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.pm-bento-ai-label {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    padding: 2px 6px;
+    height: fit-content;
+}
+
+.pm-bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pm-bento-tag {
+    font-size: 0.72rem;
+    color: var(--slate-2);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+
+@media (max-width: 760px) {
+    .pm-bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pm-bento-card--0,
+    .pm-bento-card--3 {
+        grid-column: span 1;
+    }
+}

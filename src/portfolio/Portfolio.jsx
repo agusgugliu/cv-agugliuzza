@@ -7,24 +7,11 @@ import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
 import HeroBackdrop from './HeroBackdrop';
 import Magnetic from './Magnetic';
+import Editorial from './Editorial';
+import ProjectsBento from './ProjectsBento';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
-
-/* Render text where {word} renders as italic Instrument Serif + blue */
-const Editorial = ({ text }) => {
-    const parts = text.split(/(\{[^}]+\})/g);
-    return (
-        <>
-            {parts.map((p, i) => {
-                if (p.startsWith('{') && p.endsWith('}')) {
-                    return <em key={i}>{p.slice(1, -1)}</em>;
-                }
-                return <span key={i}>{p}</span>;
-            })}
-        </>
-    );
-};
 
 /* Company logo: prefer local file (theme-aware via src/srcDark), fall
    back to Clearbit, then to a chip with the initial letter. */
@@ -209,6 +196,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </a>
 
                     <div className="pm-nav-links">
+                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
+                            {data.nav.projects}
+                        </a>
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
                             {data.nav.work}
                         </a>
@@ -299,6 +289,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </motion.div>
                     </motion.div>
                 </section>
+
+                {/* Selected Projects */}
+                <ProjectsBento data={data.projects} />
 
                 {/* Problems */}
                 <section className="pm-section pm-problems" id="problems">
