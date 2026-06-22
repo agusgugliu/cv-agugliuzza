@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar } from 'lucide-react';
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
@@ -269,6 +269,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <button className="pm-nav-btn pm-nav-icon" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
+                        <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
+                            <Calendar size={14} /> {data.hero.cta}
+                        </a>
                         <button className="pm-mode-pill" onClick={onSwitchToCV}>
                             {data.nav.cv}
                         </button>

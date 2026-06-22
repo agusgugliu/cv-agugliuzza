@@ -1753,3 +1753,41 @@
         display: none;
     }
 }
+
+/* Always-visible "Book a call" nav CTA (Reclaim) */
+.pm-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pm-nav-cta:hover {
+    background: var(--blue-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(22, 82, 240, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pm-nav-cta {
+        transition: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .pm-nav-cta span,
+    .pm-nav-cta {
+        font-size: 0.74rem;
+    }
+
+    .pm-nav-cta {
+        padding: 7px 11px;
+    }
+}
