@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import {
     Mail, Phone, Linkedin, MapPin,
     Briefcase, GraduationCap, Code,
@@ -63,10 +63,8 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
     };
 
     return (
+        <MotionConfig reducedMotion="user">
         <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
-            <div className="blob blob-1"></div>
-            <div className="blob blob-2"></div>
-
             <AnimatePresence>
                 {toast && (
                     <motion.div
@@ -93,6 +91,9 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                 <button className="nav-btn active" onClick={downloadPDF}>
                     <Download size={18} /> PDF
                 </button>
+                <a className="nav-cta" href={data.calendly} target="_blank" rel="noreferrer">
+                    <Calendar size={15} /> {lang === 'en' ? 'Book a call' : 'Agendar llamada'}
+                </a>
             </nav>
 
             <div className="app-wrapper">
@@ -102,9 +103,6 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="photo-frame">
-                            <img src="/assets/photo.PNG" alt={data.name} />
-                        </div>
                         <h1>{data.name}</h1>
                         <div className="headline">{data.headline}</div>
 
@@ -255,7 +253,7 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                         <Section title={data.titles.languages} icon={Globe} delay={0.55}>
                             <div className="skills-grid">
                                 {data.languages.map((l, i) => (
-                                    <span key={i} className="skill-tag" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10b981' }}>
+                                    <span key={i} className="skill-tag" style={{ background: 'rgba(93, 133, 255, 0.12)', color: 'var(--accent-secondary)', borderColor: 'rgba(93, 133, 255, 0.22)' }}>
                                         {l.name}: {l.level}
                                     </span>
                                 ))}
@@ -301,6 +299,7 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                 </main>
             </div>
         </div>
+        </MotionConfig>
     );
 };
 
