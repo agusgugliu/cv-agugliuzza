@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon } from 'lucide-react';
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
@@ -192,6 +192,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
     return (
         <div className="portfolio-mode">
+          <MotionConfig reducedMotion="user">
             <FloatingWhatsApp lang={lang} />
             <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
             <AnimatePresence>
@@ -625,6 +626,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </div>
                 </footer>
             </div>
+          </MotionConfig>
         </div>
     );
 };
