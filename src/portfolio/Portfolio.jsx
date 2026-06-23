@@ -117,6 +117,8 @@ const AppIcon = ({ name, initial }) => {
 const InfoBlock = ({ info, lang, variant = 'inline' }) => {
     if (!info) return null;
     const desc = lang === 'es' ? info.descEs : info.descEn;
+    const work = lang === 'es' ? info.workEs : info.workEn;
+    const tWork = lang === 'es' ? 'El trabajo' : 'The work';
     const tEmployees = lang === 'es' ? 'empleados' : 'employees';
     const tFounded = lang === 'es' ? 'fundada' : 'founded';
     const facts = [];
@@ -139,6 +141,12 @@ const InfoBlock = ({ info, lang, variant = 'inline' }) => {
             )}
             <p className="pm-info-desc">{desc}</p>
             {info.extra && <p className="pm-info-extra">{info.extra}</p>}
+            {work && (
+                <div className="pm-info-work">
+                    <span className="pm-info-work-label">{tWork}</span>
+                    <p className="pm-info-work-text">{work}</p>
+                </div>
+            )}
         </div>
     );
 };
