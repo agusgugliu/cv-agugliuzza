@@ -232,6 +232,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <a className="pm-brand" href="#top" onClick={smoothScrollTo('top')}>
                         <img className="pm-brand-avatar" src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
                         <span>Agust&iacute;n Gugliuzza<span className="pm-brand-dot">.</span></span>
+                        <span className="pm-brand-flags" aria-label="Argentina, Mexico, Italy" title="Argentina · México · Italia">🇦🇷🇲🇽🇮🇹</span>
                     </a>
 
                     <div className="pm-nav-links">
