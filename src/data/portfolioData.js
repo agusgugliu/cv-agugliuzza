@@ -215,8 +215,8 @@ const IE_TRANSCRIPT_ES = {
 
 // ITBA official transcript (0–10 Argentine scale). Source: certified analítico (5 pp).
 const ITBA_TRANSCRIPT_EN = {
-    gpa: '7.76 / 10',
-    statsLine: '41 graded courses · average 7.76 / 10',
+    gpa: '8.6 / 10',
+    statsLine: '41 graded courses · GPA 8.6 / 10 (ITBA weighted) · top 10% of class',
     terms: [
         {
             name: 'Year 1 · 2013–2014', courses: [
@@ -282,8 +282,8 @@ const ITBA_TRANSCRIPT_EN = {
 };
 
 const ITBA_TRANSCRIPT_ES = {
-    gpa: '7.76 / 10',
-    statsLine: '41 materias con nota · promedio 7.76 / 10',
+    gpa: '8.6 / 10',
+    statsLine: '41 materias con nota · promedio 8.6 / 10 (ponderado ITBA) · top 10% de la promoción',
     terms: [
         {
             name: 'Año 1 · 2013–2014', courses: [
