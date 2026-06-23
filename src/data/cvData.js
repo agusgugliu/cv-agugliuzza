@@ -34,17 +34,32 @@ export const dataEN = {
             ]
         },
         {
-            company: "Life Seguros (prev. Prudential Seguros)",
+            company: "Life Seguros",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
                     title: "IT Team Lead & Project Manager",
-                    dates: "Apr 2022 - Jul 2025",
+                    dates: "Aug 2024 - Jul 2025",
                     bullets: [
                         "Led a 15-person team (project managers, developers, and vendors) running a 10+ project transformation portfolio across 14 core, data, and finance systems serving ~3M clients.",
-                        "Cut time-to-market by 20% by redesigning the delivery model and tightening risk and milestone controls.",
-                        "Aligned priorities and trade-offs across nine business functions, working with 35 key users (finance, FP&A, operations, sales, legal, HR, marketing) and 230 end users.",
-                        "Owned a multi-vendor budget on milestone-based billing and produced the portfolio analyses senior leadership used to set investment priorities and manage risk."
+                        "Ran change management for the Prudential Seguros M&A, including the systems integration between both insurers.",
+                        "Architected the corporate Data Lake that unified every operational and analytical source into a single layer.",
+                        "Cut time-to-market by 20% by redesigning the delivery model and tightening risk and milestone controls."
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Prudential Seguros",
+            location: "Buenos Aires, Argentina",
+            roles: [
+                {
+                    title: "IT Team Leader & Project Manager",
+                    dates: "Apr 2022 - Jul 2024",
+                    bullets: [
+                        "Joined in-house, after first engaging as a MicroStrategy client, to lead the IT and analytics workstream for the insurance technology stack.",
+                        "Set up the Agile delivery cadence and coordinated delivery across IT, operations, and the business, with MicroStrategy as the analytics backbone.",
+                        "Aligned priorities across nine business functions, working with 35 key users (finance, FP&A, operations, sales, legal, HR, marketing) and 230 end users."
                     ]
                 }
             ]
@@ -73,6 +88,14 @@ export const dataEN = {
         {
             title: "Venture build, Almazara Co-Pilot (IE Tech Lab, Microsoft challenge)",
             desc: "Diagnosed where Spanish olive-oil mills lose value (grading, pricing, authenticity), built an issue tree prioritizing grade capture, and designed an AI co-pilot (computer vision + predictive grade model on Azure) worth a 7-figure gain per cooperative; pitched to Microsoft."
+        },
+        {
+            title: "KS Advisory AI Deal Platform",
+            desc: "Built an AI agent system (38 specialized agents) that runs deal screening, research, and drafting across a USD 900M+ cross-border M&A pipeline."
+        },
+        {
+            title: "Corporate Data Lake (Life Seguros)",
+            desc: "Architected the corporate Data Lake unifying every operational and analytical source into one layer, enabling company-wide analytics and cutting time-to-market 20%."
         }
     ],
     education: [
@@ -145,17 +168,32 @@ export const dataES = {
             ]
         },
         {
-            company: "Life Seguros (ex Prudential Seguros)",
+            company: "Life Seguros",
             location: "Buenos Aires, Argentina",
             roles: [
                 {
                     title: "Líder de Equipo IT y Project Manager",
-                    dates: "Abr 2022 - Jul 2025",
+                    dates: "Ago 2024 - Jul 2025",
                     bullets: [
                         "Lideré un equipo de 15 personas (project managers, desarrolladores y proveedores) gestionando un portfolio de transformación de más de 10 proyectos sobre 14 sistemas core, de datos y financieros, dando servicio a ~3M clientes.",
-                        "Reduje el time-to-market un 20% rediseñando el modelo de entrega y ajustando los controles de riesgo e hitos.",
-                        "Alineé prioridades y trade-offs entre nueve funciones de negocio, trabajando con 35 usuarios clave (finanzas, FP&A, operaciones, ventas, legal, RRHH, marketing) y 230 usuarios finales.",
-                        "Gestioné un presupuesto multi-proveedor con facturación por hitos y produje los análisis de portfolio que la alta dirección usó para fijar prioridades de inversión y gestionar el riesgo."
+                        "Conduje el change management del M&A con Prudential Seguros, incluyendo la integración de sistemas entre ambas aseguradoras.",
+                        "Diseñé la arquitectura del Data Lake corporativo que unifica todas las fuentes operativas y analíticas en una sola capa.",
+                        "Reduje el time-to-market un 20% rediseñando el modelo de entrega y ajustando los controles de riesgo e hitos."
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Prudential Seguros",
+            location: "Buenos Aires, Argentina",
+            roles: [
+                {
+                    title: "Líder de Equipo IT y Project Manager",
+                    dates: "Abr 2022 - Jul 2024",
+                    bullets: [
+                        "Me sumé in-house, tras un primer vínculo como cliente de MicroStrategy, a liderar el workstream de IT y analítica del stack tecnológico del seguro.",
+                        "Armé el ritmo de entrega Agile y coordiné delivery entre IT, operaciones y negocio, con MicroStrategy como columna analítica.",
+                        "Alineé prioridades entre nueve funciones de negocio, trabajando con 35 usuarios clave (finanzas, FP&A, operaciones, ventas, legal, RRHH, marketing) y 230 usuarios finales."
                     ]
                 }
             ]
@@ -184,6 +222,14 @@ export const dataES = {
         {
             title: "Venture build, Almazara Co-Pilot (IE Tech Lab, challenge de Microsoft)",
             desc: "Diagnostiqué dónde pierden valor las almazaras españolas (grading, pricing, autenticidad), armé un issue tree priorizando la captura de grado y diseñé un co-pilot de IA (visión por computadora + modelo predictivo de grado en Azure) con un impacto de 7 cifras por cooperativa; pitcheado a Microsoft."
+        },
+        {
+            title: "KS Advisory AI Deal Platform",
+            desc: "Construí un sistema de agentes de IA (38 agentes especializados) que corre screening, research y drafting sobre un pipeline de M&A cross-border de más de USD 900M."
+        },
+        {
+            title: "Data Lake corporativo (Life Seguros)",
+            desc: "Diseñé la arquitectura del Data Lake corporativo que unifica todas las fuentes operativas y analíticas en una sola capa, habilitando la analítica de toda la compañía y reduciendo el time-to-market 20%."
         }
     ],
     education: [
