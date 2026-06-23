@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Sparkles } from 'lucide-react';
+
+/* Concept icon per shipped app (keyed by name). */
+const APP_ICONS = {
+    'Lect.io': GraduationCap,
+    'Kick-Off Central': Trophy,
+    'Terranova': Compass,
+    'Sanctuary 75': HeartPulse
+};
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
 import confetti from 'canvas-confetti';
@@ -73,23 +81,16 @@ const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
     );
 };
 
-/* App icon: tries Google's favicon service for the host, falls back
-   to a colored chip with the initial letter on error. */
-const AppIcon = ({ url, initial, color }) => {
-    const [errored, setErrored] = useState(false);
-    let host = '';
-    try { host = new URL(url).host; } catch { /* noop */ }
-    if (errored || !host) {
-        return <div className="pm-app-icon" style={{ background: color }}>{initial}</div>;
+/* App icon: a brand-colored tile with a concept line-icon (lucide). Falls
+   back to the initial letter if no icon is mapped for the app. */
+const AppIcon = ({ name, initial }) => {
+    const Icon = APP_ICONS[name] || Sparkles;
+    if (!Icon) {
+        return <div className="pm-app-icon pm-app-icon--brand">{initial}</div>;
     }
     return (
-        <div className="pm-app-icon pm-app-icon--favicon">
-            <img
-                src={`https://www.google.com/s2/favicons?domain=${host}&sz=128`}
-                alt=""
-                loading="lazy"
-                onError={() => setErrored(true)}
-            />
+        <div className="pm-app-icon pm-app-icon--brand">
+            <Icon size={24} strokeWidth={1.75} />
         </div>
     );
 };
@@ -492,7 +493,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 viewport={{ once: true, margin: '-80px' }}
                                 transition={{ duration: 0.45, delay: i * 0.05 }}
                             >
-                                <AppIcon url={a.url} initial={a.initial} color={a.color} />
+                                <AppIcon name={a.name} initial={a.initial} />
                                 <div className="pm-app-body">
                                     <div className="pm-app-name">
                                         {a.name}

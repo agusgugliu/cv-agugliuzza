@@ -959,6 +959,11 @@
     font-weight: 400;
 }
 
+.pm-app-icon--brand {
+    background: var(--blue);
+    color: #fff;
+}
+
 .pm-app-icon--favicon {
     /* Favicons are designed for light backgrounds — keep white in both themes */
     background: #fff;

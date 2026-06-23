@@ -63,28 +63,28 @@ const MSTR_CLIENTS = [
 const APPS = [
     {
         name: 'Lect.io',
-        desc: { en: 'AI study companion that helps students summarize, practice, and review topics from their courses.', es: 'Compañero de estudio con IA que ayuda a estudiantes a resumir, practicar y repasar los temas de sus cursos.' },
+        desc: { en: 'AI-powered study assistant that helps students summarize material, practice, and review course topics.', es: 'Asistente de estudio con IA que ayuda a estudiantes a resumir material, practicar y repasar los temas de sus cursos.' },
         url: 'https://agusgugliu-lectio.vercel.app',
         initial: 'L',
         color: '#1652F0'
     },
     {
         name: 'Kick-Off Central',
-        desc: { en: 'Sports hub with AI predictions and analysis across matches and leagues.', es: 'Hub deportivo con predicciones y análisis de partidos impulsados por IA.' },
+        desc: { en: 'Sports hub delivering AI-driven match predictions and performance analysis across leagues.', es: 'Hub deportivo con predicciones de partidos y análisis de rendimiento impulsados por IA.' },
         url: 'https://agusgugliu-soccer-hub.vercel.app',
         initial: 'K',
         color: '#0A2EAA'
     },
     {
         name: 'Terranova',
-        desc: { en: 'AI-powered trip planner that suggests routes, destinations, landmarks and guides, and plans the whole trip.', es: 'Planificador de viajes con IA que sugiere rutas, destinos, puntos de interés y guías, y arma el viaje completo.' },
+        desc: { en: 'AI travel planner that builds complete itineraries: routes, destinations, landmarks, and local guides.', es: 'Planificador de viajes con IA que arma itinerarios completos: rutas, destinos, puntos de interés y guías locales.' },
         url: 'https://imba-s5-terranova.vercel.app',
         initial: 'T',
         color: '#0B0E14'
     },
     {
         name: 'Sanctuary 75',
-        desc: { en: 'Holistic wellness tracker for the 75-day challenge.', es: 'Tracker holístico para el reto de 75 días.' },
+        desc: { en: 'Wellness tracker for the 75-day challenge that keeps daily habits and progress on track.', es: 'Tracker de bienestar para el reto de 75 días que mantiene hábitos y progreso diario en orden.' },
         url: 'https://75-holistic.vercel.app',
         initial: 'S',
         color: '#1652F0'
