@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Sparkles } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
 /* Concept icon per shipped app (keyed by name). */
 const APP_ICONS = {
+    'Obrex': Recycle,
     'Lect.io': GraduationCap,
-    'Kick-Off Central': Trophy,
     'Terranova': Compass,
+    'Kick-Off Central': Trophy,
+    'Bionic Reader': BookOpenText,
     'Sanctuary 75': HeartPulse
 };
 
@@ -481,29 +483,33 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <h2><Editorial text={data.apps.heading} /></h2>
                     <p className="pm-ai-lead">{data.apps.lead}</p>
                     <div className="pm-apps-grid">
-                        {data.apps.items.map((a, i) => (
-                            <motion.a
-                                key={i}
-                                className="pm-app"
-                                href={a.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.45, delay: i * 0.05 }}
-                            >
-                                <AppIcon name={a.name} initial={a.initial} />
-                                <div className="pm-app-body">
-                                    <div className="pm-app-name">
-                                        {a.name}
-                                        <ExternalLink size={13} className="pm-app-ext" />
+                        {data.apps.items.map((a, i) => {
+                            const Tag = a.url ? motion.a : motion.div;
+                            const linkProps = a.url ? { href: a.url, target: '_blank', rel: 'noreferrer' } : {};
+                            return (
+                                <Tag
+                                    key={i}
+                                    className={`pm-app ${a.url ? '' : 'pm-app--static'}`}
+                                    {...linkProps}
+                                    initial={{ opacity: 0, y: 16 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: '-80px' }}
+                                    transition={{ duration: 0.45, delay: i * 0.05 }}
+                                >
+                                    <AppIcon name={a.name} initial={a.initial} />
+                                    <div className="pm-app-body">
+                                        <div className="pm-app-name">
+                                            {a.name}
+                                            {a.url && <ExternalLink size={13} className="pm-app-ext" />}
+                                        </div>
+                                        <p className="pm-app-desc">{a.desc}</p>
+                                        <div className="pm-app-host">
+                                            {a.url ? new URL(a.url).host : (lang === 'es' ? 'Demo privada' : 'Private demo')}
+                                        </div>
                                     </div>
-                                    <p className="pm-app-desc">{a.desc}</p>
-                                    <div className="pm-app-host">{new URL(a.url).host}</div>
-                                </div>
-                            </motion.a>
-                        ))}
+                                </Tag>
+                            );
+                        })}
                     </div>
                 </section>
 

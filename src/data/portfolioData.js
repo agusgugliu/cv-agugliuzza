@@ -62,6 +62,13 @@ const MSTR_CLIENTS = [
 
 const APPS = [
     {
+        name: 'Obrex',
+        desc: { en: 'Marketplace for construction surplus: snap a photo of leftover material and the platform builds the listing.', es: 'Marketplace de surplus de construcción: sacás una foto del sobrante y la plataforma genera el listing.' },
+        url: 'https://obrex-web-zeta.vercel.app',
+        initial: 'O',
+        color: '#1652F0'
+    },
+    {
         name: 'Lect.io',
         desc: { en: 'AI-powered study assistant that helps students summarize material, practice, and review course topics.', es: 'Asistente de estudio con IA que ayuda a estudiantes a resumir material, practicar y repasar los temas de sus cursos.' },
         url: 'https://agusgugliu-lectio.vercel.app',
@@ -83,11 +90,18 @@ const APPS = [
         color: '#0B0E14'
     },
     {
+        name: 'Bionic Reader',
+        desc: { en: 'Reading tool that bolds word fragments to guide the eye and read faster, with AI-assisted document processing.', es: 'Herramienta de lectura que resalta fragmentos de palabras para guiar la vista y leer más rápido, con procesamiento de documentos asistido por IA.' },
+        url: null,
+        initial: 'B',
+        color: '#0A2EAA'
+    },
+    {
         name: 'Sanctuary 75',
         desc: { en: 'Wellness tracker for the 75-day challenge that keeps daily habits and progress on track.', es: 'Tracker de bienestar para el reto de 75 días que mantiene hábitos y progreso diario en orden.' },
         url: 'https://75-holistic.vercel.app',
         initial: 'S',
-        color: '#1652F0'
+        color: '#0B0E14'
     }
 ];
 

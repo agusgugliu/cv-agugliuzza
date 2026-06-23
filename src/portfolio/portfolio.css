@@ -944,6 +944,16 @@
     box-shadow: 0 8px 24px rgba(11, 14, 20, 0.06);
 }
 
+.pm-app--static {
+    cursor: default;
+}
+
+.pm-app--static:hover {
+    border-color: var(--hairline);
+    transform: none;
+    box-shadow: none;
+}
+
 .pm-app-icon {
     flex: 0 0 52px;
     width: 52px;
