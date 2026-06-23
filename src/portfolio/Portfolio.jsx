@@ -335,6 +335,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         >
                             <Editorial text={data.hero.statement} />
                         </motion.h1>
+                        {data.hero.substatement && (
+                            <motion.p
+                                className="pm-hero-sub"
+                                variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.55 } } }}
+                            >
+                                {data.hero.substatement}
+                            </motion.p>
+                        )}
                         <motion.div
                             className="pm-hero-actions"
                             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}

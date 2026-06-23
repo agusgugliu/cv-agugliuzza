@@ -316,8 +316,18 @@
     line-height: 1.04;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin: 0 0 56px;
+    margin: 0 0 24px;
     max-width: 18ch;
+}
+
+.pm-hero-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--slate);
+    margin: 0 0 52px;
+    max-width: 42ch;
 }
 
 .pm-hero h1 em {

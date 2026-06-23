@@ -376,41 +376,42 @@ export const portfolioEN = {
         contact: 'Contact'
     },
     hero: {
-        meta: ['Madrid, Spain', 'PM · Strategy · AI Ops · Digital Transformation'],
-        statement: 'I build with AI and redesign how work gets done, turning {operations} into {outcomes}.',
+        meta: ['Madrid, Spain', 'Digital Transformation · Strategy · Data · AI Ops'],
+        statement: 'I help companies turn digital ambition into {operations} that actually {change}.',
+        substatement: 'Strategy first, with the rare edge of being able to build what I propose.',
         cta: 'Book a call',
         ctaSecondary: 'See the work'
     },
     projects: {
         eyebrow: 'Selected projects',
-        heading: 'Where I {build with AI} and redesign how work gets done.',
-        lead: 'Four projects where AI changed the process, not just the slide.',
+        heading: 'Where {strategy} met {execution}.',
+        lead: 'Four engagements where I redesigned how the work gets done.',
         items: [
             {
                 title: 'Almazara Co-Pilot',
                 org: 'IE Tech Lab · Microsoft',
                 year: '2026',
-                outcome: 'An AI co-pilot for olive-oil mills that predicts oil grade at intake to cut downgrade losses.',
-                aiAngle: 'Computer vision and a grade model replace a manual, end-of-line quality call with a real-time, explainable prediction.',
-                tags: ['AI product', 'Computer vision', 'Azure', 'Process redesign'],
+                outcome: 'Rethought olive-oil quality control so mills price intake right the first time, cutting downgrade losses.',
+                aiAngle: 'Turned a manual, end-of-line quality call into a real-time decision at intake. AI does the prediction; the operating change is what saves the money.',
+                tags: ['Process redesign', 'Quality ops', 'Decision design', 'AI-enabled'],
                 accent: '#1652F0'
             },
             {
-                title: 'KS Advisory AI Deal Platform',
+                title: 'KS Advisory Deal Platform',
                 org: 'KS Advisory',
                 year: '2026',
-                outcome: 'An AI agent system that runs screening, research and drafting across a USD 900M+ M&A pipeline.',
-                aiAngle: '38 specialized agents automate the research-to-memo workflow a deal team used to run by hand.',
-                tags: ['AI agents', 'M&A', 'Automation', 'Claude'],
+                outcome: 'Redesigned the deal team\'s research-to-memo workflow across a USD 900M+ M&A pipeline.',
+                aiAngle: 'Reshaped how the work flows: what stays human judgment, what gets automated. AI runs the legwork so analysts spend their time on the call that matters.',
+                tags: ['Workflow redesign', 'M&A', 'Automation', 'Operating model'],
                 accent: '#0A2EAA'
             },
             {
                 title: 'Aitaca M&A & Growth Strategy',
                 org: 'IE Final Project',
                 year: '2026',
-                outcome: 'M&A and market-entry strategy for Aitaca (AI computer-vision sizing) on a 2-3 year exit horizon.',
-                aiAngle: 'Field research and acquirer mapping turned into a board-ready exit narrative for an AI startup.',
-                tags: ['Strategy', 'M&A', 'Market entry', 'AI startup'],
+                outcome: 'M&A and market-entry strategy for Aitaca on a 2-3 year exit horizon.',
+                aiAngle: 'Field research and acquirer mapping turned into a board-ready exit narrative. Strategy work end to end, for a deep-tech startup.',
+                tags: ['Strategy', 'M&A', 'Market entry', 'Go-to-market'],
                 accent: '#0B0E14'
             },
             {
@@ -418,8 +419,8 @@ export const portfolioEN = {
                 org: 'Life Seguros',
                 year: '2024-2025',
                 outcome: 'Architected the corporate Data Lake unifying every operational and analytical source into one layer.',
-                aiAngle: 'The single data foundation that makes company-wide analytics and AI possible. Cut time-to-market 20%.',
-                tags: ['Data Lake', 'Architecture', 'Analytics', 'Transformation'],
+                aiAngle: 'The single data foundation a company steers on. It cut time-to-market 20% and made company-wide analytics possible.',
+                tags: ['Data strategy', 'Architecture', 'Analytics', 'Transformation'],
                 accent: '#5D85FF'
             }
         ]
@@ -565,9 +566,9 @@ export const portfolioEN = {
         ]
     },
     apps: {
-        eyebrow: 'AI tools & automations I have shipped',
-        heading: 'Small {AI products} I build to take ideas to production.',
-        lead: 'Prototypes I ship to test an idea, automate a process, or prove an AI workflow end to end. All live on Vercel.',
+        eyebrow: 'Prototypes & experiments',
+        heading: 'I {prototype} to pressure-test an idea before a roadmap bets on it.',
+        lead: 'Working prototypes I put together to validate a concept fast, the same way I would de-risk a recommendation before bringing it to a client. Knowing what it takes to build keeps the strategy honest.',
         items: APPS.map(a => ({ ...a, desc: a.desc.en }))
     },
     logos: {
@@ -604,40 +605,40 @@ export const portfolioEN = {
         ]
     },
     ai: {
-        eyebrow: 'End-to-end AI projects',
-        heading: 'How I take an AI idea from {whiteboard to production}.',
+        eyebrow: 'How I run a transformation',
+        heading: 'How I take a transformation from {boardroom to shop floor}.',
         lead: 'Five steps. Each one earns the next.',
-        flow: ['01 Discovery', '02 Data', '03 Build', '04 Adoption', '05 Iterate'],
+        flow: ['01 Discovery', '02 Diagnosis', '03 Pilot', '04 Adoption', '05 Scale'],
         steps: [
             {
                 num: 'Step 01',
                 title: 'Discovery & framing',
-                body: 'Talk to stakeholders, scope the problem honestly. Decide what AI solves and what doesn\'t.',
-                tools: 'Notion · Miro · 1:1 · Figma / Canva'
+                body: 'Talk to leadership and the floor, scope the problem honestly. Decide what to change first and what to leave alone.',
+                tools: 'Stakeholder map · Problem statement'
             },
             {
                 num: 'Step 02',
-                title: 'Data audit & prep',
-                body: 'Map sources, fix quality, set up the data layer the AI will sit on. No model survives bad data.',
-                tools: 'Databases · Python · dbt'
+                title: 'Diagnosis & data',
+                body: 'Map how the work actually flows today, find where value leaks, and get the data honest enough to steer by.',
+                tools: 'Process map · Data audit'
             },
             {
                 num: 'Step 03',
-                title: 'POC → production',
-                body: 'Prompt design, model selection, pipelines, evals, monitoring. Ship the smallest useful thing, then harden.',
-                tools: 'Claude · OpenAI · Gemini · n8n'
+                title: 'Pilot the change',
+                body: 'Ship the smallest version that proves the case in one team. Measure against a baseline before scaling anything.',
+                tools: 'Pilot · Success metrics'
             },
             {
                 num: 'Step 04',
                 title: 'Adoption & change',
-                body: 'Train users, embed in the workflow, document the playbook. AI that nobody runs is theatre.',
-                tools: 'Notion · Loom · Sessions'
+                body: 'Train the people, embed it in the workflow, write the playbook. A change nobody runs is theatre.',
+                tools: 'Training · Playbook'
             },
             {
                 num: 'Step 05',
-                title: 'Iterate & evolve',
-                body: 'Measure usage, capture feedback, retrain, retire what doesn\'t pull weight.',
-                tools: 'Feedback loops'
+                title: 'Scale & evolve',
+                body: 'Roll out across the org, measure usage, capture feedback, and retire what doesn\'t pull its weight.',
+                tools: 'Rollout · Feedback loops'
             }
         ]
     },
@@ -678,41 +679,42 @@ export const portfolioES = {
         contact: 'Contacto'
     },
     hero: {
-        meta: ['Madrid, España', 'PM · Estrategia · AI Ops · Transformación Digital'],
-        statement: 'Construyo con IA y rediseño cómo se hace el trabajo, convirtiendo {operación} en {resultados}.',
+        meta: ['Madrid, España', 'Transformación Digital · Estrategia · Datos · AI Ops'],
+        statement: 'Ayudo a empresas a convertir la ambición digital en {operación} que de verdad {cambia}.',
+        substatement: 'Estrategia primero, con la ventaja rara de poder construir lo que propongo.',
         cta: 'Agendar llamada',
         ctaSecondary: 'Ver el trabajo'
     },
     projects: {
         eyebrow: 'Proyectos seleccionados',
-        heading: 'Donde {construyo con IA} y rediseño cómo se hace el trabajo.',
-        lead: 'Cuatro proyectos donde la IA cambió el proceso, no solo el slide.',
+        heading: 'Donde la {estrategia} se encontró con la {ejecución}.',
+        lead: 'Cuatro proyectos donde rediseñé cómo se hace el trabajo.',
         items: [
             {
                 title: 'Almazara Co-Pilot',
                 org: 'IE Tech Lab · Microsoft',
                 year: '2026',
-                outcome: 'Un co-pilot de IA para almazaras que predice el grado del aceite en la recepción para reducir pérdidas por downgrade.',
-                aiAngle: 'Visión por computadora y un modelo de grado reemplazan un control de calidad manual y tardío por una predicción explicable en tiempo real.',
-                tags: ['Producto de IA', 'Visión por computadora', 'Azure', 'Rediseño de procesos'],
+                outcome: 'Repensé el control de calidad del aceite para que las almazaras valoricen bien la recepción de entrada y reduzcan pérdidas por downgrade.',
+                aiAngle: 'Convertí un control de calidad manual y tardío en una decisión en tiempo real en la recepción. La IA hace la predicción; el cambio operativo es lo que ahorra la plata.',
+                tags: ['Rediseño de procesos', 'Operaciones de calidad', 'Diseño de decisiones', 'Habilitado por IA'],
                 accent: '#1652F0'
             },
             {
-                title: 'KS Advisory AI Deal Platform',
+                title: 'KS Advisory Deal Platform',
                 org: 'KS Advisory',
                 year: '2026',
-                outcome: 'Un sistema de agentes de IA que corre screening, research y drafting sobre un pipeline de M&A de USD 900M+.',
-                aiAngle: '38 agentes especializados automatizan el flujo de research-a-memo que un equipo de deals hacía a mano.',
-                tags: ['Agentes de IA', 'M&A', 'Automatización', 'Claude'],
+                outcome: 'Rediseñé el flujo de research-a-memo del equipo de deals sobre un pipeline de M&A de USD 900M+.',
+                aiAngle: 'Repensé cómo fluye el trabajo: qué queda como juicio humano y qué se automatiza. La IA hace el legwork para que los analistas usen su tiempo en la decisión que importa.',
+                tags: ['Rediseño de flujo', 'M&A', 'Automatización', 'Modelo operativo'],
                 accent: '#0A2EAA'
             },
             {
                 title: 'Aitaca M&A & Growth Strategy',
                 org: 'Proyecto Final IE',
                 year: '2026',
-                outcome: 'Estrategia de M&A y entrada a mercado para Aitaca (sizing por visión de IA) en un horizonte de exit de 2-3 años.',
-                aiAngle: 'Field research y mapeo de adquirentes convertidos en una narrativa de exit lista para el board de una startup de IA.',
-                tags: ['Estrategia', 'M&A', 'Entrada a mercado', 'Startup de IA'],
+                outcome: 'Estrategia de M&A y entrada a mercado para Aitaca en un horizonte de exit de 2-3 años.',
+                aiAngle: 'Field research y mapeo de adquirentes convertidos en una narrativa de exit lista para el board. Trabajo de estrategia de punta a punta, para una startup de deep-tech.',
+                tags: ['Estrategia', 'M&A', 'Entrada a mercado', 'Go-to-market'],
                 accent: '#0B0E14'
             },
             {
@@ -720,8 +722,8 @@ export const portfolioES = {
                 org: 'Life Seguros',
                 year: '2024-2025',
                 outcome: 'Arquitectura del Data Lake corporativo que unifica todas las fuentes operativas y analíticas en una sola capa.',
-                aiAngle: 'La base de datos única que habilita la analítica y la IA en toda la compañía. Reduje time-to-market 20%.',
-                tags: ['Data Lake', 'Arquitectura', 'Analítica', 'Transformación'],
+                aiAngle: 'La base de datos única sobre la que se conduce una compañía. Redujo time-to-market 20% e hizo posible la analítica corporativa.',
+                tags: ['Estrategia de datos', 'Arquitectura', 'Analítica', 'Transformación'],
                 accent: '#5D85FF'
             }
         ]
@@ -867,9 +869,9 @@ export const portfolioES = {
         ]
     },
     apps: {
-        eyebrow: 'Herramientas de IA y automatizaciones que lancé',
-        heading: 'Pequeños {productos de IA} que construyo para llevar ideas a producción.',
-        lead: 'Prototipos que lanzo para testear una idea, automatizar un proceso o probar un flujo de IA de punta a punta. Todos viven en Vercel.',
+        eyebrow: 'Prototipos y experimentos',
+        heading: 'Hago {prototipos} para testear una idea antes de que un roadmap apueste por ella.',
+        lead: 'Prototipos funcionales que armo para validar un concepto rápido, igual que desriesgaría una recomendación antes de llevarla a un cliente. Saber lo que cuesta construir mantiene la estrategia honesta.',
         items: APPS.map(a => ({ ...a, desc: a.desc.es }))
     },
     logos: {
@@ -906,40 +908,40 @@ export const portfolioES = {
         ]
     },
     ai: {
-        eyebrow: 'Proyectos E2E de IA',
-        heading: 'Cómo llevo una idea de IA del {whiteboard a producción}.',
+        eyebrow: 'Cómo corro una transformación',
+        heading: 'Cómo llevo una transformación del {comité al piso}.',
         lead: 'Cinco pasos. Cada uno se gana el siguiente.',
-        flow: ['01 Discovery', '02 Datos', '03 Build', '04 Adopción', '05 Iteración'],
+        flow: ['01 Discovery', '02 Diagnóstico', '03 Piloto', '04 Adopción', '05 Escala'],
         steps: [
             {
                 num: 'Paso 01',
                 title: 'Discovery y framing',
-                body: 'Hablar con stakeholders, scopear el problema honestamente. Decidir qué resuelve la IA y qué no.',
-                tools: 'Notion · Miro · 1:1 · Figma / Canva'
+                body: 'Hablar con la dirección y con el piso, scopear el problema honestamente. Decidir qué cambiar primero y qué dejar como está.',
+                tools: 'Mapa de stakeholders · Definición del problema'
             },
             {
                 num: 'Paso 02',
-                title: 'Auditoría y preparación de datos',
-                body: 'Mapear fuentes, limpiar calidad, armar la capa de datos sobre la que vive el modelo. Ningún modelo sobrevive a data mala.',
-                tools: 'Databases · Python · dbt'
+                title: 'Diagnóstico y datos',
+                body: 'Mapear cómo fluye hoy el trabajo de verdad, encontrar dónde se fuga el valor, y dejar la data lo bastante honesta como para conducir con ella.',
+                tools: 'Mapa de procesos · Auditoría de datos'
             },
             {
                 num: 'Paso 03',
-                title: 'POC a producción',
-                body: 'Diseño de prompts, selección de modelos, pipelines, evals, monitoring. Sacar lo más chico útil, después endurecer.',
-                tools: 'Claude · OpenAI · Gemini · n8n'
+                title: 'Pilotear el cambio',
+                body: 'Sacar la versión más chica que prueba el caso en un equipo. Medir contra una línea base antes de escalar nada.',
+                tools: 'Piloto · Métricas de éxito'
             },
             {
                 num: 'Paso 04',
                 title: 'Adopción y cambio',
-                body: 'Entrenar usuarios, embeber en el flujo, documentar el playbook. IA que nadie usa es teatro.',
-                tools: 'Notion · Loom · Sesiones'
+                body: 'Entrenar a la gente, embeber en el flujo, documentar el playbook. Un cambio que nadie usa es teatro.',
+                tools: 'Entrenamiento · Playbook'
             },
             {
                 num: 'Paso 05',
-                title: 'Iteración y evolución',
-                body: 'Medir uso, capturar feedback, reentrenar, retirar lo que no aporta.',
-                tools: 'Feedback loops'
+                title: 'Escalar y evolucionar',
+                body: 'Hacer el rollout al resto de la organización, medir uso, capturar feedback y retirar lo que no aporta.',
+                tools: 'Rollout · Feedback loops'
             }
         ]
     },
