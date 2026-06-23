@@ -1004,6 +1004,25 @@
     gap: 22px;
 }
 
+.pm-transcript-stats {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--slate-2);
+    letter-spacing: 0.02em;
+}
+
+.pm-transcript-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 28px;
+}
+
+@media (max-width: 640px) {
+    .pm-transcript-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .pm-transcript-term-head {
     display: flex;
     align-items: baseline;
@@ -1026,26 +1045,18 @@
 }
 
 .pm-transcript-course {
-    margin-bottom: 12px;
-}
-
-.pm-transcript-course-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--hairline);
+    cursor: help;
 }
 
 .pm-transcript-course-name {
-    font-weight: 600;
-    font-size: 0.86rem;
-}
-
-.pm-transcript-course-sum {
+    font-weight: 500;
     font-size: 0.82rem;
-    color: var(--slate);
-    line-height: 1.45;
-    margin-top: 2px;
 }
 
 /* IE band chips */
