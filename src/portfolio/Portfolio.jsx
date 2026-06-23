@@ -2,6 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
+/* Map a grade chip (IE band or numeric 0-10) to a color tier. */
+const gradeTier = (band) => {
+    const key = String(band).toLowerCase();
+    if (['honors', 'excellence', 'proficiency', 'pass'].includes(key)) return key;
+    if (key === 'a') return 'proficiency';
+    const n = parseFloat(String(band).replace(',', '.'));
+    if (!isNaN(n)) {
+        if (n >= 9) return 'honors';
+        if (n >= 8) return 'excellence';
+        if (n >= 7) return 'proficiency';
+        return 'pass';
+    }
+    return 'pass';
+};
+
 /* Concept icon per shipped app (keyed by name). */
 const APP_ICONS = {
     'Obrex': Recycle,
@@ -442,19 +457,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                             </summary>
                                             <div className="pm-transcript-body">
                                                 <div className="pm-transcript-stats">
-                                                    {bc('Honors')} Honors · {bc('Excellence')} Excellence · {bc('Proficiency')} Proficiency · {bc('Pass')} Pass
+                                                    {c.transcript.statsLine || `${bc('Honors')} Honors · ${bc('Excellence')} Excellence · ${bc('Proficiency')} Proficiency · ${bc('Pass')} Pass`}
                                                 </div>
                                                 {c.transcript.terms.map((t, ti) => (
                                                     <div key={ti} className="pm-transcript-term">
                                                         <div className="pm-transcript-term-head">
                                                             <span className="pm-transcript-term-name">{t.name}</span>
-                                                            <span className="pm-transcript-term-gpa">GPA {t.gpa}</span>
+                                                            {t.gpa && <span className="pm-transcript-term-gpa">GPA {t.gpa}</span>}
                                                         </div>
                                                         <div className="pm-transcript-grid">
                                                             {t.courses.map((co, ci) => (
-                                                                <div key={ci} className="pm-transcript-course" title={co.summary}>
+                                                                <div key={ci} className="pm-transcript-course" title={co.summary || undefined}>
                                                                     <span className="pm-transcript-course-name">{co.name}</span>
-                                                                    <span className={`pm-band pm-band--${co.band.toLowerCase()}`}>{co.band}</span>
+                                                                    <span className={`pm-band pm-band--${gradeTier(co.band)}`}>{co.band}</span>
                                                                 </div>
                                                             ))}
                                                         </div>

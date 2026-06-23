@@ -213,6 +213,141 @@ const IE_TRANSCRIPT_ES = {
     ]
 };
 
+// ITBA official transcript (0–10 Argentine scale). Source: certified analítico (5 pp).
+const ITBA_TRANSCRIPT_EN = {
+    gpa: '7.76 / 10',
+    statsLine: '41 graded courses · average 7.76 / 10',
+    terms: [
+        {
+            name: 'Year 1 · 2013–2014', courses: [
+                { name: 'Computer Tools', band: 10 },
+                { name: 'Introduction to Management & Systems', band: 8 },
+                { name: 'Accounting Systems', band: 8 },
+                { name: 'Algebra', band: 7 },
+                { name: 'Programming', band: 8.75 },
+                { name: 'Telecommunications Applications', band: 7.75 },
+                { name: 'Mathematical Analysis', band: 6.5 },
+                { name: 'Global Historical Overview', band: 7.5 },
+                { name: 'Philosophy', band: 8 }
+            ]
+        },
+        {
+            name: 'Year 2 · 2014–2015', courses: [
+                { name: 'Microeconomics', band: 6 },
+                { name: 'Managerial Accounting', band: 8 },
+                { name: 'Internet Business & Technology', band: 6.75 },
+                { name: 'Statistics', band: 8.5 },
+                { name: 'Business Ethics', band: 8.5 },
+                { name: 'Financial Management', band: 6.5 },
+                { name: 'Macroeconomics', band: 4.25 },
+                { name: 'Public & Private Law', band: 8 },
+                { name: 'Data Management', band: 8.75 },
+                { name: 'Marketing', band: 8.5 },
+                { name: 'Epistemology & Heuristics', band: 7.25 },
+                { name: 'English I', band: 'A' }
+            ]
+        },
+        {
+            name: 'Year 3 · 2015–2016', courses: [
+                { name: 'Operations Management', band: 5.25 },
+                { name: 'Sales Management', band: 6.75 },
+                { name: 'Business Process Analysis & Modeling', band: 9.25 },
+                { name: 'Enterprise Systems I (ERP)', band: 7.75 },
+                { name: 'Organizational Structure', band: 8.5 },
+                { name: 'Project Management', band: 7.5 },
+                { name: 'Decision Making', band: 7.75 },
+                { name: 'Software Analysis & Design', band: 8.5 },
+                { name: 'Enterprise Systems II (ERP)', band: 8.5 },
+                { name: 'Human Resource Management', band: 8.75 }
+            ]
+        },
+        {
+            name: 'Year 4 · 2016–2017', courses: [
+                { name: 'Entrepreneurship Training', band: 7 },
+                { name: 'Foreign Trade', band: 6 },
+                { name: 'Business Strategy', band: 8.5 },
+                { name: 'General & Systems Audit', band: 7.5 },
+                { name: 'IT Architecture', band: 8.75 },
+                { name: 'Enterprise Systems for Services', band: 7.75 },
+                { name: 'E-Commerce', band: 8.5 },
+                { name: 'Taxes for Decision Making', band: 'A' },
+                { name: 'Business Process Integration & IT', band: 9.5 },
+                { name: 'Update Seminar', band: 7.5 },
+                { name: 'Capstone — Business Diagnosis & Action Plan', band: 8.5 },
+                { name: 'Advanced Process Modeling & Business Intelligence', band: 7.5 },
+                { name: 'English II', band: 'A' }
+            ]
+        }
+    ]
+};
+
+const ITBA_TRANSCRIPT_ES = {
+    gpa: '7.76 / 10',
+    statsLine: '41 materias con nota · promedio 7.76 / 10',
+    terms: [
+        {
+            name: 'Año 1 · 2013–2014', courses: [
+                { name: 'Utilitarios en Informática', band: 10 },
+                { name: 'Introducción a la Lic. en Adm y Sistemas', band: 8 },
+                { name: 'Sistemas Contables', band: 8 },
+                { name: 'Álgebra', band: 7 },
+                { name: 'Programación', band: 8.75 },
+                { name: 'Aplicación de las Telecomunicaciones', band: 7.75 },
+                { name: 'Análisis Matemático', band: 6.5 },
+                { name: 'Panorama Histórico Global', band: 7.5 },
+                { name: 'Filosofía', band: 8 }
+            ]
+        },
+        {
+            name: 'Año 2 · 2014–2015', courses: [
+                { name: 'Microeconomía', band: 6 },
+                { name: 'Contabilidad Gerencial', band: 8 },
+                { name: 'Negocios y Tecnología en Internet', band: 6.75 },
+                { name: 'Estadística', band: 8.5 },
+                { name: 'Ética en los Negocios', band: 8.5 },
+                { name: 'Gestión Financiera', band: 6.5 },
+                { name: 'Macroeconomía', band: 4.25 },
+                { name: 'Derecho Público y Privado', band: 8 },
+                { name: 'Gestión de Datos', band: 8.75 },
+                { name: 'Comercialización', band: 8.5 },
+                { name: 'Epistemología y Heurística', band: 7.25 },
+                { name: 'Inglés I', band: 'A' }
+            ]
+        },
+        {
+            name: 'Año 3 · 2015–2016', courses: [
+                { name: 'Gestión de Operaciones', band: 5.25 },
+                { name: 'Gestión de Ventas', band: 6.75 },
+                { name: 'Análisis y Modelado de Procesos de Negocios', band: 9.25 },
+                { name: 'Sistemas Integrados de Gestión Empresaria I', band: 7.75 },
+                { name: 'Estructura de las Organizaciones', band: 8.5 },
+                { name: 'Gestión de Proyectos', band: 7.5 },
+                { name: 'Toma de Decisiones', band: 7.75 },
+                { name: 'Análisis y Diseño de Aplicaciones Informáticas', band: 8.5 },
+                { name: 'Sistemas Integrados de Gestión Empresaria II', band: 8.5 },
+                { name: 'Gestión de los Recursos Humanos', band: 8.75 }
+            ]
+        },
+        {
+            name: 'Año 4 · 2016–2017', courses: [
+                { name: 'Formación para Emprendedores', band: 7 },
+                { name: 'Comercio Exterior', band: 6 },
+                { name: 'Estrategia Empresaria', band: 8.5 },
+                { name: 'Auditoría General y de Sistemas', band: 7.5 },
+                { name: 'Arquitectura de la Tecnología Informática', band: 8.75 },
+                { name: 'Sistemas Integrados de Gestión en la Ind. de Servicios', band: 7.75 },
+                { name: 'Comercio Electrónico', band: 8.5 },
+                { name: 'Impuestos para la Toma de Decisiones', band: 'A' },
+                { name: 'Integración de Procesos de Negocios y Aplic. Inf.', band: 9.5 },
+                { name: 'Seminario de Actualización', band: 7.5 },
+                { name: 'Diagnóstico Empresario y Plan de Acción (Trabajo Final)', band: 8.5 },
+                { name: 'Modelado Avanzado de Procesos e Inteligencia de Negocios', band: 7.5 },
+                { name: 'Inglés II', band: 'A' }
+            ]
+        }
+    ]
+};
+
 const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
 
 const LOGOS_WORKED = [
@@ -424,6 +559,7 @@ export const portfolioEN = {
                 statLabel: 'Graduated',
                 heading: 'Four-year bachelor blending {management and information systems} at one of Argentina\'s top engineering schools.',
                 body: 'Four-year bachelor combining business strategy and information systems: management, accounting, microeconomics and operations on one side; data structures, databases, programming, and systems design on the other. Built around the idea that technology decisions are business decisions, and vice versa.',
+                transcript: ITBA_TRANSCRIPT_EN,
                 tags: ['Business + Tech', 'Information Systems', 'Decision-making']
             }
         ]
@@ -725,6 +861,7 @@ export const portfolioES = {
                 statLabel: 'Egresado',
                 heading: 'Cuatro años combinando {administración y sistemas} en una de las escuelas de ingeniería más exigentes de Argentina.',
                 body: 'Carrera de 4 años que combina estrategia de negocio y sistemas de información: management, contabilidad, microeconomía y operaciones por un lado; estructuras de datos, bases de datos, programación y diseño de sistemas por el otro. Construida alrededor de la idea de que las decisiones tecnológicas son decisiones de negocio, y viceversa.',
+                transcript: ITBA_TRANSCRIPT_ES,
                 tags: ['Negocios + Tech', 'Sistemas de Información', 'Toma de decisiones']
             }
         ]
