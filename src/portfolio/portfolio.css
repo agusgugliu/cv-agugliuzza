@@ -231,6 +231,12 @@
     color: var(--ink);
 }
 
+.pm-lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
 .pm-lang-toggle .sep {
     color: var(--hairline-strong);
     margin: 0 6px;
