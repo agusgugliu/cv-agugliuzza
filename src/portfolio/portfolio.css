@@ -1933,6 +1933,24 @@
     transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Equalize the two nav pills (Book a call + CV view) to identical height/box */
+.pm-nav-cta,
+.pm-mode-pill {
+    height: 34px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    line-height: 1;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.pm-mode-pill {
+    border-color: var(--ink);
+}
+
 .pm-nav-cta:hover {
     background: var(--blue-deep);
     transform: translateY(-1px);
