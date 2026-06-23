@@ -53,6 +53,21 @@ body {
     gap: 40px;
 }
 
+/* Let grid children shrink below their content min-size (prevents the
+   long-text horizontal overflow that body{overflow-x:hidden} would clip). */
+.app-wrapper > * {
+    min-width: 0;
+}
+
+.cv-role,
+.cv-project-title,
+.cv-project-desc,
+.cv-role li,
+main h3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 @media (max-width: 1024px) {
     .app-wrapper {
         grid-template-columns: 1fr;
@@ -67,6 +82,41 @@ body {
         overflow: visible;
         padding-right: 0;
     }
+}
+
+@media (max-width: 560px) {
+    .app-wrapper {
+        padding: 32px 16px 110px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .exp-row {
+        padding-left: 18px;
+    }
+
+    .cv-role {
+        padding: 12px 14px;
+    }
+
+    .nav-floating {
+        gap: 10px;
+        padding: 9px 12px;
+        max-width: calc(100vw - 24px);
+        overflow-x: auto;
+    }
+}
+
+/* Flex bullet rows must allow their text to wrap (avoid min-content overflow) */
+.cv-role li,
+.contact-card {
+    min-width: 0;
+}
+
+.cv-role li {
+    overflow-wrap: anywhere;
 }
 
 /* Floating navbar */
@@ -310,6 +360,82 @@ h1 {
     height: 12px;
     background: var(--accent);
     border-radius: 50%;
+}
+
+/* Role block inside an experience row */
+.cv-role {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: rgba(22, 82, 240, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.cv-role-title {
+    font-weight: 600;
+}
+
+.cv-role-dates {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.cv-role ul {
+    list-style: none;
+    padding-left: 2px;
+    margin: 0;
+}
+
+.cv-role li {
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+}
+
+.cv-role li span {
+    color: var(--accent);
+    flex: none;
+}
+
+/* Selected projects */
+.cv-project {
+    margin-bottom: 18px;
+}
+
+.cv-project-title {
+    font-weight: 600;
+    font-size: 0.98rem;
+    margin-bottom: 4px;
+}
+
+.cv-project-desc {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* Additional information rows */
+.cv-addl-row {
+    margin-bottom: 16px;
+}
+
+.cv-addl-row:last-child {
+    margin-bottom: 0;
+}
+
+.cv-addl-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 8px;
 }
 
 /* Toast */

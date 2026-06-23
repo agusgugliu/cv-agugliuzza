@@ -108,11 +108,6 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
 
                         <div className="contact-list">
                             {[
-                                {
-                                    icon: Calendar,
-                                    val: `${data.birthDate} (${calculateAge(data.dob)} ${lang === 'en' ? 'years' : 'años'})`,
-                                    label: lang === 'en' ? 'Age & DOB' : 'Edad y Fecha de Nac.'
-                                },
                                 { icon: MapPin, val: data.location, label: lang === 'en' ? 'Location' : 'Ubicación' },
                                 { icon: Flag, val: data.nationality, label: lang === 'en' ? 'Nationality' : 'Nacionalidad' },
                                 { icon: Linkedin, val: data.linkedin, label: 'LinkedIn', link: data.linkedinUrl },
@@ -171,14 +166,12 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                                 <h3 style={{ fontSize: '1.2rem' }}>{exp.company}</h3>
                                 <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '12px' }}>{exp.location}</div>
                                 {exp.roles.map((role, j) => (
-                                    <div key={j} style={{ marginBottom: '20px', background: 'rgba(255,255,255,0.03)', padding: '16px', borderRadius: '16px' }}>
-                                        <div style={{ fontWeight: 600 }}>{role.title}</div>
-                                        <div style={{ color: 'var(--accent)', fontSize: '0.85rem', marginBottom: '8px' }}>{role.dates}</div>
-                                        <ul style={{ listStyle: 'none', paddingLeft: '4px' }}>
+                                    <div key={j} className="cv-role">
+                                        <div className="cv-role-title">{role.title}</div>
+                                        <div className="cv-role-dates">{role.dates}</div>
+                                        <ul>
                                             {role.bullets.map((b, k) => (
-                                                <li key={k} style={{ marginBottom: '6px', fontSize: '0.95rem', color: 'var(--text-secondary)', display: 'flex', gap: '8px' }}>
-                                                    <span style={{ color: 'var(--accent)' }}>•</span> {b}
-                                                </li>
+                                                <li key={k}><span>•</span> {b}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -186,6 +179,17 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                             </div>
                         ))}
                     </Section>
+
+                    {data.projects && data.projects.length > 0 && (
+                        <Section title={data.titles.projects} icon={Award} delay={0.3}>
+                            {data.projects.map((p, i) => (
+                                <div key={i} className="cv-project">
+                                    <div className="cv-project-title">{p.title}</div>
+                                    <p className="cv-project-desc">{p.desc}</p>
+                                </div>
+                            ))}
+                        </Section>
+                    )}
 
                     <Section title={data.titles.education} icon={GraduationCap} delay={0.4}>
                         {data.education.map((edu, i) => (
@@ -228,29 +232,9 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                         ))}
                     </Section>
 
-                    <Section title={data.titles.skills} icon={Code} delay={0.5}>
-                        {data.skills.map((cat, i) => (
-                            <div key={i} style={{ marginBottom: '14px' }}>
-                                <div style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '6px' }}>
-                                    {cat.category}
-                                </div>
-                                <div className="skills-grid">
-                                    {cat.items.map((s, j) => (
-                                        <motion.span
-                                            key={j}
-                                            className="skill-tag"
-                                            whileHover={{ scale: 1.08, backgroundColor: 'var(--accent)', color: 'white' }}
-                                        >
-                                            {s}
-                                        </motion.span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </Section>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-                        <Section title={data.titles.languages} icon={Globe} delay={0.55}>
+                    <Section title={data.titles.additional} icon={Code} delay={0.5}>
+                        <div className="cv-addl-row">
+                            <span className="cv-addl-label">{lang === 'en' ? 'Languages' : 'Idiomas'}</span>
                             <div className="skills-grid">
                                 {data.languages.map((l, i) => (
                                     <span key={i} className="skill-tag" style={{ background: 'rgba(93, 133, 255, 0.12)', color: 'var(--accent-secondary)', borderColor: 'rgba(93, 133, 255, 0.22)' }}>
@@ -258,42 +242,16 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                                     </span>
                                 ))}
                             </div>
-                        </Section>
-
-                        <Section title={data.titles.softSkills} icon={Users} delay={0.6}>
-                            <div className="skills-grid">
-                                {data.softSkills.map((s, i) => (
-                                    <motion.span
-                                        key={i}
-                                        className="skill-tag"
-                                        whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
-                                    >
-                                        {s}
-                                    </motion.span>
-                                ))}
+                        </div>
+                        {data.skills.map((cat, i) => (
+                            <div key={i} className="cv-addl-row">
+                                <span className="cv-addl-label">{cat.category}</span>
+                                <div className="skills-grid">
+                                    {cat.items.map((s, j) => (
+                                        <span key={j} className="skill-tag">{s}</span>
+                                    ))}
+                                </div>
                             </div>
-                        </Section>
-                    </div>
-
-                    {data.certifications && data.certifications.length > 0 && (
-                        <Section title={data.titles.certifications} icon={Award} delay={0.65}>
-                            <div className="skills-grid">
-                                {data.certifications.map((c, i) => (
-                                    <motion.span
-                                        key={i}
-                                        className="skill-tag"
-                                        whileHover={{ scale: 1.08, backgroundColor: 'var(--accent)', color: 'white' }}
-                                    >
-                                        {c}
-                                    </motion.span>
-                                ))}
-                            </div>
-                        </Section>
-                    )}
-
-                    <Section title={data.titles.other} icon={Heart} delay={0.7}>
-                        {data.other.map((o, i) => (
-                            <p key={i} style={{ color: 'var(--text-secondary)', marginBottom: '8px', fontSize: '0.95rem' }}>• {o}</p>
                         ))}
                     </Section>
                 </main>
