@@ -63,51 +63,30 @@ const MSTR_CLIENTS = [
 const APPS = [
     {
         name: 'Lect.io',
-        desc: { en: 'Intelligent reading companion for digital books.', es: 'Compañero de lectura inteligente para libros digitales.' },
+        desc: { en: 'AI study companion that helps students summarize, practice, and review topics from their courses.', es: 'Compañero de estudio con IA que ayuda a estudiantes a resumir, practicar y repasar los temas de sus cursos.' },
         url: 'https://agusgugliu-lectio.vercel.app',
         initial: 'L',
         color: '#1652F0'
     },
     {
         name: 'Kick-Off Central',
-        desc: { en: 'Soccer hub with match schedules, stats and league management.', es: 'Hub de fútbol con fixtures, stats y gestión de ligas.' },
+        desc: { en: 'Sports hub with AI predictions and analysis across matches and leagues.', es: 'Hub deportivo con predicciones y análisis de partidos impulsados por IA.' },
         url: 'https://agusgugliu-soccer-hub.vercel.app',
         initial: 'K',
         color: '#0A2EAA'
     },
     {
         name: 'Terranova',
-        desc: { en: 'Strategic platform for resource management and exploration.', es: 'Plataforma estratégica de gestión y exploración de recursos.' },
+        desc: { en: 'AI-powered trip planner that suggests routes, destinations, landmarks and guides, and plans the whole trip.', es: 'Planificador de viajes con IA que sugiere rutas, destinos, puntos de interés y guías, y arma el viaje completo.' },
         url: 'https://imba-s5-terranova.vercel.app',
         initial: 'T',
         color: '#0B0E14'
-    },
-    {
-        name: 'Neighborly',
-        desc: { en: 'Friendly local network to connect with your community.', es: 'Red local para conectar con tu comunidad.' },
-        url: 'https://neighborly-io.vercel.app',
-        initial: 'N',
-        color: '#1652F0'
     },
     {
         name: 'Sanctuary 75',
         desc: { en: 'Holistic wellness tracker for the 75-day challenge.', es: 'Tracker holístico para el reto de 75 días.' },
         url: 'https://75-holistic.vercel.app',
         initial: 'S',
-        color: '#0A2EAA'
-    },
-    {
-        name: 'GeoPulse',
-        desc: { en: 'Real-time geospatial analytics for data-driven decisions.', es: 'Analítica geoespacial en tiempo real para decisiones data-driven.' },
-        url: 'https://geopulse-app.vercel.app',
-        initial: 'G',
-        color: '#0B0E14'
-    },
-    {
-        name: 'YearView',
-        desc: { en: 'A full-year calendar view for better long-range planning.', es: 'Vista de calendario anual para mejor planificación a largo plazo.' },
-        url: 'https://yearviewcal.vercel.app',
-        initial: 'Y',
         color: '#1652F0'
     }
 ];
