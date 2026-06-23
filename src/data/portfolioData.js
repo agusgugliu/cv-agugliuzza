@@ -105,6 +105,114 @@ const APPS = [
     }
 ];
 
+// IMBA transcript (IE official bands: Honors / Excellence / Proficiency / Pass).
+// Source of truth: Obsidian wiki/education/mba/mba-gpa-4.0.md + grades/.
+const IE_TRANSCRIPT_EN = {
+    gpa: '3.61 / 4.00',
+    terms: [
+        {
+            name: 'Term 1 · Sep–Dec 2025', gpa: '3.42', courses: [
+                { name: 'Strategy', band: 'Excellence', summary: 'Industry analysis, competitive advantage, and platform and ecosystem models.' },
+                { name: 'Financial Markets', band: 'Excellence', summary: 'Time value of money, DCF, and frameworks for investment decisions.' },
+                { name: 'Financial Reporting & Analysis', band: 'Excellence', summary: 'Accounting principles and reading financial statements to drive decisions.' },
+                { name: 'Marketing Management', band: 'Excellence', summary: 'Segmentation, positioning, the marketing mix, and data-informed planning.' },
+                { name: 'Innovation in a Digital World', band: 'Proficiency', summary: 'Digital business models and the forces driving digital transformation.' },
+                { name: 'Operations Management', band: 'Pass', summary: 'Process design, operations strategy, and supply chain configuration.' },
+                { name: 'Entrepreneurship', band: 'Pass', summary: 'Opportunity recognition, business model validation, fundraising, and scaling.' }
+            ]
+        },
+        {
+            name: 'Term 2 · Jan–Mar 2026', gpa: '3.66', courses: [
+                { name: 'Leading People & Change', band: 'Honors', summary: 'Leadership, organizational design, motivation, and conflict management.' },
+                { name: 'Corporate Finance', band: 'Excellence', summary: 'Valuation (WACC, DCF, multiples), capital structure, and M&A.' },
+                { name: 'Managerial Accounting', band: 'Excellence', summary: 'Cost analysis, budgeting, and management control systems.' },
+                { name: 'Managerial Economics', band: 'Excellence', summary: 'Micro and macro policy, market structures, and firm dynamics.' },
+                { name: 'Data Analytics for Managers', band: 'Excellence', summary: 'Quantitative decision models, regression, and managerial analytics.' },
+                { name: 'Supply Chain Management', band: 'Excellence', summary: 'Integrated supply chain strategy and sustainability.' },
+                { name: 'Business, Government & Sustainability', band: 'Proficiency', summary: 'Nonmarket strategy, regulatory and political risk, and ESG.' }
+            ]
+        },
+        {
+            name: 'Term 3 · Mar–Jun 2026', gpa: '3.61', courses: [
+                { name: 'Digital Business Strategy', band: 'Honors', summary: 'Multi-sided platforms, data monetization, and AI in competitive positioning.' },
+                { name: 'AI for Business', band: 'Excellence', summary: 'Machine learning, generative AI, responsible AI, and data-driven decisions.' },
+                { name: 'Applied Data Analytics', band: 'Excellence', summary: 'Regression, Monte Carlo simulation, and quantitative models across functions.' },
+                { name: 'Technology Product Management', band: 'Excellence', summary: 'Opportunity discovery, MVP development, and product strategy.' },
+                { name: 'Operational Excellence & Digitalization', band: 'Proficiency', summary: 'Process mapping, Lean diagnostics, and analytics-driven operations.' },
+                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Human-centered service design, behavioral science, and AI in services.' }
+            ]
+        },
+        {
+            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
+                { name: 'AI for Productivity', band: 'Honors', summary: 'Applying AI tools to accelerate knowledge work.' },
+                { name: 'Creative Thinking', band: 'Honors', summary: 'Structured ideation and reframing techniques.' },
+                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Narrative structure and executive presence.' },
+                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau and data-driven communication.' },
+                { name: 'Critical Thinking', band: 'Excellence', summary: 'Argument analysis and reasoning under uncertainty.' },
+                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hypotheses, and MECE structuring.' },
+                { name: 'Project Management', band: 'Excellence', summary: 'Agile/Scrum and classic delivery methods.' },
+                { name: 'Power & Influence', band: 'Excellence', summary: 'Negotiation and stakeholder influence.' },
+                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Team dynamics and collaboration.' },
+                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Advanced team leadership.' },
+                { name: 'Self-Transformation', band: 'Excellence', summary: 'Personal development and reflective practice.' }
+            ]
+        }
+    ]
+};
+
+const IE_TRANSCRIPT_ES = {
+    gpa: '3.61 / 4.00',
+    terms: [
+        {
+            name: 'Term 1 · Sep–Dic 2025', gpa: '3.42', courses: [
+                { name: 'Strategy', band: 'Excellence', summary: 'Análisis de industria, ventaja competitiva y modelos de plataforma y ecosistema.' },
+                { name: 'Financial Markets', band: 'Excellence', summary: 'Valor temporal del dinero, DCF y frameworks para decisiones de inversión.' },
+                { name: 'Financial Reporting & Analysis', band: 'Excellence', summary: 'Principios contables y lectura de estados financieros para decidir.' },
+                { name: 'Marketing Management', band: 'Excellence', summary: 'Segmentación, posicionamiento, marketing mix y planificación con datos.' },
+                { name: 'Innovation in a Digital World', band: 'Proficiency', summary: 'Modelos de negocio digitales y fuerzas detrás de la transformación digital.' },
+                { name: 'Operations Management', band: 'Pass', summary: 'Diseño de procesos, estrategia de operaciones y configuración de supply chain.' },
+                { name: 'Entrepreneurship', band: 'Pass', summary: 'Identificación de oportunidades, validación de modelos, fundraising y escalado.' }
+            ]
+        },
+        {
+            name: 'Term 2 · Ene–Mar 2026', gpa: '3.66', courses: [
+                { name: 'Leading People & Change', band: 'Honors', summary: 'Liderazgo, diseño organizacional, motivación y gestión de conflictos.' },
+                { name: 'Corporate Finance', band: 'Excellence', summary: 'Valoración (WACC, DCF, múltiplos), estructura de capital y M&A.' },
+                { name: 'Managerial Accounting', band: 'Excellence', summary: 'Análisis de costos, presupuestación y sistemas de control de gestión.' },
+                { name: 'Managerial Economics', band: 'Excellence', summary: 'Política micro y macro, estructuras de mercado y dinámica de la firma.' },
+                { name: 'Data Analytics for Managers', band: 'Excellence', summary: 'Modelos cuantitativos de decisión, regresión y analítica de gestión.' },
+                { name: 'Supply Chain Management', band: 'Excellence', summary: 'Estrategia integrada de supply chain y sostenibilidad.' },
+                { name: 'Business, Government & Sustainability', band: 'Proficiency', summary: 'Estrategia no-de-mercado, riesgo regulatorio y político, y ESG.' }
+            ]
+        },
+        {
+            name: 'Term 3 · Mar–Jun 2026', gpa: '3.61', courses: [
+                { name: 'Digital Business Strategy', band: 'Honors', summary: 'Plataformas multi-side, monetización de datos e IA en el posicionamiento.' },
+                { name: 'AI for Business', band: 'Excellence', summary: 'Machine learning, IA generativa, IA responsable y decisiones con datos.' },
+                { name: 'Applied Data Analytics', band: 'Excellence', summary: 'Regresión, simulación Monte Carlo y modelos cuantitativos por función.' },
+                { name: 'Technology Product Management', band: 'Excellence', summary: 'Descubrimiento de oportunidades, desarrollo de MVPs y estrategia de producto.' },
+                { name: 'Operational Excellence & Digitalization', band: 'Proficiency', summary: 'Mapeo de procesos, diagnóstico Lean y operaciones data-driven.' },
+                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Diseño de servicios centrado en el usuario, ciencia del comportamiento e IA.' }
+            ]
+        },
+        {
+            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
+                { name: 'AI for Productivity', band: 'Honors', summary: 'Aplicar herramientas de IA para acelerar el trabajo intelectual.' },
+                { name: 'Creative Thinking', band: 'Honors', summary: 'Ideación estructurada y técnicas de reframing.' },
+                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Estructura narrativa y presencia ejecutiva.' },
+                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau y comunicación basada en datos.' },
+                { name: 'Critical Thinking', band: 'Excellence', summary: 'Análisis de argumentos y razonamiento bajo incertidumbre.' },
+                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hipótesis y estructuración MECE.' },
+                { name: 'Project Management', band: 'Excellence', summary: 'Métodos Agile/Scrum y entrega clásica.' },
+                { name: 'Power & Influence', band: 'Excellence', summary: 'Negociación e influencia sobre stakeholders.' },
+                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Dinámica de equipos y colaboración.' },
+                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Liderazgo de equipos avanzado.' },
+                { name: 'Self-Transformation', band: 'Excellence', summary: 'Desarrollo personal y práctica reflexiva.' }
+            ]
+        }
+    ]
+};
+
 const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
 
 const LOGOS_WORKED = [
@@ -252,6 +360,7 @@ export const portfolioEN = {
                 heading: 'Full-time MBA with specialization in {Digital Business Innovation & Transformation}.',
                 body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Working with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body-measurement for jewelry and smart rings), and joining Microsoft for the Tech Lab module.',
                 tags: ['IMBA', 'Digital Business Innovation', 'Transformation'],
+                transcript: IE_TRANSCRIPT_EN,
                 clients: MBA_PARTNERS,
                 clientsLabel: 'Worked with'
             },
@@ -552,6 +661,7 @@ export const portfolioES = {
                 heading: 'MBA full-time con especialización en {Innovación y Transformación Digital de Negocios}.',
                 body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajando con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings), y con Microsoft en el módulo Tech Lab.',
                 tags: ['IMBA', 'Innovación Digital', 'Transformación'],
+                transcript: IE_TRANSCRIPT_ES,
                 clients: MBA_PARTNERS,
                 clientsLabel: 'Trabajé con'
             },

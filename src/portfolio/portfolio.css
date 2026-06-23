@@ -954,6 +954,136 @@
     box-shadow: none;
 }
 
+/* ============================================================
+   IMBA transcript disclosure (redesign 2026-06)
+   ============================================================ */
+.pm-transcript {
+    margin-top: 16px;
+    border-top: 1px solid var(--hairline);
+    padding-top: 14px;
+}
+
+.pm-transcript > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.82rem;
+}
+
+.pm-transcript > summary::-webkit-details-marker {
+    display: none;
+}
+
+.pm-transcript-toggle {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.pm-transcript-toggle::before {
+    content: '+ ';
+    font-family: var(--font-mono);
+}
+
+.pm-transcript[open] .pm-transcript-toggle::before {
+    content: '– ';
+}
+
+.pm-transcript-gpa {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--slate-2);
+}
+
+.pm-transcript-body {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.pm-transcript-term-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.pm-transcript-term-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.pm-transcript-term-gpa {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--slate-2);
+}
+
+.pm-transcript-course {
+    margin-bottom: 12px;
+}
+
+.pm-transcript-course-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.pm-transcript-course-name {
+    font-weight: 600;
+    font-size: 0.86rem;
+}
+
+.pm-transcript-course-sum {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.45;
+    margin-top: 2px;
+}
+
+/* IE band chips */
+.pm-band {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.pm-band--honors {
+    background: var(--blue);
+    color: #fff;
+}
+
+.pm-band--excellence {
+    background: rgba(22, 82, 240, 0.12);
+    color: var(--blue);
+    border: 1px solid rgba(22, 82, 240, 0.30);
+}
+
+.pm-band--proficiency {
+    background: transparent;
+    color: var(--slate);
+    border: 1px solid var(--hairline-strong);
+}
+
+.pm-band--pass {
+    background: transparent;
+    color: var(--slate-2);
+    border: 1px solid var(--hairline);
+}
+
 .pm-app-icon {
     flex: 0 0 52px;
     width: 52px;

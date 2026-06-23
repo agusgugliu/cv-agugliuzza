@@ -431,6 +431,33 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         <span key={j} className="pm-case-tag">{t}</span>
                                     ))}
                                 </div>
+                                {c.transcript && (
+                                    <details className="pm-transcript">
+                                        <summary>
+                                            <span className="pm-transcript-toggle">{lang === 'es' ? 'Ver transcript' : 'View transcript'}</span>
+                                            <span className="pm-transcript-gpa">GPA {c.transcript.gpa}</span>
+                                        </summary>
+                                        <div className="pm-transcript-body">
+                                            {c.transcript.terms.map((t, ti) => (
+                                                <div key={ti} className="pm-transcript-term">
+                                                    <div className="pm-transcript-term-head">
+                                                        <span className="pm-transcript-term-name">{t.name}</span>
+                                                        <span className="pm-transcript-term-gpa">GPA {t.gpa}</span>
+                                                    </div>
+                                                    {t.courses.map((co, ci) => (
+                                                        <div key={ci} className="pm-transcript-course">
+                                                            <div className="pm-transcript-course-top">
+                                                                <span className="pm-transcript-course-name">{co.name}</span>
+                                                                <span className={`pm-band pm-band--${co.band.toLowerCase()}`}>{co.band}</span>
+                                                            </div>
+                                                            <p className="pm-transcript-course-sum">{co.summary}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </details>
+                                )}
                                 {c.clients && (
                                     <div className="pm-clients">
                                         <div className="pm-clients-label">{c.clientsLabel}</div>
