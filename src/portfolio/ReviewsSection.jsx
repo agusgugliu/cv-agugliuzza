@@ -72,7 +72,7 @@ const ReviewsSection = ({ lang }) => {
             const { data, error } = await supabase
                 .from(REVIEWS_TABLE)
                 .select('id, name, role, company, relationship, rating, body, created_at')
-                .eq('status', 'approved')
+                .eq('show', true)
                 .order('created_at', { ascending: false });
             if (!alive) return;
             setReviews(error ? [] : data || []);
@@ -102,7 +102,7 @@ const ReviewsSection = ({ lang }) => {
             rating: form.rating,
             body: form.body.trim().slice(0, 1500),
             email: form.email.trim().slice(0, 200) || null,
-            status: 'pending'
+            show: false
         });
         if (error) {
             setState('error');
