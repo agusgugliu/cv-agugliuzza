@@ -372,6 +372,7 @@ export const portfolioEN = {
         projects: 'Projects',
         work: 'Work',
         apps: 'Apps',
+        reviews: 'Reviews',
         ideas: 'Ideas',
         contact: 'Contact'
     },
@@ -675,6 +676,7 @@ export const portfolioES = {
         projects: 'Proyectos',
         work: 'Trabajo',
         apps: 'Apps',
+        reviews: 'Reviews',
         ideas: 'Ideas',
         contact: 'Contacto'
     },

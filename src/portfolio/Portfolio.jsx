@@ -34,6 +34,7 @@ import HeroBackdrop from './HeroBackdrop';
 import Magnetic from './Magnetic';
 import Editorial from './Editorial';
 import ProjectsBento from './ProjectsBento';
+import ReviewsSection from './ReviewsSection';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CommandPalette from './CommandPalette';
 import './portfolio.css';
@@ -252,6 +253,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </a>
                         <a className="pm-nav-link" href="#apps" onClick={smoothScrollTo('apps')}>
                             {data.nav.apps}
+                        </a>
+                        <a className="pm-nav-link" href="#reviews" onClick={smoothScrollTo('reviews')}>
+                            {data.nav.reviews}
                         </a>
                         <a className="pm-nav-link" href="#ideas" onClick={smoothScrollTo('ideas')}>
                             {data.nav.ideas}
@@ -621,6 +625,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </div>
                     ))}
                 </section>
+
+                {/* Reviews (Supabase-backed, moderated) */}
+                <ReviewsSection lang={lang} />
 
                 {/* Principles */}
                 <section className="pm-section pm-principles" id="ideas">

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
+import AdminReviews from './portfolio/AdminReviews';
+
+const isAdminRoute = () => {
+    if (typeof window === 'undefined') return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('admin') === '1' || window.location.pathname.replace(/\/$/, '') === '/admin';
+};
 
 const getInitialState = () => {
     if (typeof window === 'undefined') return { mode: 'portfolio', lang: 'en', theme: 'light' };
@@ -20,6 +27,8 @@ const getInitialState = () => {
 };
 
 const App = () => {
+    if (isAdminRoute()) return <AdminReviews />;
+
     const initial = getInitialState();
     const [mode, setMode] = useState(initial.mode);
     const [lang, setLang] = useState(initial.lang);

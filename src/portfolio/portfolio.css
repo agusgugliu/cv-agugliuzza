@@ -2056,3 +2056,362 @@
         font-size: 0.72rem;
     }
 }
+
+/* ============================================================
+   Reviews section (Supabase-backed, moderated)
+   ============================================================ */
+.pm-reviews-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.pm-reviews-empty {
+    color: var(--slate-2);
+    font-size: 0.95rem;
+    margin-top: 24px;
+}
+
+.pm-reviews-grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.pm-review {
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 26px;
+    background: var(--paper-2);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pm-review-body {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--ink);
+}
+
+.pm-review-by {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: auto;
+}
+
+.pm-review-name {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.pm-review-role {
+    font-size: 0.85rem;
+    color: var(--slate);
+}
+
+.pm-review-rel {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--slate-2);
+    margin-top: 4px;
+}
+
+.pm-rev-stars {
+    display: inline-flex;
+    gap: 3px;
+    color: var(--blue);
+}
+
+.pm-rev-star {
+    display: inline-flex;
+    color: var(--blue);
+}
+
+.pm-rev-star:not(.on) {
+    color: var(--hairline-strong);
+}
+
+button.pm-rev-star {
+    background: none;
+    border: 0;
+    padding: 2px;
+    cursor: pointer;
+}
+
+/* Modal */
+.pm-rev-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(11, 14, 20, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pm-rev-modal {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--paper);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 18px;
+    padding: 36px;
+}
+
+.pm-rev-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: 0;
+    color: var(--slate);
+    cursor: pointer;
+}
+
+.pm-rev-form h3,
+.pm-rev-success h3 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    color: var(--ink);
+}
+
+.pm-rev-sub {
+    margin: 0 0 22px;
+    color: var(--slate-2);
+    font-size: 0.9rem;
+}
+
+.pm-rev-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+    font-size: 0.82rem;
+    color: var(--slate);
+}
+
+.pm-rev-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pm-rev-form input,
+.pm-rev-form textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--paper-2);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 11px 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.pm-rev-form input:focus,
+.pm-rev-form textarea:focus {
+    border-color: var(--blue);
+}
+
+.pm-rev-form textarea {
+    resize: vertical;
+}
+
+.pm-rev-rating-field {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 14px !important;
+}
+
+.pm-rev-honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.pm-rev-error {
+    color: #D33A4B;
+    font-size: 0.85rem;
+    margin: 0 0 12px;
+}
+
+.pm-rev-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+    border: 0;
+    cursor: pointer;
+}
+
+.pm-rev-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.pm-rev-success {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* ============================================================
+   Admin reviews page
+   ============================================================ */
+.pm-admin-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px var(--pad-x) 80px;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.pm-admin-card {
+    max-width: 380px;
+    margin: 12vh auto 0;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 32px;
+    background: var(--paper-2);
+}
+
+.pm-admin-card h1,
+.pm-admin-head h1 {
+    font-size: 1.6rem;
+    margin: 0 0 20px;
+}
+
+.pm-admin-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.pm-admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 0;
+    color: var(--slate);
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.pm-admin-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.pm-admin-tab {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    background: none;
+    color: var(--slate);
+    cursor: pointer;
+}
+
+.pm-admin-tab.active {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.pm-admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pm-admin-item {
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px;
+    background: var(--paper-2);
+}
+
+.pm-admin-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.pm-admin-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--slate-2);
+}
+
+.pm-admin-email {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--slate-2);
+    margin-top: 4px;
+}
+
+.pm-admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.pm-admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline-strong);
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.pm-admin-btn.approve:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+}
+
+.pm-admin-btn.reject:hover {
+    background: #D33A4B;
+    border-color: #D33A4B;
+    color: #fff;
+}
+
+@media (max-width: 560px) {
+    .pm-rev-row {
+        grid-template-columns: 1fr;
+    }
+    .pm-rev-modal {
+        padding: 28px 22px;
+    }
+}
