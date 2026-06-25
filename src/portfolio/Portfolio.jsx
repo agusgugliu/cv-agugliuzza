@@ -293,11 +293,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         >
                             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                         </button>
-                        <button className="pm-nav-btn pm-nav-icon" onClick={downloadPDF} title="Print / PDF">
+                        <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
                         <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
-                            <Calendar size={14} /> {data.hero.cta}
+                            <Calendar size={14} /> <span>{data.hero.cta}</span>
                         </a>
                         <button className="pm-mode-pill" onClick={onSwitchToCV}>
                             {data.nav.cv}
