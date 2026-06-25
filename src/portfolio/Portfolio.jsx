@@ -681,7 +681,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-footer-signature">
                         <div className="pm-footer-name">{data.footer.name}</div>
                         <div className="pm-footer-meta">{data.footer.meta}</div>
-                        <div className="pm-footer-credit">{data.footer.credit}</div>
                     </div>
                     <div className="pm-footer-utility">
                         <div className="pm-footer-socials">
