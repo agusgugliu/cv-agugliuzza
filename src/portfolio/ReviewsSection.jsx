@@ -147,9 +147,9 @@ const ReviewsSection = ({ lang }) => {
                             viewport={{ once: true, margin: '-60px' }}
                             transition={{ duration: 0.45 }}
                         >
-                            <Stars value={r.rating} />
                             <blockquote className="pm-review-body">{r.body}</blockquote>
                             <figcaption className="pm-review-by">
+                                <Stars value={r.rating} />
                                 <span className="pm-review-name">{r.name}</span>
                                 {(r.role || r.company) && (
                                     <span className="pm-review-role">

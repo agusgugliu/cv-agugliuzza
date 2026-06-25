@@ -2077,32 +2077,40 @@
 .pm-reviews-grid {
     margin-top: 36px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 24px;
 }
 
 .pm-review {
     border: 1px solid var(--hairline);
     border-radius: 14px;
-    padding: 26px;
+    padding: 32px;
     background: var(--paper-2);
     display: flex;
-    flex-direction: column;
-    gap: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px 40px;
 }
 
 .pm-review-body {
     margin: 0;
-    font-size: 1.02rem;
-    line-height: 1.55;
+    flex: 3 1 360px;
+    font-size: 1.08rem;
+    line-height: 1.6;
     color: var(--ink);
 }
 
 .pm-review-by {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    margin-top: auto;
+    gap: 4px;
+    flex: 1 1 200px;
+    max-width: 280px;
+}
+
+.pm-review-by .pm-rev-stars {
+    margin-bottom: 6px;
 }
 
 .pm-review-name {
