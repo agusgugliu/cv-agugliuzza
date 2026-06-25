@@ -254,11 +254,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <a className="pm-nav-link" href="#apps" onClick={smoothScrollTo('apps')}>
                             {data.nav.apps}
                         </a>
-                        <a className="pm-nav-link" href="#reviews" onClick={smoothScrollTo('reviews')}>
-                            {data.nav.reviews}
-                        </a>
                         <a className="pm-nav-link" href="#ideas" onClick={smoothScrollTo('ideas')}>
                             {data.nav.ideas}
+                        </a>
+                        <a className="pm-nav-link" href="#reviews" onClick={smoothScrollTo('reviews')}>
+                            {data.nav.reviews}
                         </a>
                         <a className="pm-nav-link" href="#contact" onClick={smoothScrollTo('contact')}>
                             {data.nav.contact}
@@ -626,9 +626,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     ))}
                 </section>
 
-                {/* Reviews (Supabase-backed, moderated) */}
-                <ReviewsSection lang={lang} />
-
                 {/* Principles */}
                 <section className="pm-section pm-principles" id="ideas">
                     <div className="pm-eyebrow">{data.principles.eyebrow}</div>
@@ -650,6 +647,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         ))}
                     </div>
                 </section>
+
+                {/* Reviews (Supabase-backed, moderated) */}
+                <ReviewsSection lang={lang} />
 
                 {/* Contact */}
                 <section className="pm-section pm-contact" id="contact">
