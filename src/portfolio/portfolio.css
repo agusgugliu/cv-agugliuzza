@@ -2115,22 +2115,25 @@
         display: none;
     }
 
-    /* Mobile nav: keep everything on one tidy row */
+    /* Mobile nav: force a single row so the pill never wraps and
+       overlaps the hero content underneath it. */
     .pm-nav-inner {
-        padding: 12px var(--pad-x);
-        gap: 10px;
+        padding: 10px 14px;
+        gap: 8px;
+        flex-wrap: nowrap;
     }
 
     .pm-brand {
         min-width: 0;
         gap: 8px;
         font-size: 0.78rem;
+        padding-left: 0;
     }
 
+    /* No room for the full name at this width once flex-wrap is off;
+       keep just the avatar as the "back to top" mark. */
     .pm-brand span:not(.pm-brand-dot):not(.pm-brand-flags) {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: none;
     }
 
     .pm-brand-avatar {
@@ -2145,9 +2148,18 @@
         display: none;
     }
 
+    .pm-nav-divider {
+        display: none;
+    }
+
     .pm-nav-actions {
         flex-shrink: 0;
-        gap: 8px;
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+
+    .pm-lang-toggle .sep {
+        margin: 0 4px;
     }
 }
 
