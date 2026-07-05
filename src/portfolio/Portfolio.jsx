@@ -244,6 +244,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <span className="pm-brand-flags" aria-label="Argentina, Mexico, Italy" title="Argentina · México · Italia">🇦🇷🇲🇽🇮🇹</span>
                     </a>
 
+                    <span className="pm-nav-divider" aria-hidden="true" />
+
                     <div className="pm-nav-links">
                         <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
                             {data.nav.projects}
@@ -264,6 +266,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             {data.nav.contact}
                         </a>
                     </div>
+
+                    <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-actions">
                         <div className="pm-lang-toggle">
@@ -314,6 +318,36 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 {/* Hero */}
                 <section className="pm-section pm-hero">
                     <HeroBackdrop theme={theme} />
+                    <div className="pm-hero-grid">
+                    <motion.div
+                        className="pm-hero-photo-col"
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="pm-hero-photo">
+                            <img src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
+                            <span className="pm-hero-badge">Agust&iacute;n</span>
+                        </div>
+                        <div className="pm-hero-socials">
+                            {data.footer.socials.map((s, i) => {
+                                const Icon = SOCIAL_ICONS[s.platform];
+                                if (!Icon) return null;
+                                return (
+                                    <a
+                                        key={i}
+                                        className="pm-hero-social"
+                                        href={s.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        aria-label={s.label}
+                                    >
+                                        <Icon size={16} />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
                     <motion.div
                         className="pm-hero-inner"
                         initial="hidden"
@@ -359,13 +393,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </Magnetic>
                         </motion.div>
                     </motion.div>
+                    </div>
                 </section>
 
                 {/* Selected Projects */}
                 <ProjectsBento data={data.projects} />
 
                 {/* AI end-to-end (elevated) */}
-                <section className="pm-section pm-ai" id="ai">
+                <section className="pm-section pm-ai pm-card-section" id="ai">
+                    <div className="pm-card">
                     <div className="pm-eyebrow">{data.ai.eyebrow}</div>
                     <h2><Editorial text={data.ai.heading} /></h2>
                     <p className="pm-ai-lead">{data.ai.lead}</p>
@@ -393,6 +429,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <div className="pm-ai-tools">{s.tools}</div>
                             </motion.div>
                         ))}
+                    </div>
                     </div>
                 </section>
 
@@ -423,7 +460,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.track.eyebrow}</div>
                     <div className="pm-track-head">
                         <h2><Editorial text={data.track.heading} /></h2>
-                        <button className="pm-mode-pill" onClick={onSwitchToCV}>
+                        <button className="pm-mode-pill pm-pill--solid" onClick={onSwitchToCV}>
                             {data.track.cta} &rarr;
                         </button>
                     </div>
@@ -627,7 +664,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </section>
 
                 {/* Principles */}
-                <section className="pm-section pm-principles" id="ideas">
+                <section className="pm-section pm-principles pm-card-section" id="ideas">
+                    <div className="pm-card">
                     <div className="pm-eyebrow">{data.principles.eyebrow}</div>
                     <h2><Editorial text={data.principles.heading} /></h2>
                     <div className="pm-principle-list">
@@ -646,13 +684,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </motion.div>
                         ))}
                     </div>
+                    </div>
                 </section>
 
                 {/* Reviews (Supabase-backed, moderated) */}
                 <ReviewsSection lang={lang} />
 
                 {/* Contact */}
-                <section className="pm-section pm-contact" id="contact">
+                <section className="pm-section pm-contact pm-card-section" id="contact">
+                    <div className="pm-card">
                     <div className="pm-eyebrow">{data.contact.eyebrow}</div>
                     <h2><Editorial text={data.contact.heading} /></h2>
                     <p className="pm-contact-lead">{data.contact.lead}</p>
@@ -674,6 +714,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <span className="pm-contact-qr-label">
                             {lang === 'es' ? 'Escaneá para conectar' : 'Scan to connect'}
                         </span>
+                    </div>
                     </div>
                 </section>
 

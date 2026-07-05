@@ -95,34 +95,66 @@
     display: inline-block;
 }
 
+/* ---------- Card-panel section (opt-in, mirrors Silvia's "About Me" box) ---------- */
+.pm-card-section {
+    border-top: 0;
+}
+
+.pm-card {
+    background: var(--paper-2);
+    border: 1px solid var(--hairline);
+    border-radius: 28px;
+    padding: clamp(32px, 5vw, 56px);
+}
+
 /* ---------- Nav ---------- */
 .pm-nav {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
-    background: rgba(244, 245, 247, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--hairline);
+    width: auto;
+    max-width: calc(100vw - 24px);
+    background: rgba(244, 245, 247, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(11, 14, 20, 0.08);
+}
+
+:root[data-theme="dark"] .portfolio-mode .pm-nav {
+    background: rgba(11, 14, 20, 0.72);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .pm-nav-inner {
-    max-width: var(--page-max);
-    margin: 0 auto;
-    padding: 18px var(--pad-x);
+    margin: 0;
+    padding: 8px 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+}
+
+.pm-nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--hairline-strong);
+    flex: none;
 }
 
 .pm-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.04em;
     color: var(--ink);
+    padding-left: 6px;
 }
 
 .pm-brand-mark {
@@ -141,8 +173,8 @@
 }
 
 .pm-brand-avatar {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--hairline-strong);
@@ -155,10 +187,10 @@
 
 .pm-nav-links {
     display: flex;
-    gap: 28px;
+    gap: 18px;
     font-family: var(--font-mono);
-    font-size: 0.76rem;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
@@ -207,10 +239,12 @@
 .pm-nav-actions {
     display: flex;
     align-items: center;
-    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
@@ -260,6 +294,16 @@
     color: var(--paper);
 }
 
+.pm-pill--solid {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.pm-pill--solid:hover {
+    background: var(--blue);
+    color: #fff;
+}
+
 /* ---------- Hero ---------- */
 .pm-hero {
     padding-top: clamp(80px, 14vw, 180px);
@@ -278,9 +322,99 @@
     pointer-events: none;
 }
 
+.pm-hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(240px, 340px) 1fr;
+    gap: clamp(32px, 6vw, 72px);
+    align-items: center;
+}
+
+.pm-hero-photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.pm-hero-photo {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    background: var(--card-bg);
+    box-shadow: 0 18px 40px rgba(11, 14, 20, 0.10);
+}
+
+.pm-hero-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.pm-hero-badge {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    background: var(--card-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+}
+
+.pm-hero-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pm-hero-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline-strong);
+    color: var(--slate);
+    transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.pm-hero-social:hover {
+    color: var(--blue);
+    border-color: var(--blue);
+    transform: translateY(-2px);
+}
+
 .pm-hero-inner {
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 900px) {
+    .pm-hero-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .pm-hero-meta,
+    .pm-hero-actions {
+        justify-content: center;
+    }
+
+    .pm-hero h1,
+    .pm-hero-sub {
+        max-width: 100%;
+    }
 }
 
 .pm-hero-meta {
@@ -338,53 +472,71 @@
     letter-spacing: -0.01em;
 }
 
-.pm-hero-cta {
+.pm-hero-actions .pm-hero-cta {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-    padding: 16px 0 16px 0;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
+    gap: 12px;
+    padding: 8px 8px 8px 24px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink);
-    transition: padding-right 0.3s, color 0.3s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pm-hero-actions .pm-hero-cta:hover {
+    color: var(--paper);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(11, 14, 20, 0.18);
 }
 
 .pm-hero-cta .arrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1;
     transition: transform 0.3s;
 }
 
-.pm-hero-cta:hover {
-    color: var(--blue);
-}
-
 .pm-hero-cta:hover .arrow {
-    transform: translateX(8px);
+    transform: translateX(4px);
 }
 
 .pm-hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 28px 36px;
+    gap: 16px 20px;
     align-items: center;
 }
 
-.pm-hero-cta--ghost {
-    border-top-color: var(--hairline-strong);
-    border-bottom-color: var(--hairline-strong);
-    color: var(--slate);
+.pm-hero-actions .pm-hero-cta--ghost {
+    background: var(--paper-2);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
 }
 
-.pm-hero-cta--ghost:hover {
+.pm-hero-actions .pm-hero-cta--ghost:hover {
     color: var(--ink);
+    box-shadow: 0 10px 26px rgba(11, 14, 20, 0.08);
+}
+
+.pm-hero-cta--ghost .arrow {
+    background: var(--card-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
 }
 
 .pm-hero-cta--ghost:hover .arrow {
-    transform: translateY(4px) translateX(0);
+    transform: translateY(3px);
 }
 
 /* ---------- Problems grid ---------- */
@@ -1594,6 +1746,13 @@
     .pm-nav-links {
         display: none;
     }
+
+    /* Below this width the floating pill nav can wrap to 2-3 rows
+       (fewer controls fit one line) — give the hero enough clearance
+       that it never sits under the nav regardless of wrap state. */
+    .pm-hero {
+        padding-top: 190px;
+    }
 }
 
 @media (max-width: 820px) {
@@ -1993,7 +2152,7 @@
 }
 
 /* Always-visible "Book a call" nav CTA (Reclaim) */
-.pm-nav-cta {
+.pm-nav-actions .pm-nav-cta {
     display: inline-flex;
     align-items: center;
     gap: 6px;
