@@ -139,7 +139,8 @@ const IE_TRANSCRIPT_EN = {
                 { name: 'Applied Data Analytics', band: 'Excellence', summary: 'Regression, Monte Carlo simulation, and quantitative models across functions.' },
                 { name: 'Technology Product Management', band: 'Excellence', summary: 'Opportunity discovery, MVP development, and product strategy.' },
                 { name: 'Operational Excellence & Digitalization', band: 'Proficiency', summary: 'Process mapping, Lean diagnostics, and analytics-driven operations.' },
-                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Human-centered service design, behavioral science, and AI in services.' }
+                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Human-centered service design, behavioral science, and AI in services.' },
+                { name: 'Tech Lab Challenge · Almazara Copilot', band: 'Excellence', summary: 'Microsoft-partnered venture challenge — AI-native grade and provenance intelligence for olive-oil mills. Final grade 4.35/5 across mentoring, deliverables, and presentation.' }
             ]
         },
         {
@@ -192,7 +193,8 @@ const IE_TRANSCRIPT_ES = {
                 { name: 'Applied Data Analytics', band: 'Excellence', summary: 'Regresión, simulación Monte Carlo y modelos cuantitativos por función.' },
                 { name: 'Technology Product Management', band: 'Excellence', summary: 'Descubrimiento de oportunidades, desarrollo de MVPs y estrategia de producto.' },
                 { name: 'Operational Excellence & Digitalization', band: 'Proficiency', summary: 'Mapeo de procesos, diagnóstico Lean y operaciones data-driven.' },
-                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Diseño de servicios centrado en el usuario, ciencia del comportamiento e IA.' }
+                { name: 'Digital Services Design', band: 'Proficiency', summary: 'Diseño de servicios centrado en el usuario, ciencia del comportamiento e IA.' },
+                { name: 'Tech Lab Challenge · Almazara Copilot', band: 'Excellence', summary: 'Reto de venture con Microsoft — inteligencia de grado y trazabilidad AI-native para almazaras. Nota final 4.35/5 entre mentoring, entregables y presentación.' }
             ]
         },
         {
@@ -374,6 +376,7 @@ export const portfolioEN = {
         apps: 'Apps',
         reviews: 'Reviews',
         ideas: 'Ideas',
+        blog: 'Blog',
         contact: 'Contact'
     },
     hero: {
@@ -678,6 +681,7 @@ export const portfolioES = {
         apps: 'Apps',
         reviews: 'Reviews',
         ideas: 'Ideas',
+        blog: 'Blog',
         contact: 'Contacto'
     },
     hero: {

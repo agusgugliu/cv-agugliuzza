@@ -69,6 +69,7 @@
 .pm-section {
     padding: var(--section-y) 0;
     border-top: 1px solid var(--hairline);
+    scroll-margin-top: 96px;
 }
 
 .pm-section:first-of-type {
@@ -122,11 +123,48 @@
     border: 1px solid var(--hairline-strong);
     border-radius: 999px;
     box-shadow: 0 8px 30px rgba(11, 14, 20, 0.08);
+    transition: top 0.2s ease, box-shadow 0.2s ease;
 }
 
 :root[data-theme="dark"] .portfolio-mode .pm-nav {
     background: rgba(11, 14, 20, 0.72);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Compact state: once the page scrolls, shrink the pill so it reads as a
+   quiet utility bar instead of a large floating hero element. */
+.pm-nav.pm-nav--compact {
+    top: 10px;
+    box-shadow: 0 4px 16px rgba(11, 14, 20, 0.10);
+}
+
+:root[data-theme="dark"] .portfolio-mode .pm-nav.pm-nav--compact {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30);
+}
+
+.pm-nav.pm-nav--compact .pm-nav-inner {
+    padding: 5px 8px;
+    gap: 6px 14px;
+}
+
+.pm-nav.pm-nav--compact .pm-brand-name,
+.pm-nav.pm-nav--compact .pm-brand-flags,
+.pm-nav.pm-nav--compact .pm-cmdk-chip,
+.pm-nav.pm-nav--compact .pm-nav-download {
+    display: none;
+}
+
+.pm-nav.pm-nav--compact .pm-brand {
+    padding-left: 2px;
+}
+
+.pm-nav.pm-nav--compact .pm-brand-avatar {
+    width: 22px;
+    height: 22px;
+}
+
+.pm-nav.pm-nav--compact .pm-nav-links {
+    gap: 14px;
 }
 
 .pm-nav-inner {
@@ -137,6 +175,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px 18px;
+    transition: padding 0.2s ease, gap 0.2s ease;
 }
 
 .pm-nav-divider {

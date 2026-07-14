@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
@@ -178,6 +179,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         return () => { /* noop */ };
     }, []);
 
+    const [navCompact, setNavCompact] = useState(false);
+    useEffect(() => {
+        const onScroll = () => setNavCompact(window.scrollY > 40);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
     const showToast = (msg) => {
         setToast(msg);
         setTimeout(() => setToast(null), 2500);
@@ -236,11 +245,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             </AnimatePresence>
 
             {/* Nav */}
-            <nav className="pm-nav">
+            <nav className={`pm-nav ${navCompact ? 'pm-nav--compact' : ''}`}>
                 <div className="pm-nav-inner">
                     <a className="pm-brand" href="#top" onClick={smoothScrollTo('top')}>
                         <img className="pm-brand-avatar" src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
-                        <span>Agust&iacute;n Gugliuzza<span className="pm-brand-dot">.</span></span>
+                        <span className="pm-brand-name">Agust&iacute;n Gugliuzza<span className="pm-brand-dot">.</span></span>
                         <span className="pm-brand-flags" aria-label="Argentina, Mexico, Italy" title="Argentina · México · Italia">🇦🇷🇲🇽🇮🇹</span>
                     </a>
 
@@ -262,6 +271,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <a className="pm-nav-link" href="#reviews" onClick={smoothScrollTo('reviews')}>
                             {data.nav.reviews}
                         </a>
+                        <Link className="pm-nav-link" to="/blog">
+                            {data.nav.blog}
+                        </Link>
                         <a className="pm-nav-link" href="#contact" onClick={smoothScrollTo('contact')}>
                             {data.nav.contact}
                         </a>
