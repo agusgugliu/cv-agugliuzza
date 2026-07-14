@@ -143,8 +143,21 @@ const IE_TRANSCRIPT_EN = {
             ]
         },
         {
-            name: 'Tech Lab Challenge · Almazara Copilot', courses: [
-                { name: 'Final grade — 4.35 / 5', band: 'Excellence', summary: 'Microsoft-partnered venture challenge — AI-native grade and provenance intelligence for olive-oil mills. Final grade 4.35/5 across mentoring, deliverables, and presentation.' }
+            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '4.35 / 5', courses: [
+                { name: 'TLT: Platform Creation — 5/5', band: 'Honors' },
+                { name: 'TLT: Generative AI — 4.8/5', band: 'Honors' },
+                { name: 'Product Management Toolkit — 4.62/5', band: 'Honors' },
+                { name: 'Developing Tech Futures — 4.9/5', band: 'Honors' },
+                { name: 'Mastering the Pitch — 5/5', band: 'Honors' },
+                { name: 'Consulting Problem Solving — 4.5/5', band: 'Honors' },
+                { name: 'Activating Data and AI Strategy — 4.51/5', band: 'Honors' },
+                { name: 'Design Thinking, Creativity and Ideation — 4.8/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 1 — 3.97/5', band: 'Proficiency' },
+                { name: 'Mentoring Sessions Week 2 — 4.62/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 3 — 5/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 4 — 4.81/5', band: 'Honors' },
+                { name: 'Academic Touchpoints — 4.76/5', band: 'Honors' },
+                { name: 'Final Presentation — 3.5/5', band: 'Proficiency', summary: 'Graded 7/9/26 — the lowest item, pulling down the weighted average.' }
             ]
         },
         {
@@ -201,8 +214,21 @@ const IE_TRANSCRIPT_ES = {
             ]
         },
         {
-            name: 'Tech Lab Challenge · Almazara Copilot', courses: [
-                { name: 'Nota final — 4.35 / 5', band: 'Excellence', summary: 'Reto de venture con Microsoft — inteligencia de grado y trazabilidad AI-native para almazaras. Nota final 4.35/5 entre mentoring, entregables y presentación.' }
+            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '4.35 / 5', courses: [
+                { name: 'TLT: Platform Creation — 5/5', band: 'Honors' },
+                { name: 'TLT: Generative AI — 4.8/5', band: 'Honors' },
+                { name: 'Product Management Toolkit — 4.62/5', band: 'Honors' },
+                { name: 'Developing Tech Futures — 4.9/5', band: 'Honors' },
+                { name: 'Mastering the Pitch — 5/5', band: 'Honors' },
+                { name: 'Consulting Problem Solving — 4.5/5', band: 'Honors' },
+                { name: 'Activating Data and AI Strategy — 4.51/5', band: 'Honors' },
+                { name: 'Design Thinking, Creativity and Ideation — 4.8/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 1 — 3.97/5', band: 'Proficiency' },
+                { name: 'Mentoring Sessions Week 2 — 4.62/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 3 — 5/5', band: 'Honors' },
+                { name: 'Mentoring Sessions Week 4 — 4.81/5', band: 'Honors' },
+                { name: 'Academic Touchpoints — 4.76/5', band: 'Honors' },
+                { name: 'Final Presentation — 3.5/5', band: 'Proficiency', summary: 'Calificada el 7/9/26 — el ítem más bajo, el que baja el promedio ponderado.' }
             ]
         },
         {
