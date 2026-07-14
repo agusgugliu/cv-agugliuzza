@@ -4,6 +4,7 @@ import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
 import BlogList from './blog/BlogList';
 import BlogPost from './blog/BlogPost';
+import AdminBlog from './portfolio/AdminBlog';
 
 const getInitialState = () => {
     if (typeof window === 'undefined') return { mode: 'portfolio', lang: 'en', theme: 'light' };
@@ -81,6 +82,7 @@ const App = () => {
         <Routes>
             <Route path="/blog" element={<BlogList {...blogProps} />} />
             <Route path="/blog/:slug" element={<BlogPost {...blogProps} />} />
+            <Route path="/admin/blog" element={<AdminBlog />} />
             <Route path="*" element={<Home />} />
         </Routes>
     );

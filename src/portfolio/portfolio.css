@@ -2427,6 +2427,7 @@ button.pm-rev-star {
 }
 
 .pm-rev-form input,
+.pm-rev-form select,
 .pm-rev-form textarea {
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -2440,6 +2441,7 @@ button.pm-rev-star {
 }
 
 .pm-rev-form input:focus,
+.pm-rev-form select:focus,
 .pm-rev-form textarea:focus {
     border-color: var(--blue);
 }

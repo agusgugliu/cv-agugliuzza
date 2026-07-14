@@ -10,7 +10,9 @@ const SUPABASE_ANON_KEY =
     'sb_publishable_xzahJ8cl0zYLDnqwztEvUg_cwcGWVVg';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-    auth: { persistSession: false, autoRefreshToken: false }
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false }
 });
 
 export const REVIEWS_TABLE = 'portfolio_reviews';
+export const BLOG_TABLE = 'portfolio_blog_posts';
+export const ADMIN_EMAIL = 'agusgugliuzza@gmail.com';

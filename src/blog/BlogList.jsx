@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BlogLayout from './BlogLayout';
-import { posts } from './loadPosts';
+import { fetchPosts } from './loadPosts';
 
 const COPY = {
     en: {
@@ -27,6 +27,12 @@ const formatDate = (date, lang) => {
 
 const BlogList = ({ lang, setLang, theme, toggleTheme }) => {
     const t = COPY[lang] || COPY.en;
+    const [posts, setPosts] = useState(null);
+
+    useEffect(() => {
+        fetchPosts().then(setPosts);
+    }, []);
+
     return (
         <BlogLayout lang={lang} setLang={setLang} theme={theme} toggleTheme={toggleTheme}>
             <div className="blog-shell">
@@ -35,7 +41,7 @@ const BlogList = ({ lang, setLang, theme, toggleTheme }) => {
                     <p className="blog-subtitle">{t.subtitle}</p>
                 </header>
 
-                {posts.length === 0 ? (
+                {!posts ? null : posts.length === 0 ? (
                     <p className="blog-empty">{t.empty}</p>
                 ) : (
                     <div className="blog-list">

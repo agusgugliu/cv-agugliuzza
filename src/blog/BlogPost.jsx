@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { marked } from 'marked';
 import { Linkedin } from 'lucide-react';
 import BlogLayout from './BlogLayout';
-import { getPostBySlug } from './loadPosts';
+import { fetchPostBySlug } from './loadPosts';
 
 const COPY = {
     en: { back: '← All notes', linkedin: 'Also on LinkedIn' },
@@ -21,14 +21,20 @@ const formatDate = (date, lang) => {
 
 const BlogPost = ({ lang, setLang, theme, toggleTheme }) => {
     const { slug } = useParams();
-    const post = getPostBySlug(slug);
+    const [post, setPost] = useState(undefined); // undefined = loading, null = not found
     const html = useMemo(() => (post ? marked.parse(post.content) : ''), [post]);
     const t = COPY[lang] || COPY.en;
+
+    useEffect(() => {
+        setPost(undefined);
+        fetchPostBySlug(slug).then(setPost);
+    }, [slug]);
 
     useEffect(() => {
         if (post) document.title = `${post.title} — Agustín Gugliuzza`;
     }, [post]);
 
+    if (post === undefined) return null;
     if (!post) return <Navigate to="/blog" replace />;
 
     return (
