@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
+import BlogList from './blog/BlogList';
+import BlogPost from './blog/BlogPost';
 
 const getInitialState = () => {
     if (typeof window === 'undefined') return { mode: 'portfolio', lang: 'en', theme: 'light' };
@@ -44,30 +47,42 @@ const App = () => {
 
     const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
-    if (mode === 'cv') {
+    const Home = () => {
+        if (mode === 'cv') {
+            return (
+                <CVMode
+                    lang={lang}
+                    setLang={setLang}
+                    onSwitchToPortfolio={() => {
+                        setMode('portfolio');
+                        window.scrollTo({ top: 0 });
+                    }}
+                />
+            );
+        }
+
         return (
-            <CVMode
+            <Portfolio
                 lang={lang}
                 setLang={setLang}
-                onSwitchToPortfolio={() => {
-                    setMode('portfolio');
+                theme={theme}
+                toggleTheme={toggleTheme}
+                onSwitchToCV={() => {
+                    setMode('cv');
                     window.scrollTo({ top: 0 });
                 }}
             />
         );
-    }
+    };
+
+    const blogProps = { lang, setLang, theme, toggleTheme };
 
     return (
-        <Portfolio
-            lang={lang}
-            setLang={setLang}
-            theme={theme}
-            toggleTheme={toggleTheme}
-            onSwitchToCV={() => {
-                setMode('cv');
-                window.scrollTo({ top: 0 });
-            }}
-        />
+        <Routes>
+            <Route path="/blog" element={<BlogList {...blogProps} />} />
+            <Route path="/blog/:slug" element={<BlogPost {...blogProps} />} />
+            <Route path="*" element={<Home />} />
+        </Routes>
     );
 };
 
