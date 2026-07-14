@@ -1,6 +1,6 @@
 ---
 title: Starting a blog
-date: 2026-07-14
+date: 2026-07-13
 excerpt: Why I'm adding a notes section to my site, and what's going to end up here.
 tags: [meta]
 lang: en
