@@ -16,3 +16,10 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 export const REVIEWS_TABLE = 'portfolio_reviews';
 export const BLOG_TABLE = 'portfolio_blog_posts';
 export const ADMIN_EMAIL = 'agusgugliuzza@gmail.com';
+
+// Dedicated, isolated auth account for the blog admin — separate from
+// ADMIN_EMAIL (which is shared with other apps on this Supabase project)
+// so a password change here can never affect those. The login form takes
+// a plain username; this is the real address behind it.
+export const BLOG_ADMIN_USERNAME = 'agugliuzza';
+export const BLOG_ADMIN_EMAIL = 'agugliuzza@blog.cv-agugliuzza.internal';

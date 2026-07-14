@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pencil, Trash2, LogOut, Plus, X } from 'lucide-react';
-import { supabase, BLOG_TABLE, ADMIN_EMAIL } from '../lib/supabaseClient';
+import { supabase, BLOG_TABLE, BLOG_ADMIN_USERNAME, BLOG_ADMIN_EMAIL } from '../lib/supabaseClient';
 
 const slugify = (s) =>
     s
@@ -28,9 +28,8 @@ const emptyForm = () => ({
 
 const AdminBlog = () => {
     const [session, setSession] = useState(undefined); // undefined = checking
-    const [email, setEmail] = useState(ADMIN_EMAIL);
-    const [code, setCode] = useState('');
-    const [step, setStep] = useState('email'); // email | code
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [authMsg, setAuthMsg] = useState('');
     const [busy, setBusy] = useState(false);
 
@@ -58,34 +57,21 @@ const AdminBlog = () => {
         if (session) load();
     }, [session]);
 
-    const sendCode = async (e) => {
+    const signIn = async (e) => {
         e.preventDefault();
         setBusy(true);
         setAuthMsg('');
-        const { error: err } = await supabase.auth.signInWithOtp({
-            email: email.trim(),
-            options: { shouldCreateUser: true }
-        });
-        setBusy(false);
-        if (err) {
-            setAuthMsg(err.message);
+        if (username.trim() !== BLOG_ADMIN_USERNAME) {
+            setBusy(false);
+            setAuthMsg('Invalid username or password.');
             return;
         }
-        setStep('code');
-        setAuthMsg('We emailed you a 6-digit code.');
-    };
-
-    const verify = async (e) => {
-        e.preventDefault();
-        setBusy(true);
-        setAuthMsg('');
-        const { error: err } = await supabase.auth.verifyOtp({
-            email: email.trim(),
-            token: code.trim(),
-            type: 'email'
+        const { error: err } = await supabase.auth.signInWithPassword({
+            email: BLOG_ADMIN_EMAIL,
+            password
         });
         setBusy(false);
-        if (err) setAuthMsg(err.message);
+        if (err) setAuthMsg('Invalid username or password.');
     };
 
     const signOut = async () => {
@@ -179,28 +165,30 @@ const AdminBlog = () => {
             <div className="pm-admin-wrap">
                 <div className="pm-admin-card">
                     <h1>Blog admin</h1>
-                    {step === 'email' ? (
-                        <form onSubmit={sendCode} className="pm-rev-form">
-                            <label>
-                                <span>Admin email</span>
-                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                            </label>
-                            <button className="pm-nav-cta" type="submit" disabled={busy}>
-                                {busy ? 'Sending…' : 'Send code'}
-                            </button>
-                        </form>
-                    ) : (
-                        <form onSubmit={verify} className="pm-rev-form">
-                            <label>
-                                <span>6-digit code</span>
-                                <input value={code} onChange={(e) => setCode(e.target.value)} inputMode="numeric" maxLength={8} required />
-                            </label>
-                            <button className="pm-nav-cta" type="submit" disabled={busy}>
-                                {busy ? 'Verifying…' : 'Verify & sign in'}
-                            </button>
-                            <button type="button" className="pm-admin-link" onClick={() => setStep('email')}>Use a different email</button>
-                        </form>
-                    )}
+                    <form onSubmit={signIn} className="pm-rev-form">
+                        <label>
+                            <span>Username</span>
+                            <input
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                autoComplete="username"
+                                required
+                            />
+                        </label>
+                        <label>
+                            <span>Password</span>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                autoComplete="current-password"
+                                required
+                            />
+                        </label>
+                        <button className="pm-nav-cta" type="submit" disabled={busy}>
+                            {busy ? 'Signing in…' : 'Sign in'}
+                        </button>
+                    </form>
                     {authMsg && <p className="pm-rev-sub">{authMsg}</p>}
                 </div>
             </div>
