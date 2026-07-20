@@ -3,7 +3,7 @@ export const reviewsCopy = {
     en: {
         eyebrow: 'What people say',
         heading: 'Reviews from people I have {worked with}.',
-        lead: 'Colleagues, clients and teammates. Every review here was submitted by them and approved by me.',
+        lead: 'Colleagues, clients and teammates.',
         empty: 'No reviews published yet. Worked with me? Be the first.',
         loading: 'Loading reviews…',
         cta: 'Leave a review',
@@ -29,7 +29,7 @@ export const reviewsCopy = {
     es: {
         eyebrow: 'Lo que dicen',
         heading: 'Reviews de gente con la que {trabajé}.',
-        lead: 'Colegas, clientes y compañeros. Cada review acá la dejaron ellos y la aprobé yo.',
+        lead: 'Colegas, clientes y compañeros.',
         empty: 'Todavía no hay reviews publicadas. ¿Trabajaste conmigo? Sé el primero.',
         loading: 'Cargando reviews…',
         cta: 'Dejar una review',
