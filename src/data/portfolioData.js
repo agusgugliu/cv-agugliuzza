@@ -111,6 +111,21 @@ const IE_TRANSCRIPT_EN = {
     gpa: '3.61 / 4.00',
     terms: [
         {
+            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
+                { name: 'AI for Productivity', band: 'Honors', summary: 'Applying AI tools to accelerate knowledge work.' },
+                { name: 'Creative Thinking', band: 'Honors', summary: 'Structured ideation and reframing techniques.' },
+                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Narrative structure and executive presence.' },
+                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau and data-driven communication.' },
+                { name: 'Critical Thinking', band: 'Excellence', summary: 'Argument analysis and reasoning under uncertainty.' },
+                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hypotheses, and MECE structuring.' },
+                { name: 'Project Management', band: 'Excellence', summary: 'Agile/Scrum and classic delivery methods.' },
+                { name: 'Power & Influence', band: 'Excellence', summary: 'Negotiation and stakeholder influence.' },
+                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Team dynamics and collaboration.' },
+                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Advanced team leadership.' },
+                { name: 'Self-Transformation', band: 'Excellence', summary: 'Personal development and reflective practice.' }
+            ]
+        },
+        {
             name: 'Term 1 · Sep–Dec 2025', gpa: '3.42', courses: [
                 { name: 'Strategy', band: 'Excellence', summary: 'Industry analysis, competitive advantage, and platform and ecosystem models.' },
                 { name: 'Financial Markets', band: 'Excellence', summary: 'Time value of money, DCF, and frameworks for investment decisions.' },
@@ -161,18 +176,8 @@ const IE_TRANSCRIPT_EN = {
             ]
         },
         {
-            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
-                { name: 'AI for Productivity', band: 'Honors', summary: 'Applying AI tools to accelerate knowledge work.' },
-                { name: 'Creative Thinking', band: 'Honors', summary: 'Structured ideation and reframing techniques.' },
-                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Narrative structure and executive presence.' },
-                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau and data-driven communication.' },
-                { name: 'Critical Thinking', band: 'Excellence', summary: 'Argument analysis and reasoning under uncertainty.' },
-                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hypotheses, and MECE structuring.' },
-                { name: 'Project Management', band: 'Excellence', summary: 'Agile/Scrum and classic delivery methods.' },
-                { name: 'Power & Influence', band: 'Excellence', summary: 'Negotiation and stakeholder influence.' },
-                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Team dynamics and collaboration.' },
-                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Advanced team leadership.' },
-                { name: 'Self-Transformation', band: 'Excellence', summary: 'Personal development and reflective practice.' }
+            name: 'Final Integrative Exercise (FIE) · Aitaca Virtual Sizer', gpa: '4.00 / 4.00', courses: [
+                { name: 'Final Grade — 4/4', band: 'Honors', summary: 'Final capstone project with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body measurement for jewelry and smart rings).' }
             ]
         }
     ]
@@ -181,6 +186,21 @@ const IE_TRANSCRIPT_EN = {
 const IE_TRANSCRIPT_ES = {
     gpa: '3.61 / 4.00',
     terms: [
+        {
+            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
+                { name: 'AI for Productivity', band: 'Honors', summary: 'Aplicar herramientas de IA para acelerar el trabajo intelectual.' },
+                { name: 'Creative Thinking', band: 'Honors', summary: 'Ideación estructurada y técnicas de reframing.' },
+                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Estructura narrativa y presencia ejecutiva.' },
+                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau y comunicación basada en datos.' },
+                { name: 'Critical Thinking', band: 'Excellence', summary: 'Análisis de argumentos y razonamiento bajo incertidumbre.' },
+                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hipótesis y estructuración MECE.' },
+                { name: 'Project Management', band: 'Excellence', summary: 'Métodos Agile/Scrum y entrega clásica.' },
+                { name: 'Power & Influence', band: 'Excellence', summary: 'Negociación e influencia sobre stakeholders.' },
+                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Dinámica de equipos y colaboración.' },
+                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Liderazgo de equipos avanzado.' },
+                { name: 'Self-Transformation', band: 'Excellence', summary: 'Desarrollo personal y práctica reflexiva.' }
+            ]
+        },
         {
             name: 'Term 1 · Sep–Dic 2025', gpa: '3.42', courses: [
                 { name: 'Strategy', band: 'Excellence', summary: 'Análisis de industria, ventaja competitiva y modelos de plataforma y ecosistema.' },
@@ -232,18 +252,8 @@ const IE_TRANSCRIPT_ES = {
             ]
         },
         {
-            name: 'ISA · Skill Modules', gpa: '3.81', courses: [
-                { name: 'AI for Productivity', band: 'Honors', summary: 'Aplicar herramientas de IA para acelerar el trabajo intelectual.' },
-                { name: 'Creative Thinking', band: 'Honors', summary: 'Ideación estructurada y técnicas de reframing.' },
-                { name: 'Storytelling & Public Speaking', band: 'Honors', summary: 'Estructura narrativa y presencia ejecutiva.' },
-                { name: 'Data Fluency', band: 'Honors', summary: 'Tableau y comunicación basada en datos.' },
-                { name: 'Critical Thinking', band: 'Excellence', summary: 'Análisis de argumentos y razonamiento bajo incertidumbre.' },
-                { name: 'Problem Solving', band: 'Excellence', summary: 'Issue trees, hipótesis y estructuración MECE.' },
-                { name: 'Project Management', band: 'Excellence', summary: 'Métodos Agile/Scrum y entrega clásica.' },
-                { name: 'Power & Influence', band: 'Excellence', summary: 'Negociación e influencia sobre stakeholders.' },
-                { name: 'High-Performance Teambuilding I', band: 'Excellence', summary: 'Dinámica de equipos y colaboración.' },
-                { name: 'High-Performance Teambuilding II', band: 'Excellence', summary: 'Liderazgo de equipos avanzado.' },
-                { name: 'Self-Transformation', band: 'Excellence', summary: 'Desarrollo personal y práctica reflexiva.' }
+            name: 'Final Integrative Exercise (FIE) · Aitaca Virtual Sizer', gpa: '4.00 / 4.00', courses: [
+                { name: 'Nota final — 4/4', band: 'Honors', summary: 'Proyecto final de capstone con Aitaca Remote Tech sobre la tesis de go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings).' }
             ]
         }
     ]
