@@ -10,7 +10,7 @@ export const dataEN = {
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
-    summary: "Strategy and transformation professional with 8+ years across LATAM multinationals: consulted 13 enterprise clients at MicroStrategy, led a 15-person team serving ~3M clients at Life Seguros, and now advise on a USD 900M+ cross-border M&A pipeline. Completing the IE International MBA, concentration in Digital Business Innovation & Transformation.",
+    summary: "Strategy and transformation professional with 8+ years across LATAM multinationals: consulted 13 enterprise clients at MicroStrategy, led a 15-person team serving ~3M clients at Life Seguros, and now advise on a USD 900M+ cross-border M&A pipeline. Completed the IE International MBA with Excellence (GPA 3.62/4), concentration in Digital Business Innovation & Transformation.",
     titles: {
         summary: "Summary",
         experience: "Professional Experience",
@@ -102,9 +102,9 @@ export const dataEN = {
         {
             school: "IE Business School",
             degree: "International MBA (IMBA)",
-            dates: "Sep 2025 - Expected Jul 2026",
+            dates: "Sep 2025 - Jul 2026",
             location: "Madrid, Spain",
-            specialization: "Concentration: Digital Business Innovation & Transformation."
+            specialization: "Concentration: Digital Business Innovation & Transformation. Graduated with Excellence (GPA 3.62/4)."
         },
         {
             school: "ITBA (Buenos Aires Institute of Technology)",
@@ -144,7 +144,7 @@ export const dataES = {
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
-    summary: "Profesional de estrategia y transformación con más de 8 años en multinacionales de LATAM: asesoré a 13 clientes enterprise en MicroStrategy, lideré un equipo de 15 personas dando servicio a ~3M clientes en Life Seguros, y hoy asesoro un pipeline de M&A cross-border de más de USD 900M. Cursando el International MBA de IE, con concentración en Innovación y Transformación Digital de Negocio.",
+    summary: "Profesional de estrategia y transformación con más de 8 años en multinacionales de LATAM: asesoré a 13 clientes enterprise en MicroStrategy, lideré un equipo de 15 personas dando servicio a ~3M clientes en Life Seguros, y hoy asesoro un pipeline de M&A cross-border de más de USD 900M. Completé el International MBA de IE con Excellence (GPA 3.62/4), con concentración en Innovación y Transformación Digital de Negocio.",
     titles: {
         summary: "Resumen",
         experience: "Experiencia Profesional",
@@ -236,9 +236,9 @@ export const dataES = {
         {
             school: "IE Business School",
             degree: "International MBA (IMBA)",
-            dates: "Sep 2025 - Esperado Jul 2026",
+            dates: "Sep 2025 - Jul 2026",
             location: "Madrid, España",
-            specialization: "Concentración: Innovación y Transformación Digital de Negocio."
+            specialization: "Concentración: Innovación y Transformación Digital de Negocio. Graduado con Excellence (GPA 3.62/4)."
         },
         {
             school: "ITBA (Instituto Tecnológico de Buenos Aires)",

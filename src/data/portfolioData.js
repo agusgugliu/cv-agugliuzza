@@ -108,7 +108,7 @@ const APPS = [
 // IMBA transcript (IE official bands: Honors / Excellence / Proficiency / Pass).
 // Source of truth: Obsidian wiki/education/mba/mba-gpa-4.0.md + grades/.
 const IE_TRANSCRIPT_EN = {
-    gpa: '3.61 / 4.00',
+    gpa: '3.62 / 4.00',
     terms: [
         {
             name: 'ISA · Skill Modules', gpa: '3.81', courses: [
@@ -158,7 +158,7 @@ const IE_TRANSCRIPT_EN = {
             ]
         },
         {
-            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '4.35 / 5', courses: [
+            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '3.66 / 4.00', courses: [
                 { name: 'TLT: Platform Creation — 5/5', band: 'Honors' },
                 { name: 'TLT: Generative AI — 4.8/5', band: 'Honors' },
                 { name: 'Product Management Toolkit — 4.62/5', band: 'Honors' },
@@ -184,7 +184,7 @@ const IE_TRANSCRIPT_EN = {
 };
 
 const IE_TRANSCRIPT_ES = {
-    gpa: '3.61 / 4.00',
+    gpa: '3.62 / 4.00',
     terms: [
         {
             name: 'ISA · Skill Modules', gpa: '3.81', courses: [
@@ -234,7 +234,7 @@ const IE_TRANSCRIPT_ES = {
             ]
         },
         {
-            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '4.35 / 5', courses: [
+            name: 'Tech Lab Challenge · Almazara Copilot', gpa: '3.66 / 4.00', courses: [
                 { name: 'TLT: Platform Creation — 5/5', band: 'Honors' },
                 { name: 'TLT: Generative AI — 4.8/5', band: 'Honors' },
                 { name: 'Product Management Toolkit — 4.62/5', band: 'Honors' },
@@ -539,10 +539,10 @@ export const portfolioEN = {
                 logo: EXP_LOGO('iebusinessschool_logo.png'),
                 info: INFO.ie_business_school,
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
-                stat: 'IMBA',
-                statLabel: 'Class of 2026',
-                heading: 'Full-time MBA with specialization in {Digital Business Innovation & Transformation}.',
-                body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Working with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body-measurement for jewelry and smart rings), and joining Microsoft for the Tech Lab module.',
+                stat: 'Excellence',
+                statLabel: 'GPA 3.62/4',
+                heading: 'Full-time MBA with specialization in {Digital Business Innovation & Transformation}, graduated with Excellence.',
+                body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Worked with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body-measurement for jewelry and smart rings), and joined Microsoft for the Tech Lab module.',
                 tags: ['IMBA', 'Digital Business Innovation', 'Transformation'],
                 transcript: IE_TRANSCRIPT_EN,
                 clients: MBA_PARTNERS,
@@ -693,7 +693,7 @@ export const portfolioEN = {
     contact: {
         eyebrow: 'Start a conversation',
         heading: 'For work, advisory, or a {coffee} in Madrid.',
-        lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Currently completing the IMBA at IE Business School and based in Madrid.',
+        lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Recently completed the IMBA at IE Business School (Excellence, GPA 3.62/4) and based in Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Write' },
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Message' },
@@ -844,10 +844,10 @@ export const portfolioES = {
                 logo: EXP_LOGO('iebusinessschool_logo.png'),
                 info: INFO.ie_business_school,
                 dates: 'Sep 2025 – Jul 2026 · Madrid',
-                stat: 'IMBA',
-                statLabel: 'Promoción 2026',
-                heading: 'MBA full-time con especialización en {Innovación y Transformación Digital de Negocios}.',
-                body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajando con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings), y con Microsoft en el módulo Tech Lab.',
+                stat: 'Excellence',
+                statLabel: 'GPA 3.62/4',
+                heading: 'MBA full-time con especialización en {Innovación y Transformación Digital de Negocios}, graduado con Excellence.',
+                body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajé con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings), y con Microsoft en el módulo Tech Lab.',
                 tags: ['IMBA', 'Innovación Digital', 'Transformación'],
                 transcript: IE_TRANSCRIPT_ES,
                 clients: MBA_PARTNERS,
@@ -998,7 +998,7 @@ export const portfolioES = {
     contact: {
         eyebrow: 'Hablemos',
         heading: 'Para trabajo, advisory o un {café} en Madrid.',
-        lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Actualmente cursando el IMBA en IE Business School, con base en Madrid.',
+        lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Completé recientemente el IMBA en IE Business School (Excellence, GPA 3.62/4), con base en Madrid.',
         links: [
             { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Escribir' },
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Mensaje' },
