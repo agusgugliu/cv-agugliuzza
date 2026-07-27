@@ -454,12 +454,12 @@ export const portfolioEN = {
                 accent: '#0A2EAA'
             },
             {
-                title: 'Aitaca M&A & Growth Strategy',
-                org: 'IE Final Project',
+                title: 'Aitaca — Exit-Ready Expansion Strategy',
+                org: 'IE Final Integrative Exercise',
                 year: '2026',
-                outcome: 'M&A and market-entry strategy for Aitaca on a 2-3 year exit horizon.',
-                aiAngle: 'Field research and acquirer mapping turned into a board-ready exit narrative. Strategy work end to end, for a deep-tech startup.',
-                tags: ['Strategy', 'M&A', 'Market entry', 'Go-to-market'],
+                outcome: 'Primary-source deal evidence closed off Aitaca\'s planned ring-sizing M&A route, so we re-pointed the exit thesis toward a digital-orthopedics-led "Fit Intelligence" platform with a partnership-to-acquisition path.',
+                aiAngle: 'Sourced comparable transactions (MySize, Snap/Fit Analytics) and a founder interview to show the sizing M&A market was downgrading, then re-ran the vertical evaluation to find where the same computer-vision engine is most acquirable next.',
+                tags: ['Strategy', 'M&A', 'Market pivot', 'Digital health'],
                 accent: '#0B0E14'
             },
             {
@@ -542,7 +542,7 @@ export const portfolioEN = {
                 stat: 'Excellence',
                 statLabel: 'GPA 3.62/4',
                 heading: 'Full-time MBA with specialization in {Digital Business Innovation & Transformation}, graduated with Excellence.',
-                body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Worked with Aitaca Remote Tech on Virtual Sizer\'s go-to-market thesis (AI photo-based body-measurement for jewelry and smart rings), and joined Microsoft for the Tech Lab module.',
+                body: 'Specialization built around the modern operating layer: digital business design, transformation strategy, AI for business, and the org change that goes with each. Worked with Aitaca Remote Tech on Virtual Sizer\'s exit-readiness strategy (AI photo-based body-measurement, pivoting into digital orthopedics), and joined Microsoft for the Tech Lab module.',
                 tags: ['IMBA', 'Digital Business Innovation', 'Transformation'],
                 transcript: IE_TRANSCRIPT_EN,
                 clients: MBA_PARTNERS,
@@ -759,12 +759,12 @@ export const portfolioES = {
                 accent: '#0A2EAA'
             },
             {
-                title: 'Aitaca M&A & Growth Strategy',
-                org: 'Proyecto Final IE',
+                title: 'Aitaca — Estrategia de expansión hacia el exit',
+                org: 'Proyecto Final Integrador IE',
                 year: '2026',
-                outcome: 'Estrategia de M&A y entrada a mercado para Aitaca en un horizonte de exit de 2-3 años.',
-                aiAngle: 'Field research y mapeo de adquirentes convertidos en una narrativa de exit lista para el board. Trabajo de estrategia de punta a punta, para una startup de deep-tech.',
-                tags: ['Estrategia', 'M&A', 'Entrada a mercado', 'Go-to-market'],
+                outcome: 'La evidencia de deals comparables cerró la ruta de M&A directo en sizing de anillos, así que reorientamos la tesis de exit hacia una plataforma "Fit Intelligence" liderada por ortopedia digital, con un camino de partnership-to-acquisition.',
+                aiAngle: 'Relevé transacciones comparables (MySize, Snap/Fit Analytics) y una entrevista con un founder para mostrar que el mercado de M&A en sizing estaba en baja, y volví a correr la evaluación de verticales para encontrar dónde ese mismo motor de visión por computadora es más adquirible.',
+                tags: ['Estrategia', 'M&A', 'Pivot de mercado', 'Salud digital'],
                 accent: '#0B0E14'
             },
             {
@@ -847,7 +847,7 @@ export const portfolioES = {
                 stat: 'Excellence',
                 statLabel: 'GPA 3.62/4',
                 heading: 'MBA full-time con especialización en {Innovación y Transformación Digital de Negocios}, graduado con Excellence.',
-                body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajé con Aitaca Remote Tech sobre el go-to-market de Virtual Sizer (medición corporal por IA para joyería y smart rings), y con Microsoft en el módulo Tech Lab.',
+                body: 'Especialización armada alrededor de la capa operativa moderna: diseño de negocios digitales, estrategia de transformación, IA aplicada a negocio, y el cambio organizacional que cada una arrastra. Trabajé con Aitaca Remote Tech sobre la estrategia de exit de Virtual Sizer (medición corporal por IA, con pivot hacia ortopedia digital), y con Microsoft en el módulo Tech Lab.',
                 tags: ['IMBA', 'Innovación Digital', 'Transformación'],
                 transcript: IE_TRANSCRIPT_ES,
                 clients: MBA_PARTNERS,

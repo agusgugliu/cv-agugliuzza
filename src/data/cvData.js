@@ -82,8 +82,8 @@ export const dataEN = {
     ],
     projects: [
         {
-            title: "M&A advisory, AI computer-vision sizing scaleup (IE Final Integrative Project)",
-            desc: "Mapped 20+ strategic acquirers across fashion-tech and wearables and analyzed 14 comparable exits to find uncovered whitespace (rings); built a prioritized target shortlist and ran outreach for a capital raise toward a 2-3 year exit."
+            title: "Exit-readiness strategy, AI computer-vision sizing scaleup (IE Final Integrative Project)",
+            desc: "Mapped 20+ strategic acquirers and analyzed comparable exits to show the ring-sizing M&A market was downgrading; re-pointed the exit thesis toward a digital-orthopedics-led expansion with a partnership-to-acquisition path."
         },
         {
             title: "Venture build, Almazara Co-Pilot (IE Tech Lab, Microsoft challenge)",
@@ -216,8 +216,8 @@ export const dataES = {
     ],
     projects: [
         {
-            title: "Asesoría de M&A, scaleup de sizing por visión de IA (Proyecto Final Integrador IE)",
-            desc: "Mapeé más de 20 adquirentes estratégicos en fashion-tech y wearables y analicé 14 exits comparables para detectar whitespace sin cubrir (anillos); armé una shortlist priorizada de targets y corrí el outreach para un capital raise hacia un exit de 2-3 años."
+            title: "Estrategia de exit, scaleup de sizing por visión de IA (Proyecto Final Integrador IE)",
+            desc: "Mapeé más de 20 adquirentes estratégicos y analicé exits comparables para mostrar que el mercado de M&A en sizing de anillos estaba en baja; reorienté la tesis de exit hacia una expansión liderada por ortopedia digital con un camino de partnership-to-acquisition."
         },
         {
             title: "Venture build, Almazara Co-Pilot (IE Tech Lab, challenge de Microsoft)",
