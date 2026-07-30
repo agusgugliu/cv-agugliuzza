@@ -29,6 +29,20 @@ export const fetchPosts = async () => {
     return (data || []).map(mapRow);
 };
 
+export const fetchLatestPosts = async (limit = 3) => {
+    const { data, error } = await supabase
+        .from(BLOG_TABLE)
+        .select('*')
+        .eq('published', true)
+        .order('published_at', { ascending: false })
+        .limit(limit);
+    if (error) {
+        console.error('Failed to load latest posts', error);
+        return [];
+    }
+    return (data || []).map(mapRow);
+};
+
 export const fetchPostBySlug = async (slug) => {
     const { data, error } = await supabase
         .from(BLOG_TABLE)

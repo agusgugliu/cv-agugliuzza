@@ -36,6 +36,7 @@ import Magnetic from './Magnetic';
 import Editorial from './Editorial';
 import ProjectsBento from './ProjectsBento';
 import ReviewsSection from './ReviewsSection';
+import LatestPosts from './LatestPosts';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CommandPalette from './CommandPalette';
 import './portfolio.css';
@@ -594,6 +595,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     ))}
                     </div>
                 </section>
+
+                <LatestPosts lang={lang} />
 
                 {/* Apps */}
                 <section className="pm-section pm-apps" id="apps">
