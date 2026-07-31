@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Pencil, Trash2, LogOut, Plus, X } from 'lucide-react';
-import { supabase, BLOG_TABLE, BLOG_ADMIN_USERNAME, BLOG_ADMIN_EMAIL } from '../lib/supabaseClient';
+import React, { useEffect, useRef, useState } from 'react';
+import { Pencil, Trash2, LogOut, Plus, X, Image as ImageIcon } from 'lucide-react';
+import { supabase, BLOG_TABLE, BLOG_ADMIN_USERNAME, BLOG_ADMIN_EMAIL, BLOG_IMAGES_BUCKET } from '../lib/supabaseClient';
 
 const slugify = (s) =>
     s
@@ -37,6 +37,9 @@ const AdminBlog = () => {
     const [form, setForm] = useState(null); // null = list view, object = editor open
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState('');
+    const [uploading, setUploading] = useState(false);
+    const contentRef = useRef(null);
+    const fileInputRef = useRef(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data }) => setSession(data.session || null));
@@ -144,6 +147,50 @@ const AdminBlog = () => {
         }
         await load();
         closeForm();
+    };
+
+    const insertAtCursor = (text) => {
+        const el = contentRef.current;
+        if (!el) {
+            setForm((f) => ({ ...f, content: `${f.content}\n${text}\n` }));
+            return;
+        }
+        const start = el.selectionStart ?? el.value.length;
+        const end = el.selectionEnd ?? el.value.length;
+        setForm((f) => ({
+            ...f,
+            content: `${f.content.slice(0, start)}${text}${f.content.slice(end)}`
+        }));
+        requestAnimationFrame(() => {
+            el.focus();
+            const pos = start + text.length;
+            el.setSelectionRange(pos, pos);
+        });
+    };
+
+    const uploadImage = async (file) => {
+        if (!file) return;
+        setUploading(true);
+        setError('');
+        const ext = file.name.split('.').pop().toLowerCase();
+        const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+        const { error: uploadErr } = await supabase.storage
+            .from(BLOG_IMAGES_BUCKET)
+            .upload(path, file, { contentType: file.type });
+        setUploading(false);
+        if (uploadErr) {
+            setError(uploadErr.message);
+            return;
+        }
+        const { data } = supabase.storage.from(BLOG_IMAGES_BUCKET).getPublicUrl(path);
+        const alt = file.name.replace(/\.[^.]+$/, '');
+        insertAtCursor(`![${alt}](${data.publicUrl})`);
+    };
+
+    const onImagePicked = (e) => {
+        const file = e.target.files?.[0];
+        e.target.value = '';
+        uploadImage(file);
     };
 
     const remove = async (post) => {
@@ -256,8 +303,26 @@ const AdminBlog = () => {
                         />
                     </label>
                     <label>
-                        <span>Content (markdown)</span>
+                        <div className="pm-admin-head" style={{ margin: 0 }}>
+                            <span>Content (markdown)</span>
+                            <button
+                                type="button"
+                                className="pm-admin-link"
+                                disabled={uploading}
+                                onClick={() => fileInputRef.current?.click()}
+                            >
+                                <ImageIcon size={14} /> {uploading ? 'Uploading…' : 'Insert image'}
+                            </button>
+                        </div>
+                        <input
+                            ref={fileInputRef}
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
+                            onChange={onImagePicked}
+                            style={{ display: 'none' }}
+                        />
                         <textarea
+                            ref={contentRef}
                             rows={18}
                             value={form.content}
                             onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}

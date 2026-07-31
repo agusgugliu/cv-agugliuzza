@@ -15,6 +15,7 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 
 export const REVIEWS_TABLE = 'portfolio_reviews';
 export const BLOG_TABLE = 'portfolio_blog_posts';
+export const BLOG_IMAGES_BUCKET = 'blog-images';
 export const ADMIN_EMAIL = 'agusgugliuzza@gmail.com';
 
 // Dedicated, isolated auth account for the blog admin — separate from
