@@ -4,6 +4,13 @@
 
 import { supabase, BLOG_TABLE } from '../lib/supabaseClient';
 
+// No dedicated cover-image field: reuse the first inline image the author
+// dropped into the markdown body (via the admin's "Insert image" button).
+const firstImage = (content) => {
+    const match = /!\[[^\]]*\]\(([^)\s]+)\)/.exec(content || '');
+    return match ? match[1] : null;
+};
+
 const mapRow = (row) => ({
     id: row.id,
     slug: row.slug,
@@ -13,7 +20,8 @@ const mapRow = (row) => ({
     excerpt: row.excerpt || '',
     tags: Array.isArray(row.tags) ? row.tags : [],
     lang: row.lang || 'en',
-    linkedin: row.linkedin_url || null
+    linkedin: row.linkedin_url || null,
+    thumbnail: firstImage(row.content)
 });
 
 export const fetchPosts = async () => {

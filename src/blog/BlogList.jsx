@@ -47,14 +47,21 @@ const BlogList = ({ lang, setLang, theme, toggleTheme }) => {
                     <div className="blog-list">
                         {posts.map((post) => (
                             <Link className="blog-list-item" key={post.slug} to={`/blog/${post.slug}`}>
-                                <div className="blog-list-meta">
-                                    <span>{formatDate(post.date, lang)}</span>
-                                    {post.tags.map((tag) => (
-                                        <span className="blog-tag" key={tag}>{tag}</span>
-                                    ))}
+                                {post.thumbnail && (
+                                    <div className="blog-list-thumb">
+                                        <img src={post.thumbnail} alt="" loading="lazy" />
+                                    </div>
+                                )}
+                                <div className="blog-list-body">
+                                    <div className="blog-list-meta">
+                                        <span>{formatDate(post.date, lang)}</span>
+                                        {post.tags.map((tag) => (
+                                            <span className="blog-tag" key={tag}>{tag}</span>
+                                        ))}
+                                    </div>
+                                    <h2 className="blog-list-title">{post.title}</h2>
+                                    {post.excerpt && <p className="blog-list-excerpt">{post.excerpt}</p>}
                                 </div>
-                                <h2 className="blog-list-title">{post.title}</h2>
-                                {post.excerpt && <p className="blog-list-excerpt">{post.excerpt}</p>}
                             </Link>
                         ))}
                     </div>

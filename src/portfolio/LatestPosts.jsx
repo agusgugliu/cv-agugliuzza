@@ -64,9 +64,16 @@ const LatestPosts = ({ lang }) => {
                             transition={{ duration: 0.45 }}
                         >
                             <Link className="pm-post" to={`/blog/${post.slug}`}>
-                                <span className="pm-post-date">{formatDate(post.date, lang)}</span>
-                                <h3 className="pm-post-title">{post.title}</h3>
-                                {post.excerpt && <p className="pm-post-excerpt">{post.excerpt}</p>}
+                                {post.thumbnail && (
+                                    <div className="pm-post-thumb">
+                                        <img src={post.thumbnail} alt="" loading="lazy" />
+                                    </div>
+                                )}
+                                <div className="pm-post-body">
+                                    <span className="pm-post-date">{formatDate(post.date, lang)}</span>
+                                    <h3 className="pm-post-title">{post.title}</h3>
+                                    {post.excerpt && <p className="pm-post-excerpt">{post.excerpt}</p>}
+                                </div>
                             </Link>
                         </motion.div>
                     ))}
