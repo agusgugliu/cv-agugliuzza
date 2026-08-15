@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
 const gradeTier = (band) => {
@@ -490,6 +490,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </span>
                             {data.track.legend.education}
                         </span>
+                        <span className="pm-track-legend-item">
+                            <span className="pm-track-legend-icon pm-track-legend-icon--credential" aria-hidden="true">
+                                <BadgeCheck size={15} strokeWidth={2} />
+                            </span>
+                            {data.track.legend.credential}
+                        </span>
                     </div>
                     <div className="pm-track-list">
                     {data.track.cases.map((c, i) => (
@@ -502,8 +508,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             transition={{ duration: 0.5 }}
                         >
                             <span className="pm-case-marker" aria-hidden="true">
-                                {c.kind === 'education'
-                                    ? <GraduationCap size={15} strokeWidth={2.2} />
+                                {c.kind === 'education' ? <GraduationCap size={15} strokeWidth={2.2} />
+                                    : c.kind === 'credential' ? <BadgeCheck size={15} strokeWidth={2.2} />
                                     : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
                             </span>
                             <span className="pm-case-rail-date">{c.startDate}</span>
@@ -520,6 +526,30 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             <div className="pm-case-body">
                                 <h3><Editorial text={c.heading} /></h3>
                                 <p>{c.body}</p>
+                                {c.credential && (
+                                    <div className="pm-credential-card">
+                                        <div className="pm-credential-brand">
+                                            <span className="pm-credential-monogram">{c.credential.monogram}</span>
+                                            <span className="pm-credential-kicker">{c.credential.kicker}</span>
+                                        </div>
+                                        <div className="pm-credential-result">
+                                            <span className="pm-credential-metric">{c.credential.metric}</span>
+                                            <span className="pm-credential-metric-label">{c.credential.metricLabel}</span>
+                                        </div>
+                                        {c.credential.details?.length > 0 && (
+                                            <div className="pm-credential-details">
+                                                {c.credential.details.map((d, di) => (
+                                                    <span key={di}><strong>{d.value}</strong>{d.label}</span>
+                                                ))}
+                                            </div>
+                                        )}
+                                        {c.credential.verifyUrl && (
+                                            <a className="pm-credential-link" href={c.credential.verifyUrl} target="_blank" rel="noreferrer">
+                                                {c.credential.verifyLabel} <ExternalLink size={13} />
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                                 <InfoBlock info={c.info} lang={lang} variant="inline" />
                                 <div className="pm-case-tags">
                                     {c.tags.map((t, j) => (
