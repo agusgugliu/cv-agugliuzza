@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
 const gradeTier = (band) => {
@@ -479,11 +479,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </div>
                     <div className="pm-track-legend">
                         <span className="pm-track-legend-item">
-                            <span className="pm-track-legend-dot pm-track-legend-dot--work" />
+                            <span className="pm-track-legend-icon pm-track-legend-icon--work" aria-hidden="true">
+                                <BriefcaseBusiness size={14} strokeWidth={2} />
+                            </span>
                             {data.track.legend.work}
                         </span>
                         <span className="pm-track-legend-item">
-                            <span className="pm-track-legend-dot pm-track-legend-dot--education" />
+                            <span className="pm-track-legend-icon pm-track-legend-icon--education" aria-hidden="true">
+                                <GraduationCap size={15} strokeWidth={2} />
+                            </span>
                             {data.track.legend.education}
                         </span>
                     </div>
@@ -497,6 +501,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             viewport={{ once: true, margin: '-80px' }}
                             transition={{ duration: 0.5 }}
                         >
+                            <span className="pm-case-marker" aria-hidden="true">
+                                {c.kind === 'education'
+                                    ? <GraduationCap size={15} strokeWidth={2.2} />
+                                    : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
+                            </span>
                             <span className="pm-case-rail-date">{c.startDate}</span>
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
