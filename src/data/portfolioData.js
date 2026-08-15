@@ -417,6 +417,7 @@ export const portfolioEN = {
         downloadPdf: 'PDF',
         projects: 'Projects',
         work: 'Work',
+        skills: 'Skills',
         apps: 'Apps',
         reviews: 'Reviews',
         ideas: 'Ideas',
@@ -584,7 +585,7 @@ export const portfolioEN = {
                 body: 'Program covering the principles, approaches, and best practices used to structure and develop a rigorous business plan, presented with HBI Education.',
                 tags: ['Business planning', 'Strategy', 'Harvard Business Impact'],
                 credential: {
-                    monogram: 'HBI', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
+                    monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.png', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
                     details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }]
                 }
             },
@@ -747,6 +748,64 @@ export const portfolioEN = {
             }
         ]
     },
+    skills: {
+        eyebrow: 'Skills & tools',
+        heading: 'A {business-first} toolkit with technical depth.',
+        lead: 'The capabilities I use to move from diagnosis to a shipped change—grouped by how they create value, not by software category.',
+        scaleLabel: 'Proficiency scale',
+        scale: ['Working knowledge', 'Advanced', 'Core strength'],
+        groups: [
+            {
+                title: 'Strategy & business',
+                skills: [
+                    { name: 'Digital transformation strategy', depth: 94, level: 'Core' },
+                    { name: 'Operating model & process design', depth: 92, level: 'Core' },
+                    { name: 'Product & go-to-market strategy', depth: 86, level: 'Advanced' },
+                    { name: 'Deal screening & M&A advisory', depth: 82, level: 'Advanced' }
+                ],
+                tools: ['Business cases', 'Market sizing', 'Due diligence', 'Financial modeling', 'Buyer mapping']
+            },
+            {
+                title: 'Data & analytics',
+                skills: [
+                    { name: 'Business intelligence', depth: 96, level: 'Core' },
+                    { name: 'SQL & data modeling', depth: 93, level: 'Core' },
+                    { name: 'ETL & data architecture', depth: 90, level: 'Core' },
+                    { name: 'Statistical analysis', depth: 79, level: 'Advanced' }
+                ],
+                tools: ['MicroStrategy', 'Power BI', 'SQL Server', 'PostgreSQL', 'Supabase', 'Excel', 'R']
+            },
+            {
+                title: 'AI & technology',
+                skills: [
+                    { name: 'Applied generative AI', depth: 91, level: 'Core' },
+                    { name: 'AI prototyping & workflow design', depth: 88, level: 'Advanced' },
+                    { name: 'Python development', depth: 80, level: 'Advanced' },
+                    { name: 'React & JavaScript', depth: 70, level: 'Working' }
+                ],
+                tools: ['OpenAI', 'Claude', 'Gemini', 'Python', 'React', 'n8n', 'Vercel', 'GitHub', 'Azure AI']
+            },
+            {
+                title: 'Delivery & leadership',
+                skills: [
+                    { name: 'Project & program management', depth: 95, level: 'Core' },
+                    { name: 'Agile & Scrum delivery', depth: 93, level: 'Core' },
+                    { name: 'Cross-functional leadership', depth: 91, level: 'Core' },
+                    { name: 'Change management', depth: 88, level: 'Advanced' }
+                ],
+                tools: ['Agile', 'Scrum', 'PMI', 'Stakeholder mapping', 'OKRs', 'Process governance']
+            },
+            {
+                title: 'Languages',
+                skills: [
+                    { name: 'Spanish', depth: 100, level: 'Native' },
+                    { name: 'English', depth: 91, level: 'C1' }
+                ],
+                tools: ['Duolingo English Test 145/160', 'CEFR C1']
+            }
+        ],
+        note: 'Self-assessed depth based on years of hands-on delivery, scope of responsibility, and verified credentials—not a claim of absolute mastery.'
+    },
     apps: {
         eyebrow: 'Prototypes & experiments',
         heading: 'I {prototype} to pressure-test an idea before a roadmap bets on it.',
@@ -856,6 +915,7 @@ export const portfolioES = {
         downloadPdf: 'PDF',
         projects: 'Proyectos',
         work: 'Trabajo',
+        skills: 'Skills',
         apps: 'Apps',
         reviews: 'Reviews',
         ideas: 'Ideas',
@@ -991,7 +1051,7 @@ export const portfolioES = {
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
                 tags: ['Business planning', 'Estrategia', 'Harvard Business Impact'],
-                credential: { monogram: 'HBI', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
+                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.png', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
             },
             {
                 kind: 'education',
@@ -1107,6 +1167,64 @@ export const portfolioES = {
                 tags: ['Negocios + Tech', 'Sistemas de Información', 'Toma de decisiones']
             }
         ]
+    },
+    skills: {
+        eyebrow: 'Skills & herramientas',
+        heading: 'Un toolkit {business-first} con profundidad técnica.',
+        lead: 'Las capacidades que uso para pasar del diagnóstico a un cambio implementado, agrupadas por cómo generan valor y no por categoría de software.',
+        scaleLabel: 'Escala de dominio',
+        scale: ['Conocimiento funcional', 'Avanzado', 'Fortaleza central'],
+        groups: [
+            {
+                title: 'Estrategia & negocio',
+                skills: [
+                    { name: 'Estrategia de transformación digital', depth: 94, level: 'Core' },
+                    { name: 'Operating model & diseño de procesos', depth: 92, level: 'Core' },
+                    { name: 'Producto & estrategia go-to-market', depth: 86, level: 'Avanzado' },
+                    { name: 'Deal screening & asesoría M&A', depth: 82, level: 'Avanzado' }
+                ],
+                tools: ['Business cases', 'Market sizing', 'Due diligence', 'Modelado financiero', 'Buyer mapping']
+            },
+            {
+                title: 'Datos & analytics',
+                skills: [
+                    { name: 'Business intelligence', depth: 96, level: 'Core' },
+                    { name: 'SQL & modelado de datos', depth: 93, level: 'Core' },
+                    { name: 'ETL & arquitectura de datos', depth: 90, level: 'Core' },
+                    { name: 'Análisis estadístico', depth: 79, level: 'Avanzado' }
+                ],
+                tools: ['MicroStrategy', 'Power BI', 'SQL Server', 'PostgreSQL', 'Supabase', 'Excel', 'R']
+            },
+            {
+                title: 'IA & tecnología',
+                skills: [
+                    { name: 'IA generativa aplicada', depth: 91, level: 'Core' },
+                    { name: 'Prototipado con IA & diseño de workflows', depth: 88, level: 'Avanzado' },
+                    { name: 'Desarrollo Python', depth: 80, level: 'Avanzado' },
+                    { name: 'React & JavaScript', depth: 70, level: 'Funcional' }
+                ],
+                tools: ['OpenAI', 'Claude', 'Gemini', 'Python', 'React', 'n8n', 'Vercel', 'GitHub', 'Azure AI']
+            },
+            {
+                title: 'Delivery & liderazgo',
+                skills: [
+                    { name: 'Project & program management', depth: 95, level: 'Core' },
+                    { name: 'Delivery Agile & Scrum', depth: 93, level: 'Core' },
+                    { name: 'Liderazgo cross-funcional', depth: 91, level: 'Core' },
+                    { name: 'Change management', depth: 88, level: 'Avanzado' }
+                ],
+                tools: ['Agile', 'Scrum', 'PMI', 'Stakeholder mapping', 'OKRs', 'Gobernanza de procesos']
+            },
+            {
+                title: 'Idiomas',
+                skills: [
+                    { name: 'Español', depth: 100, level: 'Nativo' },
+                    { name: 'Inglés', depth: 91, level: 'C1' }
+                ],
+                tools: ['Duolingo English Test 145/160', 'CEFR C1']
+            }
+        ],
+        note: 'Nivel autoevaluado según años de experiencia práctica, alcance de responsabilidad y credenciales verificadas; no pretende medir un dominio absoluto.'
     },
     apps: {
         eyebrow: 'Prototipos y experimentos',
