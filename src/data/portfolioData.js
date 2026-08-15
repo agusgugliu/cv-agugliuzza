@@ -679,20 +679,22 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
-                startDate: 'Mar 2022',
-                role: 'Python Web Development',
+                startDate: 'Jun 2022',
+                role: 'Python Certification',
                 org: 'Coderhouse',
                 domain: 'coderhouse.com',
                 logo: '/assets/credential_logos/coderhouse.svg',
-                dates: 'Completed Mar 2022',
+                dates: 'Completed 7 Jun 2022',
                 stat: 'Python',
-                statLabel: 'Web development',
-                heading: 'Completed a practical certification in {Python web development}.',
-                body: 'Applied Python to web application development, covering backend logic, data handling, and the foundations of shipping functional web products.',
-                tags: ['Python', 'Web development', 'Backend'],
+                statLabel: '52 hours · 13 weeks',
+                heading: 'Completed a 52-hour certification in {Python}.',
+                body: 'Successfully completed Coderhouse’s Python course across 13 weeks, fulfilling all academic requirements.',
+                tags: ['Python', 'Coderhouse', '52 hours'],
                 credential: {
-                    monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Web development',
-                    details: [{ value: 'March 2022', label: 'Completed' }, { value: 'Coderhouse', label: 'Institution' }]
+                    monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: '52 hours · 13 weeks',
+                    details: [{ value: '7 June 2022', label: 'Completed' }, { value: 'Coderhouse', label: 'Institution' }],
+                    verifyUrl: '/assets/certificates/coderhouse-python.svg',
+                    verifyLabel: 'View certificate'
                 }
             },
             {
@@ -1120,12 +1122,12 @@ export const portfolioES = {
                 tags: ['MicroStrategy', 'Agile', 'Liderazgo cross-funcional', 'IT Project Management']
             },
             {
-                kind: 'credential', startDate: 'Mar 2022', role: 'Python Web Development', org: 'Coderhouse', domain: 'coderhouse.com', logo: '/assets/credential_logos/coderhouse.svg',
-                dates: 'Completado en Mar 2022', stat: 'Python', statLabel: 'Desarrollo web',
-                heading: 'Certificación práctica en {desarrollo web con Python}.',
-                body: 'Aplicación de Python al desarrollo de aplicaciones web: lógica backend, manejo de datos y fundamentos para construir productos web funcionales.',
-                tags: ['Python', 'Desarrollo web', 'Backend'],
-                credential: { monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Desarrollo web', details: [{ value: 'Marzo 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }] }
+                kind: 'credential', startDate: 'Jun 2022', role: 'Certificación en Python', org: 'Coderhouse', domain: 'coderhouse.com', logo: '/assets/credential_logos/coderhouse.svg',
+                dates: 'Completado el 7 Jun 2022', stat: 'Python', statLabel: '52 horas · 13 semanas',
+                heading: 'Completé una certificación de 52 horas en {Python}.',
+                body: 'Completé con éxito el curso de Python de Coderhouse durante 13 semanas, cumpliendo todos los requisitos académicos.',
+                tags: ['Python', 'Coderhouse', '52 horas'],
+                credential: { monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: '52 horas · 13 semanas', details: [{ value: '7 de junio de 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }], verifyUrl: '/assets/certificates/coderhouse-python.svg', verifyLabel: 'Ver certificado' }
             },
             {
                 role: 'BI Consultant',
