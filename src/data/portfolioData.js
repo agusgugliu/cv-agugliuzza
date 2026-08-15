@@ -799,7 +799,9 @@ export const portfolioEN = {
                 title: 'Languages',
                 skills: [
                     { name: 'Spanish', depth: 100, level: 'Native' },
-                    { name: 'English', depth: 91, level: 'C1' }
+                    { name: 'English', depth: 91, level: 'C1' },
+                    { name: 'Portuguese', depth: 60, level: 'Intermediate' },
+                    { name: 'French', depth: 30, level: 'Basic' }
                 ],
                 tools: ['Duolingo English Test 145/160', 'CEFR C1']
             }
@@ -1219,7 +1221,9 @@ export const portfolioES = {
                 title: 'Idiomas',
                 skills: [
                     { name: 'Español', depth: 100, level: 'Nativo' },
-                    { name: 'Inglés', depth: 91, level: 'C1' }
+                    { name: 'Inglés', depth: 91, level: 'C1' },
+                    { name: 'Portugués', depth: 60, level: 'Intermedio' },
+                    { name: 'Francés', depth: 30, level: 'Básico' }
                 ],
                 tools: ['Duolingo English Test 145/160', 'CEFR C1']
             }
