@@ -513,7 +513,7 @@ export const portfolioEN = {
         eyebrow: 'Track record',
         heading: 'A career built across {digital transformation, data and deals}.',
         cta: 'See full CV',
-        legend: { work: 'Work', education: 'Education', workShort: 'WORK', educationShort: 'EDU' },
+        legend: { work: 'Work', education: 'Education', credential: 'Credentials', workShort: 'WORK', educationShort: 'EDU', credentialShort: 'CERT' },
         cases: [
             {
                 kind: 'work',
@@ -529,6 +529,64 @@ export const portfolioEN = {
                 heading: 'Advising on {deal screening, buyer matching, and fundraising diagnostics} for SMEs in LATAM and EU.',
                 body: 'Screening opportunities, structuring blind teasers, mapping buyer universes, and pressure-testing financial models. Work spans construction, hospitality, jewelry, and renewables. Currently co-building the firm\'s AI platform for deal analysis and tracking.',
                 tags: ['M&A', 'Strategy', 'Due diligence', 'LATAM-EU']
+            },
+            {
+                kind: 'credential',
+                startDate: 'Jul 2026',
+                role: 'MBA Diploma',
+                org: 'IE University',
+                domain: 'ie.edu',
+                logo: EXP_LOGO('iebusinessschool_logo.png'),
+                dates: 'Awarded 20 Jul 2026 · Madrid',
+                stat: 'MBA',
+                statLabel: 'International MBA',
+                heading: 'Awarded the title of {Master of Business Administration}.',
+                body: 'Official diploma confirming completion of every requirement established by the International MBA Examination Board.',
+                tags: ['MBA', 'Business Administration', 'Verified'],
+                credential: {
+                    monogram: 'IE', kicker: 'Official diploma', metric: 'MBA', metricLabel: 'Awarded 2026',
+                    details: [{ value: 'International MBA', label: 'Program' }, { value: '20 July 2026', label: 'Awarded' }],
+                    verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194',
+                    verifyLabel: 'View verified diploma'
+                }
+            },
+            {
+                kind: 'credential',
+                startDate: 'Jul 2026',
+                role: 'Tech Lab Certificate',
+                org: 'IE Business School × Microsoft',
+                domain: 'microsoft.com',
+                logo: MBA('microsoft_logo.png'),
+                dates: 'Awarded 9 Jul 2026 · Madrid',
+                stat: 'AI',
+                statLabel: 'Corporate challenge',
+                heading: 'Completed the Tech Lab Corporate Challenge: {Scaling AI-Native Ventures with Microsoft}.',
+                body: 'Recognition for successfully participating in the applied technology challenge delivered jointly by IE Business School and Microsoft.',
+                tags: ['AI-native ventures', 'Microsoft', 'Tech Lab'],
+                credential: {
+                    monogram: 'IE × MS', kicker: 'Tech Lab', metric: 'AI', metricLabel: 'Corporate challenge',
+                    details: [{ value: 'Microsoft', label: 'Corporate partner' }, { value: '9 July 2026', label: 'Awarded' }],
+                    verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70',
+                    verifyLabel: 'View verified certificate'
+                }
+            },
+            {
+                kind: 'credential',
+                startDate: 'Jun 2026',
+                role: 'Business Plan Development',
+                org: 'Harvard Business Impact',
+                domain: 'harvardbusiness.org',
+                logo: null,
+                dates: 'Completed Jun 2026',
+                stat: 'HBI',
+                statLabel: 'Program certificate',
+                heading: 'Completed {Business Plan Development} with Harvard Business Impact.',
+                body: 'Program covering the principles, approaches, and best practices used to structure and develop a rigorous business plan, presented with HBI Education.',
+                tags: ['Business planning', 'Strategy', 'Harvard Business Impact'],
+                credential: {
+                    monogram: 'HBI', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
+                    details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }]
+                }
             },
             {
                 kind: 'education',
@@ -547,6 +605,46 @@ export const portfolioEN = {
                 transcript: IE_TRANSCRIPT_EN,
                 clients: MBA_PARTNERS,
                 clientsLabel: 'Worked with'
+            },
+            {
+                kind: 'credential',
+                startDate: 'Sep 2025',
+                role: 'Impact Skills Accelerator',
+                org: 'IE Business School',
+                domain: 'ie.edu',
+                logo: EXP_LOGO('iebusinessschool_logo.png'),
+                dates: 'Completed Sep 2025 · Madrid',
+                stat: 'ISA',
+                statLabel: 'Impact skills',
+                heading: 'Completed the {Impact Skills Accelerator} at IE Business School.',
+                body: 'Workplace-impact program focused on catalyzing action, strengthening collaboration, and converting intent into measurable results.',
+                tags: ['Impact', 'Collaboration', 'Execution'],
+                credential: {
+                    monogram: 'IE', kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completed 2025',
+                    details: [{ value: 'IE Business School', label: 'Institution' }, { value: 'September 2025', label: 'Completed' }],
+                    verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6',
+                    verifyLabel: 'View verified certificate'
+                }
+            },
+            {
+                kind: 'credential',
+                startDate: 'Jan 2025',
+                role: 'Duolingo English Test',
+                org: 'Duolingo',
+                domain: 'englishtest.duolingo.com',
+                logo: null,
+                dates: 'Test taken 24 Jan 2025',
+                stat: '145',
+                statLabel: 'CEFR C1 · Advanced',
+                heading: 'Certified {Advanced English proficiency} at CEFR C1.',
+                body: 'Official Duolingo English Test result with an overall score of 145/160, including 150 in writing and 155 in listening.',
+                tags: ['English', 'CEFR C1', 'Verified'],
+                credential: {
+                    monogram: 'DET', kicker: 'Official English test', metric: '145', metricLabel: 'CEFR C1 · Advanced',
+                    details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }],
+                    verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s',
+                    verifyLabel: 'View official certificate'
+                }
             },
             {
                 role: 'IT Team Lead & Project Manager',
@@ -579,6 +677,24 @@ export const portfolioEN = {
                 tags: ['MicroStrategy', 'Agile', 'Cross-functional leadership', 'IT Project Management']
             },
             {
+                kind: 'credential',
+                startDate: 'Mar 2022',
+                role: 'Python Web Development',
+                org: 'Coderhouse',
+                domain: 'coderhouse.com',
+                logo: null,
+                dates: 'Completed Mar 2022',
+                stat: 'Python',
+                statLabel: 'Web development',
+                heading: 'Completed a practical certification in {Python web development}.',
+                body: 'Applied Python to web application development, covering backend logic, data handling, and the foundations of shipping functional web products.',
+                tags: ['Python', 'Web development', 'Backend'],
+                credential: {
+                    monogram: 'CH', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Web development',
+                    details: [{ value: 'March 2022', label: 'Completed' }, { value: 'Coderhouse', label: 'Institution' }]
+                }
+            },
+            {
                 role: 'BI Consultant',
                 kind: 'work',
                 startDate: 'Aug 2017',
@@ -594,6 +710,24 @@ export const portfolioEN = {
                 tags: ['MicroStrategy', 'SQL', 'Python', 'RScript', 'Data modeling', 'Project Management'],
                 clients: MSTR_CLIENTS,
                 clientsLabel: 'Selected clients'
+            },
+            {
+                kind: 'credential',
+                startDate: 'Oct 2017',
+                role: 'Bachelor Diploma',
+                org: 'ITBA — Instituto Tecnológico de Buenos Aires',
+                domain: 'itba.edu.ar',
+                logo: EXP_LOGO('itba_logo.png'),
+                dates: 'Issued 4 Oct 2017 · Buenos Aires',
+                stat: '2017',
+                statLabel: 'Bachelor diploma',
+                heading: 'Awarded the degree of {Licenciado en Administración y Sistemas}.',
+                body: 'Official university diploma for the four-year degree combining management, business, programming, data, and information systems.',
+                tags: ['Management', 'Information Systems', 'ITBA'],
+                credential: {
+                    monogram: 'ITBA', kicker: 'University diploma', metric: '2017', metricLabel: 'Graduated',
+                    details: [{ value: '17 July 2017', label: 'Studies completed' }, { value: '4 October 2017', label: 'Diploma issued' }]
+                }
             },
             {
                 role: 'Bachelor in Management & Information Systems',
@@ -818,7 +952,7 @@ export const portfolioES = {
         eyebrow: 'Track record',
         heading: 'Una carrera construida entre {transformación digital, datos y deals}.',
         cta: 'Ver CV completo',
-        legend: { work: 'Experiencia', education: 'Formación', workShort: 'TRAB', educationShort: 'EDU' },
+        legend: { work: 'Experiencia', education: 'Formación', credential: 'Credenciales', workShort: 'TRAB', educationShort: 'EDU', credentialShort: 'CERT' },
         cases: [
             {
                 kind: 'work',
@@ -834,6 +968,30 @@ export const portfolioES = {
                 heading: 'Asesoría en {screening de deals, matching de buyers y diagnóstico de fundraising} para PyMEs en LATAM y UE.',
                 body: 'Screening de oportunidades, estructura de teasers ciegos, mapeo de universos de buyers y stress-test de modelos. Sectores: construcción, hospitality, joyería y renovables. En paralelo, co-construyendo la plataforma de IA del estudio para análisis y tracking de deals.',
                 tags: ['M&A', 'Estrategia', 'Due diligence', 'LATAM-EU']
+            },
+            {
+                kind: 'credential', startDate: 'Jul 2026', role: 'Diploma MBA', org: 'IE University', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
+                dates: 'Otorgado el 20 Jul 2026 · Madrid', stat: 'MBA', statLabel: 'International MBA',
+                heading: 'Título de {Master of Business Administration}.',
+                body: 'Diploma oficial que acredita el cumplimiento de todos los requisitos establecidos por la Junta de Calificaciones del International MBA.',
+                tags: ['MBA', 'Administración de Empresas', 'Verificado'],
+                credential: { monogram: 'IE', kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
+            },
+            {
+                kind: 'credential', startDate: 'Jul 2026', role: 'Certificado Tech Lab', org: 'IE Business School × Microsoft', domain: 'microsoft.com', logo: MBA('microsoft_logo.png'),
+                dates: 'Otorgado el 9 Jul 2026 · Madrid', stat: 'IA', statLabel: 'Corporate challenge',
+                heading: 'Tech Lab Corporate Challenge: {Scaling AI-Native Ventures with Microsoft}.',
+                body: 'Reconocimiento por la participación exitosa en el desafío tecnológico aplicado desarrollado conjuntamente por IE Business School y Microsoft.',
+                tags: ['AI-native ventures', 'Microsoft', 'Tech Lab'],
+                credential: { monogram: 'IE × MS', kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
+            },
+            {
+                kind: 'credential', startDate: 'Jun 2026', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: null,
+                dates: 'Completado en Jun 2026', stat: 'HBI', statLabel: 'Certificado de programa',
+                heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
+                body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
+                tags: ['Business planning', 'Estrategia', 'Harvard Business Impact'],
+                credential: { monogram: 'HBI', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
             },
             {
                 kind: 'education',
@@ -852,6 +1010,22 @@ export const portfolioES = {
                 transcript: IE_TRANSCRIPT_ES,
                 clients: MBA_PARTNERS,
                 clientsLabel: 'Trabajé con'
+            },
+            {
+                kind: 'credential', startDate: 'Sep 2025', role: 'Impact Skills Accelerator', org: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
+                dates: 'Completado en Sep 2025 · Madrid', stat: 'ISA', statLabel: 'Impact skills',
+                heading: 'Completé el {Impact Skills Accelerator} de IE Business School.',
+                body: 'Programa de impacto profesional enfocado en catalizar acción, fortalecer la colaboración y convertir intención en resultados medibles.',
+                tags: ['Impacto', 'Colaboración', 'Ejecución'],
+                credential: { monogram: 'IE', kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
+            },
+            {
+                kind: 'credential', startDate: 'Ene 2025', role: 'Duolingo English Test', org: 'Duolingo', domain: 'englishtest.duolingo.com', logo: null,
+                dates: 'Examen rendido el 24 Ene 2025', stat: '145', statLabel: 'CEFR C1 · Avanzado',
+                heading: 'Nivel de inglés avanzado certificado: {CEFR C1}.',
+                body: 'Resultado oficial de 145/160 en el Duolingo English Test, con 150 en writing y 155 en listening.',
+                tags: ['Inglés', 'CEFR C1', 'Verificado'],
+                credential: { monogram: 'DET', kicker: 'Examen oficial de inglés', metric: '145', metricLabel: 'CEFR C1 · Avanzado', details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }], verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s', verifyLabel: 'Ver certificado oficial' }
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
@@ -884,6 +1058,14 @@ export const portfolioES = {
                 tags: ['MicroStrategy', 'Agile', 'Liderazgo cross-funcional', 'IT Project Management']
             },
             {
+                kind: 'credential', startDate: 'Mar 2022', role: 'Python Web Development', org: 'Coderhouse', domain: 'coderhouse.com', logo: null,
+                dates: 'Completado en Mar 2022', stat: 'Python', statLabel: 'Desarrollo web',
+                heading: 'Certificación práctica en {desarrollo web con Python}.',
+                body: 'Aplicación de Python al desarrollo de aplicaciones web: lógica backend, manejo de datos y fundamentos para construir productos web funcionales.',
+                tags: ['Python', 'Desarrollo web', 'Backend'],
+                credential: { monogram: 'CH', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Desarrollo web', details: [{ value: 'Marzo 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }] }
+            },
+            {
                 role: 'BI Consultant',
                 kind: 'work',
                 startDate: 'Ago 2017',
@@ -899,6 +1081,14 @@ export const portfolioES = {
                 tags: ['MicroStrategy', 'SQL', 'Python', 'RScript', 'Modelado de datos', 'Project Management'],
                 clients: MSTR_CLIENTS,
                 clientsLabel: 'Clientes seleccionados'
+            },
+            {
+                kind: 'credential', startDate: 'Oct 2017', role: 'Diploma universitario', org: 'ITBA — Instituto Tecnológico de Buenos Aires', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png'),
+                dates: 'Expedido el 4 Oct 2017 · Buenos Aires', stat: '2017', statLabel: 'Título universitario',
+                heading: 'Título de {Licenciado en Administración y Sistemas}.',
+                body: 'Diploma universitario oficial de la carrera de cuatro años que combina management, negocios, programación, datos y sistemas de información.',
+                tags: ['Administración', 'Sistemas de Información', 'ITBA'],
+                credential: { monogram: 'ITBA', kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }] }
             },
             {
                 role: 'Licenciatura en Administración y Sistemas',
