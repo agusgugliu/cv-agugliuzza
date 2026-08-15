@@ -545,7 +545,7 @@ export const portfolioEN = {
                 body: 'Official diploma confirming completion of every requirement established by the International MBA Examination Board.',
                 tags: ['MBA', 'Business Administration', 'Verified'],
                 credential: {
-                    monogram: 'IE', kicker: 'Official diploma', metric: 'MBA', metricLabel: 'Awarded 2026',
+                    monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Official diploma', metric: 'MBA', metricLabel: 'Awarded 2026',
                     details: [{ value: 'International MBA', label: 'Program' }, { value: '20 July 2026', label: 'Awarded' }],
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194',
                     verifyLabel: 'View verified diploma'
@@ -565,7 +565,7 @@ export const portfolioEN = {
                 body: 'Recognition for successfully participating in the applied technology challenge delivered jointly by IE Business School and Microsoft.',
                 tags: ['AI-native ventures', 'Microsoft', 'Tech Lab'],
                 credential: {
-                    monogram: 'IE × MS', kicker: 'Tech Lab', metric: 'AI', metricLabel: 'Corporate challenge',
+                    monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'AI', metricLabel: 'Corporate challenge',
                     details: [{ value: 'Microsoft', label: 'Corporate partner' }, { value: '9 July 2026', label: 'Awarded' }],
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70',
                     verifyLabel: 'View verified certificate'
@@ -621,7 +621,7 @@ export const portfolioEN = {
                 body: 'Workplace-impact program focused on catalyzing action, strengthening collaboration, and converting intent into measurable results.',
                 tags: ['Impact', 'Collaboration', 'Execution'],
                 credential: {
-                    monogram: 'IE', kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completed 2025',
+                    monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completed 2025',
                     details: [{ value: 'IE Business School', label: 'Institution' }, { value: 'September 2025', label: 'Completed' }],
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6',
                     verifyLabel: 'View verified certificate'
@@ -726,7 +726,7 @@ export const portfolioEN = {
                 body: 'Official university diploma for the four-year degree combining management, business, programming, data, and information systems.',
                 tags: ['Management', 'Information Systems', 'ITBA'],
                 credential: {
-                    monogram: 'ITBA', kicker: 'University diploma', metric: '2017', metricLabel: 'Graduated',
+                    monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'University diploma', metric: '2017', metricLabel: 'Graduated',
                     details: [{ value: '17 July 2017', label: 'Studies completed' }, { value: '4 October 2017', label: 'Diploma issued' }]
                 }
             },
@@ -1035,7 +1035,7 @@ export const portfolioES = {
                 heading: 'Título de {Master of Business Administration}.',
                 body: 'Diploma oficial que acredita el cumplimiento de todos los requisitos establecidos por la Junta de Calificaciones del International MBA.',
                 tags: ['MBA', 'Administración de Empresas', 'Verificado'],
-                credential: { monogram: 'IE', kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
+                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
             },
             {
                 kind: 'credential', startDate: 'Jul 2026', role: 'Certificado Tech Lab', org: 'IE Business School × Microsoft', domain: 'microsoft.com', logo: MBA('microsoft_logo.png'),
@@ -1043,7 +1043,7 @@ export const portfolioES = {
                 heading: 'Tech Lab Corporate Challenge: {Scaling AI-Native Ventures with Microsoft}.',
                 body: 'Reconocimiento por la participación exitosa en el desafío tecnológico aplicado desarrollado conjuntamente por IE Business School y Microsoft.',
                 tags: ['AI-native ventures', 'Microsoft', 'Tech Lab'],
-                credential: { monogram: 'IE × MS', kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
+                credential: { monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
             },
             {
                 kind: 'credential', startDate: 'Jun 2026', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: '/assets/credential_logos/harvard-crest.svg',
@@ -1077,7 +1077,7 @@ export const portfolioES = {
                 heading: 'Completé el {Impact Skills Accelerator} de IE Business School.',
                 body: 'Programa de impacto profesional enfocado en catalizar acción, fortalecer la colaboración y convertir intención en resultados medibles.',
                 tags: ['Impacto', 'Colaboración', 'Ejecución'],
-                credential: { monogram: 'IE', kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
+                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
             },
             {
                 kind: 'credential', startDate: 'Ene 2025', role: 'Duolingo English Test', org: 'Duolingo', domain: 'englishtest.duolingo.com', logo: '/assets/credential_logos/duolingo.svg',
@@ -1148,7 +1148,7 @@ export const portfolioES = {
                 heading: 'Título de {Licenciado en Administración y Sistemas}.',
                 body: 'Diploma universitario oficial de la carrera de cuatro años que combina management, negocios, programación, datos y sistemas de información.',
                 tags: ['Administración', 'Sistemas de Información', 'ITBA'],
-                credential: { monogram: 'ITBA', kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }] }
+                credential: { monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }] }
             },
             {
                 role: 'Licenciatura en Administración y Sistemas',
