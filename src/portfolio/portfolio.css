@@ -883,6 +883,11 @@
     color: var(--paper);
 }
 
+.pm-track-legend-icon--credential {
+    background: #B7791F;
+    color: #fff;
+}
+
 .pm-track-list {
     position: relative;
     padding-left: 132px;
@@ -925,6 +930,139 @@
     box-shadow: 0 0 0 1px var(--ink);
 }
 
+.pm-case--credential .pm-case-marker {
+    background: #B7791F;
+    color: #fff;
+    box-shadow: 0 0 0 1px #B7791F;
+}
+
+.pm-case--credential .pm-case-rail-date {
+    color: #9A6518;
+}
+
+.pm-case--credential {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.pm-case--credential .pm-case-meta .stat {
+    color: #B7791F;
+}
+
+.pm-case--credential .pm-case-body h3 em {
+    color: #B7791F;
+}
+
+.pm-credential-card {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: minmax(120px, 0.75fr) minmax(110px, 0.55fr) 1.4fr;
+    align-items: stretch;
+    border: 1px solid rgba(183, 121, 31, 0.38);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.pm-credential-brand,
+.pm-credential-result,
+.pm-credential-details {
+    padding: 18px;
+}
+
+.pm-credential-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    background: #B7791F;
+    color: #fff;
+}
+
+.pm-credential-monogram {
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.pm-credential-kicker,
+.pm-credential-metric-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.pm-credential-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--hairline);
+}
+
+.pm-credential-metric {
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #B7791F;
+    letter-spacing: -0.04em;
+}
+
+.pm-credential-metric-label {
+    margin-top: 8px;
+    color: var(--slate-2);
+}
+
+.pm-credential-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    align-content: center;
+}
+
+.pm-credential-details span {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--slate-2);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.pm-credential-details strong {
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.pm-credential-link {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 11px 16px;
+    border-top: 1px solid var(--hairline);
+    color: #9A6518;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.pm-credential-link:hover {
+    color: var(--ink);
+    background: rgba(183, 121, 31, 0.08);
+}
+
 .pm-case-rail-date {
     position: absolute;
     left: -132px;
@@ -949,6 +1087,15 @@
     .pm-case-marker { left: -34px; top: 3px; width: 25px; height: 25px; border-width: 3px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
     .pm-case-rail-date { left: -92px; width: 60px; font-size: 0.62rem; top: 10px; }
+    .pm-credential-card { grid-template-columns: 1fr 1fr; }
+    .pm-credential-details { grid-column: 1 / -1; border-top: 1px solid var(--hairline); }
+}
+
+@media (max-width: 560px) {
+    .pm-track-legend { gap: 14px; flex-wrap: wrap; }
+    .pm-credential-card { grid-template-columns: 1fr; }
+    .pm-credential-result { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .pm-credential-details { grid-column: auto; grid-template-columns: 1fr 1fr; }
 }
 
 /* ---------- Logo component (img + fallback chip) ---------- */
