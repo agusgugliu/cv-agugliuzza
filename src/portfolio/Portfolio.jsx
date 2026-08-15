@@ -263,6 +263,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
                             {data.nav.work}
                         </a>
+                        <a className="pm-nav-link" href="#skills" onClick={smoothScrollTo('skills')}>
+                            {data.nav.skills}
+                        </a>
                         <a className="pm-nav-link" href="#apps" onClick={smoothScrollTo('apps')}>
                             {data.nav.apps}
                         </a>
@@ -529,7 +532,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 {c.credential && (
                                     <div className="pm-credential-card">
                                         <div className="pm-credential-brand">
-                                            <span className="pm-credential-monogram">{c.credential.monogram}</span>
+                                            {c.credential.logo
+                                                ? <img className="pm-credential-brand-logo" src={c.credential.logo} alt="" />
+                                                : <span className="pm-credential-monogram">{c.credential.monogram}</span>}
                                             <span className="pm-credential-kicker">{c.credential.kicker}</span>
                                         </div>
                                         <div className="pm-credential-result">
@@ -636,6 +641,61 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </section>
 
                 <LatestPosts lang={lang} />
+
+                {/* Skills */}
+                <section className="pm-section pm-skills pm-card-section" id="skills">
+                    <div className="pm-card">
+                        <div className="pm-eyebrow">{data.skills.eyebrow}</div>
+                        <div className="pm-skills-head">
+                            <h2><Editorial text={data.skills.heading} /></h2>
+                            <p>{data.skills.lead}</p>
+                        </div>
+                        <div className="pm-skills-scale" aria-label={data.skills.scaleLabel}>
+                            {data.skills.scale.map((s, i) => <span key={i}>{s}</span>)}
+                        </div>
+                        <div className="pm-skills-grid">
+                            {data.skills.groups.map((group, gi) => (
+                                <motion.div
+                                    key={gi}
+                                    className="pm-skill-group"
+                                    initial={{ opacity: 0, y: 14 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: '-60px' }}
+                                    transition={{ duration: 0.4, delay: gi * 0.05 }}
+                                >
+                                    <div className="pm-skill-group-head">
+                                        <span className="pm-skill-group-num">{String(gi + 1).padStart(2, '0')}</span>
+                                        <h3>{group.title}</h3>
+                                    </div>
+                                    <div className="pm-skill-bars">
+                                        {group.skills.map((skill, si) => (
+                                            <div className="pm-skill-row" key={si}>
+                                                <div className="pm-skill-label">
+                                                    <span>{skill.name}</span>
+                                                    <span>{skill.level}</span>
+                                                </div>
+                                                <div className="pm-skill-track" aria-hidden="true">
+                                                    <motion.span
+                                                        initial={{ width: 0 }}
+                                                        whileInView={{ width: `${skill.depth}%` }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.7, delay: 0.08 + si * 0.05 }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {group.tools?.length > 0 && (
+                                        <div className="pm-skill-tools">
+                                            {group.tools.map((tool, ti) => <span key={ti}>{tool}</span>)}
+                                        </div>
+                                    )}
+                                </motion.div>
+                            ))}
+                        </div>
+                        <p className="pm-skills-note">{data.skills.note}</p>
+                    </div>
+                </section>
 
                 {/* Apps */}
                 <section className="pm-section pm-apps" id="apps">
