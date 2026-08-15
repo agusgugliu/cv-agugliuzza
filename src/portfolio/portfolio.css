@@ -986,6 +986,14 @@
     letter-spacing: -0.04em;
 }
 
+.pm-credential-brand-logo {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    align-self: flex-start;
+    filter: drop-shadow(0 4px 8px rgba(11, 14, 20, 0.18));
+}
+
 .pm-credential-kicker,
 .pm-credential-metric-label {
     font-family: var(--font-mono);
@@ -1298,6 +1306,167 @@
     line-height: 1.55;
     color: var(--ink, var(--slate));
     margin: 0;
+}
+
+/* ---------- Skills ---------- */
+.pm-skills h2 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 20ch;
+}
+
+.pm-skills h2 em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blue);
+}
+
+.pm-skills-head {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: end;
+    gap: 48px;
+    margin-bottom: 34px;
+}
+
+.pm-skills-head > p {
+    color: var(--slate);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.pm-skills-scale {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+}
+
+.pm-skills-scale span:nth-child(2) { text-align: center; }
+.pm-skills-scale span:last-child { text-align: right; color: var(--blue); }
+
+.pm-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 30px;
+    border-top: 1px solid var(--hairline);
+}
+
+.pm-skill-group {
+    padding: 30px 30px 32px 0;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.pm-skill-group:nth-child(2n) {
+    padding-left: 30px;
+    padding-right: 0;
+    border-left: 1px solid var(--hairline);
+}
+
+.pm-skill-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.pm-skill-group-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--blue);
+}
+
+.pm-skill-group h3 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.pm-skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.pm-skill-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 7px;
+    color: var(--ink);
+    font-size: 0.84rem;
+}
+
+.pm-skill-label span:last-child {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+}
+
+.pm-skill-track {
+    height: 5px;
+    border-radius: 99px;
+    background: var(--hairline);
+    overflow: hidden;
+}
+
+.pm-skill-track > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--blue), var(--accent-secondary, #5D85FF));
+}
+
+.pm-skill-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 22px;
+}
+
+.pm-skill-tools span {
+    padding: 4px 8px;
+    border: 1px solid var(--hairline);
+    border-radius: 99px;
+    color: var(--slate-2);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    letter-spacing: 0.03em;
+}
+
+.pm-skills-note {
+    margin: 20px 0 0;
+    color: var(--slate-2);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+    .pm-skills-head { grid-template-columns: 1fr; gap: 18px; }
+    .pm-skills-grid { grid-template-columns: 1fr; }
+    .pm-skill-group,
+    .pm-skill-group:nth-child(2n) { padding: 26px 0; border-left: 0; }
 }
 
 /* ---------- Apps section ---------- */
