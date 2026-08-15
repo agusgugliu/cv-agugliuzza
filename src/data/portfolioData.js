@@ -577,7 +577,7 @@ export const portfolioEN = {
                 role: 'Business Plan Development',
                 org: 'Harvard Business Impact',
                 domain: 'harvardbusiness.org',
-                logo: null,
+                logo: '/assets/credential_logos/harvard-crest.svg',
                 dates: 'Completed Jun 2026',
                 stat: 'HBI',
                 statLabel: 'Program certificate',
@@ -633,7 +633,7 @@ export const portfolioEN = {
                 role: 'Duolingo English Test',
                 org: 'Duolingo',
                 domain: 'englishtest.duolingo.com',
-                logo: null,
+                logo: '/assets/credential_logos/duolingo.svg',
                 dates: 'Test taken 24 Jan 2025',
                 stat: '145',
                 statLabel: 'CEFR C1 · Advanced',
@@ -641,7 +641,7 @@ export const portfolioEN = {
                 body: 'Official Duolingo English Test result with an overall score of 145/160, including 150 in writing and 155 in listening.',
                 tags: ['English', 'CEFR C1', 'Verified'],
                 credential: {
-                    monogram: 'DET', kicker: 'Official English test', metric: '145', metricLabel: 'CEFR C1 · Advanced',
+                    monogram: 'DET', logo: '/assets/credential_logos/duolingo.svg', kicker: 'Official English test', metric: '145', metricLabel: 'CEFR C1 · Advanced',
                     details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }],
                     verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s',
                     verifyLabel: 'View official certificate'
@@ -683,7 +683,7 @@ export const portfolioEN = {
                 role: 'Python Web Development',
                 org: 'Coderhouse',
                 domain: 'coderhouse.com',
-                logo: null,
+                logo: '/assets/credential_logos/coderhouse.svg',
                 dates: 'Completed Mar 2022',
                 stat: 'Python',
                 statLabel: 'Web development',
@@ -691,7 +691,7 @@ export const portfolioEN = {
                 body: 'Applied Python to web application development, covering backend logic, data handling, and the foundations of shipping functional web products.',
                 tags: ['Python', 'Web development', 'Backend'],
                 credential: {
-                    monogram: 'CH', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Web development',
+                    monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Web development',
                     details: [{ value: 'March 2022', label: 'Completed' }, { value: 'Coderhouse', label: 'Institution' }]
                 }
             },
@@ -1046,7 +1046,7 @@ export const portfolioES = {
                 credential: { monogram: 'IE × MS', kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
             },
             {
-                kind: 'credential', startDate: 'Jun 2026', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: null,
+                kind: 'credential', startDate: 'Jun 2026', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: '/assets/credential_logos/harvard-crest.svg',
                 dates: 'Completado en Jun 2026', stat: 'HBI', statLabel: 'Certificado de programa',
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
@@ -1080,12 +1080,12 @@ export const portfolioES = {
                 credential: { monogram: 'IE', kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
             },
             {
-                kind: 'credential', startDate: 'Ene 2025', role: 'Duolingo English Test', org: 'Duolingo', domain: 'englishtest.duolingo.com', logo: null,
+                kind: 'credential', startDate: 'Ene 2025', role: 'Duolingo English Test', org: 'Duolingo', domain: 'englishtest.duolingo.com', logo: '/assets/credential_logos/duolingo.svg',
                 dates: 'Examen rendido el 24 Ene 2025', stat: '145', statLabel: 'CEFR C1 · Avanzado',
                 heading: 'Nivel de inglés avanzado certificado: {CEFR C1}.',
                 body: 'Resultado oficial de 145/160 en el Duolingo English Test, con 150 en writing y 155 en listening.',
                 tags: ['Inglés', 'CEFR C1', 'Verificado'],
-                credential: { monogram: 'DET', kicker: 'Examen oficial de inglés', metric: '145', metricLabel: 'CEFR C1 · Avanzado', details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }], verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s', verifyLabel: 'Ver certificado oficial' }
+                credential: { monogram: 'DET', logo: '/assets/credential_logos/duolingo.svg', kicker: 'Examen oficial de inglés', metric: '145', metricLabel: 'CEFR C1 · Avanzado', details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }], verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s', verifyLabel: 'Ver certificado oficial' }
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
@@ -1118,12 +1118,12 @@ export const portfolioES = {
                 tags: ['MicroStrategy', 'Agile', 'Liderazgo cross-funcional', 'IT Project Management']
             },
             {
-                kind: 'credential', startDate: 'Mar 2022', role: 'Python Web Development', org: 'Coderhouse', domain: 'coderhouse.com', logo: null,
+                kind: 'credential', startDate: 'Mar 2022', role: 'Python Web Development', org: 'Coderhouse', domain: 'coderhouse.com', logo: '/assets/credential_logos/coderhouse.svg',
                 dates: 'Completado en Mar 2022', stat: 'Python', statLabel: 'Desarrollo web',
                 heading: 'Certificación práctica en {desarrollo web con Python}.',
                 body: 'Aplicación de Python al desarrollo de aplicaciones web: lógica backend, manejo de datos y fundamentos para construir productos web funcionales.',
                 tags: ['Python', 'Desarrollo web', 'Backend'],
-                credential: { monogram: 'CH', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Desarrollo web', details: [{ value: 'Marzo 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }] }
+                credential: { monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: 'Desarrollo web', details: [{ value: 'Marzo 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }] }
             },
             {
                 role: 'BI Consultant',
