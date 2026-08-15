@@ -585,7 +585,7 @@ export const portfolioEN = {
                 body: 'Program covering the principles, approaches, and best practices used to structure and develop a rigorous business plan, presented with HBI Education.',
                 tags: ['Business planning', 'Strategy', 'Harvard Business Impact'],
                 credential: {
-                    monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.png', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
+                    monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
                     details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }]
                 }
             },
@@ -1051,7 +1051,7 @@ export const portfolioES = {
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
                 tags: ['Business planning', 'Estrategia', 'Harvard Business Impact'],
-                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.png', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
+                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
             },
             {
                 kind: 'education',
