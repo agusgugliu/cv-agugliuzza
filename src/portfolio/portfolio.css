@@ -945,6 +945,32 @@
     padding-bottom: 40px;
 }
 
+.pm-case--credential .pm-case-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pm-case--credential .pm-case-org-line {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+}
+
+.pm-case--credential .pm-case-org-line .pm-logo-img,
+.pm-case--credential .pm-case-org-line .pm-logo-chip {
+    width: 64px;
+    height: 64px;
+    padding: 8px;
+    background: #fff;
+    border-color: rgba(11, 14, 20, 0.12);
+    object-fit: contain;
+}
+
+.pm-case--credential .pm-case-org-line .pm-logo-img:hover {
+    transform: none;
+}
+
 .pm-case--credential .pm-case-meta .stat {
     color: #B7791F;
 }
@@ -956,8 +982,9 @@
 .pm-credential-card {
     margin-top: 22px;
     display: grid;
-    grid-template-columns: minmax(120px, 0.75fr) minmax(110px, 0.55fr) 1.4fr;
+    grid-template-columns: 180px 132px minmax(0, 1fr);
     align-items: stretch;
+    min-height: 150px;
     border: 1px solid rgba(183, 121, 31, 0.38);
     border-radius: 14px;
     overflow: hidden;
@@ -967,16 +994,17 @@
 .pm-credential-brand,
 .pm-credential-result,
 .pm-credential-details {
-    padding: 18px;
+    padding: 20px;
 }
 
 .pm-credential-brand {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 18px;
+    gap: 14px;
     background: #B7791F;
     color: #fff;
+    text-align: center;
 }
 
 .pm-credential-monogram {
@@ -987,10 +1015,13 @@
 }
 
 .pm-credential-brand-logo {
-    width: 58px;
-    height: 58px;
+    width: 76px;
+    height: 68px;
     object-fit: contain;
-    align-self: flex-start;
+    align-self: center;
+    padding: 7px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.96);
     filter: drop-shadow(0 4px 8px rgba(11, 14, 20, 0.18));
 }
 
@@ -1007,6 +1038,7 @@
     flex-direction: column;
     justify-content: center;
     border-right: 1px solid var(--hairline);
+    text-align: center;
 }
 
 .pm-credential-metric {
@@ -1028,6 +1060,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px 18px;
     align-content: center;
+    border-left: 0;
 }
 
 .pm-credential-details span {
@@ -1055,7 +1088,8 @@
     align-items: center;
     justify-content: flex-end;
     gap: 6px;
-    padding: 11px 16px;
+    min-height: 42px;
+    padding: 11px 20px;
     border-top: 1px solid var(--hairline);
     color: #9A6518;
     font-family: var(--font-mono);
@@ -1095,13 +1129,15 @@
     .pm-case-marker { left: -34px; top: 3px; width: 25px; height: 25px; border-width: 3px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
     .pm-case-rail-date { left: -92px; width: 60px; font-size: 0.62rem; top: 10px; }
-    .pm-credential-card { grid-template-columns: 1fr 1fr; }
+    .pm-credential-card { grid-template-columns: minmax(150px, 0.8fr) 1fr; }
+    .pm-credential-result { border-right: 0; }
     .pm-credential-details { grid-column: 1 / -1; border-top: 1px solid var(--hairline); }
 }
 
 @media (max-width: 560px) {
     .pm-track-legend { gap: 14px; flex-wrap: wrap; }
     .pm-credential-card { grid-template-columns: 1fr; }
+    .pm-credential-brand { min-height: 136px; }
     .pm-credential-result { border-right: 0; border-bottom: 1px solid var(--hairline); }
     .pm-credential-details { grid-column: auto; grid-template-columns: 1fr 1fr; }
 }
