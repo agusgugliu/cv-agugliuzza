@@ -586,7 +586,9 @@ export const portfolioEN = {
                 tags: ['Business planning', 'Strategy', 'Harvard Business Impact'],
                 credential: {
                     monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
-                    details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }]
+                    details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }],
+                    verifyUrl: '/assets/certificates/harvard-business-plan-development.svg',
+                    verifyLabel: 'View certificate'
                 }
             },
             {
@@ -729,7 +731,9 @@ export const portfolioEN = {
                 tags: ['Management', 'Information Systems', 'ITBA'],
                 credential: {
                     monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'University diploma', metric: '2017', metricLabel: 'Graduated',
-                    details: [{ value: '17 July 2017', label: 'Studies completed' }, { value: '4 October 2017', label: 'Diploma issued' }]
+                    details: [{ value: '17 July 2017', label: 'Studies completed' }, { value: '4 October 2017', label: 'Diploma issued' }],
+                    verifyUrl: '/assets/certificates/itba-bachelor-diploma.svg',
+                    verifyLabel: 'View diploma'
                 }
             },
             {
@@ -1055,7 +1059,7 @@ export const portfolioES = {
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
                 tags: ['Business planning', 'Estrategia', 'Harvard Business Impact'],
-                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }] }
+                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }], verifyUrl: '/assets/certificates/harvard-business-plan-development.svg', verifyLabel: 'Ver certificado' }
             },
             {
                 kind: 'education',
@@ -1152,7 +1156,7 @@ export const portfolioES = {
                 heading: 'Título de {Licenciado en Administración y Sistemas}.',
                 body: 'Diploma universitario oficial de la carrera de cuatro años que combina management, negocios, programación, datos y sistemas de información.',
                 tags: ['Administración', 'Sistemas de Información', 'ITBA'],
-                credential: { monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }] }
+                credential: { monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }], verifyUrl: '/assets/certificates/itba-bachelor-diploma.svg', verifyLabel: 'Ver diploma' }
             },
             {
                 role: 'Licenciatura en Administración y Sistemas',
