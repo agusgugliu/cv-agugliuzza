@@ -547,6 +547,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Official diploma', metric: 'MBA', metricLabel: 'Awarded 2026',
                     details: [{ value: 'International MBA', label: 'Program' }, { value: '20 July 2026', label: 'Awarded' }],
+                    documentUrl: '/assets/certificates/ie-mba-diploma.svg', documentLabel: 'diploma',
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194',
                     verifyLabel: 'View verified diploma'
                 }
@@ -567,6 +568,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'AI', metricLabel: 'Corporate challenge',
                     details: [{ value: 'Microsoft', label: 'Corporate partner' }, { value: '9 July 2026', label: 'Awarded' }],
+                    documentUrl: '/assets/certificates/ie-microsoft-tech-lab.svg', documentLabel: 'certificate',
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70',
                     verifyLabel: 'View verified certificate'
                 }
@@ -587,6 +589,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Program certificate', metric: '2026', metricLabel: 'Completed',
                     details: [{ value: 'Business Plan Development', label: 'Program' }, { value: 'HBI Education', label: 'Collaboration' }],
+                    documentUrl: '/assets/certificates/harvard-business-plan-development.svg', documentLabel: 'certificate',
                     verifyUrl: '/assets/certificates/harvard-business-plan-development.svg',
                     verifyLabel: 'View certificate'
                 }
@@ -625,6 +628,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completed 2025',
                     details: [{ value: 'IE Business School', label: 'Institution' }, { value: 'September 2025', label: 'Completed' }],
+                    documentUrl: '/assets/certificates/ie-impact-skills.svg', documentLabel: 'certificate',
                     verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6',
                     verifyLabel: 'View verified certificate'
                 }
@@ -645,6 +649,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'DET', logo: '/assets/credential_logos/duolingo.svg', kicker: 'Official English test', metric: '145', metricLabel: 'CEFR C1 · Advanced',
                     details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }],
+                    documentUrl: '/assets/certificates/duolingo-english-test.svg', documentLabel: 'certificate',
                     verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s',
                     verifyLabel: 'View official certificate'
                 }
@@ -695,6 +700,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: '52 hours · 13 weeks',
                     details: [{ value: '7 June 2022', label: 'Completed' }, { value: 'Coderhouse', label: 'Institution' }],
+                    documentUrl: '/assets/certificates/coderhouse-python.svg', documentLabel: 'certificate',
                     verifyUrl: '/assets/certificates/coderhouse-python.svg',
                     verifyLabel: 'View certificate'
                 }
@@ -732,6 +738,7 @@ export const portfolioEN = {
                 credential: {
                     monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'University diploma', metric: '2017', metricLabel: 'Graduated',
                     details: [{ value: '17 July 2017', label: 'Studies completed' }, { value: '4 October 2017', label: 'Diploma issued' }],
+                    documentUrl: '/assets/certificates/itba-bachelor-diploma.svg', documentLabel: 'diploma',
                     verifyUrl: '/assets/certificates/itba-bachelor-diploma.svg',
                     verifyLabel: 'View diploma'
                 }
@@ -1043,7 +1050,7 @@ export const portfolioES = {
                 heading: 'Título de {Master of Business Administration}.',
                 body: 'Diploma oficial que acredita el cumplimiento de todos los requisitos establecidos por la Junta de Calificaciones del International MBA.',
                 tags: ['MBA', 'Administración de Empresas', 'Verificado'],
-                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
+                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], documentUrl: '/assets/certificates/ie-mba-diploma.svg', documentLabel: 'diploma', verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
             },
             {
                 kind: 'credential', startDate: 'Jul 2026', role: 'Certificado Tech Lab', org: 'IE Business School × Microsoft', domain: 'microsoft.com', logo: MBA('microsoft_logo.png'),
@@ -1051,7 +1058,7 @@ export const portfolioES = {
                 heading: 'Tech Lab Corporate Challenge: {Scaling AI-Native Ventures with Microsoft}.',
                 body: 'Reconocimiento por la participación exitosa en el desafío tecnológico aplicado desarrollado conjuntamente por IE Business School y Microsoft.',
                 tags: ['AI-native ventures', 'Microsoft', 'Tech Lab'],
-                credential: { monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
+                credential: { monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], documentUrl: '/assets/certificates/ie-microsoft-tech-lab.svg', documentLabel: 'certificado', verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
             },
             {
                 kind: 'credential', startDate: 'Jun 2026', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: '/assets/credential_logos/harvard-crest.svg',
@@ -1059,7 +1066,7 @@ export const portfolioES = {
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
                 tags: ['Business planning', 'Estrategia', 'Harvard Business Impact'],
-                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }], verifyUrl: '/assets/certificates/harvard-business-plan-development.svg', verifyLabel: 'Ver certificado' }
+                credential: { monogram: 'HBI', logo: '/assets/credential_logos/harvard-crest.svg', kicker: 'Certificado de programa', metric: '2026', metricLabel: 'Completado', details: [{ value: 'Business Plan Development', label: 'Programa' }, { value: 'HBI Education', label: 'Colaboración' }], documentUrl: '/assets/certificates/harvard-business-plan-development.svg', documentLabel: 'certificado', verifyUrl: '/assets/certificates/harvard-business-plan-development.svg', verifyLabel: 'Ver certificado' }
             },
             {
                 kind: 'education',
@@ -1085,7 +1092,7 @@ export const portfolioES = {
                 heading: 'Completé el {Impact Skills Accelerator} de IE Business School.',
                 body: 'Programa de impacto profesional enfocado en catalizar acción, fortalecer la colaboración y convertir intención en resultados medibles.',
                 tags: ['Impacto', 'Colaboración', 'Ejecución'],
-                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
+                credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Impact Skills Accelerator', metric: 'ISA', metricLabel: 'Completado en 2025', details: [{ value: 'IE Business School', label: 'Institución' }, { value: 'Septiembre 2025', label: 'Completado' }], documentUrl: '/assets/certificates/ie-impact-skills.svg', documentLabel: 'certificado', verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c3e137e6b-c493-482f-acb1-fbc57b06db5e%7c315dc30e-addf-4fef-8c0e-851dc1b18bf6', verifyLabel: 'Ver certificado verificado' }
             },
             {
                 kind: 'credential', startDate: 'Ene 2025', role: 'Duolingo English Test', org: 'Duolingo', domain: 'englishtest.duolingo.com', logo: '/assets/credential_logos/duolingo.svg',
@@ -1093,7 +1100,7 @@ export const portfolioES = {
                 heading: 'Nivel de inglés avanzado certificado: {CEFR C1}.',
                 body: 'Resultado oficial de 145/160 en el Duolingo English Test, con 150 en writing y 155 en listening.',
                 tags: ['Inglés', 'CEFR C1', 'Verificado'],
-                credential: { monogram: 'DET', logo: '/assets/credential_logos/duolingo.svg', kicker: 'Examen oficial de inglés', metric: '145', metricLabel: 'CEFR C1 · Avanzado', details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }], verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s', verifyLabel: 'Ver certificado oficial' }
+                credential: { monogram: 'DET', logo: '/assets/credential_logos/duolingo.svg', kicker: 'Examen oficial de inglés', metric: '145', metricLabel: 'CEFR C1 · Avanzado', details: [{ value: '135', label: 'Speaking' }, { value: '150', label: 'Writing' }, { value: '140', label: 'Reading' }, { value: '155', label: 'Listening' }], documentUrl: '/assets/certificates/duolingo-english-test.svg', documentLabel: 'certificado', verifyUrl: 'https://certs.duolingo.com/7541flldz1homt0s', verifyLabel: 'Ver certificado oficial' }
             },
             {
                 role: 'Líder de Equipo IT y Project Manager',
@@ -1131,7 +1138,7 @@ export const portfolioES = {
                 heading: 'Completé una certificación de 52 horas en {Python}.',
                 body: 'Completé con éxito el curso de Python de Coderhouse durante 13 semanas, cumpliendo todos los requisitos académicos.',
                 tags: ['Python', 'Coderhouse', '52 horas'],
-                credential: { monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: '52 horas · 13 semanas', details: [{ value: '7 de junio de 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }], verifyUrl: '/assets/certificates/coderhouse-python.svg', verifyLabel: 'Ver certificado' }
+                credential: { monogram: 'CH', logo: '/assets/credential_logos/coderhouse.svg', kicker: 'Coderhouse', metric: 'Python', metricLabel: '52 horas · 13 semanas', details: [{ value: '7 de junio de 2022', label: 'Completado' }, { value: 'Coderhouse', label: 'Institución' }], documentUrl: '/assets/certificates/coderhouse-python.svg', documentLabel: 'certificado', verifyUrl: '/assets/certificates/coderhouse-python.svg', verifyLabel: 'Ver certificado' }
             },
             {
                 role: 'BI Consultant',
@@ -1156,7 +1163,7 @@ export const portfolioES = {
                 heading: 'Título de {Licenciado en Administración y Sistemas}.',
                 body: 'Diploma universitario oficial de la carrera de cuatro años que combina management, negocios, programación, datos y sistemas de información.',
                 tags: ['Administración', 'Sistemas de Información', 'ITBA'],
-                credential: { monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }], verifyUrl: '/assets/certificates/itba-bachelor-diploma.svg', verifyLabel: 'Ver diploma' }
+                credential: { monogram: 'ITBA', logo: EXP_LOGO('itba_logo.png'), kicker: 'Diploma universitario', metric: '2017', metricLabel: 'Egresado', details: [{ value: '17 de julio de 2017', label: 'Estudios finalizados' }, { value: '4 de octubre de 2017', label: 'Diploma expedido' }], documentUrl: '/assets/certificates/itba-bachelor-diploma.svg', documentLabel: 'diploma', verifyUrl: '/assets/certificates/itba-bachelor-diploma.svg', verifyLabel: 'Ver diploma' }
             },
             {
                 role: 'Licenciatura en Administración y Sistemas',
