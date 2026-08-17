@@ -159,6 +159,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const [toast, setToast] = useState(null);
     const [cmdOpen, setCmdOpen] = useState(false);
     const [showCredentials, setShowCredentials] = useState(true);
+    const [openCredential, setOpenCredential] = useState(null);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
     const toggleClient = (caseIdx, clientIdx) => {
         setOpenClient((o) =>
@@ -558,11 +559,48 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                                 ))}
                                             </div>
                                         )}
-                                        {c.credential.verifyUrl && (
-                                            <a className="pm-credential-link" href={c.credential.verifyUrl} target="_blank" rel="noreferrer">
-                                                {c.credential.verifyLabel} <ExternalLink size={13} />
-                                            </a>
+                                        {c.credential.documentUrl && (
+                                            <button
+                                                type="button"
+                                                className="pm-credential-toggle"
+                                                aria-expanded={openCredential === c.role}
+                                                aria-controls={`credential-document-${i}`}
+                                                onClick={() => setOpenCredential((open) => open === c.role ? null : c.role)}
+                                            >
+                                                <span>
+                                                    {openCredential === c.role
+                                                        ? (lang === 'es' ? 'Ocultar' : 'Hide')
+                                                        : (lang === 'es' ? 'Mostrar' : 'Show')}
+                                                    {' '}{c.credential.documentLabel}
+                                                </span>
+                                                <ChevronDown size={15} className={openCredential === c.role ? 'is-open' : ''} />
+                                            </button>
                                         )}
+                                        <AnimatePresence initial={false}>
+                                            {c.credential.documentUrl && openCredential === c.role && (
+                                                <motion.div
+                                                    id={`credential-document-${i}`}
+                                                    className="pm-credential-document"
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.28, ease: 'easeOut' }}
+                                                >
+                                                    <div className="pm-credential-document-inner">
+                                                        <img
+                                                            src={c.credential.documentUrl}
+                                                            alt={`${c.role} ${c.credential.documentLabel}`}
+                                                            loading="lazy"
+                                                        />
+                                                        {c.credential.verifyUrl !== c.credential.documentUrl && c.credential.verifyUrl && (
+                                                            <a className="pm-credential-link" href={c.credential.verifyUrl} target="_blank" rel="noreferrer">
+                                                                {c.credential.verifyLabel} <ExternalLink size={13} />
+                                                            </a>
+                                                        )}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 )}
                                 <InfoBlock info={c.info} lang={lang} variant="inline" />
