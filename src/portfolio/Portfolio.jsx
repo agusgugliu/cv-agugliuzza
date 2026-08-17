@@ -158,6 +158,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
     const [cmdOpen, setCmdOpen] = useState(false);
+    const [showCredentials, setShowCredentials] = useState(true);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
     const toggleClient = (caseIdx, clientIdx) => {
         setOpenClient((o) =>
@@ -493,17 +494,26 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </span>
                             {data.track.legend.education}
                         </span>
-                        <span className="pm-track-legend-item">
+                        <button
+                            type="button"
+                            className={`pm-track-legend-item pm-track-legend-toggle${showCredentials ? ' is-active' : ''}`}
+                            aria-pressed={showCredentials}
+                            onClick={() => setShowCredentials((visible) => !visible)}
+                            title={showCredentials ? data.track.legend.hideCredentials : data.track.legend.showCredentials}
+                        >
                             <span className="pm-track-legend-icon pm-track-legend-icon--credential" aria-hidden="true">
                                 <BadgeCheck size={15} strokeWidth={2} />
                             </span>
-                            {data.track.legend.credential}
-                        </span>
+                            <span>{data.track.legend.credential}</span>
+                            <span className="pm-track-legend-action">
+                                {showCredentials ? data.track.legend.hideCredentials : data.track.legend.showCredentials}
+                            </span>
+                        </button>
                     </div>
                     <div className="pm-track-list">
-                    {data.track.cases.map((c, i) => (
+                    {data.track.cases.filter((c) => showCredentials || c.kind !== 'credential').map((c, i) => (
                         <motion.div
-                            key={i}
+                            key={`${c.kind || 'work'}-${c.role}-${c.startDate}`}
                             className={`pm-case pm-case--${c.kind || 'work'}`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
