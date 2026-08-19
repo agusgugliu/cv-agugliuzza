@@ -20,6 +20,7 @@ const mapRow = (row) => ({
     excerpt: row.excerpt || '',
     tags: Array.isArray(row.tags) ? row.tags : [],
     lang: row.lang || 'en',
+    source: row.source === 'dispatch' ? 'dispatch' : 'personal',
     linkedin: row.linkedin_url || null,
     thumbnail: firstImage(row.content)
 });
