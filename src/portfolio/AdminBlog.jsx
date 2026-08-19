@@ -19,6 +19,7 @@ const emptyForm = () => ({
     excerpt: '',
     tags: '',
     lang: 'en',
+    source: 'personal',
     linkedin_url: '',
     published_at: today(),
     published: true,
@@ -96,6 +97,7 @@ const AdminBlog = () => {
             excerpt: post.excerpt || '',
             tags: (post.tags || []).join(', '),
             lang: post.lang || 'en',
+            source: post.source === 'dispatch' ? 'dispatch' : 'personal',
             linkedin_url: post.linkedin_url || '',
             published_at: post.published_at || today(),
             published: post.published,
@@ -131,6 +133,7 @@ const AdminBlog = () => {
             excerpt: form.excerpt.trim(),
             tags: form.tags.split(',').map((t) => t.trim()).filter(Boolean),
             lang: form.lang,
+            source: form.source,
             linkedin_url: form.linkedin_url.trim() || null,
             published_at: form.published_at || null,
             published: form.published,
@@ -280,6 +283,13 @@ const AdminBlog = () => {
                             </select>
                         </label>
                     </div>
+                    <label>
+                        <span>Source</span>
+                        <select value={form.source} onChange={(e) => setForm((f) => ({ ...f, source: e.target.value }))}>
+                            <option value="personal">Personal note</option>
+                            <option value="dispatch">Dispatch</option>
+                        </select>
+                    </label>
                     <div className="pm-rev-row">
                         <label>
                             <span>Published date</span>
@@ -359,7 +369,7 @@ const AdminBlog = () => {
                         <div key={p.id} className="pm-admin-item">
                             <div className="pm-admin-item-top">
                                 <span className="pm-admin-date">
-                                    {p.published_at || 'no date'} {!p.published && '· draft'}
+                                    {p.published_at || 'no date'} · {p.source === 'dispatch' ? 'dispatch' : 'personal'} {!p.published && '· draft'}
                                 </span>
                             </div>
                             <strong>{p.title}</strong>
