@@ -416,9 +416,26 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 const pushLane = (kind, enabled, spanAttr, topAttr, bottomAttr, capsAttr) => {
                     if (!enabled) return;
                     const spanId = el.getAttribute(spanAttr) || `${kind}-${groupId}`;
-                    const topFrac = Math.min(1, Math.max(0, parseFloat(el.getAttribute(topAttr) || '0') || 0));
-                    const bottomFrac = Math.min(1, Math.max(topFrac + 0.04, parseFloat(el.getAttribute(bottomAttr) || '1') || 1));
+                    let topFrac = Math.min(1, Math.max(0, parseFloat(el.getAttribute(topAttr) || '0') || 0));
+                    let bottomFrac = Math.min(1, Math.max(topFrac + 0.04, parseFloat(el.getAttribute(bottomAttr) || '1') || 1));
                     const caps = el.getAttribute(capsAttr) || 'both';
+
+                    /* Snap parallel “start” fragments to the mid-rail tick (e.g. Apr / KSA)
+                       so the bar begins exactly where the start marker sits. */
+                    if (caps === 'start') {
+                        const mid = el.querySelector(`.pm-case-rail-mid--${kind}`);
+                        if (mid) {
+                            const groupRect = el.getBoundingClientRect();
+                            const midRect = mid.getBoundingClientRect();
+                            const startY = Math.min(
+                                height - 20,
+                                Math.max(24, midRect.top + midRect.height / 2 - groupRect.top)
+                            );
+                            topFrac = 0;
+                            bottomFrac = startY / height;
+                        }
+                    }
+
                     raw.push({
                         key: `${kind}-${spanId}-${top}`,
                         spanId,
