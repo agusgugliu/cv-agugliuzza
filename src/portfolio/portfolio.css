@@ -744,6 +744,7 @@
     width: 70px;
     pointer-events: none;
     z-index: 0;
+    overflow: visible;
 }
 
 .pm-lane-seg {
