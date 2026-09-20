@@ -173,9 +173,39 @@ const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
     );
 };
 
-/* Nest credentials (and similar milestones) under the work/education
-   span they happened during, so overlaps read on the timeline itself. */
-const buildTrackGroups = (cases, showCredentials) => {
+/* Nest credentials under the work/education span they belong to.
+   Parallel duration lanes (work | education) show overlap; milestone
+   events cross those lanes as horizontal ticks — no “During” chips. */
+const MONTH_INDEX = {
+    jan: 0, ene: 0, feb: 1, mar: 2, apr: 3, abr: 3, may: 4, jun: 5,
+    jul: 6, aug: 7, ago: 7, sep: 8, oct: 9, nov: 10, dec: 11, dic: 11
+};
+
+const toMonthIndex = (label, presentLabel) => {
+    if (!label) return null;
+    const s = String(label).trim();
+    if (s === 'Present' || s === 'Presente' || s === presentLabel) {
+        return 2026 * 12 + 8; // Sep 2026 “now” for stable layout
+    }
+    const m = s.match(/(?:(\d{1,2})\s+)?([A-Za-zÁÉÍÓÚÜáéíóúü]{3})\.?\s+(\d{4})/i);
+    if (!m) return null;
+    const mon = MONTH_INDEX[m[2].toLowerCase().normalize('NFD').replace(/\p{M}/gu, '')];
+    if (mon == null) return null;
+    return parseInt(m[3], 10) * 12 + mon;
+};
+
+const caseRange = (c, presentLabel) => {
+    const start = toMonthIndex(c.from || c.startDate, presentLabel);
+    const end = c.until
+        ? toMonthIndex(c.until, presentLabel)
+        : start;
+    if (start == null || end == null) return null;
+    return { start, end: Math.max(start, end) };
+};
+
+const rangesOverlap = (a, b) => a && b && a.start <= b.end && b.start <= a.end;
+
+const buildTrackGroups = (cases, showCredentials, presentLabel) => {
     const visible = cases.filter((c) => showCredentials || c.kind !== 'credential');
     const byId = {};
     visible.forEach((c) => {
@@ -190,12 +220,22 @@ const buildTrackGroups = (cases, showCredentials) => {
             nested.add(c);
         }
     });
+    const spans = visible.filter((c) => c.kind === 'work' || c.kind === 'education');
     return visible
         .filter((c) => !nested.has(c))
-        .map((parent) => ({
-            parent,
-            children: childrenOf[parent.id] || []
-        }));
+        .map((parent) => {
+            const parentRange = caseRange(parent, presentLabel);
+            const parallel = spans.filter((s) =>
+                s !== parent
+                && s.kind !== parent.kind
+                && rangesOverlap(parentRange, caseRange(s, presentLabel))
+            );
+            return {
+                parent,
+                children: childrenOf[parent.id] || [],
+                parallel
+            };
+        });
 };
 
 /* Compact factsheet rendered inline below a case body, or below the
@@ -628,21 +668,35 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </span>
                         </button>
                     </div>
+                    <div className="pm-track-lanes-legend" aria-hidden="true">
+                        <span className="pm-track-lanes-legend-item">
+                            <span className="pm-track-lanes-swatch pm-track-lanes-swatch--work" />
+                            {data.track.legend.work}
+                        </span>
+                        <span className="pm-track-lanes-legend-item">
+                            <span className="pm-track-lanes-swatch pm-track-lanes-swatch--education" />
+                            {data.track.legend.education}
+                        </span>
+                        <span className="pm-track-lanes-legend-item">
+                            <span className="pm-track-lanes-swatch pm-track-lanes-swatch--event" />
+                            {data.track.legend.credential}
+                        </span>
+                    </div>
                     <div className="pm-track-list" ref={trackRef}>
                         <div className="pm-track-line" aria-hidden="true">
                             <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
                         </div>
-                    {buildTrackGroups(data.track.cases, showCredentials).map(({ parent, children }) => {
+                    {buildTrackGroups(data.track.cases, showCredentials, data.track.legend.present).map(({ parent, children, parallel }) => {
                         const groupKind = parent.kind === 'education' ? 'education' : parent.kind === 'work' ? 'work' : 'other';
-                        const milestonesLabel = groupKind === 'education'
-                            ? data.track.legend.milestonesEdu
-                            : data.track.legend.milestones;
+                        const hasWorkLane = groupKind === 'work' || parallel.some((p) => p.kind === 'work');
+                        const hasEduLane = groupKind === 'education' || parallel.some((p) => p.kind === 'education');
                         const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
+                        const markerKind = c.kind === 'education' ? 'education' : c.kind === 'credential' ? 'credential' : 'work';
                         return (
                         <article
                             key={caseKey}
-                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested pm-case--compact' : ''}`}
+                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested pm-case--compact pm-case--event' : ''}`}
                         >
                             <TimelineRailDates
                                 from={c.from || c.startDate}
@@ -650,18 +704,46 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 eventLabel={c.eventLabel}
                                 presentLabel={data.track.legend.present}
                             />
-                            <motion.span
-                                className="pm-case-marker"
-                                aria-hidden="true"
-                                initial={{ scale: 0.35, opacity: 0 }}
-                                whileInView={{ scale: 1, opacity: 1 }}
-                                viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
-                                transition={{ type: 'spring', stiffness: 380, damping: 20 }}
-                            >
-                                {c.kind === 'education' ? <GraduationCap size={nested ? 13 : 15} strokeWidth={2.2} />
-                                    : c.kind === 'credential' ? <BadgeCheck size={nested ? 13 : 15} strokeWidth={2.2} />
-                                    : <BriefcaseBusiness size={nested ? 12 : 14} strokeWidth={2.2} />}
-                            </motion.span>
+                            <div className="pm-case-lane-slot pm-case-lane-slot--work" aria-hidden="true">
+                                {!nested && markerKind === 'work' && (
+                                    <motion.span
+                                        className="pm-case-marker"
+                                        initial={{ scale: 0.35, opacity: 0 }}
+                                        whileInView={{ scale: 1, opacity: 1 }}
+                                        viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+                                        transition={{ type: 'spring', stiffness: 380, damping: 20 }}
+                                    >
+                                        <BriefcaseBusiness size={14} strokeWidth={2.2} />
+                                    </motion.span>
+                                )}
+                            </div>
+                            <div className="pm-case-lane-slot pm-case-lane-slot--education" aria-hidden="true">
+                                {!nested && markerKind === 'education' && (
+                                    <motion.span
+                                        className="pm-case-marker"
+                                        initial={{ scale: 0.35, opacity: 0 }}
+                                        whileInView={{ scale: 1, opacity: 1 }}
+                                        viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+                                        transition={{ type: 'spring', stiffness: 380, damping: 20 }}
+                                    >
+                                        <GraduationCap size={15} strokeWidth={2.2} />
+                                    </motion.span>
+                                )}
+                            </div>
+                            {(nested || markerKind === 'credential') && (
+                                <div className="pm-event-cross" aria-hidden="true">
+                                    <span className="pm-event-cross-line" />
+                                    <motion.span
+                                        className="pm-case-marker pm-case-marker--event"
+                                        initial={{ scale: 0.35, opacity: 0 }}
+                                        whileInView={{ scale: 1, opacity: 1 }}
+                                        viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+                                        transition={{ type: 'spring', stiffness: 380, damping: 20 }}
+                                    >
+                                        <BadgeCheck size={13} strokeWidth={2.2} />
+                                    </motion.span>
+                                </div>
+                            )}
                             <motion.div
                                 className="pm-case-content"
                                 initial={{ opacity: 0, x: nested ? 24 : 40, y: nested ? 10 : 18 }}
@@ -684,8 +766,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         labels={data.track.legend}
                                     />
                                 )}
-                                {nested && c.location && (
-                                    <div className="pm-case-period-loc pm-case-period-loc--solo">{c.location}</div>
+                                {nested && (
+                                    <div className="pm-case-period pm-case-period--point">
+                                        {c.eventLabel && <span className="pm-case-period-event">{c.eventLabel}</span>}
+                                        <time className="pm-case-period-value" dateTime={c.from || c.startDate}>{c.from || c.startDate}</time>
+                                        {c.location && <span className="pm-case-period-loc">{c.location}</span>}
+                                    </div>
                                 )}
                                 {!nested && (
                                     <>
@@ -696,7 +782,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </div>
                             <div className="pm-case-body">
                                 <h3><Editorial text={c.heading} /></h3>
-                                <p>{c.body}</p>
+                                {!nested && <p>{c.body}</p>}
+                                {nested && c.body && <p className="pm-case-body-brief">{c.body}</p>}
                                 {c.credential && (
                                     <div className="pm-credential-card">
                                         <div className="pm-credential-brand">
@@ -848,25 +935,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         return (
                         <div
                             key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
-                            className={`pm-case-group${children.length ? ' has-nest' : ''}${groupKind === 'work' ? ' pm-case-group--work' : groupKind === 'education' ? ' pm-case-group--education' : ''}`}
+                            className={`pm-case-group${children.length ? ' has-nest' : ''}${groupKind === 'work' ? ' pm-case-group--work' : groupKind === 'education' ? ' pm-case-group--education' : ''}${hasWorkLane && hasEduLane ? ' has-parallel' : ''}`}
                         >
-                            {children.length > 0 && (
-                                <div className="pm-case-group-span" aria-hidden="true" />
-                            )}
+                            <div className="pm-lane-bars" aria-hidden="true">
+                                {hasWorkLane && <div className="pm-lane-bar pm-lane-bar--work" />}
+                                {hasEduLane && <div className="pm-lane-bar pm-lane-bar--education" />}
+                            </div>
                             {renderCase(parent)}
                             {children.length > 0 && (
                                 <div className="pm-milestones">
-                                    <div className="pm-milestones-head">
-                                        <div className="pm-milestones-copy">
-                                            <span className="pm-milestones-label">{milestonesLabel}</span>
-                                            <span className="pm-milestones-org">{parent.org}</span>
-                                            <span className="pm-milestones-range">
-                                                {parent.from || parent.startDate}
-                                                <span aria-hidden="true"> → </span>
-                                                {parent.until || data.track.legend.present}
-                                            </span>
-                                        </div>
-                                    </div>
                                     {children.map((child) => renderCase(child, { nested: true }))}
                                 </div>
                             )}
