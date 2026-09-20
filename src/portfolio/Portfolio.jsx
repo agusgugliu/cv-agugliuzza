@@ -963,12 +963,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 ? { topFrac: 0, bottomFrac: 1 }
                                 : laneClipFractions(parentRange, caseRange(eduSpan, presentLabel)))
                             : null;
-                        const workCaps = groupKind === 'work'
-                            ? (parentOngoing ? 'now-start' : 'both')
-                            : parallelLaneCaps(parentRange, caseRange(workSpan, presentLabel), isPresentLabel(workSpan?.until, presentLabel));
-                        const eduCaps = groupKind === 'education'
-                            ? (parentOngoing ? 'now-start' : 'both')
-                            : parallelLaneCaps(parentRange, caseRange(eduSpan, presentLabel), isPresentLabel(eduSpan?.until, presentLabel));
+                        const workCaps = !workSpan
+                            ? ''
+                            : (groupKind === 'work'
+                                ? (parentOngoing ? 'now-start' : 'both')
+                                : parallelLaneCaps(parentRange, caseRange(workSpan, presentLabel), isPresentLabel(workSpan.until, presentLabel)));
+                        const eduCaps = !eduSpan
+                            ? ''
+                            : (groupKind === 'education'
+                                ? (parentOngoing ? 'now-start' : 'both')
+                                : parallelLaneCaps(parentRange, caseRange(eduSpan, presentLabel), isPresentLabel(eduSpan.until, presentLabel)));
                         const workEndLabel = workSpan ? spanEndLabel(workSpan, presentLabel) : '';
                         const workStartLabel = workSpan ? spanStartLabel(workSpan) : '';
                         const eduEndLabel = eduSpan ? spanEndLabel(eduSpan, presentLabel) : '';
