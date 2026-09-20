@@ -415,6 +415,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         };
 
         measure();
+        requestAnimationFrame(measure);
         const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
         if (ro) ro.observe(root);
         window.addEventListener('resize', measure);
