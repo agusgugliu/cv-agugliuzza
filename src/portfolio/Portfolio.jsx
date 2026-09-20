@@ -174,41 +174,7 @@ const TimelinePeriod = ({ from, until, location, eventLabel, labels }) => {
     );
 };
 
-/* Rail shows end date on top (toward “now”), start below — matches top→past.
-   Optional midStarts: concurrent role starts that fall inside this span
-   (e.g. Apr 2026 KS start while viewing the MBA). */
-const TimelineRailDates = ({ from, until, eventLabel, presentLabel, midStarts = [] }) => {
-    const start = from || '';
-    const end = resolveUntilDisplay(until, presentLabel);
-    const isPresent = isPresentLabel(until, presentLabel);
-
-    if (!end) {
-        return (
-            <span className="pm-case-rail-dates is-point">
-                {eventLabel && <span className="pm-case-rail-event">{eventLabel}</span>}
-                <span className="pm-case-rail-from">{start}</span>
-            </span>
-        );
-    }
-
-    return (
-        <span className="pm-case-rail-dates">
-            <span className={`pm-case-rail-until${isPresent ? ' is-present' : ''}`}>{end}</span>
-            <span className="pm-case-rail-span" aria-hidden="true" />
-            {midStarts.map((m) => (
-                <React.Fragment key={`${m.kind}-${m.date}`}>
-                    <span className={`pm-case-rail-mid pm-case-rail-mid--${m.kind}`}>
-                        <span className="pm-case-rail-mid-date">{m.date}</span>
-                        {m.short && <span className="pm-case-rail-mid-label">{m.short}</span>}
-                        <span className="pm-case-rail-mid-leader" aria-hidden="true" />
-                    </span>
-                    <span className="pm-case-rail-span pm-case-rail-span--mid" aria-hidden="true" />
-                </React.Fragment>
-            ))}
-            <span className="pm-case-rail-from">{start}</span>
-        </span>
-    );
-};
+/* Duration dates sit on lane bar caps; credential point dates use a compact rail. */
 
 /* Nest credentials under the work/education span they belong to.
    Parallel duration lanes (work | education) show overlap; milestone
@@ -273,29 +239,6 @@ const spanStartLabel = (c) => (c?.from || c?.startDate || '');
 const spanEndLabel = (c, presentLabel) => {
     if (!c) return '';
     return resolveUntilDisplay(c.until, presentLabel) || spanStartLabel(c);
-};
-const parallelMidStarts = (parent, parallel, presentLabel) => {
-    const parentRange = caseRange(parent, presentLabel);
-    if (!parentRange) return [];
-    return parallel
-        .map((p) => {
-            const r = caseRange(p, presentLabel);
-            if (!r) return null;
-            if (r.start <= parentRange.start || r.start >= parentRange.end) return null;
-            const org = String(p.org || '').trim();
-            const short = org
-                .split(/\s+/)
-                .map((w) => w[0])
-                .join('')
-                .slice(0, 3)
-                .toUpperCase();
-            return {
-                kind: p.kind === 'education' ? 'education' : 'work',
-                date: p.from || p.startDate,
-                short: short || null
-            };
-        })
-        .filter(Boolean);
 };
 
 const buildTrackGroups = (cases, presentLabel) => {
@@ -436,26 +379,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     const caps = el.getAttribute(capsAttr) || 'both';
                     const endLabel = el.getAttribute(endLabelAttr) || '';
                     const startLabel = el.getAttribute(startLabelAttr) || '';
-
-                    /* Snap parallel “start” fragments to the mid-rail tick (e.g. Apr / KSA)
-                       so the bar begins exactly where the start marker sits. */
-                    if (caps === 'start' || caps === 'both') {
-                        const mid = el.querySelector(`.pm-case-rail-mid--${kind}`);
-                        if (mid && (caps === 'start' || topFrac < 0.02)) {
-                            const groupRect = el.getBoundingClientRect();
-                            const midRect = mid.getBoundingClientRect();
-                            const startY = Math.min(
-                                height - 20,
-                                Math.max(24, midRect.top + midRect.height / 2 - groupRect.top)
-                            );
-                            if (caps === 'start') {
-                                topFrac = 0;
-                                bottomFrac = startY / height;
-                            } else {
-                                bottomFrac = Math.max(bottomFrac, startY / height);
-                            }
-                        }
-                    }
 
                     raw.push({
                         key: `${kind}-${spanId}-${top}`,
@@ -930,7 +853,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                     style={{ top: seg.top, height: seg.height }}
                                 >
                                     <span className="pm-lane-seg-bar" />
-                                    {seg.capStart && <span className="pm-lane-seg-cap pm-lane-seg-cap--start" />}
+                                    {seg.capStart && (
+                                        <>
+                                            <span className="pm-lane-seg-cap pm-lane-seg-cap--start" />
+                                            {seg.startLabel && (
+                                                <span className="pm-lane-seg-date pm-lane-seg-date--start">{seg.startLabel}</span>
+                                            )}
+                                        </>
+                                    )}
                                     {seg.capEnd && (
                                         <>
                                             <span className="pm-lane-seg-cap pm-lane-seg-cap--end" />
@@ -939,7 +869,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                             )}
                                         </>
                                     )}
-                                    {seg.ongoing && <span className="pm-lane-seg-now" />}
+                                    {seg.ongoing && (
+                                        <>
+                                            <span className="pm-lane-seg-now" />
+                                            {seg.endLabel && (
+                                                <span className="pm-lane-seg-date pm-lane-seg-date--now">{seg.endLabel}</span>
+                                            )}
+                                        </>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -948,7 +885,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         const hasWorkLane = groupKind === 'work' || parallel.some((p) => p.kind === 'work');
                         const hasEduLane = groupKind === 'education' || parallel.some((p) => p.kind === 'education');
                         const parentOngoing = isPresentLabel(parent.until, data.track.legend.present);
-                        const midStarts = parallelMidStarts(parent, parallel, data.track.legend.present);
                         const presentLabel = data.track.legend.present;
                         const parentRange = caseRange(parent, presentLabel);
                         const workSpan = groupKind === 'work' ? parent : parallel.find((p) => p.kind === 'work');
@@ -977,6 +913,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         const workStartLabel = workSpan ? spanStartLabel(workSpan) : '';
                         const eduEndLabel = eduSpan ? spanEndLabel(eduSpan, presentLabel) : '';
                         const eduStartLabel = eduSpan ? spanStartLabel(eduSpan) : '';
+                        const showLaneEnd = (caps) => caps === 'both' || caps === 'end' || caps === 'now-start';
+                        const showLaneStart = (caps) => caps === 'both' || caps === 'start' || caps === 'now-start';
                         const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
                         const markerKind = c.kind === 'education' ? 'education' : c.kind === 'credential' ? 'credential' : 'work';
@@ -989,17 +927,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             title={markerOnly ? a11yLabel : undefined}
                             aria-label={markerOnly ? a11yLabel : undefined}
                         >
-                            {!markerOnly && (
-                            <TimelineRailDates
-                                from={c.from || c.startDate}
-                                until={c.until}
-                                eventLabel={c.eventLabel}
-                                presentLabel={data.track.legend.present}
-                                midStarts={nested ? [] : midStarts}
-                            />
-                            )}
-                            {markerOnly && (
-                                <span className="pm-case-rail-dates is-point pm-case-rail-dates--marker">
+                            {/* Duration dates live on the lane bar caps; rail only keeps point-event dates. */}
+                            {(markerKind === 'credential') && (
+                                <span className={`pm-case-rail-dates is-point${markerOnly ? ' pm-case-rail-dates--marker' : ''}`}>
+                                    {c.eventLabel && !markerOnly && <span className="pm-case-rail-event">{c.eventLabel}</span>}
                                     <span className="pm-case-rail-from">{c.from || c.startDate}</span>
                                 </span>
                             )}
@@ -1244,15 +1175,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             data-lane-work-top={workClip ? String(workClip.topFrac) : '0'}
                             data-lane-work-bottom={workClip ? String(workClip.bottomFrac) : '1'}
                             data-lane-work-caps={workClip ? workCaps : ''}
-                            data-lane-work-end={workClip && (workCaps === 'both' || workCaps === 'end') ? workEndLabel : ''}
-                            data-lane-work-start={workClip ? workStartLabel : ''}
+                            data-lane-work-end={workClip && showLaneEnd(workCaps) ? workEndLabel : ''}
+                            data-lane-work-start={workClip && showLaneStart(workCaps) ? workStartLabel : ''}
                             data-lane-edu={eduClip ? 'true' : 'false'}
                             data-lane-edu-span={eduSpan?.id || (eduSpan ? `education-${eduSpan.startDate}` : '')}
                             data-lane-edu-top={eduClip ? String(eduClip.topFrac) : '0'}
                             data-lane-edu-bottom={eduClip ? String(eduClip.bottomFrac) : '1'}
                             data-lane-edu-caps={eduClip ? eduCaps : ''}
-                            data-lane-edu-end={eduClip && (eduCaps === 'both' || eduCaps === 'end') ? eduEndLabel : ''}
-                            data-lane-edu-start={eduClip ? eduStartLabel : ''}
+                            data-lane-edu-end={eduClip && showLaneEnd(eduCaps) ? eduEndLabel : ''}
+                            data-lane-edu-start={eduClip && showLaneStart(eduCaps) ? eduStartLabel : ''}
                         >
                             {renderCase(parent)}
                             {children.length > 0 && (

@@ -808,27 +808,40 @@
 
 .pm-lane-seg-date {
     position: absolute;
-    top: 0;
-    right: calc(100% + 8px);
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.55rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: 1;
     z-index: 2;
+    padding: 2px 5px;
+    border-radius: 999px;
+    background: var(--paper);
 }
 
-.pm-lane-seg-date--end {
-    transform: translateY(-10%);
+.pm-lane-seg-date--end,
+.pm-lane-seg-date--now {
+    top: 0;
+    transform: translateY(-40%);
+}
+
+.pm-lane-seg-date--start {
+    bottom: 0;
+    top: auto;
+    transform: translateY(40%);
 }
 
 .pm-lane-seg--work .pm-lane-seg-date {
+    right: calc(100% + 6px);
     color: var(--blue);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue) 28%, transparent);
 }
 
 .pm-lane-seg--education .pm-lane-seg-date {
+    left: calc(100% + 6px);
     color: var(--ink);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
 .pm-lane-seg--work .pm-lane-seg-cap {
