@@ -773,8 +773,10 @@
 }
 
 .pm-lane-seg.is-ongoing .pm-lane-seg-bar {
-    top: 4px;
-    border-radius: 3px 3px 999px 999px;
+    top: 0;
+    border-radius: 0 0 999px 999px;
+    /* Continuous arrow tip — no separate triangle seam */
+    clip-path: polygon(50% 0, 100% 11px, 100% 100%, 0 100%, 0 11px);
 }
 
 .pm-lane-seg.is-ended .pm-lane-seg-bar {
@@ -855,24 +857,18 @@
 }
 
 .pm-lane-seg-now {
+    /* Anchor for Present label; tip is drawn via bar clip-path */
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 50%;
-    width: 0;
-    height: 0;
+    width: 1px;
+    height: 1px;
     transform: translateX(-50%);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 9px solid var(--blue);
+    border: 0;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
     z-index: 1;
-}
-
-.pm-lane-seg--work .pm-lane-seg-now {
-    border-bottom-color: var(--blue);
-}
-
-.pm-lane-seg--education .pm-lane-seg-now {
-    border-bottom-color: var(--ink);
 }
 
 .pm-case-lane-slot {
@@ -1923,7 +1919,9 @@
     .pm-lane-seg--education { left: 26px; }
     .pm-lane-seg-bar { width: 7px; }
     .pm-lane-seg-cap { width: 11px; height: 11px; }
-    .pm-lane-seg-now { width: 14px; height: 3px; }
+    .pm-lane-seg.is-ongoing .pm-lane-seg-bar {
+        clip-path: polygon(50% 0, 100% 8px, 100% 100%, 0 100%, 0 8px);
+    }
     .pm-track-line { left: calc(72px + 8px + 21px); }
     .pm-case-marker { width: 22px; height: 22px; border-width: 3px; }
     .pm-case--nested .pm-case-marker { width: 18px; height: 18px; }
