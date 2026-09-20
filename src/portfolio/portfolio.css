@@ -744,6 +744,7 @@
     width: 70px;
     pointer-events: none;
     z-index: 0;
+    overflow: visible;
 }
 
 .pm-lane-seg {
@@ -780,7 +781,9 @@
 }
 
 .pm-lane-seg.is-ended .pm-lane-seg-bar {
-    border-radius: 999px;
+    /* Meet the credential-style end cross; round only the start end */
+    top: 9px;
+    border-radius: 0 0 999px 999px;
 }
 
 /* Parallel fragment open at the newer end (connects toward the role’s own card). */
@@ -797,7 +800,7 @@
     border-radius: 50%;
     transform: translateX(-50%);
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 2;
 }
 
 .pm-lane-seg-cap--start {
@@ -808,6 +811,29 @@
     top: 2px;
 }
 
+/* Horizontal tick across lanes — same pattern as credential event-cross */
+.pm-lane-seg-cross {
+    position: absolute;
+    top: 8px;
+    height: 2px;
+    border-radius: 2px;
+    z-index: 1;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.pm-lane-seg--work .pm-lane-seg-cross {
+    left: 2px;
+    width: calc(28px + 42px - 4px);
+    background: var(--blue);
+}
+
+.pm-lane-seg--education .pm-lane-seg-cross {
+    right: 2px;
+    width: calc(28px + 42px - 4px);
+    background: var(--ink);
+}
+
 .pm-lane-seg-date {
     position: absolute;
     font-family: var(--font-mono);
@@ -816,13 +842,13 @@
     letter-spacing: 0.03em;
     white-space: nowrap;
     line-height: 1;
-    z-index: 2;
+    z-index: 3;
     padding: 2px 5px;
     border-radius: 999px;
     background: var(--paper);
 }
 
-.pm-lane-seg-date--end,
+/* Start + Present keep compact chips beside the bar */
 .pm-lane-seg-date--now {
     top: 0;
     transform: translateY(-40%);
@@ -834,26 +860,66 @@
     transform: translateY(40%);
 }
 
-.pm-lane-seg--work .pm-lane-seg-date {
+/* End dates: rail style like credential award dates (left of lanes, no chip) */
+.pm-lane-seg-date--end {
+    top: 9px;
+    transform: translateY(-50%);
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.58rem;
+    font-weight: 500;
+}
+
+.pm-lane-seg--work .pm-lane-seg-date--start,
+.pm-lane-seg--work .pm-lane-seg-date--now {
     right: calc(100% + 6px);
     color: var(--blue);
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue) 28%, transparent);
 }
 
-.pm-lane-seg--education .pm-lane-seg-date {
+.pm-lane-seg--education .pm-lane-seg-date--start,
+.pm-lane-seg--education .pm-lane-seg-date--now {
     left: calc(100% + 6px);
     color: var(--ink);
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
-.pm-lane-seg--work .pm-lane-seg-cap {
+.pm-lane-seg--work .pm-lane-seg-date--end {
+    right: calc(100% + 6px);
+    left: auto;
+    color: var(--blue);
+}
+
+.pm-lane-seg--education .pm-lane-seg-date--end {
+    /* Sit in the left rail, same column as credential dates */
+    right: calc(100% + 42px + 6px);
+    left: auto;
+    color: var(--ink);
+}
+
+/* Start caps: hollow ring. End caps: filled node like credential markers. */
+.pm-lane-seg--work .pm-lane-seg-cap--start {
     background: var(--paper);
     border: 3px solid var(--blue);
 }
 
-.pm-lane-seg--education .pm-lane-seg-cap {
+.pm-lane-seg--education .pm-lane-seg-cap--start {
     background: var(--paper);
     border: 3px solid var(--ink);
+}
+
+.pm-lane-seg--work .pm-lane-seg-cap--end {
+    background: var(--blue);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--blue);
+}
+
+.pm-lane-seg--education .pm-lane-seg-cap--end {
+    background: var(--ink);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--ink);
 }
 
 .pm-lane-seg-now {
@@ -1880,6 +1946,13 @@
     .pm-lane-seg--education { left: 34px; }
     .pm-lane-seg-bar { width: 8px; }
     .pm-lane-seg-cap { width: 12px; height: 12px; border-width: 2px; }
+    .pm-lane-seg--work .pm-lane-seg-cross,
+    .pm-lane-seg--education .pm-lane-seg-cross {
+        width: calc(24px + 34px - 4px);
+    }
+    .pm-lane-seg--education .pm-lane-seg-date--end {
+        right: calc(100% + 34px + 6px);
+    }
     .pm-case-marker { width: 25px; height: 25px; border-width: 3px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
     .pm-case--nested .pm-case-marker { width: 20px; height: 20px; }
@@ -1919,6 +1992,13 @@
     .pm-lane-seg--education { left: 26px; }
     .pm-lane-seg-bar { width: 7px; }
     .pm-lane-seg-cap { width: 11px; height: 11px; }
+    .pm-lane-seg--work .pm-lane-seg-cross,
+    .pm-lane-seg--education .pm-lane-seg-cross {
+        width: calc(18px + 26px - 4px);
+    }
+    .pm-lane-seg--education .pm-lane-seg-date--end {
+        right: calc(100% + 26px + 6px);
+    }
     .pm-lane-seg.is-ongoing .pm-lane-seg-bar {
         clip-path: polygon(50% 0, 100% 8px, 100% 100%, 0 100%, 0 8px);
     }
