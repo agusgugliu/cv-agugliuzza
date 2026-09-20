@@ -3,13 +3,13 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 /* Rotations stay deterministic so the pile doesn't reshuffle on re-render. */
 const ROT = {
-    projects: -7.5,
-    ai: 5.5,
-    problems: -3.2,
-    work: 6.8,
-    apps: -5.4,
-    ideas: 3.6,
-    contact: -2.1
+    projects: -3.6,
+    ai: 2.8,
+    problems: -1.8,
+    work: 3.2,
+    apps: -2.6,
+    ideas: 1.8,
+    contact: -1.2
 };
 
 const STUB_SPRING = { type: 'spring', stiffness: 320, damping: 24, mass: 0.8 };

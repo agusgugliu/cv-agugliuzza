@@ -1,13 +1,17 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 
 /* Meeting ticket that prints from a slot when Contact enters view.
-   The whole pass is the Reclaim booking link. */
+   InView is measured on the machine, not the sliding ticket — otherwise
+   overflow:hidden + translateY keeps the pass at 0 intersection forever. */
 const BoardingPass = ({ copy, href }) => {
     const reduce = useReducedMotion();
+    const machineRef = useRef(null);
+    const inView = useInView(machineRef, { once: true, amount: 0.35, margin: '0px 0px -10% 0px' });
+    const printed = reduce || inView;
 
     return (
-        <div className="pm-pass-machine">
+        <div className="pm-pass-machine" ref={machineRef}>
             <div className="pm-pass-hood" aria-hidden="true">
                 <span className="pm-pass-led" />
                 <span className="pm-pass-hood-label">{copy.passKicker}</span>
@@ -19,11 +23,10 @@ const BoardingPass = ({ copy, href }) => {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    initial={reduce ? { opacity: 0 } : { y: '-108%' }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.35 }}
+                    initial={false}
+                    animate={printed ? { y: 0, opacity: 1 } : { y: '-92%', opacity: 1 }}
                     transition={reduce
-                        ? { duration: 0.25 }
+                        ? { duration: 0 }
                         : { duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
                 >
                     <div className="pm-pass-main">
