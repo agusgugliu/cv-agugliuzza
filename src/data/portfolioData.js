@@ -514,7 +514,7 @@ export const portfolioEN = {
         eyebrow: 'Track record',
         heading: 'A career built across {digital transformation, data and deals}.',
         cta: 'See full CV',
-        legend: { work: 'Work', education: 'Education', credential: 'Credentials', showCredentials: 'Show', hideCredentials: 'Hide', workShort: 'WORK', educationShort: 'EDU', credentialShort: 'CERT', from: 'From', until: 'Until', present: 'Present', during: 'During', milestones: 'While in this role', milestonesEdu: 'While in this program' },
+        legend: { work: 'Work', education: 'Education', credential: 'Credentials', showCredentials: 'Show', hideCredentials: 'Hide', workShort: 'WORK', educationShort: 'EDU', credentialShort: 'CERT', from: 'From', until: 'Until', present: 'Present' },
         cases: [
             {
                 kind: 'work',
@@ -1085,7 +1085,7 @@ export const portfolioES = {
         eyebrow: 'Track record',
         heading: 'Una carrera construida entre {transformación digital, datos y deals}.',
         cta: 'Ver CV completo',
-        legend: { work: 'Experiencia', education: 'Formación', credential: 'Credenciales', showCredentials: 'Mostrar', hideCredentials: 'Ocultar', workShort: 'TRAB', educationShort: 'EDU', credentialShort: 'CERT', from: 'Desde', until: 'Hasta', present: 'Presente', during: 'Durante', milestones: 'Durante este rol', milestonesEdu: 'Durante este programa' },
+        legend: { work: 'Experiencia', education: 'Formación', credential: 'Credenciales', showCredentials: 'Mostrar', hideCredentials: 'Ocultar', workShort: 'TRAB', educationShort: 'EDU', credentialShort: 'CERT', from: 'Desde', until: 'Hasta', present: 'Presente' },
         cases: [
             {
                 kind: 'work',
