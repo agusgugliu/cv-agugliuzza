@@ -269,23 +269,22 @@ const parallelMidStarts = (parent, parallel, presentLabel) => {
         .filter(Boolean);
 };
 
-const buildTrackGroups = (cases, showCredentials, presentLabel) => {
-    const visible = cases.filter((c) => showCredentials || c.kind !== 'credential');
+const buildTrackGroups = (cases, presentLabel) => {
     const byId = {};
-    visible.forEach((c) => {
+    cases.forEach((c) => {
         if (c.id) byId[c.id] = c;
     });
     const childrenOf = {};
     const nested = new Set();
-    visible.forEach((c) => {
+    cases.forEach((c) => {
         if (c.during && byId[c.during]) {
             if (!childrenOf[c.during]) childrenOf[c.during] = [];
             childrenOf[c.during].push(c);
             nested.add(c);
         }
     });
-    const spans = visible.filter((c) => c.kind === 'work' || c.kind === 'education');
-    return visible
+    const spans = cases.filter((c) => c.kind === 'work' || c.kind === 'education');
+    return cases
         .filter((c) => !nested.has(c))
         .map((parent) => {
             const parentRange = caseRange(parent, presentLabel);
@@ -345,7 +344,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
     const [toast, setToast] = useState(null);
     const [cmdOpen, setCmdOpen] = useState(false);
-    const [showCredentials, setShowCredentials] = useState(true);
+    const [showCredentials, setShowCredentials] = useState(false);
     const [openCredential, setOpenCredential] = useState(null);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
     const toggleClient = (caseIdx, clientIdx) => {
@@ -386,8 +385,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const trackLineProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 28, restDelta: 0.001 });
 
     const trackGroups = React.useMemo(
-        () => buildTrackGroups(data.track.cases, showCredentials, data.track.legend.present),
-        [data.track.cases, showCredentials, data.track.legend.present]
+        () => buildTrackGroups(data.track.cases, data.track.legend.present),
+        [data.track.cases, data.track.legend.present]
     );
 
     useLayoutEffect(() => {
@@ -468,7 +467,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             if (ro) ro.disconnect();
             window.removeEventListener('resize', measure);
         };
-    }, [trackGroups, lang]);
+    }, [trackGroups, lang, showCredentials]);
 
     const showToast = (msg) => {
         setToast(msg);
@@ -859,11 +858,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
                         const markerKind = c.kind === 'education' ? 'education' : c.kind === 'credential' ? 'credential' : 'work';
+                        const markerOnly = markerKind === 'credential' && !showCredentials;
+                        const a11yLabel = [c.eventLabel, c.from || c.startDate, c.role, c.org].filter(Boolean).join(' — ');
                         return (
                         <article
                             key={caseKey}
-                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested pm-case--compact pm-case--event' : ''}`}
+                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested pm-case--compact pm-case--event' : ''}${markerOnly ? ' pm-case--marker-only' : ''}`}
+                            title={markerOnly ? a11yLabel : undefined}
+                            aria-label={markerOnly ? a11yLabel : undefined}
                         >
+                            {!markerOnly && (
                             <TimelineRailDates
                                 from={c.from || c.startDate}
                                 until={c.until}
@@ -871,8 +875,14 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 presentLabel={data.track.legend.present}
                                 midStarts={nested ? [] : midStarts}
                             />
+                            )}
+                            {markerOnly && (
+                                <span className="pm-case-rail-dates is-point pm-case-rail-dates--marker">
+                                    <span className="pm-case-rail-from">{c.from || c.startDate}</span>
+                                </span>
+                            )}
                             <div className="pm-case-lane-slot pm-case-lane-slot--work" aria-hidden="true">
-                                {!nested && markerKind === 'work' && (
+                                {!nested && !markerOnly && markerKind === 'work' && (
                                     <motion.span
                                         className="pm-case-marker"
                                         initial={{ scale: 0.35, opacity: 0 }}
@@ -885,7 +895,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 )}
                             </div>
                             <div className="pm-case-lane-slot pm-case-lane-slot--education" aria-hidden="true">
-                                {!nested && markerKind === 'education' && (
+                                {!nested && !markerOnly && markerKind === 'education' && (
                                     <motion.span
                                         className="pm-case-marker"
                                         initial={{ scale: 0.35, opacity: 0 }}
@@ -911,6 +921,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                     </motion.span>
                                 </div>
                             )}
+                            {!markerOnly && (
                             <motion.div
                                 className="pm-case-content"
                                 initial={{ opacity: 0, x: nested ? 24 : 40, y: nested ? 10 : 18 }}
@@ -1095,6 +1106,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 )}
                             </div>
                             </motion.div>
+                            )}
                         </article>
                         );
                         };
