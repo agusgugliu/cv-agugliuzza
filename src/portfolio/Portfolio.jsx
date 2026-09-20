@@ -359,10 +359,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             root.querySelectorAll('[data-lane-group="true"]').forEach((el) => {
                 const top = el.offsetTop;
                 const height = Math.max(el.offsetHeight, 48);
-                const id = el.getAttribute('data-lane-id') || String(raw.length);
+                const groupId = el.getAttribute('data-lane-id') || String(raw.length);
                 if (el.getAttribute('data-lane-work') === 'true') {
+                    const spanId = el.getAttribute('data-lane-work-span') || `work-${groupId}`;
                     raw.push({
-                        key: `work-${id}`,
+                        key: `work-${spanId}-${top}`,
+                        spanId,
                         kind: 'work',
                         ongoing: el.getAttribute('data-lane-work-ongoing') === 'true',
                         top,
@@ -370,8 +372,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     });
                 }
                 if (el.getAttribute('data-lane-edu') === 'true') {
+                    const spanId = el.getAttribute('data-lane-edu-span') || `education-${groupId}`;
                     raw.push({
-                        key: `education-${id}`,
+                        key: `education-${spanId}-${top}`,
+                        spanId,
                         kind: 'education',
                         ongoing: el.getAttribute('data-lane-edu-ongoing') === 'true',
                         top,
@@ -380,20 +384,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 }
             });
 
-            /* Merge abutting same-kind segments so bars don’t break between cards. */
+            /* Merge only fragments of the SAME experience (e.g. MBA while nested
+               under a concurrent role). Different jobs/educations stay cut apart. */
             const byKind = { work: [], education: [] };
             raw.forEach((seg) => byKind[seg.kind].push(seg));
             const next = [];
             ['work', 'education'].forEach((kind) => {
                 const list = byKind[kind].sort((a, b) => a.top - b.top);
                 list.forEach((seg) => {
-                    const last = next.filter((s) => s.kind === kind).pop();
-                    if (last && Math.abs((last.top + last.height) - seg.top) <= 4) {
+                    const last = next.filter((s) => s.kind === kind && s.spanId === seg.spanId).pop();
+                    if (last && Math.abs((last.top + last.height) - seg.top) <= 24) {
                         last.height = seg.top + seg.height - last.top;
-                        /* Newest segment is first (smaller top); keep its ongoing flag. */
-                        last.key = `${kind}-merged-${last.top}`;
+                        last.key = `${kind}-${seg.spanId}`;
                     } else {
-                        next.push({ ...seg });
+                        next.push({ ...seg, key: `${kind}-${seg.spanId}-${seg.top}` });
                     }
                 });
             });
@@ -406,6 +410,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         && p.top === next[i].top
                         && p.height === next[i].height
                         && p.ongoing === next[i].ongoing
+                        && p.spanId === next[i].spanId
                     )
                 ) {
                     return prev;
@@ -1061,11 +1066,21 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             data-lane-group="true"
                             data-lane-id={parent.id || `${parent.kind}-${parent.startDate}`}
                             data-lane-work={hasWorkLane ? 'true' : 'false'}
+                            data-lane-work-span={
+                                groupKind === 'work'
+                                    ? (parent.id || `work-${parent.startDate}`)
+                                    : (parallel.find((p) => p.kind === 'work')?.id || '')
+                            }
                             data-lane-work-ongoing={
                                 (groupKind === 'work' ? parentOngoing : parallel.some((p) => p.kind === 'work' && isPresentLabel(p.until, data.track.legend.present)))
                                     ? 'true' : 'false'
                             }
                             data-lane-edu={hasEduLane ? 'true' : 'false'}
+                            data-lane-edu-span={
+                                groupKind === 'education'
+                                    ? (parent.id || `education-${parent.startDate}`)
+                                    : (parallel.find((p) => p.kind === 'education')?.id || '')
+                            }
                             data-lane-edu-ongoing={
                                 (groupKind === 'education' ? parentOngoing : parallel.some((p) => p.kind === 'education' && isPresentLabel(p.until, data.track.legend.present)))
                                     ? 'true' : 'false'
