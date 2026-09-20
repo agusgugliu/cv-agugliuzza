@@ -781,6 +781,12 @@
     border-radius: 999px;
 }
 
+/* Parallel fragment open at the newer end (connects toward the role’s own card). */
+.pm-lane-seg:not(.is-ongoing):not(.is-ended) .pm-lane-seg-bar {
+    top: 0;
+    border-radius: 0 0 999px 999px;
+}
+
 .pm-lane-seg-cap {
     position: absolute;
     left: 50%;
