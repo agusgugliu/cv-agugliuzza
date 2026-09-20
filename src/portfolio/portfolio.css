@@ -793,25 +793,27 @@
 
 .pm-case-rail-dates {
     position: absolute;
-    left: -148px;
+    left: -168px;
     top: 4px;
-    width: 96px;
+    width: 112px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
     text-align: right;
     font-family: var(--font-mono);
-    line-height: 1.15;
+    line-height: 1.2;
     z-index: 1;
+    overflow: visible;
 }
 
 .pm-case-rail-from,
 .pm-case-rail-until {
-    font-size: 0.7rem;
-    letter-spacing: 0.03em;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
     color: var(--ink);
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .pm-case-rail-until.is-present {
@@ -1097,12 +1099,12 @@
 
 .pm-track-list {
     position: relative;
-    padding-left: 148px;
+    padding-left: 168px;
 }
 
 .pm-track-line {
     position: absolute;
-    left: 96px;
+    left: 112px;
     top: 18px;
     bottom: 18px;
     width: 2px;
@@ -1135,7 +1137,7 @@
 
 .pm-case-marker {
     position: absolute;
-    left: -66px;
+    left: -70px;
     top: 7px;
     width: 29px;
     height: 29px;
@@ -1405,15 +1407,15 @@
 }
 
 @media (max-width: 820px) {
-    .pm-track-list { padding-left: 108px; }
-    .pm-track-line { left: 78px; }
-    .pm-case-marker { left: -42px; top: 3px; width: 25px; height: 25px; border-width: 3px; }
+    .pm-track-list { padding-left: 120px; }
+    .pm-track-line { left: 86px; }
+    .pm-case-marker { left: -46px; top: 3px; width: 25px; height: 25px; border-width: 3px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
-    .pm-case-rail-dates { left: -108px; width: 72px; top: 2px; }
+    .pm-case-rail-dates { left: -120px; width: 82px; top: 2px; }
     .pm-case-rail-from,
-    .pm-case-rail-until { font-size: 0.6rem; }
+    .pm-case-rail-until { font-size: 0.58rem; }
     .pm-case-rail-span { height: 14px; margin-right: 6px; }
-    .pm-case-rail-event { font-size: 0.5rem; }
+    .pm-case-rail-event { font-size: 0.48rem; }
     .pm-case-period--range { max-width: 100%; }
     .pm-credential-card { grid-template-columns: minmax(150px, 0.8fr) 1fr; }
     .pm-credential-result { border-right: 0; }
