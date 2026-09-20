@@ -120,7 +120,6 @@ const MONTH_SHORT = {
     es: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 };
 
-/* Concrete month label for “now” — never show the word Present on the rail. */
 const formatNowMonth = (lang = 'en') => {
     const d = new Date();
     const months = MONTH_SHORT[lang] || MONTH_SHORT.en;
@@ -133,17 +132,19 @@ const isPresentLabel = (value, presentLabel) => {
     return s === presentLabel || s === 'Present' || s === 'Presente';
 };
 
-const resolveUntilDisplay = (until, presentLabel, lang) => {
+/* Ongoing roles keep the Present label in the UI (not a concrete month). */
+const resolveUntilDisplay = (until, presentLabel) => {
     if (!until) return null;
-    if (isPresentLabel(until, presentLabel)) return formatNowMonth(lang);
+    if (isPresentLabel(until, presentLabel)) return presentLabel;
     return until;
 };
 
 /* From → Until period block for the career timeline. Ranges show both
    endpoints; point events (credentials) show a single dated moment. */
-const TimelinePeriod = ({ from, until, location, eventLabel, labels, lang }) => {
+const TimelinePeriod = ({ from, until, location, eventLabel, labels }) => {
     const start = from || '';
-    const end = resolveUntilDisplay(until, labels.present, lang);
+    const end = resolveUntilDisplay(until, labels.present);
+    const isPresent = isPresentLabel(until, labels.present);
 
     if (!end) {
         return (
@@ -166,17 +167,20 @@ const TimelinePeriod = ({ from, until, location, eventLabel, labels, lang }) => 
             </span>
             <div className="pm-case-period-col">
                 <span className="pm-case-period-label">{labels.until}</span>
-                <time className="pm-case-period-value" dateTime={end}>{end}</time>
+                <time className={`pm-case-period-value${isPresent ? ' is-present' : ''}`} dateTime={isPresent ? formatNowMonth() : end}>{end}</time>
             </div>
             {location && <span className="pm-case-period-loc">{location}</span>}
         </div>
     );
 };
 
-/* Rail shows end date on top (toward “now”), start below — matches top→past. */
-const TimelineRailDates = ({ from, until, eventLabel, presentLabel, lang }) => {
+/* Rail shows end date on top (toward “now”), start below — matches top→past.
+   Optional midStarts: concurrent role starts that fall inside this span
+   (e.g. Apr 2026 KS start while viewing the MBA). */
+const TimelineRailDates = ({ from, until, eventLabel, presentLabel, midStarts = [] }) => {
     const start = from || '';
-    const end = resolveUntilDisplay(until, presentLabel, lang);
+    const end = resolveUntilDisplay(until, presentLabel);
+    const isPresent = isPresentLabel(until, presentLabel);
 
     if (!end) {
         return (
@@ -189,8 +193,18 @@ const TimelineRailDates = ({ from, until, eventLabel, presentLabel, lang }) => {
 
     return (
         <span className="pm-case-rail-dates">
-            <span className="pm-case-rail-until">{end}</span>
+            <span className={`pm-case-rail-until${isPresent ? ' is-present' : ''}`}>{end}</span>
             <span className="pm-case-rail-span" aria-hidden="true" />
+            {midStarts.map((m) => (
+                <React.Fragment key={`${m.kind}-${m.date}`}>
+                    <span className={`pm-case-rail-mid pm-case-rail-mid--${m.kind}`}>
+                        <span className="pm-case-rail-mid-date">{m.date}</span>
+                        {m.short && <span className="pm-case-rail-mid-label">{m.short}</span>}
+                        <span className="pm-case-rail-mid-leader" aria-hidden="true" />
+                    </span>
+                    <span className="pm-case-rail-span pm-case-rail-span--mid" aria-hidden="true" />
+                </React.Fragment>
+            ))}
             <span className="pm-case-rail-from">{start}</span>
         </span>
     );
@@ -228,6 +242,32 @@ const caseRange = (c, presentLabel) => {
 };
 
 const rangesOverlap = (a, b) => a && b && a.start <= b.end && b.start <= a.end;
+
+/* Concurrent role starts that fall strictly inside another span’s range
+   (e.g. KS Apr 2026 while reading the MBA Sep 2025–Jul 2026 card). */
+const parallelMidStarts = (parent, parallel, presentLabel) => {
+    const parentRange = caseRange(parent, presentLabel);
+    if (!parentRange) return [];
+    return parallel
+        .map((p) => {
+            const r = caseRange(p, presentLabel);
+            if (!r) return null;
+            if (r.start <= parentRange.start || r.start >= parentRange.end) return null;
+            const org = String(p.org || '').trim();
+            const short = org
+                .split(/\s+/)
+                .map((w) => w[0])
+                .join('')
+                .slice(0, 3)
+                .toUpperCase();
+            return {
+                kind: p.kind === 'education' ? 'education' : 'work',
+                date: p.from || p.startDate,
+                short: short || null
+            };
+        })
+        .filter(Boolean);
+};
 
 const buildTrackGroups = (cases, showCredentials, presentLabel) => {
     const visible = cases.filter((c) => showCredentials || c.kind !== 'credential');
@@ -815,6 +855,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         const hasWorkLane = groupKind === 'work' || parallel.some((p) => p.kind === 'work');
                         const hasEduLane = groupKind === 'education' || parallel.some((p) => p.kind === 'education');
                         const parentOngoing = isPresentLabel(parent.until, data.track.legend.present);
+                        const midStarts = parallelMidStarts(parent, parallel, data.track.legend.present);
                         const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
                         const markerKind = c.kind === 'education' ? 'education' : c.kind === 'credential' ? 'credential' : 'work';
@@ -828,7 +869,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 until={c.until}
                                 eventLabel={c.eventLabel}
                                 presentLabel={data.track.legend.present}
-                                lang={lang}
+                                midStarts={nested ? [] : midStarts}
                             />
                             <div className="pm-case-lane-slot pm-case-lane-slot--work" aria-hidden="true">
                                 {!nested && markerKind === 'work' && (
@@ -890,7 +931,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         location={c.location}
                                         eventLabel={c.eventLabel}
                                         labels={data.track.legend}
-                                        lang={lang}
                                     />
                                 )}
                                 {nested && (
