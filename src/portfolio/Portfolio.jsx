@@ -173,6 +173,31 @@ const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
     );
 };
 
+/* Nest credentials (and similar milestones) under the work/education
+   span they happened during, so overlaps read on the timeline itself. */
+const buildTrackGroups = (cases, showCredentials) => {
+    const visible = cases.filter((c) => showCredentials || c.kind !== 'credential');
+    const byId = {};
+    visible.forEach((c) => {
+        if (c.id) byId[c.id] = c;
+    });
+    const childrenOf = {};
+    const nested = new Set();
+    visible.forEach((c) => {
+        if (c.during && byId[c.during]) {
+            if (!childrenOf[c.during]) childrenOf[c.during] = [];
+            childrenOf[c.during].push(c);
+            nested.add(c);
+        }
+    });
+    return visible
+        .filter((c) => !nested.has(c))
+        .map((parent) => ({
+            parent,
+            children: childrenOf[parent.id] || []
+        }));
+};
+
 /* Compact factsheet rendered inline below a case body, or below the
    clients grid when a client chip is expanded. */
 const InfoBlock = ({ info, lang, variant = 'inline' }) => {
@@ -607,39 +632,57 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div className="pm-track-line" aria-hidden="true">
                             <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
                         </div>
-                    {data.track.cases.filter((c) => showCredentials || c.kind !== 'credential').map((c, i) => (
-                        <motion.div
-                            key={`${c.kind || 'work'}-${c.role}-${c.startDate}`}
-                            className={`pm-case pm-case--${c.kind || 'work'}`}
-                            initial={{ opacity: 0, y: 28 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-60px' }}
-                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    {buildTrackGroups(data.track.cases, showCredentials).map(({ parent, children }) => (
+                        <div
+                            key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
+                            className={`pm-case-group${children.length ? ' has-nest' : ''}${parent.kind === 'work' ? ' pm-case-group--work' : parent.kind === 'education' ? ' pm-case-group--education' : ''}`}
                         >
-                            <motion.span
-                                className="pm-case-marker"
-                                aria-hidden="true"
-                                initial={{ scale: 0.4, opacity: 0 }}
-                                whileInView={{ scale: 1, opacity: 1 }}
-                                viewport={{ once: true, margin: '-40px' }}
-                                transition={{ type: 'spring', stiffness: 420, damping: 22, delay: 0.08 }}
-                            >
-                                {c.kind === 'education' ? <GraduationCap size={15} strokeWidth={2.2} />
-                                    : c.kind === 'credential' ? <BadgeCheck size={15} strokeWidth={2.2} />
-                                    : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
-                            </motion.span>
+                    {[parent, ...children].map((c, i) => {
+                        const nested = i > 0;
+                        const duringParent = nested ? parent : null;
+                        const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
+                        return (
+                        <article
+                            key={caseKey}
+                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested' : ''}`}
+                        >
                             <TimelineRailDates
                                 from={c.from || c.startDate}
                                 until={c.until}
                                 eventLabel={c.eventLabel}
                                 presentLabel={data.track.legend.present}
                             />
+                            <motion.span
+                                className="pm-case-marker"
+                                aria-hidden="true"
+                                initial={{ scale: 0.35, opacity: 0 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+                                transition={{ type: 'spring', stiffness: 380, damping: 20 }}
+                            >
+                                {c.kind === 'education' ? <GraduationCap size={15} strokeWidth={2.2} />
+                                    : c.kind === 'credential' ? <BadgeCheck size={15} strokeWidth={2.2} />
+                                    : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
+                            </motion.span>
+                            <motion.div
+                                className="pm-case-content"
+                                initial={{ opacity: 0, x: 40, y: 18 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                viewport={{ once: true, amount: 0.22, margin: '0px 0px -8% 0px' }}
+                                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            >
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
                                     <Logo src={c.logo} domain={c.domain} name={c.org} size="md" theme={theme} />
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
+                                {duringParent && (
+                                    <div className="pm-during-chip">
+                                        <span className="pm-during-chip-label">{data.track.legend.during}</span>
+                                        <span className="pm-during-chip-org">{duringParent.org}</span>
+                                    </div>
+                                )}
                                 <TimelinePeriod
                                     from={c.from || c.startDate}
                                     until={c.until}
@@ -769,13 +812,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         <div className="pm-clients-label">{c.clientsLabel}</div>
                                         <div className="pm-clients-grid">
                                             {c.clients.map((cl, k) => {
-                                                const isOpen = openClient.caseIdx === i && openClient.clientIdx === k;
+                                                const isOpen = openClient.caseIdx === caseKey && openClient.clientIdx === k;
                                                 return (
                                                     <React.Fragment key={k}>
                                                         <button
                                                             type="button"
                                                             className={`pm-client ${isOpen ? 'is-open' : ''}`}
-                                                            onClick={() => toggleClient(i, k)}
+                                                            onClick={() => toggleClient(caseKey, k)}
                                                             aria-expanded={isOpen}
                                                         >
                                                             <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" theme={theme} />
@@ -805,7 +848,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                     </div>
                                 )}
                             </div>
-                        </motion.div>
+                            </motion.div>
+                        </article>
+                        );
+                    })}
+                        </div>
                     ))}
                     </div>
                 </section>

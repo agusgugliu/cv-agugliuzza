@@ -514,10 +514,11 @@ export const portfolioEN = {
         eyebrow: 'Track record',
         heading: 'A career built across {digital transformation, data and deals}.',
         cta: 'See full CV',
-        legend: { work: 'Work', education: 'Education', credential: 'Credentials', showCredentials: 'Show', hideCredentials: 'Hide', workShort: 'WORK', educationShort: 'EDU', credentialShort: 'CERT', from: 'From', until: 'Until', present: 'Present' },
+        legend: { work: 'Work', education: 'Education', credential: 'Credentials', showCredentials: 'Show', hideCredentials: 'Hide', workShort: 'WORK', educationShort: 'EDU', credentialShort: 'CERT', from: 'From', until: 'Until', present: 'Present', during: 'During' },
         cases: [
             {
                 kind: 'work',
+                id: 'ks-advisory',
                 startDate: 'Apr 2026',
                 from: 'Apr 2026',
                 until: 'Present',
@@ -536,6 +537,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'ks-advisory',
                 startDate: 'Jul 2026',
                 from: '20 Jul 2026',
                 until: null,
@@ -561,6 +563,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'ks-advisory',
                 startDate: 'Jul 2026',
                 from: '9 Jul 2026',
                 until: null,
@@ -586,6 +589,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'ks-advisory',
                 startDate: 'Jun 2026',
                 from: 'Jun 2026',
                 until: null,
@@ -611,6 +615,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'education',
+                id: 'ie-mba',
                 startDate: 'Sep 2025',
                 from: 'Sep 2025',
                 until: 'Jul 2026',
@@ -632,6 +637,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'ie-mba',
                 startDate: 'Sep 2025',
                 from: 'Sep 2025',
                 until: null,
@@ -683,6 +689,7 @@ export const portfolioEN = {
             {
                 role: 'IT Team Lead & Project Manager',
                 kind: 'work',
+                id: 'life-seguros',
                 startDate: 'Aug 2024',
                 from: 'Aug 2024',
                 until: 'Jul 2025',
@@ -701,6 +708,7 @@ export const portfolioEN = {
             {
                 role: 'IT Team Leader & Project Manager',
                 kind: 'work',
+                id: 'prudential',
                 startDate: 'Apr 2022',
                 from: 'Apr 2022',
                 until: 'Jul 2024',
@@ -718,6 +726,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'prudential',
                 startDate: 'Jun 2022',
                 from: '7 Jun 2022',
                 until: null,
@@ -744,6 +753,7 @@ export const portfolioEN = {
             {
                 role: 'BI Consultant',
                 kind: 'work',
+                id: 'microstrategy',
                 startDate: 'Aug 2017',
                 from: 'Aug 2017',
                 until: 'Mar 2022',
@@ -763,6 +773,7 @@ export const portfolioEN = {
             },
             {
                 kind: 'credential',
+                during: 'microstrategy',
                 startDate: 'Oct 2017',
                 from: '4 Oct 2017',
                 until: null,
@@ -789,6 +800,7 @@ export const portfolioEN = {
             {
                 role: 'Bachelor in Management & Information Systems',
                 kind: 'education',
+                id: 'itba-edu',
                 startDate: 'Jul 2013',
                 from: 'Jul 2013',
                 until: 'Jul 2017',
@@ -1073,10 +1085,11 @@ export const portfolioES = {
         eyebrow: 'Track record',
         heading: 'Una carrera construida entre {transformación digital, datos y deals}.',
         cta: 'Ver CV completo',
-        legend: { work: 'Experiencia', education: 'Formación', credential: 'Credenciales', showCredentials: 'Mostrar', hideCredentials: 'Ocultar', workShort: 'TRAB', educationShort: 'EDU', credentialShort: 'CERT', from: 'Desde', until: 'Hasta', present: 'Presente' },
+        legend: { work: 'Experiencia', education: 'Formación', credential: 'Credenciales', showCredentials: 'Mostrar', hideCredentials: 'Ocultar', workShort: 'TRAB', educationShort: 'EDU', credentialShort: 'CERT', from: 'Desde', until: 'Hasta', present: 'Presente', during: 'Durante' },
         cases: [
             {
                 kind: 'work',
+                id: 'ks-advisory',
                 startDate: 'Abr 2026',
                 from: 'Abr 2026',
                 until: 'Presente',
@@ -1094,7 +1107,7 @@ export const portfolioES = {
                 tags: ['M&A', 'Estrategia', 'Due diligence', 'LATAM-EU']
             },
             {
-                kind: 'credential', startDate: 'Jul 2026', from: '20 Jul 2026', until: null, location: 'Madrid', eventLabel: 'Otorgado', role: 'Diploma MBA', org: 'IE University', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
+                kind: 'credential', during: 'ks-advisory', startDate: 'Jul 2026', from: '20 Jul 2026', until: null, location: 'Madrid', eventLabel: 'Otorgado', role: 'Diploma MBA', org: 'IE University', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
                 dates: 'Otorgado el 20 Jul 2026 · Madrid', stat: 'MBA', statLabel: 'International MBA',
                 heading: 'Título de {Master of Business Administration}.',
                 body: 'Diploma oficial que acredita el cumplimiento de todos los requisitos establecidos por la Junta de Calificaciones del International MBA.',
@@ -1102,7 +1115,7 @@ export const portfolioES = {
                 credential: { monogram: 'IE', logo: EXP_LOGO('iebusinessschool_logo.png'), kicker: 'Diploma oficial', metric: 'MBA', metricLabel: 'Otorgado en 2026', details: [{ value: 'International MBA', label: 'Programa' }, { value: '20 de julio de 2026', label: 'Otorgado' }], documentUrl: '/assets/certificates/ie-mba-diploma.svg', documentLabel: 'diploma', verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c86776022-faf4-42b4-939d-fcd833b2cb7e%7c191f6974-ce84-4899-bb60-4db44c5d3194', verifyLabel: 'Ver diploma verificado' }
             },
             {
-                kind: 'credential', startDate: 'Jul 2026', from: '9 Jul 2026', until: null, location: 'Madrid', eventLabel: 'Otorgado', role: 'Certificado Tech Lab', org: 'IE Business School × Microsoft', domain: 'microsoft.com', logo: MBA('microsoft_logo.png'),
+                kind: 'credential', during: 'ks-advisory', startDate: 'Jul 2026', from: '9 Jul 2026', until: null, location: 'Madrid', eventLabel: 'Otorgado', role: 'Certificado Tech Lab', org: 'IE Business School × Microsoft', domain: 'microsoft.com', logo: MBA('microsoft_logo.png'),
                 dates: 'Otorgado el 9 Jul 2026 · Madrid', stat: 'IA', statLabel: 'Corporate challenge',
                 heading: 'Tech Lab Corporate Challenge: {Scaling AI-Native Ventures with Microsoft}.',
                 body: 'Reconocimiento por la participación exitosa en el desafío tecnológico aplicado desarrollado conjuntamente por IE Business School y Microsoft.',
@@ -1110,7 +1123,7 @@ export const portfolioES = {
                 credential: { monogram: 'IE × MS', logo: MBA('microsoft_logo.png'), kicker: 'Tech Lab', metric: 'IA', metricLabel: 'Corporate challenge', details: [{ value: 'Microsoft', label: 'Partner corporativo' }, { value: '9 de julio de 2026', label: 'Otorgado' }], documentUrl: '/assets/certificates/ie-microsoft-tech-lab.svg', documentLabel: 'certificado', verifyUrl: 'https://www.smartcertificate.com/SmartCertificate/?1%7c782f3d8f-702c-4a0a-8f7f-11b99918a1a4%7ce0ffab1d-b591-4317-a850-bd586b376b70', verifyLabel: 'Ver certificado verificado' }
             },
             {
-                kind: 'credential', startDate: 'Jun 2026', from: 'Jun 2026', until: null, location: null, eventLabel: 'Completado', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: '/assets/credential_logos/harvard-crest.svg',
+                kind: 'credential', during: 'ks-advisory', startDate: 'Jun 2026', from: 'Jun 2026', until: null, location: null, eventLabel: 'Completado', role: 'Business Plan Development', org: 'Harvard Business Impact', domain: 'harvardbusiness.org', logo: '/assets/credential_logos/harvard-crest.svg',
                 dates: 'Completado en Jun 2026', stat: 'HBI', statLabel: 'Certificado de programa',
                 heading: 'Programa de {Business Plan Development} de Harvard Business Impact.',
                 body: 'Programa sobre principios, enfoques y mejores prácticas para estructurar y desarrollar un business plan riguroso, presentado junto con HBI Education.',
@@ -1119,6 +1132,7 @@ export const portfolioES = {
             },
             {
                 kind: 'education',
+                id: 'ie-mba',
                 startDate: 'Sep 2025',
                 from: 'Sep 2025',
                 until: 'Jul 2026',
@@ -1139,7 +1153,7 @@ export const portfolioES = {
                 clientsLabel: 'Trabajé con'
             },
             {
-                kind: 'credential', startDate: 'Sep 2025', from: 'Sep 2025', until: null, location: 'Madrid', eventLabel: 'Completado', role: 'Impact Skills Accelerator', org: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
+                kind: 'credential', during: 'ie-mba', startDate: 'Sep 2025', from: 'Sep 2025', until: null, location: 'Madrid', eventLabel: 'Completado', role: 'Impact Skills Accelerator', org: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'),
                 dates: 'Completado en Sep 2025 · Madrid', stat: 'ISA', statLabel: 'Impact skills',
                 heading: 'Completé el {Impact Skills Accelerator} de IE Business School.',
                 body: 'Programa de impacto profesional enfocado en catalizar acción, fortalecer la colaboración y convertir intención en resultados medibles.',
@@ -1157,6 +1171,7 @@ export const portfolioES = {
             {
                 role: 'Líder de Equipo IT y Project Manager',
                 kind: 'work',
+                id: 'life-seguros',
                 startDate: 'Ago 2024',
                 from: 'Ago 2024',
                 until: 'Jul 2025',
@@ -1175,6 +1190,7 @@ export const portfolioES = {
             {
                 role: 'Líder de Equipo IT y Project Manager',
                 kind: 'work',
+                id: 'prudential',
                 startDate: 'Abr 2022',
                 from: 'Abr 2022',
                 until: 'Jul 2024',
@@ -1191,7 +1207,7 @@ export const portfolioES = {
                 tags: ['MicroStrategy', 'Agile', 'Liderazgo cross-funcional', 'IT Project Management']
             },
             {
-                kind: 'credential', startDate: 'Jun 2022', from: '7 Jun 2022', until: null, location: null, eventLabel: 'Completado', role: 'Certificación en Python', org: 'Coderhouse', domain: 'coderhouse.com', logo: '/assets/credential_logos/coderhouse.svg',
+                kind: 'credential', during: 'prudential', startDate: 'Jun 2022', from: '7 Jun 2022', until: null, location: null, eventLabel: 'Completado', role: 'Certificación en Python', org: 'Coderhouse', domain: 'coderhouse.com', logo: '/assets/credential_logos/coderhouse.svg',
                 dates: 'Completado el 7 Jun 2022', stat: 'Python', statLabel: '52 horas · 13 semanas',
                 heading: 'Completé una certificación de 52 horas en {Python}.',
                 body: 'Completé con éxito el curso de Python de Coderhouse durante 13 semanas, cumpliendo todos los requisitos académicos.',
@@ -1201,6 +1217,7 @@ export const portfolioES = {
             {
                 role: 'BI Consultant',
                 kind: 'work',
+                id: 'microstrategy',
                 startDate: 'Ago 2017',
                 from: 'Ago 2017',
                 until: 'Mar 2022',
@@ -1219,7 +1236,7 @@ export const portfolioES = {
                 clientsLabel: 'Clientes seleccionados'
             },
             {
-                kind: 'credential', startDate: 'Oct 2017', from: '4 Oct 2017', until: null, location: 'Buenos Aires', eventLabel: 'Expedido', role: 'Diploma universitario', org: 'ITBA — Instituto Tecnológico de Buenos Aires', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png'),
+                kind: 'credential', during: 'microstrategy', startDate: 'Oct 2017', from: '4 Oct 2017', until: null, location: 'Buenos Aires', eventLabel: 'Expedido', role: 'Diploma universitario', org: 'ITBA — Instituto Tecnológico de Buenos Aires', domain: 'itba.edu.ar', logo: EXP_LOGO('itba_logo.png'),
                 dates: 'Expedido el 4 Oct 2017 · Buenos Aires', stat: '2017', statLabel: 'Título universitario',
                 heading: 'Título de {Licenciado en Administración y Sistemas}.',
                 body: 'Diploma universitario oficial de la carrera de cuatro años que combina management, negocios, programación, datos y sistemas de información.',
@@ -1229,6 +1246,7 @@ export const portfolioES = {
             {
                 role: 'Licenciatura en Administración y Sistemas',
                 kind: 'education',
+                id: 'itba-edu',
                 startDate: 'Jul 2013',
                 from: 'Jul 2013',
                 until: 'Jul 2017',
