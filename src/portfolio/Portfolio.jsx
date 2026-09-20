@@ -863,6 +863,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                     )}
                                     {seg.capEnd && (
                                         <>
+                                            {/* End cut: credential-style cross + date on the left rail */}
+                                            <span className="pm-lane-seg-cross" />
                                             <span className="pm-lane-seg-cap pm-lane-seg-cap--end" />
                                             {seg.endLabel && (
                                                 <span className="pm-lane-seg-date pm-lane-seg-date--end">{seg.endLabel}</span>
