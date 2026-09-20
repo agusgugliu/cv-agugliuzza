@@ -679,80 +679,158 @@
 }
 
 .pm-case-group.has-nest {
-    margin-bottom: 8px;
+    margin: 8px 0 28px;
+    padding: 4px 0 12px;
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--blue) 4%, var(--paper));
+    border: 1px solid color-mix(in srgb, var(--blue) 14%, var(--hairline));
+}
+
+.pm-case-group.has-nest.pm-case-group--education {
+    background: color-mix(in srgb, var(--ink) 3%, var(--paper));
+    border-color: color-mix(in srgb, var(--ink) 12%, var(--hairline));
+}
+
+.pm-case-group-span {
+    position: absolute;
+    left: calc(136px + 16px + 17px);
+    top: 36px;
+    bottom: 28px;
+    width: 6px;
+    margin-left: -2px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--blue) 35%, transparent);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pm-case-group--education .pm-case-group-span {
+    background: color-mix(in srgb, var(--ink) 28%, transparent);
 }
 
 .pm-case-group.has-nest > .pm-case:first-child {
+    border-top: 0;
     border-bottom: 0;
-    padding-bottom: 28px;
+    padding-top: 36px;
+    padding-bottom: 20px;
 }
 
-.pm-case-group.has-nest > .pm-case--nested:last-child {
-    border-bottom: 1px solid var(--hairline);
+.pm-milestones {
+    position: relative;
+    z-index: 1;
+    padding: 0 18px 10px 0;
 }
 
-.pm-case--nested {
-    padding-top: 28px;
-    padding-bottom: 28px;
-    border-top: 1px dashed color-mix(in srgb, var(--hairline-strong) 70%, transparent);
+.pm-milestones-head {
+    display: grid;
+    grid-template-columns: 136px 40px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+    margin: 0 0 4px;
+    padding: 0 0 6px;
 }
 
-.pm-case--nested .pm-case-marker {
-    width: 23px;
-    height: 23px;
-    border-width: 3px;
-}
-
-.pm-case--nested .pm-case-marker svg {
-    width: 12px;
-    height: 12px;
-}
-
-.pm-case--nested .pm-case-content {
-    padding-left: 10px;
-    border-left: 2px solid color-mix(in srgb, #B7791F 55%, transparent);
-}
-
-.pm-case-group--work .pm-case--nested .pm-case-content {
-    border-left-color: color-mix(in srgb, var(--blue) 50%, transparent);
-}
-
-.pm-case-group--education .pm-case--nested .pm-case-content {
-    border-left-color: color-mix(in srgb, var(--ink) 35%, transparent);
-}
-
-.pm-during-chip {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px;
-    margin: 12px 0 2px;
-    padding: 5px 9px;
-    border-radius: 6px;
+.pm-milestones-copy {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 14px;
+    border-radius: 10px;
     background: color-mix(in srgb, var(--blue) 8%, var(--paper));
-    border: 1px solid color-mix(in srgb, var(--blue) 22%, var(--hairline));
-    max-width: 100%;
+    border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--hairline));
 }
 
-.pm-case--credential .pm-during-chip {
-    background: color-mix(in srgb, #B7791F 10%, var(--paper));
-    border-color: color-mix(in srgb, #B7791F 28%, var(--hairline));
+.pm-case-group--education .pm-milestones-copy {
+    background: color-mix(in srgb, var(--ink) 5%, var(--paper));
+    border-color: color-mix(in srgb, var(--ink) 14%, var(--hairline));
 }
 
-.pm-during-chip-label {
+.pm-milestones-label,
+.pm-milestones-org,
+.pm-milestones-range {
     font-family: var(--font-mono);
-    font-size: 0.56rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.06em;
+}
+
+.pm-milestones-label {
+    font-size: 0.6rem;
     text-transform: uppercase;
     color: var(--slate-2);
 }
 
-.pm-during-chip-org {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.02em;
-    color: var(--ink);
+.pm-milestones-org {
+    font-size: 0.84rem;
     font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+}
+
+.pm-milestones-range {
+    font-size: 0.7rem;
+    color: var(--blue);
+}
+
+.pm-case-group--education .pm-milestones-range {
+    color: var(--ink);
+}
+
+.pm-case--nested {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 1px solid color-mix(in srgb, var(--hairline-strong) 55%, transparent);
+}
+
+.pm-case--nested:last-child {
+    border-bottom: 0;
+}
+
+.pm-case--compact .pm-case-content {
+    grid-template-columns: minmax(120px, 0.7fr) minmax(0, 2.2fr);
+    gap: 24px;
+}
+
+.pm-case--compact .pm-case-body h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.pm-case--compact .pm-case-body p {
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+}
+
+.pm-case--compact .pm-case-meta .role {
+    font-size: 0.72rem;
+}
+
+.pm-case--nested .pm-case-marker {
+    width: 22px;
+    height: 22px;
+    border-width: 3px;
+}
+
+.pm-case--nested .pm-case-marker svg {
+    width: 11px;
+    height: 11px;
+}
+
+.pm-case--nested .pm-case-content {
+    padding-left: 14px;
+    border-left: 2px solid color-mix(in srgb, #B7791F 50%, transparent);
+}
+
+.pm-case-group--work .pm-case--nested .pm-case-content {
+    border-left-color: color-mix(in srgb, var(--blue) 45%, transparent);
+}
+
+.pm-case-group--education .pm-case--nested .pm-case-content {
+    border-left-color: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.pm-case-period-loc--solo {
+    margin-top: 10px;
+    display: block;
 }
 
 .pm-case-content {
@@ -1532,10 +1610,16 @@
         grid-template-columns: 1fr;
         gap: 22px;
     }
+    .pm-case--compact .pm-case-content {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
     .pm-track-line { left: calc(92px + 10px + 14px); }
+    .pm-case-group-span { left: calc(92px + 10px + 12px); }
+    .pm-milestones-head { grid-template-columns: 92px 30px minmax(0, 1fr); column-gap: 10px; }
     .pm-case-marker { width: 25px; height: 25px; border-width: 3px; top: 2px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
-    .pm-case--nested .pm-case-marker { width: 21px; height: 21px; }
+    .pm-case--nested .pm-case-marker { width: 20px; height: 20px; }
     .pm-case-rail-from,
     .pm-case-rail-until { font-size: 0.56rem; }
     .pm-case-rail-span { height: 14px; margin-right: 6px; }
@@ -1563,6 +1647,7 @@
         gap: 6px 10px;
         padding-top: 0;
         margin-bottom: 4px;
+        overflow: visible;
     }
     .pm-case-rail-span {
         width: 14px;
@@ -1590,6 +1675,20 @@
     .pm-track-line {
         left: 13px;
         display: block;
+    }
+    .pm-case-group-span {
+        left: 11px;
+        width: 5px;
+    }
+    .pm-milestones {
+        padding-right: 10px;
+    }
+    .pm-milestones-head {
+        grid-template-columns: 28px minmax(0, 1fr);
+        column-gap: 14px;
+    }
+    .pm-milestones-copy {
+        grid-column: 2;
     }
     .pm-case-period--range {
         grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr);

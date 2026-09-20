@@ -632,19 +632,17 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div className="pm-track-line" aria-hidden="true">
                             <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
                         </div>
-                    {buildTrackGroups(data.track.cases, showCredentials).map(({ parent, children }) => (
-                        <div
-                            key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
-                            className={`pm-case-group${children.length ? ' has-nest' : ''}${parent.kind === 'work' ? ' pm-case-group--work' : parent.kind === 'education' ? ' pm-case-group--education' : ''}`}
-                        >
-                    {[parent, ...children].map((c, i) => {
-                        const nested = i > 0;
-                        const duringParent = nested ? parent : null;
+                    {buildTrackGroups(data.track.cases, showCredentials).map(({ parent, children }) => {
+                        const groupKind = parent.kind === 'education' ? 'education' : parent.kind === 'work' ? 'work' : 'other';
+                        const milestonesLabel = groupKind === 'education'
+                            ? data.track.legend.milestonesEdu
+                            : data.track.legend.milestones;
+                        const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
                         return (
                         <article
                             key={caseKey}
-                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested' : ''}`}
+                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested pm-case--compact' : ''}`}
                         >
                             <TimelineRailDates
                                 from={c.from || c.startDate}
@@ -660,38 +658,41 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
                                 transition={{ type: 'spring', stiffness: 380, damping: 20 }}
                             >
-                                {c.kind === 'education' ? <GraduationCap size={15} strokeWidth={2.2} />
-                                    : c.kind === 'credential' ? <BadgeCheck size={15} strokeWidth={2.2} />
-                                    : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
+                                {c.kind === 'education' ? <GraduationCap size={nested ? 13 : 15} strokeWidth={2.2} />
+                                    : c.kind === 'credential' ? <BadgeCheck size={nested ? 13 : 15} strokeWidth={2.2} />
+                                    : <BriefcaseBusiness size={nested ? 12 : 14} strokeWidth={2.2} />}
                             </motion.span>
                             <motion.div
                                 className="pm-case-content"
-                                initial={{ opacity: 0, x: 40, y: 18 }}
+                                initial={{ opacity: 0, x: nested ? 24 : 40, y: nested ? 10 : 18 }}
                                 whileInView={{ opacity: 1, x: 0, y: 0 }}
-                                viewport={{ once: true, amount: 0.22, margin: '0px 0px -8% 0px' }}
-                                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                                viewport={{ once: true, amount: 0.2, margin: '0px 0px -8% 0px' }}
+                                transition={{ duration: nested ? 0.5 : 0.7, ease: [0.22, 1, 0.36, 1] }}
                             >
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
-                                    <Logo src={c.logo} domain={c.domain} name={c.org} size="md" theme={theme} />
+                                    <Logo src={c.logo} domain={c.domain} name={c.org} size={nested ? 'sm' : 'md'} theme={theme} />
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
-                                {duringParent && (
-                                    <div className="pm-during-chip">
-                                        <span className="pm-during-chip-label">{data.track.legend.during}</span>
-                                        <span className="pm-during-chip-org">{duringParent.org}</span>
-                                    </div>
+                                {!nested && (
+                                    <TimelinePeriod
+                                        from={c.from || c.startDate}
+                                        until={c.until}
+                                        location={c.location}
+                                        eventLabel={c.eventLabel}
+                                        labels={data.track.legend}
+                                    />
                                 )}
-                                <TimelinePeriod
-                                    from={c.from || c.startDate}
-                                    until={c.until}
-                                    location={c.location}
-                                    eventLabel={c.eventLabel}
-                                    labels={data.track.legend}
-                                />
-                                <div className="stat">{c.stat}</div>
-                                <div className="stat-label">{c.statLabel}</div>
+                                {nested && c.location && (
+                                    <div className="pm-case-period-loc pm-case-period-loc--solo">{c.location}</div>
+                                )}
+                                {!nested && (
+                                    <>
+                                        <div className="stat">{c.stat}</div>
+                                        <div className="stat-label">{c.statLabel}</div>
+                                    </>
+                                )}
                             </div>
                             <div className="pm-case-body">
                                 <h3><Editorial text={c.heading} /></h3>
@@ -720,7 +721,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                                 type="button"
                                                 className="pm-credential-toggle"
                                                 aria-expanded={openCredential === c.role}
-                                                aria-controls={`credential-document-${i}`}
+                                                aria-controls={`credential-document-${caseKey}`}
                                                 onClick={() => setOpenCredential((open) => open === c.role ? null : c.role)}
                                             >
                                                 <span>
@@ -735,7 +736,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         <AnimatePresence initial={false}>
                                             {c.credential.documentUrl && openCredential === c.role && (
                                                 <motion.div
-                                                    id={`credential-document-${i}`}
+                                                    id={`credential-document-${caseKey}`}
                                                     className="pm-credential-document"
                                                     initial={{ height: 0, opacity: 0 }}
                                                     animate={{ height: 'auto', opacity: 1 }}
@@ -759,22 +760,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         </AnimatePresence>
                                     </div>
                                 )}
-                                <InfoBlock info={c.info} lang={lang} variant="inline" />
+                                {!nested && <InfoBlock info={c.info} lang={lang} variant="inline" />}
                                 <div className="pm-case-tags">
                                     {c.tags.map((t, j) => (
-                                        <motion.span
-                                            key={j}
-                                            className="pm-case-tag"
-                                            initial={{ opacity: 0, y: 8 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.35, delay: 0.12 + j * 0.04 }}
-                                        >
-                                            {t}
-                                        </motion.span>
+                                        <span key={j} className="pm-case-tag">{t}</span>
                                     ))}
                                 </div>
-                                {c.transcript && (() => {
+                                {!nested && c.transcript && (() => {
                                     const allCourses = c.transcript.terms.flatMap((t) => t.courses);
                                     const bc = (b) => allCourses.filter((co) => co.band === b).length;
                                     return (
@@ -807,7 +799,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         </details>
                                     );
                                 })()}
-                                {c.clients && (
+                                {!nested && c.clients && (
                                     <div className="pm-clients">
                                         <div className="pm-clients-label">{c.clientsLabel}</div>
                                         <div className="pm-clients-grid">
@@ -851,9 +843,36 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </motion.div>
                         </article>
                         );
-                    })}
+                        };
+
+                        return (
+                        <div
+                            key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
+                            className={`pm-case-group${children.length ? ' has-nest' : ''}${groupKind === 'work' ? ' pm-case-group--work' : groupKind === 'education' ? ' pm-case-group--education' : ''}`}
+                        >
+                            {children.length > 0 && (
+                                <div className="pm-case-group-span" aria-hidden="true" />
+                            )}
+                            {renderCase(parent)}
+                            {children.length > 0 && (
+                                <div className="pm-milestones">
+                                    <div className="pm-milestones-head">
+                                        <div className="pm-milestones-copy">
+                                            <span className="pm-milestones-label">{milestonesLabel}</span>
+                                            <span className="pm-milestones-org">{parent.org}</span>
+                                            <span className="pm-milestones-range">
+                                                {parent.from || parent.startDate}
+                                                <span aria-hidden="true"> → </span>
+                                                {parent.until || data.track.legend.present}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {children.map((child) => renderCase(child, { nested: true }))}
+                                </div>
+                            )}
                         </div>
-                    ))}
+                        );
+                    })}
                     </div>
                 </section>
 
