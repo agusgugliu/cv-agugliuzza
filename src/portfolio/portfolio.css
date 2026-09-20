@@ -1372,6 +1372,11 @@
     padding-bottom: 40px;
 }
 
+.pm-case--credential.pm-case--compact {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
 .pm-case--credential .pm-case-meta {
     display: flex;
     flex-direction: column;
