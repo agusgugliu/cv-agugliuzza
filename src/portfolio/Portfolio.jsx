@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
@@ -115,6 +115,64 @@ const AppIcon = ({ name, initial }) => {
     );
 };
 
+/* From → Until period block for the career timeline. Ranges show both
+   endpoints; point events (credentials) show a single dated moment. */
+const TimelinePeriod = ({ from, until, location, eventLabel, labels }) => {
+    const start = from || '';
+    const end = until || null;
+    const isPresent = end === labels.present || end === 'Present' || end === 'Presente';
+
+    if (!end) {
+        return (
+            <div className="pm-case-period pm-case-period--point">
+                {eventLabel && <span className="pm-case-period-event">{eventLabel}</span>}
+                <time className="pm-case-period-value" dateTime={start}>{start}</time>
+                {location && <span className="pm-case-period-loc">{location}</span>}
+            </div>
+        );
+    }
+
+    return (
+        <div className="pm-case-period pm-case-period--range" role="group" aria-label={`${labels.from} ${start}, ${labels.until} ${end}`}>
+            <div className="pm-case-period-col">
+                <span className="pm-case-period-label">{labels.from}</span>
+                <time className="pm-case-period-value" dateTime={start}>{start}</time>
+            </div>
+            <span className="pm-case-period-connector" aria-hidden="true">
+                <span className="pm-case-period-connector-line" />
+            </span>
+            <div className="pm-case-period-col">
+                <span className="pm-case-period-label">{labels.until}</span>
+                <time className={`pm-case-period-value${isPresent ? ' is-present' : ''}`} dateTime={end}>{end}</time>
+            </div>
+            {location && <span className="pm-case-period-loc">{location}</span>}
+        </div>
+    );
+};
+
+const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
+    const start = from || '';
+    const end = until || null;
+    const isPresent = end === presentLabel || end === 'Present' || end === 'Presente';
+
+    if (!end) {
+        return (
+            <span className="pm-case-rail-dates is-point">
+                {eventLabel && <span className="pm-case-rail-event">{eventLabel}</span>}
+                <span className="pm-case-rail-from">{start}</span>
+            </span>
+        );
+    }
+
+    return (
+        <span className="pm-case-rail-dates">
+            <span className="pm-case-rail-from">{start}</span>
+            <span className="pm-case-rail-span" aria-hidden="true" />
+            <span className={`pm-case-rail-until${isPresent ? ' is-present' : ''}`}>{end}</span>
+        </span>
+    );
+};
+
 /* Compact factsheet rendered inline below a case body, or below the
    clients grid when a client chip is expanded. */
 const InfoBlock = ({ info, lang, variant = 'inline' }) => {
@@ -189,6 +247,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    const trackRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: trackRef,
+        offset: ['start 75%', 'end 25%']
+    });
+    const trackLineProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 28, restDelta: 0.001 });
 
     const showToast = (msg) => {
         setToast(msg);
@@ -339,13 +404,26 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-hero-grid">
                     <motion.div
                         className="pm-hero-photo-col"
-                        initial={{ opacity: 0, y: 14 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, scale: 0.96, y: 18 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <div className="pm-hero-photo">
-                            <img src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
-                            <span className="pm-hero-badge">Agust&iacute;n</span>
+                            <motion.img
+                                src="/assets/photo.PNG"
+                                alt="Agustín Gugliuzza"
+                                initial={{ scale: 1.06 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                            />
+                            <motion.span
+                                className="pm-hero-badge"
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.45, duration: 0.45 }}
+                            >
+                                Agust&iacute;n
+                            </motion.span>
                         </div>
                         <div className="pm-hero-socials">
                             {data.footer.socials.map((s, i) => {
@@ -460,10 +538,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             <motion.div
                                 key={i}
                                 className="pm-problem"
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, x: -16, y: 12 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
                                 viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.5, delay: i * 0.06 }}
+                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                             >
                                 <div className="pm-problem-num">{p.num}</div>
                                 <div className="pm-problem-title"><Editorial text={p.title} /></div>
@@ -475,13 +553,27 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
                 {/* Track record */}
                 <section className="pm-section" id="work">
-                    <div className="pm-eyebrow">{data.track.eyebrow}</div>
-                    <div className="pm-track-head">
+                    <motion.div
+                        className="pm-eyebrow"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        {data.track.eyebrow}
+                    </motion.div>
+                    <motion.div
+                        className="pm-track-head"
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.55 }}
+                    >
                         <h2><Editorial text={data.track.heading} /></h2>
                         <button className="pm-mode-pill pm-pill--solid" onClick={onSwitchToCV}>
                             {data.track.cta} &rarr;
                         </button>
-                    </div>
+                    </motion.div>
                     <div className="pm-track-legend">
                         <span className="pm-track-legend-item">
                             <span className="pm-track-legend-icon pm-track-legend-icon--work" aria-hidden="true">
@@ -511,29 +603,50 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </span>
                         </button>
                     </div>
-                    <div className="pm-track-list">
+                    <div className="pm-track-list" ref={trackRef}>
+                        <div className="pm-track-line" aria-hidden="true">
+                            <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
+                        </div>
                     {data.track.cases.filter((c) => showCredentials || c.kind !== 'credential').map((c, i) => (
                         <motion.div
                             key={`${c.kind || 'work'}-${c.role}-${c.startDate}`}
                             className={`pm-case pm-case--${c.kind || 'work'}`}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 28 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-80px' }}
-                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true, margin: '-60px' }}
+                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            <span className="pm-case-marker" aria-hidden="true">
+                            <motion.span
+                                className="pm-case-marker"
+                                aria-hidden="true"
+                                initial={{ scale: 0.4, opacity: 0 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ type: 'spring', stiffness: 420, damping: 22, delay: 0.08 }}
+                            >
                                 {c.kind === 'education' ? <GraduationCap size={15} strokeWidth={2.2} />
                                     : c.kind === 'credential' ? <BadgeCheck size={15} strokeWidth={2.2} />
                                     : <BriefcaseBusiness size={14} strokeWidth={2.2} />}
-                            </span>
-                            <span className="pm-case-rail-date">{c.startDate}</span>
+                            </motion.span>
+                            <TimelineRailDates
+                                from={c.from || c.startDate}
+                                until={c.until}
+                                eventLabel={c.eventLabel}
+                                presentLabel={data.track.legend.present}
+                            />
                             <div className="pm-case-meta">
                                 <div className="pm-case-org-line">
                                     <Logo src={c.logo} domain={c.domain} name={c.org} size="md" theme={theme} />
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
-                                <div className="dates">{c.dates}</div>
+                                <TimelinePeriod
+                                    from={c.from || c.startDate}
+                                    until={c.until}
+                                    location={c.location}
+                                    eventLabel={c.eventLabel}
+                                    labels={data.track.legend}
+                                />
                                 <div className="stat">{c.stat}</div>
                                 <div className="stat-label">{c.statLabel}</div>
                             </div>
@@ -606,7 +719,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <InfoBlock info={c.info} lang={lang} variant="inline" />
                                 <div className="pm-case-tags">
                                     {c.tags.map((t, j) => (
-                                        <span key={j} className="pm-case-tag">{t}</span>
+                                        <motion.span
+                                            key={j}
+                                            className="pm-case-tag"
+                                            initial={{ opacity: 0, y: 8 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.35, delay: 0.12 + j * 0.04 }}
+                                        >
+                                            {t}
+                                        </motion.span>
                                     ))}
                                 </div>
                                 {c.transcript && (() => {
