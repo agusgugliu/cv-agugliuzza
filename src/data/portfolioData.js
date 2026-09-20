@@ -961,7 +961,7 @@ export const portfolioEN = {
         heading: 'For work, advisory, or a {coffee} in Madrid.',
         lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Recently completed the IMBA at IE Business School (Excellence, GPA 3.62/4) and based in Madrid.',
         links: [
-            { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Write' },
+            { label: 'Email', value: 'agustin@gugliupicci.com', href: 'mailto:agustin@gugliupicci.com', action: 'Write' },
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Follow' },
@@ -1407,7 +1407,7 @@ export const portfolioES = {
         heading: 'Para trabajo, advisory o un {café} en Madrid.',
         lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Completé recientemente el IMBA en IE Business School (Excellence, GPA 3.62/4), con base en Madrid.',
         links: [
-            { label: 'Email', value: 'agugliuzzapicci@gmail.com', href: 'mailto:agugliuzzapicci@gmail.com', action: 'Escribir' },
+            { label: 'Email', value: 'agustin@gugliupicci.com', href: 'mailto:agustin@gugliupicci.com', action: 'Escribir' },
             { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
