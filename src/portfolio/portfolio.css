@@ -664,14 +664,95 @@
     padding: 56px 0;
     border-top: 1px solid var(--hairline);
     display: grid;
-    grid-template-columns: 120px 36px minmax(0, 1fr);
-    column-gap: 18px;
+    grid-template-columns: 136px 40px minmax(0, 1fr);
+    column-gap: 16px;
     align-items: start;
     position: relative;
 }
 
 .pm-case:last-child {
     border-bottom: 1px solid var(--hairline);
+}
+
+.pm-case-group {
+    position: relative;
+}
+
+.pm-case-group.has-nest {
+    margin-bottom: 8px;
+}
+
+.pm-case-group.has-nest > .pm-case:first-child {
+    border-bottom: 0;
+    padding-bottom: 28px;
+}
+
+.pm-case-group.has-nest > .pm-case--nested:last-child {
+    border-bottom: 1px solid var(--hairline);
+}
+
+.pm-case--nested {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px dashed color-mix(in srgb, var(--hairline-strong) 70%, transparent);
+}
+
+.pm-case--nested .pm-case-marker {
+    width: 23px;
+    height: 23px;
+    border-width: 3px;
+}
+
+.pm-case--nested .pm-case-marker svg {
+    width: 12px;
+    height: 12px;
+}
+
+.pm-case--nested .pm-case-content {
+    padding-left: 10px;
+    border-left: 2px solid color-mix(in srgb, #B7791F 55%, transparent);
+}
+
+.pm-case-group--work .pm-case--nested .pm-case-content {
+    border-left-color: color-mix(in srgb, var(--blue) 50%, transparent);
+}
+
+.pm-case-group--education .pm-case--nested .pm-case-content {
+    border-left-color: color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+.pm-during-chip {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin: 12px 0 2px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--blue) 8%, var(--paper));
+    border: 1px solid color-mix(in srgb, var(--blue) 22%, var(--hairline));
+    max-width: 100%;
+}
+
+.pm-case--credential .pm-during-chip {
+    background: color-mix(in srgb, #B7791F 10%, var(--paper));
+    border-color: color-mix(in srgb, #B7791F 28%, var(--hairline));
+}
+
+.pm-during-chip-label {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+}
+
+.pm-during-chip-org {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    font-weight: 600;
 }
 
 .pm-case-content {
@@ -806,22 +887,41 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 4px;
+    gap: 3px;
     text-align: right;
     font-family: var(--font-mono);
     line-height: 1.2;
     padding-top: 6px;
+    padding-right: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 .pm-case-rail-from,
 .pm-case-rail-until {
-    font-size: 0.7rem;
-    letter-spacing: 0.02em;
+    font-size: 0.66rem;
+    letter-spacing: 0.01em;
     color: var(--ink);
     font-weight: 600;
     white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pm-case-rail-dates.is-point {
+    gap: 2px;
+}
+
+.pm-case-rail-dates.is-point .pm-case-rail-from {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.25;
+    word-break: break-word;
 }
 
 .pm-case-rail-until.is-present {
@@ -1112,7 +1212,7 @@
 
 .pm-track-line {
     position: absolute;
-    left: calc(120px + 18px + 17px);
+    left: calc(136px + 16px + 19px);
     top: 0;
     bottom: 0;
     width: 2px;
@@ -1424,21 +1524,22 @@
 
 @media (max-width: 820px) {
     .pm-case {
-        grid-template-columns: 88px 28px minmax(0, 1fr);
-        column-gap: 12px;
+        grid-template-columns: 92px 30px minmax(0, 1fr);
+        column-gap: 10px;
         padding: 40px 0;
     }
     .pm-case-content {
         grid-template-columns: 1fr;
         gap: 22px;
     }
-    .pm-track-line { left: calc(88px + 12px + 13px); }
+    .pm-track-line { left: calc(92px + 10px + 14px); }
     .pm-case-marker { width: 25px; height: 25px; border-width: 3px; top: 2px; }
     .pm-case-marker svg { width: 13px; height: 13px; }
+    .pm-case--nested .pm-case-marker { width: 21px; height: 21px; }
     .pm-case-rail-from,
-    .pm-case-rail-until { font-size: 0.58rem; }
+    .pm-case-rail-until { font-size: 0.56rem; }
     .pm-case-rail-span { height: 14px; margin-right: 6px; }
-    .pm-case-rail-event { font-size: 0.48rem; }
+    .pm-case-rail-event { font-size: 0.46rem; }
     .pm-case-period--range { max-width: 100%; }
     .pm-credential-card { grid-template-columns: minmax(150px, 0.8fr) 1fr; }
     .pm-credential-result { border-right: 0; }

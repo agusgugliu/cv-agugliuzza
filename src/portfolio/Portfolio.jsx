@@ -173,6 +173,31 @@ const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
     );
 };
 
+/* Nest credentials (and similar milestones) under the work/education
+   span they happened during, so overlaps read on the timeline itself. */
+const buildTrackGroups = (cases, showCredentials) => {
+    const visible = cases.filter((c) => showCredentials || c.kind !== 'credential');
+    const byId = {};
+    visible.forEach((c) => {
+        if (c.id) byId[c.id] = c;
+    });
+    const childrenOf = {};
+    const nested = new Set();
+    visible.forEach((c) => {
+        if (c.during && byId[c.during]) {
+            if (!childrenOf[c.during]) childrenOf[c.during] = [];
+            childrenOf[c.during].push(c);
+            nested.add(c);
+        }
+    });
+    return visible
+        .filter((c) => !nested.has(c))
+        .map((parent) => ({
+            parent,
+            children: childrenOf[parent.id] || []
+        }));
+};
+
 /* Compact factsheet rendered inline below a case body, or below the
    clients grid when a client chip is expanded. */
 const InfoBlock = ({ info, lang, variant = 'inline' }) => {
@@ -607,10 +632,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div className="pm-track-line" aria-hidden="true">
                             <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
                         </div>
-                    {data.track.cases.filter((c) => showCredentials || c.kind !== 'credential').map((c, i) => (
+                    {buildTrackGroups(data.track.cases, showCredentials).map(({ parent, children }) => (
+                        <div
+                            key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
+                            className={`pm-case-group${children.length ? ' has-nest' : ''}${parent.kind === 'work' ? ' pm-case-group--work' : parent.kind === 'education' ? ' pm-case-group--education' : ''}`}
+                        >
+                    {[parent, ...children].map((c, i) => {
+                        const nested = i > 0;
+                        const duringParent = nested ? parent : null;
+                        const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
+                        return (
                         <article
-                            key={`${c.kind || 'work'}-${c.role}-${c.startDate}`}
-                            className={`pm-case pm-case--${c.kind || 'work'}`}
+                            key={caseKey}
+                            className={`pm-case pm-case--${c.kind || 'work'}${nested ? ' pm-case--nested' : ''}`}
                         >
                             <TimelineRailDates
                                 from={c.from || c.startDate}
@@ -643,6 +677,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 </div>
                                 <div className="role">{c.role}</div>
                                 <div>{c.org}</div>
+                                {duringParent && (
+                                    <div className="pm-during-chip">
+                                        <span className="pm-during-chip-label">{data.track.legend.during}</span>
+                                        <span className="pm-during-chip-org">{duringParent.org}</span>
+                                    </div>
+                                )}
                                 <TimelinePeriod
                                     from={c.from || c.startDate}
                                     until={c.until}
@@ -772,13 +812,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         <div className="pm-clients-label">{c.clientsLabel}</div>
                                         <div className="pm-clients-grid">
                                             {c.clients.map((cl, k) => {
-                                                const isOpen = openClient.caseIdx === i && openClient.clientIdx === k;
+                                                const isOpen = openClient.caseIdx === caseKey && openClient.clientIdx === k;
                                                 return (
                                                     <React.Fragment key={k}>
                                                         <button
                                                             type="button"
                                                             className={`pm-client ${isOpen ? 'is-open' : ''}`}
-                                                            onClick={() => toggleClient(i, k)}
+                                                            onClick={() => toggleClient(caseKey, k)}
                                                             aria-expanded={isOpen}
                                                         >
                                                             <Logo src={cl.logo} srcDark={cl.logoDark} domain={cl.domain} name={cl.name} size="sm" theme={theme} />
@@ -810,6 +850,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </div>
                             </motion.div>
                         </article>
+                        );
+                    })}
+                        </div>
                     ))}
                     </div>
                 </section>
