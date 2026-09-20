@@ -968,6 +968,35 @@ export const portfolioEN = {
             { label: 'Schedule', value: 'Book a 30-min call', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
     },
+    paper: {
+        pileLabel: 'Brief',
+        pileHint: 'Evidence collects as you scroll',
+        tickets: [
+            { id: 'projects', kicker: '01', title: 'Selected work', meta: '4 projects' },
+            { id: 'ai', kicker: '02', title: 'The playbook', meta: '5 steps' },
+            { id: 'problems', kicker: '03', title: 'Problems I take', meta: '6 kinds' },
+            { id: 'work', kicker: '04', title: 'Track record', meta: 'Career' },
+            { id: 'apps', kicker: '05', title: 'Prototypes', meta: '6 shipped' },
+            { id: 'ideas', kicker: '06', title: 'How I run it', meta: 'Principles' },
+            { id: 'contact', kicker: '07', title: 'Call pass', meta: '30 min' }
+        ],
+        receiptHead: 'Transformation run',
+        receiptSub: 'Boardroom → shop floor',
+        passKicker: 'Call pass',
+        passFlight: 'AG 030',
+        passPassengerLabel: 'Passenger',
+        passPassenger: 'You + Agustín',
+        passFromLabel: 'From',
+        passFrom: 'Inbox',
+        passToLabel: 'To',
+        passTo: 'Madrid',
+        passGateLabel: 'Gate',
+        passGate: 'Reclaim',
+        passSeatLabel: 'Seat',
+        passSeat: '30 min',
+        passCta: 'Board the call',
+        passNote: 'Valid whenever. No luggage.'
+    },
     footer: {
         name: 'Agustín Gugliuzza.',
         meta: 'Madrid · 2026',
@@ -1413,6 +1442,35 @@ export const portfolioES = {
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
             { label: 'Agenda', value: 'Reservar 30 min', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
         ]
+    },
+    paper: {
+        pileLabel: 'Brief',
+        pileHint: 'La evidencia se acumula al scrollear',
+        tickets: [
+            { id: 'projects', kicker: '01', title: 'Trabajo elegido', meta: '4 proyectos' },
+            { id: 'ai', kicker: '02', title: 'El playbook', meta: '5 pasos' },
+            { id: 'problems', kicker: '03', title: 'Problemas que tomo', meta: '6 tipos' },
+            { id: 'work', kicker: '04', title: 'Trayectoria', meta: 'Carrera' },
+            { id: 'apps', kicker: '05', title: 'Prototipos', meta: '6 en vivo' },
+            { id: 'ideas', kicker: '06', title: 'Cómo lo corro', meta: 'Principios' },
+            { id: 'contact', kicker: '07', title: 'Pase de llamada', meta: '30 min' }
+        ],
+        receiptHead: 'Corrida de transformación',
+        receiptSub: 'Boardroom → piso',
+        passKicker: 'Pase de llamada',
+        passFlight: 'AG 030',
+        passPassengerLabel: 'Pasajero',
+        passPassenger: 'Vos + Agustín',
+        passFromLabel: 'Desde',
+        passFrom: 'Inbox',
+        passToLabel: 'Hacia',
+        passTo: 'Madrid',
+        passGateLabel: 'Puerta',
+        passGate: 'Reclaim',
+        passSeatLabel: 'Asiento',
+        passSeat: '30 min',
+        passCta: 'Abordar la llamada',
+        passNote: 'Válido cuando sea. Sin valija.'
     },
     footer: {
         name: 'Agustín Gugliuzza.',

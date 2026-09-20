@@ -34,7 +34,7 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -1996,7 +1996,6 @@
 
 .pm-app:hover {
     border-color: var(--blue);
-    transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(11, 14, 20, 0.06);
 }
 
@@ -2593,7 +2592,10 @@
     .pm-mode-pill,
     .pm-nav-icon,
     .pm-nav-actions,
-    .pm-nav-links {
+    .pm-nav-links,
+    .pm-pile,
+    .pm-print-rail,
+    .pm-fab-whatsapp {
         display: none !important;
     }
     .pm-section {
@@ -3546,5 +3548,550 @@ button.pm-rev-star {
     }
     .pm-rev-modal {
         padding: 28px 22px;
+    }
+}
+
+/* ============================================================
+   Paper language — ticket print, evidence pile, receipt, stack
+   ============================================================ */
+
+.pm-ticket-barcode,
+.pm-stub-barcode,
+.pm-pass-barcode {
+    display: block;
+    height: 22px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--ink) 0 1px,
+        transparent 1px 3px,
+        var(--ink) 3px 4.5px,
+        transparent 4.5px 7px,
+        var(--ink) 7px 8px,
+        transparent 8px 11px,
+        var(--ink) 11px 14px,
+        transparent 14px 16px
+    );
+    opacity: 0.45;
+}
+
+/* ----- Scroll-fed evidence pile (desktop margin) ----- */
+.pm-pile {
+    position: fixed;
+    left: max(8px, calc((100vw - var(--page-max)) / 2 - 172px));
+    top: 52%;
+    z-index: 45;
+    width: 152px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(-16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.pm-pile.is-armed {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.pm-pile-machine {
+    position: relative;
+    z-index: 8;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px 10px 3px 3px;
+    padding: 8px 10px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(11, 14, 20, 0.18);
+}
+
+.pm-pile-led {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue-sky);
+    box-shadow: 0 0 8px var(--blue);
+    flex: none;
+}
+
+.pm-pile.is-armed .pm-pile-led {
+    animation: pmLedPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pmLedPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+.pm-pile-slot {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -4px;
+    height: 7px;
+    background: #05070c;
+    border-radius: 0 0 3px 3px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.55);
+}
+
+.pm-pile-ejector {
+    overflow: hidden;
+    padding: 6px 8px 18px;
+    margin-top: -2px;
+}
+
+.pm-pile-stack {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0;
+    min-height: 8px;
+}
+
+.pm-stub {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin: 0 0 -42px;
+    padding: 12px 12px 10px 18px;
+    background: var(--card-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 3px 8px 8px 3px;
+    box-shadow: 0 10px 22px rgba(11, 14, 20, 0.12);
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    transform-origin: top center;
+    pointer-events: auto;
+}
+
+.pm-stub:hover {
+    border-color: var(--blue);
+}
+
+.pm-stub:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.pm-stub-perf {
+    position: absolute;
+    left: -1px;
+    top: 6px;
+    bottom: 6px;
+    width: 10px;
+    background: radial-gradient(circle at 0 6px, var(--paper) 3.4px, transparent 3.6px);
+    background-size: 10px 12px;
+}
+
+.pm-stub-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+}
+
+.pm-stub-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+.pm-stub-meta {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--slate-2);
+}
+
+.pm-stub-barcode {
+    height: 14px;
+    margin-top: 4px;
+}
+
+@media (max-width: 1380px) {
+    .pm-pile {
+        display: none;
+    }
+}
+
+/* ----- Project print rail + perforated cards ----- */
+.pm-print-rail {
+    position: relative;
+    height: 12px;
+    background: var(--ink);
+    border-radius: 8px 8px 2px 2px;
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.pm-print-rail-led {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue-sky);
+    transform: translateY(-50%);
+    box-shadow: 0 0 6px var(--blue);
+}
+
+.pm-print-rail-lip {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: -4px;
+    height: 6px;
+    background: #05070c;
+    border-radius: 0 0 3px 3px;
+    opacity: 0.7;
+}
+
+.pm-bento-grid {
+    margin-top: 2px;
+}
+
+.pm-ticket-card {
+    padding-left: 36px;
+}
+
+.pm-ticket-perf {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 18px;
+    background: radial-gradient(circle at 8px 8px, var(--paper) 4px, transparent 4.4px);
+    background-size: 18px 16px;
+    border-right: 1px dashed var(--hairline);
+}
+
+.pm-ticket-card .pm-ticket-barcode {
+    margin-top: 16px;
+    height: 18px;
+}
+
+/* ----- AI receipt unroll ----- */
+.pm-receipt {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 8px 8px 18px;
+    box-shadow: 0 18px 40px rgba(11, 14, 20, 0.06);
+}
+
+.pm-receipt::before,
+.pm-receipt::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: radial-gradient(circle, var(--paper-2) 5px, transparent 5.5px);
+    background-size: 14px 10px;
+    pointer-events: none;
+}
+
+.pm-receipt::before {
+    top: -5px;
+    background-position: 0 0;
+}
+
+.pm-receipt::after {
+    bottom: -5px;
+    background-position: 7px 0;
+}
+
+.pm-receipt-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+    border-bottom: 1px dashed var(--hairline-strong);
+}
+
+.pm-receipt-foot {
+    padding: 8px 18px 4px;
+}
+
+.pm-receipt .pm-ai-stack {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+    grid-template-columns: none;
+}
+
+.pm-receipt .pm-ai-step {
+    border-top: 1px dashed var(--hairline);
+    border-left: 0;
+    padding: 22px 18px;
+}
+
+.pm-receipt .pm-ai-step:first-child {
+    border-top: 0;
+}
+
+.pm-receipt .pm-ai-step:not(:first-child) {
+    border-left: 0;
+    padding-left: 18px;
+}
+
+/* ----- Sticky paper piles ----- */
+.pm-paper-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pm-problem-grid.pm-paper-stack,
+.pm-principle-list.pm-paper-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pm-paper-stack .pm-problem,
+.pm-paper-stack .pm-principle {
+    position: sticky;
+    background: var(--card-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    padding: 32px 36px;
+    box-shadow: 0 16px 40px rgba(11, 14, 20, 0.08);
+    transform-origin: top center;
+}
+
+.pm-paper-stack .pm-problem:nth-child(odd),
+.pm-paper-stack .pm-principle:nth-child(odd) {
+    rotate: -0.45deg;
+}
+
+.pm-paper-stack .pm-problem:nth-child(even),
+.pm-paper-stack .pm-principle:nth-child(even) {
+    rotate: 0.55deg;
+}
+
+:root[data-theme="dark"] .pm-paper-stack .pm-problem,
+:root[data-theme="dark"] .pm-paper-stack .pm-principle {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.pm-problems {
+    padding-bottom: clamp(100px, 16vw, 180px);
+}
+
+.pm-principle-list.pm-paper-stack {
+    padding-bottom: 28px;
+}
+
+@media (max-width: 820px) {
+    .pm-paper-stack .pm-problem,
+    .pm-paper-stack .pm-principle {
+        padding: 24px 22px !important;
+        border: 1px solid var(--hairline) !important;
+        border-radius: 16px;
+    }
+}
+
+/* ----- Apps drop onto a slightly rotated pile ----- */
+.pm-apps-pile .pm-app {
+    transform-origin: center top;
+}
+
+/* ----- Contact boarding-pass printer ----- */
+.pm-pass-machine {
+    margin: 8px 0 40px;
+    max-width: 720px;
+}
+
+.pm-pass-hood {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 14px 14px 0 0;
+    padding: 11px 18px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.pm-pass-led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue-sky);
+    box-shadow: 0 0 8px var(--blue);
+    animation: pmLedPulse 1.8s ease-in-out infinite;
+    flex: none;
+}
+
+.pm-pass-hood-label {
+    flex: 1;
+}
+
+.pm-pass-flight {
+    color: var(--blue-sky);
+}
+
+.pm-pass-mouth {
+    overflow: hidden;
+    background: #05070c;
+    padding: 4px 10px 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.pm-pass {
+    display: grid;
+    grid-template-columns: 1fr 132px;
+    background: var(--card-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-bottom: 0;
+    border-radius: 0 0 14px 14px;
+    transform-origin: top center;
+    box-shadow: 0 18px 40px rgba(11, 14, 20, 0.1);
+}
+
+.pm-pass:hover {
+    border-color: var(--blue);
+}
+
+.pm-pass-main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px 24px 20px;
+}
+
+.pm-pass-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.pm-pass-route {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.pm-pass-arrow {
+    color: var(--blue);
+    font-size: 1.1rem;
+    padding-bottom: 2px;
+}
+
+.pm-pass-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+    margin-bottom: 4px;
+}
+
+.pm-pass-value {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.pm-pass-cta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    padding: 8px 0;
+}
+
+.pm-pass-stub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 12px;
+    border-left: 1px dashed var(--hairline-strong);
+    background:
+        radial-gradient(circle at 0 12px, var(--paper-2) 6px, transparent 6.5px) 0 8px / 12px 16px repeat-y;
+}
+
+.pm-pass-stub-code {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+}
+
+.pm-pass-barcode {
+    width: 72px;
+    height: 42px;
+    transform: rotate(90deg);
+}
+
+.pm-pass-note {
+    font-size: 0.58rem;
+    color: var(--slate-2);
+    text-align: center;
+    line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+    .pm-pass {
+        grid-template-columns: 1fr;
+    }
+    .pm-pass-stub {
+        flex-direction: row;
+        border-left: 0;
+        border-top: 1px dashed var(--hairline-strong);
+        background: none;
+        padding: 12px 16px 16px;
+    }
+    .pm-pass-barcode {
+        width: 80px;
+        height: 28px;
+        transform: none;
+    }
+    .pm-pass-row {
+        flex-wrap: wrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pm-pile-led,
+    .pm-pass-led {
+        animation: none;
+    }
+    .pm-stub,
+    .pm-pass,
+    .pm-ticket-card,
+    .pm-ai-step {
+        clip-path: none !important;
+        transform: none !important;
     }
 }
