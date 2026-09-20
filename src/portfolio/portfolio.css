@@ -806,6 +806,31 @@
     top: 2px;
 }
 
+.pm-lane-seg-date {
+    position: absolute;
+    top: 0;
+    right: calc(100% + 8px);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    line-height: 1.2;
+    z-index: 2;
+}
+
+.pm-lane-seg-date--end {
+    transform: translateY(-10%);
+}
+
+.pm-lane-seg--work .pm-lane-seg-date {
+    color: var(--blue);
+}
+
+.pm-lane-seg--education .pm-lane-seg-date {
+    color: var(--ink);
+}
+
 .pm-lane-seg--work .pm-lane-seg-cap {
     background: var(--paper);
     border: 3px solid var(--blue);
