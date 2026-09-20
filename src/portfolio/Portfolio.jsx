@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
@@ -115,12 +115,35 @@ const AppIcon = ({ name, initial }) => {
     );
 };
 
+const MONTH_SHORT = {
+    en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    es: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+};
+
+/* Concrete month label for “now” — never show the word Present on the rail. */
+const formatNowMonth = (lang = 'en') => {
+    const d = new Date();
+    const months = MONTH_SHORT[lang] || MONTH_SHORT.en;
+    return `${months[d.getMonth()]} ${d.getFullYear()}`;
+};
+
+const isPresentLabel = (value, presentLabel) => {
+    if (!value) return false;
+    const s = String(value).trim();
+    return s === presentLabel || s === 'Present' || s === 'Presente';
+};
+
+const resolveUntilDisplay = (until, presentLabel, lang) => {
+    if (!until) return null;
+    if (isPresentLabel(until, presentLabel)) return formatNowMonth(lang);
+    return until;
+};
+
 /* From → Until period block for the career timeline. Ranges show both
    endpoints; point events (credentials) show a single dated moment. */
-const TimelinePeriod = ({ from, until, location, eventLabel, labels }) => {
+const TimelinePeriod = ({ from, until, location, eventLabel, labels, lang }) => {
     const start = from || '';
-    const end = until || null;
-    const isPresent = end === labels.present || end === 'Present' || end === 'Presente';
+    const end = resolveUntilDisplay(until, labels.present, lang);
 
     if (!end) {
         return (
@@ -143,17 +166,17 @@ const TimelinePeriod = ({ from, until, location, eventLabel, labels }) => {
             </span>
             <div className="pm-case-period-col">
                 <span className="pm-case-period-label">{labels.until}</span>
-                <time className={`pm-case-period-value${isPresent ? ' is-present' : ''}`} dateTime={end}>{end}</time>
+                <time className="pm-case-period-value" dateTime={end}>{end}</time>
             </div>
             {location && <span className="pm-case-period-loc">{location}</span>}
         </div>
     );
 };
 
-const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
+/* Rail shows end date on top (toward “now”), start below — matches top→past. */
+const TimelineRailDates = ({ from, until, eventLabel, presentLabel, lang }) => {
     const start = from || '';
-    const end = until || null;
-    const isPresent = end === presentLabel || end === 'Present' || end === 'Presente';
+    const end = resolveUntilDisplay(until, presentLabel, lang);
 
     if (!end) {
         return (
@@ -166,9 +189,9 @@ const TimelineRailDates = ({ from, until, eventLabel, presentLabel }) => {
 
     return (
         <span className="pm-case-rail-dates">
-            <span className="pm-case-rail-from">{start}</span>
+            <span className="pm-case-rail-until">{end}</span>
             <span className="pm-case-rail-span" aria-hidden="true" />
-            <span className={`pm-case-rail-until${isPresent ? ' is-present' : ''}`}>{end}</span>
+            <span className="pm-case-rail-from">{start}</span>
         </span>
     );
 };
@@ -184,8 +207,9 @@ const MONTH_INDEX = {
 const toMonthIndex = (label, presentLabel) => {
     if (!label) return null;
     const s = String(label).trim();
-    if (s === 'Present' || s === 'Presente' || s === presentLabel) {
-        return 2026 * 12 + 8; // Sep 2026 “now” for stable layout
+    if (isPresentLabel(s, presentLabel)) {
+        const d = new Date();
+        return d.getFullYear() * 12 + d.getMonth();
     }
     const m = s.match(/(?:(\d{1,2})\s+)?([A-Za-zÁÉÍÓÚÜáéíóúü]{3})\.?\s+(\d{4})/i);
     if (!m) return null;
@@ -314,11 +338,91 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     }, []);
 
     const trackRef = useRef(null);
+    const [laneSegments, setLaneSegments] = useState([]);
     const { scrollYProgress } = useScroll({
         target: trackRef,
         offset: ['start 75%', 'end 25%']
     });
     const trackLineProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 28, restDelta: 0.001 });
+
+    const trackGroups = React.useMemo(
+        () => buildTrackGroups(data.track.cases, showCredentials, data.track.legend.present),
+        [data.track.cases, showCredentials, data.track.legend.present]
+    );
+
+    useLayoutEffect(() => {
+        const root = trackRef.current;
+        if (!root) return undefined;
+
+        const measure = () => {
+            const raw = [];
+            root.querySelectorAll('[data-lane-group="true"]').forEach((el) => {
+                const top = el.offsetTop;
+                const height = Math.max(el.offsetHeight, 48);
+                const id = el.getAttribute('data-lane-id') || String(raw.length);
+                if (el.getAttribute('data-lane-work') === 'true') {
+                    raw.push({
+                        key: `work-${id}`,
+                        kind: 'work',
+                        ongoing: el.getAttribute('data-lane-work-ongoing') === 'true',
+                        top,
+                        height
+                    });
+                }
+                if (el.getAttribute('data-lane-edu') === 'true') {
+                    raw.push({
+                        key: `education-${id}`,
+                        kind: 'education',
+                        ongoing: el.getAttribute('data-lane-edu-ongoing') === 'true',
+                        top,
+                        height
+                    });
+                }
+            });
+
+            /* Merge abutting same-kind segments so bars don’t break between cards. */
+            const byKind = { work: [], education: [] };
+            raw.forEach((seg) => byKind[seg.kind].push(seg));
+            const next = [];
+            ['work', 'education'].forEach((kind) => {
+                const list = byKind[kind].sort((a, b) => a.top - b.top);
+                list.forEach((seg) => {
+                    const last = next.filter((s) => s.kind === kind).pop();
+                    if (last && Math.abs((last.top + last.height) - seg.top) <= 4) {
+                        last.height = seg.top + seg.height - last.top;
+                        /* Newest segment is first (smaller top); keep its ongoing flag. */
+                        last.key = `${kind}-merged-${last.top}`;
+                    } else {
+                        next.push({ ...seg });
+                    }
+                });
+            });
+
+            setLaneSegments((prev) => {
+                if (
+                    prev.length === next.length
+                    && prev.every((p, i) =>
+                        p.key === next[i].key
+                        && p.top === next[i].top
+                        && p.height === next[i].height
+                        && p.ongoing === next[i].ongoing
+                    )
+                ) {
+                    return prev;
+                }
+                return next;
+            });
+        };
+
+        measure();
+        const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+        if (ro) ro.observe(root);
+        window.addEventListener('resize', measure);
+        return () => {
+            if (ro) ro.disconnect();
+            window.removeEventListener('resize', measure);
+        };
+    }, [trackGroups, lang]);
 
     const showToast = (msg) => {
         setToast(msg);
@@ -686,10 +790,25 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div className="pm-track-line" aria-hidden="true">
                             <motion.div className="pm-track-line-fill" style={{ scaleY: trackLineProgress }} />
                         </div>
-                    {buildTrackGroups(data.track.cases, showCredentials, data.track.legend.present).map(({ parent, children, parallel }) => {
+                        <div className="pm-lane-canvas" aria-hidden="true">
+                            {laneSegments.map((seg) => (
+                                <div
+                                    key={seg.key}
+                                    className={`pm-lane-seg pm-lane-seg--${seg.kind}${seg.ongoing ? ' is-ongoing' : ' is-ended'}`}
+                                    style={{ top: seg.top, height: seg.height }}
+                                >
+                                    <span className="pm-lane-seg-bar" />
+                                    <span className="pm-lane-seg-cap pm-lane-seg-cap--start" />
+                                    {!seg.ongoing && <span className="pm-lane-seg-cap pm-lane-seg-cap--end" />}
+                                    {seg.ongoing && <span className="pm-lane-seg-now" />}
+                                </div>
+                            ))}
+                        </div>
+                    {trackGroups.map(({ parent, children, parallel }) => {
                         const groupKind = parent.kind === 'education' ? 'education' : parent.kind === 'work' ? 'work' : 'other';
                         const hasWorkLane = groupKind === 'work' || parallel.some((p) => p.kind === 'work');
                         const hasEduLane = groupKind === 'education' || parallel.some((p) => p.kind === 'education');
+                        const parentOngoing = isPresentLabel(parent.until, data.track.legend.present);
                         const renderCase = (c, { nested = false } = {}) => {
                         const caseKey = `${c.kind || 'work'}-${c.role}-${c.startDate}`;
                         const markerKind = c.kind === 'education' ? 'education' : c.kind === 'credential' ? 'credential' : 'work';
@@ -703,6 +822,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 until={c.until}
                                 eventLabel={c.eventLabel}
                                 presentLabel={data.track.legend.present}
+                                lang={lang}
                             />
                             <div className="pm-case-lane-slot pm-case-lane-slot--work" aria-hidden="true">
                                 {!nested && markerKind === 'work' && (
@@ -764,6 +884,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                         location={c.location}
                                         eventLabel={c.eventLabel}
                                         labels={data.track.legend}
+                                        lang={lang}
                                     />
                                 )}
                                 {nested && (
@@ -936,11 +1057,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div
                             key={`${parent.kind || 'work'}-${parent.role}-${parent.startDate}`}
                             className={`pm-case-group${children.length ? ' has-nest' : ''}${groupKind === 'work' ? ' pm-case-group--work' : groupKind === 'education' ? ' pm-case-group--education' : ''}${hasWorkLane && hasEduLane ? ' has-parallel' : ''}`}
+                            data-lane-group="true"
+                            data-lane-id={parent.id || `${parent.kind}-${parent.startDate}`}
+                            data-lane-work={hasWorkLane ? 'true' : 'false'}
+                            data-lane-work-ongoing={
+                                (groupKind === 'work' ? parentOngoing : parallel.some((p) => p.kind === 'work' && isPresentLabel(p.until, data.track.legend.present)))
+                                    ? 'true' : 'false'
+                            }
+                            data-lane-edu={hasEduLane ? 'true' : 'false'}
+                            data-lane-edu-ongoing={
+                                (groupKind === 'education' ? parentOngoing : parallel.some((p) => p.kind === 'education' && isPresentLabel(p.until, data.track.legend.present)))
+                                    ? 'true' : 'false'
+                            }
                         >
-                            <div className="pm-lane-bars" aria-hidden="true">
-                                {hasWorkLane && <div className="pm-lane-bar pm-lane-bar--work" />}
-                                {hasEduLane && <div className="pm-lane-bar pm-lane-bar--education" />}
-                            </div>
                             {renderCase(parent)}
                             {children.length > 0 && (
                                 <div className="pm-milestones">
