@@ -1720,8 +1720,6 @@
     }
     .pm-track-line { left: calc(88px + 10px + 29px); }
     .pm-lane-canvas { left: calc(88px + 10px); width: 58px; }
-    .pm-lane-canvas::before { left: 11px; }
-    .pm-lane-canvas::after { left: 45px; }
     .pm-lane-seg { width: 24px; }
     .pm-lane-seg--education { left: 34px; }
     .pm-lane-seg-bar { width: 8px; }
@@ -1761,8 +1759,6 @@
         left: calc(72px + 8px);
         width: 44px;
     }
-    .pm-lane-canvas::before { left: 8px; }
-    .pm-lane-canvas::after { left: 34px; }
     .pm-lane-seg { width: 18px; }
     .pm-lane-seg--education { left: 26px; }
     .pm-lane-seg-bar { width: 7px; }
