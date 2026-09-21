@@ -39,7 +39,11 @@ import ReviewsSection from './ReviewsSection';
 import LatestPosts from './LatestPosts';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CommandPalette from './CommandPalette';
+import EvidencePile from './EvidencePile';
+import BoardingPass from './BoardingPass';
 import './portfolio.css';
+
+const APP_LAND = [-1.8, 1.5, -0.9, 2.2, -1.4, 1.1];
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
 
@@ -522,6 +526,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         <div className="portfolio-mode">
           <MotionConfig reducedMotion="user">
             <FloatingWhatsApp lang={lang} />
+            <EvidencePile copy={data.paper} />
             <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
             <AnimatePresence>
                 {toast && (
@@ -733,15 +738,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </React.Fragment>
                         ))}
                     </div>
-                    <div className="pm-ai-stack">
+                    <div className="pm-receipt">
+                        <div className="pm-receipt-head">
+                            <span>{data.paper.receiptHead}</span>
+                            <span>{data.paper.receiptSub}</span>
+                        </div>
+                        <div className="pm-ai-stack">
                         {data.ai.steps.map((s, i) => (
                             <motion.div
                                 key={i}
                                 className="pm-ai-step"
-                                initial={{ opacity: 0, y: 18 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+                                whileInView={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
                                 viewport={{ once: true, margin: '-40px' }}
-                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                             >
                                 <div className="pm-ai-step-num">{s.num}</div>
                                 <h5>{s.title}</h5>
@@ -749,6 +759,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 <div className="pm-ai-tools">{s.tools}</div>
                             </motion.div>
                         ))}
+                        </div>
+                        <div className="pm-receipt-foot" aria-hidden="true">
+                            <span className="pm-ticket-barcode" />
+                        </div>
                     </div>
                     </div>
                 </section>
@@ -757,15 +771,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 <section className="pm-section pm-problems" id="problems">
                     <div className="pm-eyebrow">{data.problems.eyebrow}</div>
                     <h2><Editorial text={data.problems.heading} /></h2>
-                    <div className="pm-problem-grid">
+                    <div className="pm-problem-grid pm-paper-stack">
                         {data.problems.items.map((p, i) => (
                             <motion.div
                                 key={i}
                                 className="pm-problem"
-                                initial={{ opacity: 0, x: -16, y: 12 }}
-                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                style={{ top: `calc(104px + ${i * 12}px)`, zIndex: i + 1 }}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                                transition={{ duration: 0.55, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
                             >
                                 <div className="pm-problem-num">{p.num}</div>
                                 <div className="pm-problem-title"><Editorial text={p.title} /></div>
@@ -1261,19 +1276,21 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.apps.eyebrow}</div>
                     <h2><Editorial text={data.apps.heading} /></h2>
                     <p className="pm-ai-lead">{data.apps.lead}</p>
-                    <div className="pm-apps-grid">
+                    <div className="pm-apps-grid pm-apps-pile">
                         {data.apps.items.map((a, i) => {
                             const Tag = a.url ? motion.a : motion.div;
                             const linkProps = a.url ? { href: a.url, target: '_blank', rel: 'noreferrer' } : {};
+                            const land = APP_LAND[i % APP_LAND.length];
                             return (
                                 <Tag
                                     key={i}
                                     className={`pm-app ${a.url ? '' : 'pm-app--static'}`}
                                     {...linkProps}
-                                    initial={{ opacity: 0, y: 16 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0, y: -64, rotate: land - 10, scale: 0.94 }}
+                                    whileInView={{ opacity: 1, y: 0, rotate: land, scale: 1 }}
+                                    whileHover={a.url ? { y: -6, rotate: 0, transition: { duration: 0.2 } } : undefined}
                                     viewport={{ once: true, margin: '-80px' }}
-                                    transition={{ duration: 0.45, delay: i * 0.05 }}
+                                    transition={{ type: 'spring', stiffness: 280, damping: 22, delay: i * 0.07 }}
                                 >
                                     <AppIcon name={a.name} initial={a.initial} />
                                     <div className="pm-app-body">
@@ -1341,15 +1358,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-card">
                     <div className="pm-eyebrow">{data.principles.eyebrow}</div>
                     <h2><Editorial text={data.principles.heading} /></h2>
-                    <div className="pm-principle-list">
+                    <div className="pm-principle-list pm-paper-stack">
                         {data.principles.items.map((p, i) => (
                             <motion.div
                                 key={i}
                                 className="pm-principle"
-                                initial={{ opacity: 0, y: 16 }}
+                                style={{ top: `calc(104px + ${i * 14}px)`, zIndex: i + 1 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.5, delay: i * 0.06 }}
+                                transition={{ duration: 0.5, delay: i * 0.05 }}
                             >
                                 <div className="pm-principle-num">{p.num}</div>
                                 <h4>{p.title}</h4>
@@ -1369,6 +1387,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <div className="pm-eyebrow">{data.contact.eyebrow}</div>
                     <h2><Editorial text={data.contact.heading} /></h2>
                     <p className="pm-contact-lead">{data.contact.lead}</p>
+                    <BoardingPass copy={data.paper} href={RECLAIM_URL} />
                     <div className="pm-contact-links">
                         {data.contact.links.map((l, i) => (
                             <div
