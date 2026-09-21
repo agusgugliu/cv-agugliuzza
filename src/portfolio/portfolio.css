@@ -1081,6 +1081,8 @@
     grid-row: 1;
     border-top: 1px solid var(--hairline);
     padding-top: 8px;
+    position: relative;
+    z-index: 1;
 }
 
 .pm-track-list > .pm-case-group:first-child > .pm-case:first-child .pm-case-content {
@@ -1950,7 +1952,10 @@
     .pm-lane-seg--education .pm-lane-seg-cross {
         width: calc(24px + 34px - 4px);
     }
-    .pm-lane-seg--education .pm-lane-seg-date--end {
+    .pm-lane-seg--education .pm-lane-seg-date--end,
+    .pm-lane-seg--education .pm-lane-seg-date--start,
+    .pm-lane-seg--education .pm-lane-seg-date--now {
+        left: auto;
         right: calc(100% + 34px + 6px);
     }
     .pm-case-marker { width: 25px; height: 25px; border-width: 3px; }
@@ -1996,7 +2001,10 @@
     .pm-lane-seg--education .pm-lane-seg-cross {
         width: calc(18px + 26px - 4px);
     }
-    .pm-lane-seg--education .pm-lane-seg-date--end {
+    .pm-lane-seg--education .pm-lane-seg-date--end,
+    .pm-lane-seg--education .pm-lane-seg-date--start,
+    .pm-lane-seg--education .pm-lane-seg-date--now {
+        left: auto;
         right: calc(100% + 26px + 6px);
     }
     .pm-lane-seg.is-ongoing .pm-lane-seg-bar {
@@ -3046,11 +3054,9 @@
         border-left: 0 !important;
     }
 
-    .pm-case {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 40px 0;
-    }
+    /* Track-record rows keep a dedicated date + dual-lane + content grid
+       (see the 820px / 560px timeline rules). Collapsing .pm-case to 1fr
+       stacks those columns so the rail, vertical line, and copy overlap. */
 
     .pm-ai-stack {
         grid-template-columns: 1fr;
