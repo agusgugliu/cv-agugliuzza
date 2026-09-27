@@ -13,8 +13,14 @@ export function expandSection(id) {
     window.dispatchEvent(new CustomEvent(EXPAND_SECTION_EVENT, { detail: id }));
 }
 
+const remembered = new Map();
+
 function useSectionCollapse(id, defaultOpen = true) {
-    const [open, setOpen] = useState(defaultOpen);
+    const [open, setOpen] = useState(() => (remembered.has(id) ? remembered.get(id) : defaultOpen));
+
+    useEffect(() => {
+        remembered.set(id, open);
+    }, [id, open]);
 
     useEffect(() => {
         const expand = () => setOpen(true);
@@ -50,7 +56,7 @@ export function SectionToggle({ open, onToggle, panelId, lang, children }) {
             title={hint}
             onClick={onToggle}
         >
-            {children}
+            <span className="pm-section-toggle-label">{children}</span>
             <ChevronDown className="pm-section-toggle-icon" aria-hidden="true" strokeWidth={2.25} />
             <span className="pm-section-toggle-hint">{hint}</span>
         </button>

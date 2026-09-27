@@ -1241,7 +1241,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <div className="pm-eyebrow">{data.skills.eyebrow}</div>
                         <div className="pm-skills-head">
                             <h2><Toggle><Editorial text={data.skills.heading} /></Toggle></h2>
+                            <Panel>
                             <p>{data.skills.lead}</p>
+                            </Panel>
                         </div>
                         <Panel>
                         <div className="pm-skills-scale" aria-label={data.skills.scaleLabel}>

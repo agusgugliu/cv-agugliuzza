@@ -107,24 +107,30 @@
     color: inherit;
     letter-spacing: inherit;
     line-height: inherit;
-    text-align: inherit;
+    text-align: left;
     cursor: pointer;
     max-width: 100%;
     border-radius: 4px;
     position: relative;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 0.32em;
+}
+
+.pm-section-toggle-label {
+    min-width: 0;
 }
 
 .pm-section-toggle-icon {
-    display: inline-block;
+    display: block;
     width: clamp(16px, 0.5em, 32px);
     height: clamp(16px, 0.5em, 32px);
-    margin-left: 0.28em;
-    vertical-align: -0.08em;
     color: var(--blue);
     flex: none;
     pointer-events: none;
     transition: transform 0.28s ease;
     transform-origin: 50% 50%;
+    margin-bottom: 0.08em;
 }
 
 .pm-section-toggle.is-open .pm-section-toggle-icon {
@@ -176,6 +182,11 @@
     overflow: visible;
 }
 
+.pm-section.is-collapsed {
+    padding-top: clamp(28px, 4vw, 56px);
+    padding-bottom: clamp(28px, 4vw, 56px);
+}
+
 .pm-section.is-collapsed h2,
 .pm-section.is-collapsed .pm-track-head,
 .pm-section.is-collapsed .pm-bento-head,
@@ -186,12 +197,38 @@
     margin-bottom: 0;
 }
 
+.pm-skills.is-collapsed .pm-skills-head {
+    grid-template-columns: 1fr;
+}
+
+.pm-card-section.is-collapsed .pm-card {
+    padding-top: clamp(22px, 3vw, 36px);
+    padding-bottom: clamp(22px, 3vw, 36px);
+}
+
 .pm-hero.is-collapsed .pm-hero-grid {
     grid-template-columns: 1fr;
 }
 
 .pm-hero.is-collapsed .pm-hero-photo-col {
     display: none;
+}
+
+.pm-hero .pm-section-toggle {
+    display: inline;
+    align-items: unset;
+    gap: 0;
+}
+
+.pm-hero .pm-section-toggle-label {
+    display: inline;
+}
+
+.pm-hero .pm-section-toggle-icon {
+    display: inline-block;
+    margin-left: 0.28em;
+    margin-bottom: 0;
+    vertical-align: 0.12em;
 }
 
 /* ---------- Card-panel section (opt-in, mirrors Silvia's "About Me" box) ---------- */
