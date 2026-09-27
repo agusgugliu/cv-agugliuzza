@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fetchLatestPosts } from '../blog/loadPosts';
+import Collapsible from './Collapsible';
 
 const COPY = {
     en: {
@@ -44,15 +45,18 @@ const LatestPosts = ({ lang }) => {
     if (posts !== null && posts.length === 0) return null;
 
     return (
-        <section className="pm-section pm-posts" id="notes">
+        <Collapsible id="notes" lang={lang}>
+            {({ open, Toggle, Panel }) => (
+        <section className={`pm-section pm-posts${open ? '' : ' is-collapsed'}`} id="notes">
             <div className="pm-eyebrow">{t.eyebrow}</div>
             <div className="pm-posts-head">
-                <h2>{t.heading}</h2>
+                <h2><Toggle>{t.heading}</Toggle></h2>
                 <Link className="pm-mode-pill" to="/blog">
                     {t.cta} &rarr;
                 </Link>
             </div>
 
+            <Panel>
             {posts === null ? null : (
                 <div className="pm-posts-grid">
                     {posts.map((post) => (
@@ -79,7 +83,10 @@ const LatestPosts = ({ lang }) => {
                     ))}
                 </div>
             )}
+            </Panel>
         </section>
+            )}
+        </Collapsible>
     );
 };
 

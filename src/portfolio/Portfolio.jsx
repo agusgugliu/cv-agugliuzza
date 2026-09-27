@@ -39,6 +39,7 @@ import ReviewsSection from './ReviewsSection';
 import LatestPosts from './LatestPosts';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CommandPalette from './CommandPalette';
+import Collapsible, { expandSection } from './Collapsible';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
@@ -492,10 +493,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         window.open(link.href, '_blank');
     };
 
+    const jumpToSection = (id) => {
+        expandSection(id);
+        const go = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        requestAnimationFrame(() => requestAnimationFrame(go));
+    };
+
     const smoothScrollTo = (id) => (e) => {
         e.preventDefault();
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        jumpToSection(id);
     };
 
     const downloadPDF = () => {
@@ -504,7 +510,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     };
 
     const scrollToId = (id) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        jumpToSection(id);
     };
 
     const cmdActions = [
@@ -623,7 +629,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
             <div className="pm-shell" id="top">
                 {/* Hero */}
-                <section className="pm-section pm-hero">
+                <Collapsible id="top" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-hero${open ? '' : ' is-collapsed'}`}>
                     <HeroBackdrop theme={theme} />
                     <div className="pm-hero-grid">
                     <motion.div
@@ -677,6 +685,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
                         }}
                     >
+                        <Panel>
                         <motion.div
                             className="pm-hero-meta"
                             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
@@ -688,11 +697,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 </span>
                             ))}
                         </motion.div>
+                        </Panel>
                         <motion.h1
                             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
                         >
-                            <Editorial text={data.hero.statement} />
+                            <Toggle><Editorial text={data.hero.statement} /></Toggle>
                         </motion.h1>
+                        <Panel>
                         {data.hero.substatement && (
                             <motion.p
                                 className="pm-hero-sub"
@@ -712,18 +723,24 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 {data.hero.ctaSecondary} <span className="arrow">&darr;</span>
                             </Magnetic>
                         </motion.div>
+                        </Panel>
                     </motion.div>
                     </div>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Selected Projects */}
-                <ProjectsBento data={data.projects} />
+                <ProjectsBento data={data.projects} lang={lang} />
 
                 {/* AI end-to-end (elevated) */}
-                <section className="pm-section pm-ai pm-card-section" id="ai">
+                <Collapsible id="ai" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
                     <div className="pm-card">
                     <div className="pm-eyebrow">{data.ai.eyebrow}</div>
-                    <h2><Editorial text={data.ai.heading} /></h2>
+                    <h2><Toggle><Editorial text={data.ai.heading} /></Toggle></h2>
+                    <Panel>
                     <p className="pm-ai-lead">{data.ai.lead}</p>
                     <div className="pm-ai-flow">
                         {data.ai.flow.map((f, i) => (
@@ -750,13 +767,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </motion.div>
                         ))}
                     </div>
+                    </Panel>
                     </div>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Problems */}
-                <section className="pm-section pm-problems" id="problems">
+                <Collapsible id="problems" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
                     <div className="pm-eyebrow">{data.problems.eyebrow}</div>
-                    <h2><Editorial text={data.problems.heading} /></h2>
+                    <h2><Toggle><Editorial text={data.problems.heading} /></Toggle></h2>
+                    <Panel>
                     <div className="pm-problem-grid">
                         {data.problems.items.map((p, i) => (
                             <motion.div
@@ -773,10 +796,15 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </motion.div>
                         ))}
                     </div>
+                    </Panel>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Track record */}
-                <section className="pm-section" id="work">
+                <Collapsible id="work" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section${open ? '' : ' is-collapsed'}`} id="work">
                     <motion.div
                         className="pm-eyebrow"
                         initial={{ opacity: 0, y: 10 }}
@@ -793,11 +821,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.55 }}
                     >
-                        <h2><Editorial text={data.track.heading} /></h2>
+                        <h2><Toggle><Editorial text={data.track.heading} /></Toggle></h2>
                         <button className="pm-mode-pill pm-pill--solid" onClick={onSwitchToCV}>
                             {data.track.cta} &rarr;
                         </button>
                     </motion.div>
+                    <Panel>
                     <div className="pm-track-legend">
                         <span className="pm-track-legend-item">
                             <span className="pm-track-legend-icon pm-track-legend-icon--work" aria-hidden="true">
@@ -1197,18 +1226,24 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         );
                     })}
                     </div>
+                    </Panel>
                 </section>
+                    )}
+                </Collapsible>
 
                 <LatestPosts lang={lang} />
 
                 {/* Skills */}
-                <section className="pm-section pm-skills pm-card-section" id="skills">
+                <Collapsible id="skills" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-skills pm-card-section${open ? '' : ' is-collapsed'}`} id="skills">
                     <div className="pm-card">
                         <div className="pm-eyebrow">{data.skills.eyebrow}</div>
                         <div className="pm-skills-head">
-                            <h2><Editorial text={data.skills.heading} /></h2>
+                            <h2><Toggle><Editorial text={data.skills.heading} /></Toggle></h2>
                             <p>{data.skills.lead}</p>
                         </div>
+                        <Panel>
                         <div className="pm-skills-scale" aria-label={data.skills.scaleLabel}>
                             {data.skills.scale.map((s, i) => <span key={i}>{s}</span>)}
                         </div>
@@ -1253,13 +1288,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             ))}
                         </div>
                         <p className="pm-skills-note">{data.skills.note}</p>
+                        </Panel>
                     </div>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Apps */}
-                <section className="pm-section pm-apps" id="apps">
+                <Collapsible id="apps" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-apps${open ? '' : ' is-collapsed'}`} id="apps">
                     <div className="pm-eyebrow">{data.apps.eyebrow}</div>
-                    <h2><Editorial text={data.apps.heading} /></h2>
+                    <h2><Toggle><Editorial text={data.apps.heading} /></Toggle></h2>
+                    <Panel>
                     <p className="pm-ai-lead">{data.apps.lead}</p>
                     <div className="pm-apps-grid">
                         {data.apps.items.map((a, i) => {
@@ -1290,11 +1331,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             );
                         })}
                     </div>
+                    </Panel>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Logos */}
-                <section className="pm-section pm-logos">
-                    <div className="pm-eyebrow">{data.logos.eyebrow}</div>
+                <Collapsible id="logos" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-logos${open ? '' : ' is-collapsed'}`} id="logos">
+                    <div className="pm-eyebrow">
+                        <Toggle>{data.logos.eyebrow}</Toggle>
+                    </div>
+                    <Panel>
                     {data.logos.groups.map((g, gi) => (
                         <div key={gi} className="pm-logos-group">
                             <div className="pm-logos-group-label">{g.label}</div>
@@ -1334,13 +1383,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </div>
                         </div>
                     ))}
+                    </Panel>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Principles */}
-                <section className="pm-section pm-principles pm-card-section" id="ideas">
+                <Collapsible id="ideas" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-principles pm-card-section${open ? '' : ' is-collapsed'}`} id="ideas">
                     <div className="pm-card">
                     <div className="pm-eyebrow">{data.principles.eyebrow}</div>
-                    <h2><Editorial text={data.principles.heading} /></h2>
+                    <h2><Toggle><Editorial text={data.principles.heading} /></Toggle></h2>
+                    <Panel>
                     <div className="pm-principle-list">
                         {data.principles.items.map((p, i) => (
                             <motion.div
@@ -1357,17 +1412,23 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             </motion.div>
                         ))}
                     </div>
+                    </Panel>
                     </div>
                 </section>
+                    )}
+                </Collapsible>
 
                 {/* Reviews (Supabase-backed, moderated) */}
                 <ReviewsSection lang={lang} />
 
                 {/* Contact */}
-                <section className="pm-section pm-contact pm-card-section" id="contact">
+                <Collapsible id="contact" lang={lang}>
+                    {({ open, Toggle, Panel }) => (
+                <section className={`pm-section pm-contact pm-card-section${open ? '' : ' is-collapsed'}`} id="contact">
                     <div className="pm-card">
                     <div className="pm-eyebrow">{data.contact.eyebrow}</div>
-                    <h2><Editorial text={data.contact.heading} /></h2>
+                    <h2><Toggle><Editorial text={data.contact.heading} /></Toggle></h2>
+                    <Panel>
                     <p className="pm-contact-lead">{data.contact.lead}</p>
                     <div className="pm-contact-links">
                         {data.contact.links.map((l, i) => (
@@ -1388,8 +1449,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             {lang === 'es' ? 'Escaneá para conectar' : 'Scan to connect'}
                         </span>
                     </div>
+                    </Panel>
                     </div>
                 </section>
+                    )}
+                </Collapsible>
 
                 <footer className="pm-footer">
                     <div className="pm-footer-signature">

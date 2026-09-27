@@ -96,6 +96,104 @@
     display: inline-block;
 }
 
+/* ---------- Collapsible sections ---------- */
+.pm-section-toggle {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    max-width: 100%;
+    border-radius: 4px;
+    position: relative;
+}
+
+.pm-section-toggle-icon {
+    display: inline-block;
+    width: clamp(16px, 0.5em, 32px);
+    height: clamp(16px, 0.5em, 32px);
+    margin-left: 0.28em;
+    vertical-align: -0.08em;
+    color: var(--blue);
+    flex: none;
+    pointer-events: none;
+    transition: transform 0.28s ease;
+    transform-origin: 50% 50%;
+}
+
+.pm-section-toggle.is-open .pm-section-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.pm-section-toggle:hover .pm-section-toggle-icon,
+.pm-section-toggle:focus-visible .pm-section-toggle-icon {
+    color: var(--blue-deep);
+}
+
+.pm-section-toggle:focus {
+    outline: none;
+}
+
+.pm-section-toggle:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 6px;
+}
+
+.pm-section-toggle-hint {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.pm-section-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.pm-section-panel.is-open {
+    grid-template-rows: 1fr;
+}
+
+.pm-section-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.pm-section-panel.is-open .pm-section-panel-inner {
+    overflow: visible;
+}
+
+.pm-section.is-collapsed h2,
+.pm-section.is-collapsed .pm-track-head,
+.pm-section.is-collapsed .pm-bento-head,
+.pm-section.is-collapsed .pm-skills-head,
+.pm-section.is-collapsed .pm-reviews-head,
+.pm-section.is-collapsed .pm-posts-head,
+.pm-section.is-collapsed .pm-hero h1 {
+    margin-bottom: 0;
+}
+
+.pm-hero.is-collapsed .pm-hero-grid {
+    grid-template-columns: 1fr;
+}
+
+.pm-hero.is-collapsed .pm-hero-photo-col {
+    display: none;
+}
+
 /* ---------- Card-panel section (opt-in, mirrors Silvia's "About Me" box) ---------- */
 .pm-card-section {
     border-top: 0;
@@ -3006,6 +3104,22 @@
 }
 
 @media print {
+    .pm-section-panel {
+        display: block !important;
+        grid-template-rows: 1fr !important;
+    }
+    .pm-section-panel-inner {
+        overflow: visible !important;
+    }
+    .pm-section-toggle {
+        pointer-events: none;
+    }
+    .pm-section-toggle-icon {
+        display: none;
+    }
+    .pm-hero.is-collapsed .pm-hero-photo-col {
+        display: block;
+    }
     .portfolio-mode {
         background: var(--card-bg);
         color: #000;
@@ -3106,6 +3220,11 @@
 
 /* Respect reduced-motion: neutralize all custom motion. */
 @media (prefers-reduced-motion: reduce) {
+    .pm-section-panel,
+    .pm-section-toggle-icon {
+        transition: none;
+    }
+
     .pm-magnetic,
     .pm-tilt {
         transform: none !important;
@@ -3132,6 +3251,25 @@
 .pm-bento-head {
     max-width: 720px;
     margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.pm-bento-head h2,
+.pm-reviews-head h2,
+.pm-posts-head h2 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.pm-bento-head h2 em,
+.pm-reviews-head h2 em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blue);
 }
 
 .pm-bento-lead {

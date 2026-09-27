@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, X } from 'lucide-react';
 import { supabase, REVIEWS_TABLE } from '../lib/supabaseClient';
 import { reviewsCopy } from '../data/reviewsData';
+import Collapsible from './Collapsible';
 
 // Render a heading string with {highlighted} words in editorial italic.
 const Editorial = ({ text }) => (
@@ -122,14 +123,17 @@ const ReviewsSection = ({ lang }) => {
     };
 
     return (
-        <section className="pm-section pm-reviews" id="reviews">
+        <Collapsible id="reviews" lang={lang}>
+            {({ open: expanded, Toggle, Panel }) => (
+        <section className={`pm-section pm-reviews${expanded ? '' : ' is-collapsed'}`} id="reviews">
             <div className="pm-eyebrow">{t.eyebrow}</div>
             <div className="pm-reviews-head">
-                <h2><Editorial text={t.heading} /></h2>
+                <h2><Toggle><Editorial text={t.heading} /></Toggle></h2>
                 <button className="pm-mode-pill" onClick={() => setOpen(true)}>
                     {t.cta} &rarr;
                 </button>
             </div>
+            <Panel>
             <p className="pm-ai-lead">{t.lead}</p>
 
             {reviews === null ? (
@@ -164,6 +168,7 @@ const ReviewsSection = ({ lang }) => {
                     ))}
                 </div>
             )}
+            </Panel>
 
             <AnimatePresence>
                 {open && (
@@ -267,6 +272,8 @@ const ReviewsSection = ({ lang }) => {
                 )}
             </AnimatePresence>
         </section>
+            )}
+        </Collapsible>
     );
 };
 
