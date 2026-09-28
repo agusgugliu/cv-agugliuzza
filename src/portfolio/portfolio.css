@@ -285,15 +285,6 @@
     display: none;
 }
 
-.pm-hero.is-collapsed {
-    padding-top: 140px;
-    padding-bottom: 14px;
-}
-
-.pm-hero.is-collapsed .pm-hero-backdrop {
-    display: none;
-}
-
 @media (max-width: 560px) {
     .pm-fold {
         flex-wrap: nowrap;
@@ -565,16 +556,6 @@
     border-top: 0;
     position: relative;
     overflow: hidden;
-}
-
-.pm-hero.is-collapsed {
-    padding-top: 140px;
-    padding-bottom: 14px;
-}
-
-.pm-hero > .pm-fold {
-    position: relative;
-    z-index: 2;
 }
 
 .pm-hero-backdrop {
@@ -3244,9 +3225,6 @@
     .pm-section.is-collapsed .pm-fold-reading-head {
         display: block;
     }
-    .pm-hero.is-collapsed .pm-hero-backdrop {
-        display: block;
-    }
     .portfolio-mode {
         background: var(--card-bg);
         color: #000;
@@ -3280,11 +3258,6 @@
        that it never sits under the nav regardless of wrap state. */
     .pm-hero {
         padding-top: 190px;
-    }
-
-    .pm-hero.is-collapsed {
-        padding-top: 190px;
-        padding-bottom: 14px;
     }
 }
 

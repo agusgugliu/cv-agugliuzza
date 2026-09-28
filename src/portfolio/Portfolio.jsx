@@ -628,18 +628,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             </nav>
 
             <div className="pm-shell" id="top">
-                {/* Hero */}
-                <Collapsible
-                    id="top"
-                    lang={lang}
-                    kicker={data.footer.name}
-                    title={plainHeading(data.hero.statement)}
-                    preview={data.hero.substatement}
-                >
-                    {({ open, Fold, Panel }) => (
-                <section className={`pm-section pm-hero${open ? '' : ' is-collapsed'}`}>
-                    <Fold avatar="/assets/photo.PNG" />
-                    <Panel>
+                {/* Hero — always open; the statement is the page idea, not a section. */}
+                <section className="pm-section pm-hero">
                     <HeroBackdrop theme={theme} />
                     <div className="pm-hero-grid">
                     <motion.div
@@ -730,10 +720,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </motion.div>
                     </motion.div>
                     </div>
-                    </Panel>
                 </section>
-                    )}
-                </Collapsible>
 
                 {/* Selected Projects */}
                 <ProjectsBento data={data.projects} lang={lang} />
