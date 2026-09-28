@@ -100,6 +100,7 @@
 .pm-fold {
     appearance: none;
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 16px 20px;
     width: 100%;
@@ -179,6 +180,7 @@
 
 .pm-fold-action {
     flex: none;
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -192,6 +194,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .pm-fold:hover .pm-fold-action {
@@ -293,14 +296,18 @@
 
 @media (max-width: 560px) {
     .pm-fold {
-        flex-wrap: wrap;
-        padding: 14px 14px;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        padding: 14px;
+        gap: 12px;
     }
     .pm-fold-action {
-        margin-left: auto;
+        margin-top: 2px;
+        padding: 7px 12px;
     }
-    .pm-fold--portrait .pm-fold-copy {
-        flex: 1 1 calc(100% - 80px);
+    .pm-fold-avatar {
+        width: 48px;
+        height: 48px;
     }
 }
 
