@@ -39,7 +39,7 @@ import ReviewsSection from './ReviewsSection';
 import LatestPosts from './LatestPosts';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CommandPalette from './CommandPalette';
-import Collapsible, { expandSection } from './Collapsible';
+import Collapsible, { expandSection, plainHeading } from './Collapsible';
 import './portfolio.css';
 
 const RECLAIM_URL = 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority';
@@ -629,9 +629,17 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
             <div className="pm-shell" id="top">
                 {/* Hero */}
-                <Collapsible id="top" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="top"
+                    lang={lang}
+                    kicker={data.footer.name}
+                    title={plainHeading(data.hero.statement)}
+                    preview={data.hero.substatement}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-hero${open ? '' : ' is-collapsed'}`}>
+                    <Fold avatar="/assets/photo.PNG" />
+                    <Panel>
                     <HeroBackdrop theme={theme} />
                     <div className="pm-hero-grid">
                     <motion.div
@@ -685,7 +693,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
                         }}
                     >
-                        <Panel>
                         <motion.div
                             className="pm-hero-meta"
                             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
@@ -697,13 +704,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 </span>
                             ))}
                         </motion.div>
-                        </Panel>
                         <motion.h1
                             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
                         >
-                            <Toggle><Editorial text={data.hero.statement} /></Toggle>
+                            <Editorial text={data.hero.statement} />
                         </motion.h1>
-                        <Panel>
                         {data.hero.substatement && (
                             <motion.p
                                 className="pm-hero-sub"
@@ -723,9 +728,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 {data.hero.ctaSecondary} <span className="arrow">&darr;</span>
                             </Magnetic>
                         </motion.div>
-                        </Panel>
                     </motion.div>
                     </div>
+                    </Panel>
                 </section>
                     )}
                 </Collapsible>
@@ -734,12 +739,18 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 <ProjectsBento data={data.projects} lang={lang} />
 
                 {/* AI end-to-end (elevated) */}
-                <Collapsible id="ai" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="ai"
+                    lang={lang}
+                    kicker={data.ai.eyebrow}
+                    title={plainHeading(data.ai.heading)}
+                    preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
-                    <div className="pm-card">
-                    <div className="pm-eyebrow">{data.ai.eyebrow}</div>
-                    <h2><Toggle><Editorial text={data.ai.heading} /></Toggle></h2>
+                    <div className={open ? 'pm-card' : undefined}>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
                     <Panel>
                     <p className="pm-ai-lead">{data.ai.lead}</p>
                     <div className="pm-ai-flow">
@@ -774,11 +785,17 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Problems */}
-                <Collapsible id="problems" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="problems"
+                    lang={lang}
+                    kicker={data.problems.eyebrow}
+                    title={plainHeading(data.problems.heading)}
+                    preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
-                    <div className="pm-eyebrow">{data.problems.eyebrow}</div>
-                    <h2><Toggle><Editorial text={data.problems.heading} /></Toggle></h2>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
                     <Panel>
                     <div className="pm-problem-grid">
                         {data.problems.items.map((p, i) => (
@@ -802,26 +819,25 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Track record */}
-                <Collapsible id="work" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="work"
+                    lang={lang}
+                    defaultOpen
+                    kicker={data.track.eyebrow}
+                    title={plainHeading(data.track.heading)}
+                    preview={data.track.cta}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section${open ? '' : ' is-collapsed'}`} id="work">
+                    <Fold />
                     <motion.div
-                        className="pm-eyebrow"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4 }}
-                    >
-                        {data.track.eyebrow}
-                    </motion.div>
-                    <motion.div
-                        className="pm-track-head"
+                        className="pm-track-head pm-fold-reading-head"
                         initial={{ opacity: 0, y: 18 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.55 }}
                     >
-                        <h2><Toggle><Editorial text={data.track.heading} /></Toggle></h2>
+                        <h2><Editorial text={data.track.heading} /></h2>
                         <button className="pm-mode-pill pm-pill--solid" onClick={onSwitchToCV}>
                             {data.track.cta} &rarr;
                         </button>
@@ -1234,16 +1250,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 <LatestPosts lang={lang} />
 
                 {/* Skills */}
-                <Collapsible id="skills" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="skills"
+                    lang={lang}
+                    kicker={data.skills.eyebrow}
+                    title={plainHeading(data.skills.heading)}
+                    preview={lang === 'es' ? `${data.skills.groups.length} grupos` : `${data.skills.groups.length} groups`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-skills pm-card-section${open ? '' : ' is-collapsed'}`} id="skills">
-                    <div className="pm-card">
-                        <div className="pm-eyebrow">{data.skills.eyebrow}</div>
-                        <div className="pm-skills-head">
-                            <h2><Toggle><Editorial text={data.skills.heading} /></Toggle></h2>
-                            <Panel>
+                    <div className={open ? 'pm-card' : undefined}>
+                        <Fold />
+                        <div className="pm-skills-head pm-fold-reading-head">
+                            <h2><Editorial text={data.skills.heading} /></h2>
                             <p>{data.skills.lead}</p>
-                            </Panel>
                         </div>
                         <Panel>
                         <div className="pm-skills-scale" aria-label={data.skills.scaleLabel}>
@@ -1297,11 +1317,17 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Apps */}
-                <Collapsible id="apps" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="apps"
+                    lang={lang}
+                    kicker={data.apps.eyebrow}
+                    title={plainHeading(data.apps.heading)}
+                    preview={lang === 'es' ? `${data.apps.items.length} prototipos` : `${data.apps.items.length} prototypes`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-apps${open ? '' : ' is-collapsed'}`} id="apps">
-                    <div className="pm-eyebrow">{data.apps.eyebrow}</div>
-                    <h2><Toggle><Editorial text={data.apps.heading} /></Toggle></h2>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.apps.heading} /></h2>
                     <Panel>
                     <p className="pm-ai-lead">{data.apps.lead}</p>
                     <div className="pm-apps-grid">
@@ -1339,12 +1365,18 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Logos */}
-                <Collapsible id="logos" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="logos"
+                    lang={lang}
+                    kicker={data.logos.eyebrow}
+                    title={data.logos.groups.map((g) => g.label).join(' · ')}
+                    preview={lang === 'es'
+                        ? `${data.logos.groups.reduce((n, g) => n + g.items.length, 0)} organizaciones`
+                        : `${data.logos.groups.reduce((n, g) => n + g.items.length, 0)} organizations`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-logos${open ? '' : ' is-collapsed'}`} id="logos">
-                    <div className="pm-eyebrow">
-                        <Toggle>{data.logos.eyebrow}</Toggle>
-                    </div>
+                    <Fold />
                     <Panel>
                     {data.logos.groups.map((g, gi) => (
                         <div key={gi} className="pm-logos-group">
@@ -1391,12 +1423,18 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Principles */}
-                <Collapsible id="ideas" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="ideas"
+                    lang={lang}
+                    kicker={data.principles.eyebrow}
+                    title={plainHeading(data.principles.heading)}
+                    preview={lang === 'es' ? `${data.principles.items.length} creencias` : `${data.principles.items.length} beliefs`}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-principles pm-card-section${open ? '' : ' is-collapsed'}`} id="ideas">
-                    <div className="pm-card">
-                    <div className="pm-eyebrow">{data.principles.eyebrow}</div>
-                    <h2><Toggle><Editorial text={data.principles.heading} /></Toggle></h2>
+                    <div className={open ? 'pm-card' : undefined}>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.principles.heading} /></h2>
                     <Panel>
                     <div className="pm-principle-list">
                         {data.principles.items.map((p, i) => (
@@ -1424,12 +1462,19 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 <ReviewsSection lang={lang} />
 
                 {/* Contact */}
-                <Collapsible id="contact" lang={lang}>
-                    {({ open, Toggle, Panel }) => (
+                <Collapsible
+                    id="contact"
+                    lang={lang}
+                    defaultOpen
+                    kicker={data.contact.eyebrow}
+                    title={plainHeading(data.contact.heading)}
+                    preview={data.contact.lead}
+                >
+                    {({ open, Fold, Panel }) => (
                 <section className={`pm-section pm-contact pm-card-section${open ? '' : ' is-collapsed'}`} id="contact">
-                    <div className="pm-card">
-                    <div className="pm-eyebrow">{data.contact.eyebrow}</div>
-                    <h2><Toggle><Editorial text={data.contact.heading} /></Toggle></h2>
+                    <div className={open ? 'pm-card' : undefined}>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.contact.heading} /></h2>
                     <Panel>
                     <p className="pm-contact-lead">{data.contact.lead}</p>
                     <div className="pm-contact-links">

@@ -45,12 +45,18 @@ const LatestPosts = ({ lang }) => {
     if (posts !== null && posts.length === 0) return null;
 
     return (
-        <Collapsible id="notes" lang={lang}>
-            {({ open, Toggle, Panel }) => (
+        <Collapsible
+            id="notes"
+            lang={lang}
+            kicker={t.eyebrow}
+            title={t.heading}
+            preview={posts ? (lang === 'es' ? `${posts.length} entradas` : `${posts.length} posts`) : undefined}
+        >
+            {({ open, Fold, Panel }) => (
         <section className={`pm-section pm-posts${open ? '' : ' is-collapsed'}`} id="notes">
-            <div className="pm-eyebrow">{t.eyebrow}</div>
-            <div className="pm-posts-head">
-                <h2><Toggle>{t.heading}</Toggle></h2>
+            <Fold />
+            <div className="pm-posts-head pm-fold-reading-head">
+                <h2>{t.heading}</h2>
                 <Link className="pm-mode-pill" to="/blog">
                     {t.cta} &rarr;
                 </Link>

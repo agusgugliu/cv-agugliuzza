@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, X } from 'lucide-react';
 import { supabase, REVIEWS_TABLE } from '../lib/supabaseClient';
 import { reviewsCopy } from '../data/reviewsData';
-import Collapsible from './Collapsible';
+import Collapsible, { plainHeading } from './Collapsible';
 
 // Render a heading string with {highlighted} words in editorial italic.
 const Editorial = ({ text }) => (
@@ -123,12 +123,18 @@ const ReviewsSection = ({ lang }) => {
     };
 
     return (
-        <Collapsible id="reviews" lang={lang}>
-            {({ open: expanded, Toggle, Panel }) => (
+        <Collapsible
+            id="reviews"
+            lang={lang}
+            kicker={t.eyebrow}
+            title={plainHeading(t.heading)}
+            preview={t.lead}
+        >
+            {({ open: expanded, Fold, Panel }) => (
         <section className={`pm-section pm-reviews${expanded ? '' : ' is-collapsed'}`} id="reviews">
-            <div className="pm-eyebrow">{t.eyebrow}</div>
-            <div className="pm-reviews-head">
-                <h2><Toggle><Editorial text={t.heading} /></Toggle></h2>
+            <Fold />
+            <div className="pm-reviews-head pm-fold-reading-head">
+                <h2><Editorial text={t.heading} /></h2>
                 <button className="pm-mode-pill" onClick={() => setOpen(true)}>
                     {t.cta} &rarr;
                 </button>

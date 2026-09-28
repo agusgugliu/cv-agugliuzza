@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Editorial from './Editorial';
-import Collapsible from './Collapsible';
+import Collapsible, { plainHeading } from './Collapsible';
 
 const prefersReduced = () =>
     typeof window !== 'undefined' &&
@@ -58,12 +58,18 @@ const TiltCard = ({ item, index }) => {
 
 /* Selected Projects — bento grid framed around AI-driven transformation. */
 const ProjectsBento = ({ data, lang }) => (
-    <Collapsible id="projects" lang={lang}>
-        {({ open, Toggle, Panel }) => (
+    <Collapsible
+        id="projects"
+        lang={lang}
+        kicker={data.eyebrow}
+        title={plainHeading(data.heading)}
+        preview={lang === 'es' ? `${data.items.length} proyectos` : `${data.items.length} projects`}
+    >
+        {({ open, Fold, Panel }) => (
     <section className={`pm-section pm-bento${open ? '' : ' is-collapsed'}`} id="projects">
-        <div className="pm-bento-head">
-            <div className="pm-eyebrow">{data.eyebrow}</div>
-            <h2><Toggle><Editorial text={data.heading} /></Toggle></h2>
+        <Fold />
+        <div className="pm-bento-head pm-fold-reading-head">
+            <h2><Editorial text={data.heading} /></h2>
         </div>
         <Panel>
         <p className="pm-bento-lead">{data.lead}</p>

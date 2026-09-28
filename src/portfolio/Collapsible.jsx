@@ -4,8 +4,18 @@ import { ChevronDown } from 'lucide-react';
 export const EXPAND_SECTION_EVENT = 'pm-expand-section';
 
 const COPY = {
-    en: { collapse: 'Collapse section', expand: 'Expand section' },
-    es: { collapse: 'Contraer sección', expand: 'Expandir sección' }
+    en: {
+        collapse: 'Collapse section',
+        expand: 'Expand section',
+        hide: 'Hide',
+        show: 'Show'
+    },
+    es: {
+        collapse: 'Contraer sección',
+        expand: 'Expandir sección',
+        hide: 'Ocultar',
+        show: 'Mostrar'
+    }
 };
 
 export function expandSection(id) {
@@ -13,9 +23,11 @@ export function expandSection(id) {
     window.dispatchEvent(new CustomEvent(EXPAND_SECTION_EVENT, { detail: id }));
 }
 
+export const plainHeading = (text) => String(text || '').replace(/[{}]/g, '');
+
 const remembered = new Map();
 
-function useSectionCollapse(id, defaultOpen = true) {
+function useSectionCollapse(id, defaultOpen = false) {
     const [open, setOpen] = useState(() => (remembered.has(id) ? remembered.get(id) : defaultOpen));
 
     useEffect(() => {
@@ -44,21 +56,41 @@ function useSectionCollapse(id, defaultOpen = true) {
     return { open, setOpen, toggle };
 }
 
-export function SectionToggle({ open, onToggle, panelId, lang, children }) {
+export function FoldButton({
+    open,
+    onToggle,
+    panelId,
+    lang,
+    kicker,
+    title,
+    preview,
+    avatar
+}) {
     const t = COPY[lang] || COPY.en;
+    const action = open ? t.hide : t.show;
     const hint = open ? t.collapse : t.expand;
     return (
         <button
             type="button"
-            className={`pm-section-toggle${open ? ' is-open' : ''}`}
+            className={`pm-fold${open ? ' is-open' : ''}${avatar ? ' pm-fold--portrait' : ''}`}
             aria-expanded={open}
             aria-controls={panelId}
             title={hint}
             onClick={onToggle}
         >
-            <span className="pm-section-toggle-label">{children}</span>
-            <ChevronDown className="pm-section-toggle-icon" aria-hidden="true" strokeWidth={2.25} />
-            <span className="pm-section-toggle-hint">{hint}</span>
+            {avatar && !open && (
+                <img className="pm-fold-avatar" src={avatar} alt="" width="56" height="56" />
+            )}
+            <span className="pm-fold-copy">
+                {kicker && <span className="pm-fold-kicker">{kicker}</span>}
+                {!open && title && <span className="pm-fold-title">{title}</span>}
+                {!open && preview && <span className="pm-fold-preview">{preview}</span>}
+            </span>
+            <span className="pm-fold-action">
+                {action}
+                <ChevronDown className="pm-fold-chevron" aria-hidden="true" strokeWidth={2.25} />
+            </span>
+            <span className="pm-fold-hint">{hint}</span>
         </button>
     );
 }
@@ -77,22 +109,35 @@ export function SectionPanel({ id, open, children, className = '' }) {
     );
 }
 
-/* Render-prop wrapper so each section keeps its own markup.
-   Toggle/Panel identities stay stable so the heading button is not remounted. */
-const Collapsible = ({ id, lang, defaultOpen = true, children }) => {
+const Collapsible = ({
+    id,
+    lang,
+    defaultOpen = false,
+    kicker,
+    title,
+    preview,
+    children
+}) => {
     const { open, toggle } = useSectionCollapse(id, defaultOpen);
     const panelId = `${id}-panel`;
-    const apiRef = useRef({ open, toggle, panelId, lang });
-    apiRef.current = { open, toggle, panelId, lang };
+    const apiRef = useRef({ open, toggle, panelId, lang, kicker, title, preview });
+    apiRef.current = { open, toggle, panelId, lang, kicker, title, preview };
     const usedId = useRef(false);
     usedId.current = false;
 
-    const Toggle = useCallback(({ children: label }) => {
+    const Fold = useCallback(({ avatar } = {}) => {
         const api = apiRef.current;
         return (
-            <SectionToggle open={api.open} onToggle={api.toggle} panelId={api.panelId} lang={api.lang}>
-                {label}
-            </SectionToggle>
+            <FoldButton
+                open={api.open}
+                onToggle={api.toggle}
+                panelId={api.panelId}
+                lang={api.lang}
+                kicker={api.kicker}
+                title={api.title}
+                preview={api.preview}
+                avatar={avatar}
+            />
         );
     }, []);
 
@@ -107,7 +152,7 @@ const Collapsible = ({ id, lang, defaultOpen = true, children }) => {
         );
     }, []);
 
-    return children({ open, Toggle, Panel, panelId });
+    return children({ open, Fold, Panel, panelId });
 };
 
 export default Collapsible;

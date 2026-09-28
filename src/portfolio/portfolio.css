@@ -97,61 +97,121 @@
 }
 
 /* ---------- Collapsible sections ---------- */
-.pm-section-toggle {
+.pm-fold {
     appearance: none;
-    background: none;
-    border: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px 20px;
+    width: 100%;
     margin: 0;
-    font: inherit;
-    color: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
+    padding: 16px 18px;
     text-align: left;
     cursor: pointer;
-    max-width: 100%;
-    border-radius: 4px;
+    color: inherit;
+    font: inherit;
+    background: var(--card-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
     position: relative;
-    display: inline-flex;
-    align-items: flex-end;
-    gap: 0.32em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.pm-section-toggle-label {
-    min-width: 0;
+.pm-fold:hover {
+    border-color: var(--hairline-strong);
+    box-shadow: 0 10px 28px rgba(11, 14, 20, 0.06);
 }
 
-.pm-section-toggle-icon {
-    display: block;
-    width: clamp(16px, 0.5em, 32px);
-    height: clamp(16px, 0.5em, 32px);
-    color: var(--blue);
-    flex: none;
-    pointer-events: none;
-    transition: transform 0.28s ease;
-    transform-origin: 50% 50%;
-    margin-bottom: 0.08em;
-}
-
-.pm-section-toggle.is-open .pm-section-toggle-icon {
-    transform: rotate(180deg);
-}
-
-.pm-section-toggle:hover .pm-section-toggle-icon,
-.pm-section-toggle:focus-visible .pm-section-toggle-icon {
-    color: var(--blue-deep);
-}
-
-.pm-section-toggle:focus {
+.pm-fold:focus {
     outline: none;
 }
 
-.pm-section-toggle:focus-visible {
+.pm-fold:focus-visible {
     outline: 2px solid var(--blue);
-    outline-offset: 6px;
+    outline-offset: 3px;
 }
 
-.pm-section-toggle-hint {
+.pm-fold-avatar {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex: none;
+    border: 1px solid var(--hairline);
+}
+
+.pm-fold-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+}
+
+.pm-fold-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+}
+
+.pm-fold-title {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.08rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--ink);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pm-fold-preview {
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: var(--slate);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pm-fold-action {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline-strong);
+    background: var(--paper);
+    color: var(--blue);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.pm-fold:hover .pm-fold-action {
+    border-color: var(--blue);
+    background: var(--paper-2);
+}
+
+.pm-fold-chevron {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    pointer-events: none;
+    transition: transform 0.28s ease;
+}
+
+.pm-fold.is-open .pm-fold-chevron {
+    transform: rotate(180deg);
+}
+
+.pm-fold-hint {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -161,6 +221,36 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* Expanded: slim eyebrow-row control, original headings do the reading. */
+.pm-fold.is-open {
+    padding: 0 0 18px;
+    margin-bottom: 8px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--hairline);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.pm-fold.is-open:hover {
+    box-shadow: none;
+    border-bottom-color: var(--hairline-strong);
+}
+
+.pm-fold.is-open .pm-fold-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pm-fold.is-open .pm-fold-kicker::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
+    display: inline-block;
 }
 
 .pm-section-panel {
@@ -183,52 +273,35 @@
 }
 
 .pm-section.is-collapsed {
-    padding-top: clamp(28px, 4vw, 56px);
-    padding-bottom: clamp(28px, 4vw, 56px);
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-top: 0;
 }
 
-.pm-section.is-collapsed h2,
-.pm-section.is-collapsed .pm-track-head,
-.pm-section.is-collapsed .pm-bento-head,
-.pm-section.is-collapsed .pm-skills-head,
-.pm-section.is-collapsed .pm-reviews-head,
-.pm-section.is-collapsed .pm-posts-head,
-.pm-section.is-collapsed .pm-hero h1 {
-    margin-bottom: 0;
-}
-
-.pm-skills.is-collapsed .pm-skills-head {
-    grid-template-columns: 1fr;
-}
-
-.pm-card-section.is-collapsed .pm-card {
-    padding-top: clamp(22px, 3vw, 36px);
-    padding-bottom: clamp(22px, 3vw, 36px);
-}
-
-.pm-hero.is-collapsed .pm-hero-grid {
-    grid-template-columns: 1fr;
-}
-
-.pm-hero.is-collapsed .pm-hero-photo-col {
+.pm-section.is-collapsed .pm-fold-reading-head {
     display: none;
 }
 
-.pm-hero .pm-section-toggle {
-    display: inline;
-    align-items: unset;
-    gap: 0;
+.pm-hero.is-collapsed {
+    padding-top: 140px;
+    padding-bottom: 14px;
 }
 
-.pm-hero .pm-section-toggle-label {
-    display: inline;
+.pm-hero.is-collapsed .pm-hero-backdrop {
+    display: none;
 }
 
-.pm-hero .pm-section-toggle-icon {
-    display: inline-block;
-    margin-left: 0.28em;
-    margin-bottom: 0;
-    vertical-align: 0.12em;
+@media (max-width: 560px) {
+    .pm-fold {
+        flex-wrap: wrap;
+        padding: 14px 14px;
+    }
+    .pm-fold-action {
+        margin-left: auto;
+    }
+    .pm-fold--portrait .pm-fold-copy {
+        flex: 1 1 calc(100% - 80px);
+    }
 }
 
 /* ---------- Card-panel section (opt-in, mirrors Silvia's "About Me" box) ---------- */
@@ -485,6 +558,16 @@
     border-top: 0;
     position: relative;
     overflow: hidden;
+}
+
+.pm-hero.is-collapsed {
+    padding-top: 140px;
+    padding-bottom: 14px;
+}
+
+.pm-hero > .pm-fold {
+    position: relative;
+    z-index: 2;
 }
 
 .pm-hero-backdrop {
@@ -3148,13 +3231,13 @@
     .pm-section-panel-inner {
         overflow: visible !important;
     }
-    .pm-section-toggle {
-        pointer-events: none;
+    .pm-fold {
+        display: none !important;
     }
-    .pm-section-toggle-icon {
-        display: none;
+    .pm-section.is-collapsed .pm-fold-reading-head {
+        display: block;
     }
-    .pm-hero.is-collapsed .pm-hero-photo-col {
+    .pm-hero.is-collapsed .pm-hero-backdrop {
         display: block;
     }
     .portfolio-mode {
@@ -3190,6 +3273,11 @@
        that it never sits under the nav regardless of wrap state. */
     .pm-hero {
         padding-top: 190px;
+    }
+
+    .pm-hero.is-collapsed {
+        padding-top: 190px;
+        padding-bottom: 14px;
     }
 }
 
@@ -3258,7 +3346,7 @@
 /* Respect reduced-motion: neutralize all custom motion. */
 @media (prefers-reduced-motion: reduce) {
     .pm-section-panel,
-    .pm-section-toggle-icon {
+    .pm-fold-chevron {
         transition: none;
     }
 
