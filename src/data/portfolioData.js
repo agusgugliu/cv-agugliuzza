@@ -1,13 +1,14 @@
 // Portfolio mode content — editorial narrative, distinct from cvData.js
 // Words wrapped in {italic} render in Instrument Serif italic + blue accent.
 
-const CUST = (file) => `/assets/customer_logos/${file}`;
+const webp = (file) => file.replace(/\.png$/i, '.webp');
+const CUST = (file) => `/assets/customer_logos/${webp(file)}`;
 const CUST_PAIR = (slug) => ({
     logo: CUST(`${slug}_logo_blue.png`),
     logoDark: CUST(`${slug}_logo_white.png`)
 });
 
-const MBA = (file) => `/assets/mba_logos/${file}`;
+const MBA = (file) => `/assets/mba_logos/${webp(file)}`;
 const MBA_PAIR = (slug) => ({
     logo: MBA(`${slug}_logo_blue.png`),
     logoDark: MBA(`${slug}_logo_white.png`)
@@ -394,7 +395,7 @@ const ITBA_TRANSCRIPT_ES = {
     ]
 };
 
-const EXP_LOGO = (file) => `/assets/experience_logos/${file}`;
+const EXP_LOGO = (file) => `/assets/experience_logos/${webp(file)}`;
 
 const LOGOS_WORKED = [
     { name: 'IE Business School', domain: 'ie.edu', logo: EXP_LOGO('iebusinessschool_logo.png'), info: INFO.ie_business_school },

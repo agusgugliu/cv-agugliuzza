@@ -2,7 +2,7 @@
 // admin page at /admin/blog. No CMS, no static markdown files at build
 // time — just a fetch at runtime.
 
-import { supabase, BLOG_TABLE } from '../lib/supabaseClient';
+const loadBlogClient = () => import('../lib/supabaseClient');
 
 // No dedicated cover-image field: reuse the first inline image the author
 // dropped into the markdown body (via the admin's "Insert image" button).
@@ -26,6 +26,7 @@ const mapRow = (row) => ({
 });
 
 export const fetchPosts = async () => {
+    const { supabase, BLOG_TABLE } = await loadBlogClient();
     const { data, error } = await supabase
         .from(BLOG_TABLE)
         .select('*')
@@ -39,6 +40,7 @@ export const fetchPosts = async () => {
 };
 
 export const fetchLatestPosts = async (limit = 3) => {
+    const { supabase, BLOG_TABLE } = await loadBlogClient();
     const { data, error } = await supabase
         .from(BLOG_TABLE)
         .select('*')
@@ -53,6 +55,7 @@ export const fetchLatestPosts = async (limit = 3) => {
 };
 
 export const fetchPostBySlug = async (slug) => {
+    const { supabase, BLOG_TABLE } = await loadBlogClient();
     const { data, error } = await supabase
         .from(BLOG_TABLE)
         .select('*')

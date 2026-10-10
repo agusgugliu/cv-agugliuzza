@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
-
 /* CV mode — aligned to the portfolio brand (ink / electric blue / editorial).
    Variable NAMES are kept stable so inline styles in CVMode.jsx keep working;
    only their values move to brand tokens. No glassmorphism, no blobs. */
@@ -63,7 +61,7 @@ body {
 .cv-project-title,
 .cv-project-desc,
 .cv-role li,
-main h3 {
+.app-container main h3 {
     overflow-wrap: break-word;
     word-break: break-word;
 }
@@ -287,7 +285,7 @@ h1 {
 .contact-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.66rem;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -431,7 +429,7 @@ h1 {
 .cv-addl-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--accent);

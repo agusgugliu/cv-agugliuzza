@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
 import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
@@ -29,7 +29,6 @@ const APP_ICONS = {
 };
 
 const SOCIAL_ICONS = { twitter: Twitter, github: Github, linkedin: Linkedin };
-import confetti from 'canvas-confetti';
 import { portfolioEN, portfolioES } from '../data/portfolioData';
 import HeroBackdrop from './HeroBackdrop';
 import Magnetic from './Magnetic';
@@ -38,7 +37,7 @@ import ProjectsBento from './ProjectsBento';
 import ReviewsSection from './ReviewsSection';
 import LatestPosts from './LatestPosts';
 import FloatingWhatsApp from './FloatingWhatsApp';
-import CommandPalette from './CommandPalette';
+const CommandPalette = lazy(() => import('./CommandPalette'));
 import Collapsible, { expandSection, plainHeading } from './Collapsible';
 import './portfolio.css';
 
@@ -57,6 +56,13 @@ const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
         );
     }
     const onErr = () => setStage(stage === 'local' && domain ? 'clearbit' : 'chip');
+    const box = size === 'sm' ? 32 : size === 'lg' ? 72 : 56;
+    const imgProps = {
+        width: box,
+        height: box,
+        loading: 'lazy',
+        decoding: 'async'
+    };
     if (stage === 'local') {
         // If we have explicit theme + srcDark, render an <img> that swaps with it.
         // Otherwise fall back to <picture> using prefers-color-scheme.
@@ -68,7 +74,7 @@ const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
                     src={url}
                     alt={name}
                     title={name}
-                    loading="lazy"
+                    {...imgProps}
                     onError={onErr}
                 />
             );
@@ -82,7 +88,7 @@ const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
                         src={src}
                         alt={name}
                         title={name}
-                        loading="lazy"
+                        {...imgProps}
                         onError={onErr}
                     />
                 </picture>
@@ -96,7 +102,7 @@ const Logo = ({ src, srcDark, theme, domain, name, size = 'md' }) => {
             src={url}
             alt={name}
             title={name}
-            loading="lazy"
+            {...imgProps}
             onError={onErr}
         />
     );
@@ -506,7 +512,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
 
     const downloadPDF = () => {
         window.print();
-        confetti({ particleCount: 120, spread: 70, origin: { y: 0.85 } });
+        import('canvas-confetti').then(({ default: confetti }) => {
+            confetti({ particleCount: 120, spread: 70, origin: { y: 0.85 } });
+        });
     };
 
     const scrollToId = (id) => {
@@ -528,7 +536,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         <div className="portfolio-mode">
           <MotionConfig reducedMotion="user">
             <FloatingWhatsApp lang={lang} />
-            <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
+            <Suspense fallback={null}>
+                <CommandPalette open={cmdOpen} setOpen={setCmdOpen} actions={cmdActions} lang={lang} />
+            </Suspense>
             <AnimatePresence>
                 {toast && (
                     <motion.div
@@ -546,7 +556,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             <nav className={`pm-nav ${navCompact ? 'pm-nav--compact' : ''}`}>
                 <div className="pm-nav-inner">
                     <a className="pm-brand" href="#top" onClick={smoothScrollTo('top')}>
-                        <img className="pm-brand-avatar" src="/assets/photo.PNG" alt="Agustín Gugliuzza" />
+                        <img className="pm-brand-avatar" src="/assets/photo.webp" alt="Agustín Gugliuzza" width="24" height="24" />
                         <span className="pm-brand-name">Agust&iacute;n Gugliuzza<span className="pm-brand-dot">.</span></span>
                         <span className="pm-brand-flags" aria-label="Argentina, Mexico, Italy" title="Argentina · México · Italia">🇦🇷🇲🇽🇮🇹</span>
                     </a>
@@ -617,8 +627,8 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
-                        <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer">
-                            <Calendar size={14} /> <span>{data.hero.cta}</span>
+                        <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer" aria-label={data.hero.cta}>
+                            <Calendar className="pm-nav-cta-icon" size={14} aria-hidden="true" /> <span>{data.hero.cta}</span>
                         </a>
                         <button className="pm-mode-pill" onClick={onSwitchToCV}>
                             {data.nav.cv}
@@ -628,6 +638,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
             </nav>
 
             <div className="pm-shell" id="top">
+            <main>
                 {/* Hero — always open; the statement is the page idea, not a section. */}
                 <section className="pm-section pm-hero">
                     <HeroBackdrop theme={theme} />
@@ -639,13 +650,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <div className="pm-hero-photo">
-                            <motion.img
-                                src="/assets/photo.PNG"
-                                alt="Agustín Gugliuzza"
+                            <motion.div
                                 initial={{ scale: 1.06 }}
                                 animate={{ scale: 1 }}
                                 transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                            />
+                            >
+                                <img
+                                    src="/assets/photo.webp"
+                                    alt="Agustín Gugliuzza"
+                                    width="800"
+                                    height="800"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                />
+                            </motion.div>
                             <motion.span
                                 className="pm-hero-badge"
                                 initial={{ opacity: 0, y: 8 }}
@@ -759,7 +777,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 transition={{ duration: 0.4, delay: i * 0.05 }}
                             >
                                 <div className="pm-ai-step-num">{s.num}</div>
-                                <h5>{s.title}</h5>
+                                <h3>{s.title}</h3>
                                 <p>{s.body}</p>
                                 <div className="pm-ai-tools">{s.tools}</div>
                             </motion.div>
@@ -1053,7 +1071,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                     <div className="pm-credential-card">
                                         <div className="pm-credential-brand">
                                             {c.credential.logo
-                                                ? <img className="pm-credential-brand-logo" src={c.credential.logo} alt="" />
+                                                ? <img className="pm-credential-brand-logo" src={c.credential.logo} alt="" width="76" height="68" loading="lazy" decoding="async" />
                                                 : <span className="pm-credential-monogram">{c.credential.monogram}</span>}
                                             <span className="pm-credential-kicker">{c.credential.kicker}</span>
                                         </div>
@@ -1100,6 +1118,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                                             src={c.credential.documentUrl}
                                                             alt={`${c.role} ${c.credential.documentLabel}`}
                                                             loading="lazy"
+                                                            decoding="async"
                                                         />
                                                         {c.credential.verifyUrl !== c.credential.documentUrl && c.credential.verifyUrl && (
                                                             <a className="pm-credential-link" href={c.credential.verifyUrl} target="_blank" rel="noreferrer">
@@ -1434,7 +1453,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 transition={{ duration: 0.5, delay: i * 0.06 }}
                             >
                                 <div className="pm-principle-num">{p.num}</div>
-                                <h4>{p.title}</h4>
+                                <h3>{p.title}</h3>
                                 <p>{p.body}</p>
                             </motion.div>
                         ))}
@@ -1478,7 +1497,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         ))}
                     </div>
                     <div className="pm-contact-qr">
-                        <img src="/assets/qr-portfolio.svg" alt="QR to agustin-gugliuzza.com" />
+                        <img src="/assets/qr-portfolio.svg" alt="QR to agustin-gugliuzza.com" width="112" height="112" loading="lazy" decoding="async" />
                         <span className="pm-contact-qr-label">
                             {lang === 'es' ? 'Escaneá para conectar' : 'Scan to connect'}
                         </span>
@@ -1488,6 +1507,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </section>
                     )}
                 </Collapsible>
+            </main>
 
                 <footer className="pm-footer">
                     <div className="pm-footer-signature">

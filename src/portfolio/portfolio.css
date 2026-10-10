@@ -3,8 +3,6 @@
    Editorial light theme, scoped to .portfolio-mode
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
-
 .portfolio-mode {
     /* Brand tokens (light mode default; overridden under [data-theme="dark"]) */
     --ink: #0B0E14;
@@ -78,7 +76,7 @@
 
 .pm-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -150,7 +148,7 @@
 
 .pm-fold-kicker {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -190,7 +188,7 @@
     background: var(--paper);
     color: var(--blue);
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 500;
@@ -434,7 +432,7 @@
     display: flex;
     gap: 18px;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -488,7 +486,7 @@
     justify-content: center;
     gap: 10px 12px;
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -611,7 +609,7 @@
     border-radius: 999px;
     padding: 6px 14px;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
 }
 
@@ -873,7 +871,7 @@
     gap: 14px 22px;
     margin: -28px 0 28px;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -1043,7 +1041,7 @@
 .pm-lane-seg-date {
     position: absolute;
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.03em;
     white-space: nowrap;
@@ -1074,7 +1072,7 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
@@ -1210,7 +1208,7 @@
 }
 
 .pm-case--marker-only .pm-case-rail-from {
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     color: #9A6518;
     font-weight: 500;
 }
@@ -1255,7 +1253,7 @@
 }
 
 .pm-case--compact .pm-case-meta .role {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
 }
 
 .pm-case--nested .pm-case-marker {
@@ -1337,7 +1335,7 @@
 
 .pm-case-period-label {
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -1390,7 +1388,7 @@
 .pm-case-period-loc {
     grid-column: 1 / -1;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     color: var(--slate-2);
 }
@@ -1404,7 +1402,7 @@
 
 .pm-case-period-event {
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #9A6518;
@@ -1436,7 +1434,7 @@
 
 .pm-case-rail-from,
 .pm-case-rail-until {
-    font-size: 0.66rem;
+    font-size: 0.75rem;
     letter-spacing: 0.01em;
     color: var(--ink);
     font-weight: 600;
@@ -1487,14 +1485,14 @@
 }
 
 .pm-case-rail-mid-date {
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.01em;
     white-space: nowrap;
 }
 
 .pm-case-rail-mid-label {
-    font-size: 0.48rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     opacity: 0.75;
@@ -1551,7 +1549,7 @@
 }
 
 .pm-case-rail-event {
-    font-size: 0.55rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #9A6518;
@@ -1559,7 +1557,7 @@
 }
 
 .pm-case-rail-dates.is-point .pm-case-rail-from {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
 }
 
 .pm-case-rail-date {
@@ -1588,7 +1586,7 @@
 
 .pm-case-meta .stat-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1627,7 +1625,7 @@
 
 .pm-case-tag {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -1705,7 +1703,7 @@
     gap: 4px;
     margin-top: 4px;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     color: var(--slate-2);
     text-decoration: none;
@@ -1726,7 +1724,7 @@
 
 .pm-logos-group-label {
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -1738,7 +1736,7 @@
     gap: 28px;
     margin: 8px 0 36px;
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -1774,20 +1772,25 @@
 }
 
 .pm-track-legend-toggle:not(.is-active) {
-    opacity: 0.58;
+    color: #69707e;
+}
+
+:root[data-theme="dark"] .pm-track-legend-toggle:not(.is-active) {
+    color: var(--slate-2);
 }
 
 .pm-track-legend-toggle:not(.is-active) .pm-track-legend-icon--credential {
     background: transparent;
     color: #B7791F;
     box-shadow: inset 0 0 0 1px #B7791F;
+    opacity: 0.58;
 }
 
 .pm-track-legend-action {
     padding: 4px 7px;
     border: 1px solid var(--hairline-strong);
     border-radius: 999px;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     line-height: 1;
 }
@@ -1988,7 +1991,7 @@
 .pm-credential-kicker,
 .pm-credential-metric-label {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -2029,7 +2032,7 @@
     gap: 2px;
     color: var(--slate-2);
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -2057,7 +2060,7 @@
     color: #9A6518;
     cursor: pointer;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 180ms ease, background 180ms ease;
@@ -2121,7 +2124,7 @@
     border-top: 1px solid var(--hairline);
     color: #9A6518;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
@@ -2168,9 +2171,9 @@
     .pm-case-marker svg { width: 13px; height: 13px; }
     .pm-case--nested .pm-case-marker { width: 20px; height: 20px; }
     .pm-case-rail-from,
-    .pm-case-rail-until { font-size: 0.56rem; }
+    .pm-case-rail-until { font-size: 0.75rem; }
     .pm-case-rail-span { height: 14px; margin-right: 6px; }
-    .pm-case-rail-event { font-size: 0.46rem; }
+    .pm-case-rail-event { font-size: 0.75rem; }
     .pm-case-period--range { max-width: 100%; }
     .pm-credential-card { grid-template-columns: minmax(150px, 0.8fr) 1fr; }
     .pm-credential-result { border-right: 0; }
@@ -2278,7 +2281,7 @@
 
 .pm-clients-label {
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -2383,7 +2386,7 @@
     flex-wrap: wrap;
     gap: 8px 10px;
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     color: var(--slate);
     margin-bottom: 10px;
@@ -2417,7 +2420,7 @@
 .pm-info-work-label {
     display: block;
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.64rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent, var(--slate));
@@ -2472,7 +2475,7 @@
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -2509,7 +2512,7 @@
 
 .pm-skill-group-num {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: var(--blue);
 }
 
@@ -2540,7 +2543,7 @@
 .pm-skill-label span:last-child {
     flex: none;
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -2573,7 +2576,7 @@
     border-radius: 99px;
     color: var(--slate-2);
     font-family: var(--font-mono);
-    font-size: 0.59rem;
+    font-size: 0.75rem;
     letter-spacing: 0.03em;
 }
 
@@ -2581,7 +2584,7 @@
     margin: 20px 0 0;
     color: var(--slate-2);
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     line-height: 1.55;
 }
 
@@ -2630,7 +2633,7 @@
 
 .pm-brand-flags {
     margin-left: 7px;
-    font-size: 0.92em;
+    font-size: 1em;
     letter-spacing: 1.5px;
     line-height: 1;
     white-space: nowrap;
@@ -2685,7 +2688,7 @@
 
 .pm-transcript-gpa {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
 }
 
@@ -2698,7 +2701,7 @@
 
 .pm-transcript-stats {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     letter-spacing: 0.02em;
 }
@@ -2732,7 +2735,7 @@
 
 .pm-transcript-term-gpa {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
 }
 
@@ -2755,7 +2758,7 @@
 .pm-band {
     flex: none;
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -2848,7 +2851,7 @@
 
 .pm-app-host {
     font-family: var(--font-mono, var(--font-body));
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     letter-spacing: 0.02em;
     opacity: 0.7;
@@ -2895,7 +2898,7 @@
     margin-bottom: 12px;
 }
 
-.pm-principle h4 {
+.pm-principle h3 {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
@@ -2978,13 +2981,13 @@
 
 .pm-ai-step-num {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     color: var(--blue);
     margin-bottom: 10px;
 }
 
-.pm-ai-step h5 {
+.pm-ai-step h3 {
     font-family: var(--font-body);
     font-weight: 500;
     font-size: 1.1rem;
@@ -3002,7 +3005,7 @@
 
 .pm-ai-step .pm-ai-tools {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     letter-spacing: 0.04em;
 }
@@ -3061,7 +3064,7 @@
 
 .pm-contact-link .label {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -3078,7 +3081,7 @@
 
 .pm-contact-link .action {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -3118,7 +3121,7 @@
 
 .pm-footer-meta {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate-2);
@@ -3127,7 +3130,7 @@
 
 .pm-footer-credit {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     color: var(--slate-2);
     opacity: 0.7;
@@ -3166,7 +3169,7 @@
 
 .pm-footer-top {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink);
@@ -3296,7 +3299,7 @@
 
     .pm-nav-actions {
         gap: 12px;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -3436,7 +3439,7 @@
 
 .pm-bento-org {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
 }
 
@@ -3458,7 +3461,7 @@
 .pm-bento-ai-label {
     flex: none;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: var(--blue);
@@ -3475,7 +3478,7 @@
 }
 
 .pm-bento-tag {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     border: 1px solid var(--hairline);
     border-radius: 999px;
@@ -3541,7 +3544,7 @@
 
 .pm-contact-qr-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     color: var(--slate-2);
     text-transform: uppercase;
@@ -3564,7 +3567,7 @@
 
 .pm-cmdk-chip-key {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.02em;
 }
 
@@ -3632,7 +3635,7 @@
 
 .pm-cmdk-hint {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
 }
 
@@ -3745,14 +3748,23 @@
     }
 }
 
+.pm-nav-cta-icon {
+    display: block;
+    flex: none;
+}
+
 @media (max-width: 600px) {
     /* Icon-only Book-a-call on mobile to save horizontal space */
     .pm-nav-cta span {
         display: none;
     }
 
+    .pm-nav-cta-icon {
+        display: block;
+    }
+
     .pm-nav-cta {
-        font-size: 0.74rem;
+        font-size: 0.75rem;
         gap: 0;
         padding: 0;
         width: 34px;
@@ -3761,7 +3773,7 @@
 
     .pm-mode-pill {
         padding: 0 12px;
-        font-size: 0.72rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -3824,7 +3836,7 @@
 
 .pm-post-date {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     color: var(--slate);
 }
@@ -3911,7 +3923,7 @@
 
 .pm-review-rel {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     color: var(--slate-2);
     margin-top: 4px;
@@ -4122,7 +4134,7 @@ button.pm-rev-star {
 
 .pm-admin-tab {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     padding: 7px 13px;
@@ -4160,13 +4172,13 @@ button.pm-rev-star {
 
 .pm-admin-date {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
 }
 
 .pm-admin-email {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--slate-2);
     margin-top: 4px;
 }

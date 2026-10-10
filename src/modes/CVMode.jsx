@@ -7,7 +7,6 @@ import {
     Copy, Calendar, Users, Flag,
     User, Award, ArrowLeft
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { dataEN, dataES } from '../data/cvData';
 import '../style.css';
 
@@ -59,7 +58,9 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
 
     const downloadPDF = () => {
         window.print();
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
+        import('canvas-confetti').then(({ default: confetti }) => {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
+        });
     };
 
     return (

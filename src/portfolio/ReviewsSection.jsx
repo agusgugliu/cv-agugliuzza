@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, X } from 'lucide-react';
-import { supabase, REVIEWS_TABLE } from '../lib/supabaseClient';
+const loadReviewsClient = () => import('../lib/supabaseClient');
 import { reviewsCopy } from '../data/reviewsData';
 import Collapsible, { plainHeading } from './Collapsible';
 
@@ -70,6 +70,7 @@ const ReviewsSection = ({ lang }) => {
     useEffect(() => {
         let alive = true;
         (async () => {
+            const { supabase, REVIEWS_TABLE } = await loadReviewsClient();
             const { data, error } = await supabase
                 .from(REVIEWS_TABLE)
                 .select('id, name, role, company, relationship, rating, body, created_at')
@@ -95,6 +96,7 @@ const ReviewsSection = ({ lang }) => {
             return;
         }
         setState('submitting');
+        const { supabase, REVIEWS_TABLE } = await loadReviewsClient();
         const { error } = await supabase.from(REVIEWS_TABLE).insert({
             name: form.name.trim().slice(0, 120),
             role: form.role.trim().slice(0, 160) || null,
