@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
-import BlogList from './blog/BlogList';
-import BlogPost from './blog/BlogPost';
-import AdminBlog from './portfolio/AdminBlog';
+
+const BlogList = lazy(() => import('./blog/BlogList'));
+const BlogPost = lazy(() => import('./blog/BlogPost'));
+const AdminBlog = lazy(() => import('./portfolio/AdminBlog'));
+
+const RouteFallback = () => (
+    <div role="status" aria-label="Loading" style={{ minHeight: '100vh', background: '#F4F5F7' }} />
+);
 
 const getInitialState = () => {
     if (typeof window === 'undefined') return { mode: 'portfolio', lang: 'en', theme: 'light' };
@@ -79,12 +84,14 @@ const App = () => {
     const blogProps = { lang, setLang, theme, toggleTheme };
 
     return (
-        <Routes>
-            <Route path="/blog" element={<BlogList {...blogProps} />} />
-            <Route path="/blog/:slug" element={<BlogPost {...blogProps} />} />
-            <Route path="/admin/blog" element={<AdminBlog />} />
-            <Route path="*" element={<Home />} />
-        </Routes>
+        <Suspense fallback={<RouteFallback />}>
+            <Routes>
+                <Route path="/blog" element={<BlogList {...blogProps} />} />
+                <Route path="/blog/:slug" element={<BlogPost {...blogProps} />} />
+                <Route path="/admin/blog" element={<AdminBlog />} />
+                <Route path="*" element={<Home />} />
+            </Routes>
+        </Suspense>
     );
 };
 
