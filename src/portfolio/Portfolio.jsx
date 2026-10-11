@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles, MoreHorizontal } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
 const gradeTier = (band) => {
@@ -348,12 +348,29 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     }, []);
 
     const [navCompact, setNavCompact] = useState(false);
+    const [utilsOpen, setUtilsOpen] = useState(false);
+    const utilsMenuRef = useRef(null);
     useEffect(() => {
         const onScroll = () => setNavCompact(window.scrollY > 40);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+    useEffect(() => {
+        if (!utilsOpen) return undefined;
+        const onPointer = (event) => {
+            if (utilsMenuRef.current && !utilsMenuRef.current.contains(event.target)) setUtilsOpen(false);
+        };
+        const onKey = (event) => {
+            if (event.key === 'Escape') setUtilsOpen(false);
+        };
+        document.addEventListener('pointerdown', onPointer);
+        document.addEventListener('keydown', onKey);
+        return () => {
+            document.removeEventListener('pointerdown', onPointer);
+            document.removeEventListener('keydown', onKey);
+        };
+    }, [utilsOpen]);
 
     const trackRef = useRef(null);
     const [laneSegments, setLaneSegments] = useState([]);
@@ -526,9 +543,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         { id: 'call', label: lang === 'es' ? 'Agendar llamada' : 'Book a call', hint: 'Reclaim', run: () => window.open(RECLAIM_URL, '_blank') },
         { id: 'lang', label: lang === 'es' ? 'Cambiar idioma' : 'Switch language', hint: lang === 'es' ? 'EN' : 'ES', run: () => setLang(lang === 'en' ? 'es' : 'en') },
         { id: 'theme', label: lang === 'es' ? 'Cambiar tema' : 'Toggle theme', hint: theme === 'dark' ? 'Light' : 'Dark', run: toggleTheme },
+        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
         { id: 'projects', label: lang === 'es' ? 'Ir a Proyectos' : 'Go to Projects', run: () => scrollToId('projects') },
         { id: 'ai', label: lang === 'es' ? 'Ir a IA' : 'Go to AI', run: () => scrollToId('ai') },
-        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
         { id: 'contact', label: lang === 'es' ? 'Ir a Contacto' : 'Go to Contact', run: () => scrollToId('contact') }
     ];
 
@@ -564,11 +581,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-links">
-                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
-                            {data.nav.projects}
-                        </a>
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
                             {data.nav.work}
+                        </a>
+                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
+                            {data.nav.projects}
                         </a>
                         <a className="pm-nav-link" href="#skills" onClick={smoothScrollTo('skills')}>
                             {data.nav.skills}
@@ -593,7 +610,53 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-actions">
-                        <div className="pm-lang-toggle">
+                        <div className="pm-nav-utils-menu" ref={utilsMenuRef}>
+                            <button
+                                type="button"
+                                className="pm-nav-btn pm-nav-icon"
+                                aria-expanded={utilsOpen}
+                                aria-haspopup="true"
+                                aria-label={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}
+                                title={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}
+                                onClick={() => setUtilsOpen((open) => !open)}
+                            >
+                                <MoreHorizontal size={15} />
+                            </button>
+                            {utilsOpen && (
+                                <div className="pm-nav-utils-panel" role="group" aria-label={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}>
+                                    <div className="pm-lang-toggle">
+                                        <button
+                                            className={`pm-nav-btn ${lang === 'en' ? 'active' : ''}`}
+                                            onClick={() => setLang('en')}
+                                        >
+                                            EN
+                                        </button>
+                                        <span className="sep">/</span>
+                                        <button
+                                            className={`pm-nav-btn ${lang === 'es' ? 'active' : ''}`}
+                                            onClick={() => setLang('es')}
+                                        >
+                                            ES
+                                        </button>
+                                    </div>
+                                    <button
+                                        className="pm-nav-btn pm-nav-icon"
+                                        onClick={toggleTheme}
+                                        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                        aria-label="Toggle theme"
+                                    >
+                                        {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                                    </button>
+                                    <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
+                                        <Download size={15} />
+                                    </button>
+                                    <button className="pm-mode-pill" onClick={onSwitchToCV}>
+                                        {data.nav.cv}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                        <div className="pm-lang-toggle pm-nav-util">
                             <button
                                 className={`pm-nav-btn ${lang === 'en' ? 'active' : ''}`}
                                 onClick={() => setLang('en')}
@@ -617,20 +680,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             <span className="pm-cmdk-chip-key">&#8984;K</span>
                         </button>
                         <button
-                            className="pm-nav-btn pm-nav-icon"
+                            className="pm-nav-btn pm-nav-icon pm-nav-util"
                             onClick={toggleTheme}
                             title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                             aria-label="Toggle theme"
                         >
                             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                         </button>
-                        <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
+                        <button className="pm-nav-btn pm-nav-icon pm-nav-download pm-nav-util" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
                         <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer" aria-label={data.hero.cta}>
                             <Calendar className="pm-nav-cta-icon" size={14} aria-hidden="true" /> <span>{data.hero.cta}</span>
                         </a>
-                        <button className="pm-mode-pill" onClick={onSwitchToCV}>
+                        <button className="pm-mode-pill pm-nav-util" onClick={onSwitchToCV}>
                             {data.nav.cv}
                         </button>
                     </div>
@@ -705,6 +768,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             className="pm-hero-meta"
                             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
                         >
+                            {data.hero.credential && (
+                                <span className="pm-hero-credential">{data.hero.credential}</span>
+                            )}
                             {data.hero.meta.map((m, i) => (
                                 <span key={i}>
                                     {i > 0 && <span className="dot"></span>}
@@ -739,89 +805,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </motion.div>
                     </div>
                 </section>
-
-                {/* Selected Projects */}
-                <ProjectsBento data={data.projects} lang={lang} />
-
-                {/* AI end-to-end (elevated) */}
-                <Collapsible
-                    id="ai"
-                    lang={lang}
-                    kicker={data.ai.eyebrow}
-                    title={plainHeading(data.ai.heading)}
-                    preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
-                >
-                    {({ open, Fold, Panel }) => (
-                <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
-                    <div className={open ? 'pm-card' : undefined}>
-                    <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
-                    <Panel>
-                    <p className="pm-ai-lead">{data.ai.lead}</p>
-                    <div className="pm-ai-flow">
-                        {data.ai.flow.map((f, i) => (
-                            <React.Fragment key={i}>
-                                <span>{f}</span>
-                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <div className="pm-ai-stack">
-                        {data.ai.steps.map((s, i) => (
-                            <motion.div
-                                key={i}
-                                className="pm-ai-step"
-                                initial={{ opacity: 0, y: 18 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-40px' }}
-                                transition={{ duration: 0.4, delay: i * 0.05 }}
-                            >
-                                <div className="pm-ai-step-num">{s.num}</div>
-                                <h3>{s.title}</h3>
-                                <p>{s.body}</p>
-                                <div className="pm-ai-tools">{s.tools}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                    </Panel>
-                    </div>
-                </section>
-                    )}
-                </Collapsible>
-
-                {/* Problems */}
-                <Collapsible
-                    id="problems"
-                    lang={lang}
-                    kicker={data.problems.eyebrow}
-                    title={plainHeading(data.problems.heading)}
-                    preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
-                >
-                    {({ open, Fold, Panel }) => (
-                <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
-                    <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
-                    <Panel>
-                    <div className="pm-problem-grid">
-                        {data.problems.items.map((p, i) => (
-                            <motion.div
-                                key={i}
-                                className="pm-problem"
-                                initial={{ opacity: 0, x: -16, y: 12 }}
-                                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                                viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <div className="pm-problem-num">{p.num}</div>
-                                <div className="pm-problem-title"><Editorial text={p.title} /></div>
-                                <p className="pm-problem-body">{p.body}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                    </Panel>
-                </section>
-                    )}
-                </Collapsible>
 
                 {/* Track record */}
                 <Collapsible
@@ -1247,6 +1230,89 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </div>
                         );
                     })}
+                    </div>
+                    </Panel>
+                </section>
+                    )}
+                </Collapsible>
+
+                {/* Selected Projects */}
+                <ProjectsBento data={data.projects} lang={lang} />
+
+                {/* AI end-to-end (elevated) */}
+                <Collapsible
+                    id="ai"
+                    lang={lang}
+                    kicker={data.ai.eyebrow}
+                    title={plainHeading(data.ai.heading)}
+                    preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
+                >
+                    {({ open, Fold, Panel }) => (
+                <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
+                    <div className={open ? 'pm-card' : undefined}>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
+                    <Panel>
+                    <p className="pm-ai-lead">{data.ai.lead}</p>
+                    <div className="pm-ai-flow">
+                        {data.ai.flow.map((f, i) => (
+                            <React.Fragment key={i}>
+                                <span>{f}</span>
+                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="pm-ai-stack">
+                        {data.ai.steps.map((s, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-ai-step"
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                            >
+                                <div className="pm-ai-step-num">{s.num}</div>
+                                <h3>{s.title}</h3>
+                                <p>{s.body}</p>
+                                <div className="pm-ai-tools">{s.tools}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                    </Panel>
+                    </div>
+                </section>
+                    )}
+                </Collapsible>
+
+                {/* Problems */}
+                <Collapsible
+                    id="problems"
+                    lang={lang}
+                    kicker={data.problems.eyebrow}
+                    title={plainHeading(data.problems.heading)}
+                    preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
+                >
+                    {({ open, Fold, Panel }) => (
+                <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
+                    <Panel>
+                    <div className="pm-problem-grid">
+                        {data.problems.items.map((p, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-problem"
+                                initial={{ opacity: 0, x: -16, y: 12 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="pm-problem-num">{p.num}</div>
+                                <div className="pm-problem-title"><Editorial text={p.title} /></div>
+                                <p className="pm-problem-body">{p.body}</p>
+                            </motion.div>
+                        ))}
                     </div>
                     </Panel>
                 </section>

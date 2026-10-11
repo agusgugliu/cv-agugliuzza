@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agustin-gugliuzza.com/sitemap.xml
