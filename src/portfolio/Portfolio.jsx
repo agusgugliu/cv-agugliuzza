@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles, MoreHorizontal } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
 const gradeTier = (band) => {
@@ -348,12 +348,29 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     }, []);
 
     const [navCompact, setNavCompact] = useState(false);
+    const [utilsOpen, setUtilsOpen] = useState(false);
+    const utilsMenuRef = useRef(null);
     useEffect(() => {
         const onScroll = () => setNavCompact(window.scrollY > 40);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+    useEffect(() => {
+        if (!utilsOpen) return undefined;
+        const onPointer = (event) => {
+            if (utilsMenuRef.current && !utilsMenuRef.current.contains(event.target)) setUtilsOpen(false);
+        };
+        const onKey = (event) => {
+            if (event.key === 'Escape') setUtilsOpen(false);
+        };
+        document.addEventListener('pointerdown', onPointer);
+        document.addEventListener('keydown', onKey);
+        return () => {
+            document.removeEventListener('pointerdown', onPointer);
+            document.removeEventListener('keydown', onKey);
+        };
+    }, [utilsOpen]);
 
     const trackRef = useRef(null);
     const [laneSegments, setLaneSegments] = useState([]);
@@ -593,7 +610,53 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-actions">
-                        <div className="pm-lang-toggle">
+                        <div className="pm-nav-utils-menu" ref={utilsMenuRef}>
+                            <button
+                                type="button"
+                                className="pm-nav-btn pm-nav-icon"
+                                aria-expanded={utilsOpen}
+                                aria-haspopup="true"
+                                aria-label={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}
+                                title={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}
+                                onClick={() => setUtilsOpen((open) => !open)}
+                            >
+                                <MoreHorizontal size={15} />
+                            </button>
+                            {utilsOpen && (
+                                <div className="pm-nav-utils-panel" role="group" aria-label={lang === 'es' ? 'Idioma, tema y CV' : 'Language, theme, and CV'}>
+                                    <div className="pm-lang-toggle">
+                                        <button
+                                            className={`pm-nav-btn ${lang === 'en' ? 'active' : ''}`}
+                                            onClick={() => setLang('en')}
+                                        >
+                                            EN
+                                        </button>
+                                        <span className="sep">/</span>
+                                        <button
+                                            className={`pm-nav-btn ${lang === 'es' ? 'active' : ''}`}
+                                            onClick={() => setLang('es')}
+                                        >
+                                            ES
+                                        </button>
+                                    </div>
+                                    <button
+                                        className="pm-nav-btn pm-nav-icon"
+                                        onClick={toggleTheme}
+                                        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                        aria-label="Toggle theme"
+                                    >
+                                        {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                                    </button>
+                                    <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
+                                        <Download size={15} />
+                                    </button>
+                                    <button className="pm-mode-pill" onClick={onSwitchToCV}>
+                                        {data.nav.cv}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                        <div className="pm-lang-toggle pm-nav-util">
                             <button
                                 className={`pm-nav-btn ${lang === 'en' ? 'active' : ''}`}
                                 onClick={() => setLang('en')}
@@ -617,20 +680,20 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             <span className="pm-cmdk-chip-key">&#8984;K</span>
                         </button>
                         <button
-                            className="pm-nav-btn pm-nav-icon"
+                            className="pm-nav-btn pm-nav-icon pm-nav-util"
                             onClick={toggleTheme}
                             title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                             aria-label="Toggle theme"
                         >
                             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                         </button>
-                        <button className="pm-nav-btn pm-nav-icon pm-nav-download" onClick={downloadPDF} title="Print / PDF">
+                        <button className="pm-nav-btn pm-nav-icon pm-nav-download pm-nav-util" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
                         <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer" aria-label={data.hero.cta}>
                             <Calendar className="pm-nav-cta-icon" size={14} aria-hidden="true" /> <span>{data.hero.cta}</span>
                         </a>
-                        <button className="pm-mode-pill" onClick={onSwitchToCV}>
+                        <button className="pm-mode-pill pm-nav-util" onClick={onSwitchToCV}>
                             {data.nav.cv}
                         </button>
                     </div>
@@ -705,6 +768,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             className="pm-hero-meta"
                             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
                         >
+                            {data.hero.credential && (
+                                <span className="pm-hero-credential">{data.hero.credential}</span>
+                            )}
                             {data.hero.meta.map((m, i) => (
                                 <span key={i}>
                                     {i > 0 && <span className="dot"></span>}

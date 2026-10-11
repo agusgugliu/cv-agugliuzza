@@ -61,11 +61,13 @@ const MSTR_CLIENTS = [
     { name: 'AFIP', domain: 'afip.gob.ar', ...CUST_PAIR('afip'), info: INFO.afip }
 ];
 
+// url is the live demo. Null keeps the card without a link when the demo is down
+// (confirmed HTTP 503 in Chrome on 2026-10-11: Obrex, Kick-Off Central, Terranova, Sanctuary 75).
 const APPS = [
     {
         name: 'Obrex',
         desc: { en: 'Marketplace for construction surplus: snap a photo of leftover material and the platform builds the listing.', es: 'Marketplace de surplus de construcción: sacás una foto del sobrante y la plataforma genera el listing.' },
-        url: 'https://obrex-web-zeta.vercel.app',
+        url: null,
         initial: 'O',
         color: '#1652F0'
     },
@@ -79,14 +81,14 @@ const APPS = [
     {
         name: 'Kick-Off Central',
         desc: { en: 'Sports hub delivering AI-driven match predictions and performance analysis across leagues.', es: 'Hub deportivo con predicciones de partidos y análisis de rendimiento impulsados por IA.' },
-        url: 'https://agusgugliu-soccer-hub.vercel.app',
+        url: null,
         initial: 'K',
         color: '#0A2EAA'
     },
     {
         name: 'Terranova',
         desc: { en: 'AI travel planner that builds complete itineraries: routes, destinations, landmarks, and local guides.', es: 'Planificador de viajes con IA que arma itinerarios completos: rutas, destinos, puntos de interés y guías locales.' },
-        url: 'https://imba-s5-terranova.vercel.app',
+        url: null,
         initial: 'T',
         color: '#0B0E14'
     },
@@ -100,7 +102,7 @@ const APPS = [
     {
         name: 'Sanctuary 75',
         desc: { en: 'Wellness tracker for the 75-day challenge that keeps daily habits and progress on track.', es: 'Tracker de bienestar para el reto de 75 días que mantiene hábitos y progreso diario en orden.' },
-        url: 'https://75-holistic.vercel.app',
+        url: null,
         initial: 'S',
         color: '#0B0E14'
     }
@@ -427,6 +429,7 @@ export const portfolioEN = {
     },
     hero: {
         meta: ['Madrid, Spain', 'Digital Transformation · Strategy · Data · AI Ops'],
+        credential: 'IE IMBA · Partner, KS Advisory · ex-MicroStrategy BI · IT PM, Life Seguros/Prudential',
         statement: 'I help companies turn digital ambition into {operations} that actually {change}.',
         substatement: 'Strategy first, with the rare edge of being able to build what I propose.',
         cta: 'Book a call',
@@ -998,6 +1001,7 @@ export const portfolioES = {
     },
     hero: {
         meta: ['Madrid, España', 'Transformación Digital · Estrategia · Datos · AI Ops'],
+        credential: 'IE IMBA · Socio, KS Advisory · ex-MicroStrategy BI · IT PM, Life Seguros/Prudential',
         statement: 'Ayudo a empresas a convertir la ambición digital en {operación} que de verdad {cambia}.',
         substatement: 'Estrategia primero, con la ventaja rara de poder construir lo que propongo.',
         cta: 'Agendar llamada',

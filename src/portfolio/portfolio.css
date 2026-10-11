@@ -319,7 +319,9 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    width: auto;
+    /* max-content so the centered pill can use the viewport. width:auto
+       shrink-wrapped to ~50vw and wrapped the desktop bar into 3 rows. */
+    width: max-content;
     max-width: calc(100vw - 24px);
     background: rgba(244, 245, 247, 0.72);
     backdrop-filter: blur(16px);
@@ -356,6 +358,10 @@
 .pm-nav.pm-nav--compact .pm-cmdk-chip,
 .pm-nav.pm-nav--compact .pm-nav-download {
     display: none;
+}
+
+.pm-nav.pm-nav--compact .pm-nav-utils-panel .pm-nav-download {
+    display: inline-flex;
 }
 
 .pm-nav.pm-nav--compact .pm-brand {
@@ -489,6 +495,51 @@
     font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+}
+
+/* Language / theme / download / CV stay inline below desktop.
+   At desktop they collapse into .pm-nav-utils-menu. */
+.pm-nav-utils-menu {
+    display: none;
+    position: relative;
+}
+
+.pm-nav-utils-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(244, 245, 247, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(11, 14, 20, 0.08);
+}
+
+:root[data-theme="dark"] .portfolio-mode .pm-nav-utils-panel {
+    background: rgba(11, 14, 20, 0.72);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 1025px) {
+    .pm-nav-actions > .pm-nav-util {
+        display: none;
+    }
+
+    .pm-nav-utils-menu {
+        display: inline-flex;
+    }
+
+    .pm-nav-inner {
+        flex-wrap: nowrap;
+    }
 }
 
 .pm-nav-btn {
@@ -658,6 +709,11 @@
     .pm-hero-sub {
         max-width: 100%;
     }
+
+    /* Headline before the portrait so it sits in the first screen. */
+    .pm-hero-inner {
+        order: -1;
+    }
 }
 
 .pm-hero-meta {
@@ -676,6 +732,11 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+}
+
+.pm-hero-credential {
+    flex: 1 0 100%;
+    text-transform: none;
 }
 
 .pm-hero-meta .dot {

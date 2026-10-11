@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
 
@@ -30,9 +30,31 @@ const getInitialState = () => {
 
 const App = () => {
     const initial = getInitialState();
+    const location = useLocation();
     const [mode, setMode] = useState(initial.mode);
     const [lang, setLang] = useState(initial.lang);
     const [theme, setTheme] = useState(initial.theme);
+
+    useEffect(() => {
+        const path = location.pathname;
+        if (/^\/blog\/.+/.test(path)) return;
+        const name = 'Agustín Gugliuzza';
+        if (path === '/blog' || path === '/blog/') {
+            document.title = lang === 'es' ? `Notas · ${name}` : `Notes · ${name}`;
+            return;
+        }
+        if (path.startsWith('/admin')) {
+            document.title = `Blog admin · ${name}`;
+            return;
+        }
+        if (mode === 'cv') {
+            document.title = `CV · ${name}`;
+            return;
+        }
+        document.title = lang === 'es'
+            ? `${name} · PM, Estrategia y AI Ops · Madrid`
+            : `${name} · PM, Strategy & AI Ops · Madrid`;
+    }, [location.pathname, lang, mode]);
 
     useEffect(() => {
         localStorage.setItem('ag.mode', mode);
