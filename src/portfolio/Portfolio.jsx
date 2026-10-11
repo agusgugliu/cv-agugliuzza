@@ -543,9 +543,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         { id: 'call', label: lang === 'es' ? 'Agendar llamada' : 'Book a call', hint: 'Reclaim', run: () => window.open(RECLAIM_URL, '_blank') },
         { id: 'lang', label: lang === 'es' ? 'Cambiar idioma' : 'Switch language', hint: lang === 'es' ? 'EN' : 'ES', run: () => setLang(lang === 'en' ? 'es' : 'en') },
         { id: 'theme', label: lang === 'es' ? 'Cambiar tema' : 'Toggle theme', hint: theme === 'dark' ? 'Light' : 'Dark', run: toggleTheme },
+        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
         { id: 'projects', label: lang === 'es' ? 'Ir a Proyectos' : 'Go to Projects', run: () => scrollToId('projects') },
         { id: 'ai', label: lang === 'es' ? 'Ir a IA' : 'Go to AI', run: () => scrollToId('ai') },
-        { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
         { id: 'contact', label: lang === 'es' ? 'Ir a Contacto' : 'Go to Contact', run: () => scrollToId('contact') }
     ];
 
@@ -581,11 +581,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-links">
-                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
-                            {data.nav.projects}
-                        </a>
                         <a className="pm-nav-link" href="#work" onClick={smoothScrollTo('work')}>
                             {data.nav.work}
+                        </a>
+                        <a className="pm-nav-link" href="#projects" onClick={smoothScrollTo('projects')}>
+                            {data.nav.projects}
                         </a>
                         <a className="pm-nav-link" href="#skills" onClick={smoothScrollTo('skills')}>
                             {data.nav.skills}
@@ -805,89 +805,6 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </motion.div>
                     </div>
                 </section>
-
-                {/* Selected Projects */}
-                <ProjectsBento data={data.projects} lang={lang} />
-
-                {/* AI end-to-end (elevated) */}
-                <Collapsible
-                    id="ai"
-                    lang={lang}
-                    kicker={data.ai.eyebrow}
-                    title={plainHeading(data.ai.heading)}
-                    preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
-                >
-                    {({ open, Fold, Panel }) => (
-                <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
-                    <div className={open ? 'pm-card' : undefined}>
-                    <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
-                    <Panel>
-                    <p className="pm-ai-lead">{data.ai.lead}</p>
-                    <div className="pm-ai-flow">
-                        {data.ai.flow.map((f, i) => (
-                            <React.Fragment key={i}>
-                                <span>{f}</span>
-                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <div className="pm-ai-stack">
-                        {data.ai.steps.map((s, i) => (
-                            <motion.div
-                                key={i}
-                                className="pm-ai-step"
-                                initial={{ opacity: 0, y: 18 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-40px' }}
-                                transition={{ duration: 0.4, delay: i * 0.05 }}
-                            >
-                                <div className="pm-ai-step-num">{s.num}</div>
-                                <h3>{s.title}</h3>
-                                <p>{s.body}</p>
-                                <div className="pm-ai-tools">{s.tools}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                    </Panel>
-                    </div>
-                </section>
-                    )}
-                </Collapsible>
-
-                {/* Problems */}
-                <Collapsible
-                    id="problems"
-                    lang={lang}
-                    kicker={data.problems.eyebrow}
-                    title={plainHeading(data.problems.heading)}
-                    preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
-                >
-                    {({ open, Fold, Panel }) => (
-                <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
-                    <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
-                    <Panel>
-                    <div className="pm-problem-grid">
-                        {data.problems.items.map((p, i) => (
-                            <motion.div
-                                key={i}
-                                className="pm-problem"
-                                initial={{ opacity: 0, x: -16, y: 12 }}
-                                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                                viewport={{ once: true, margin: '-80px' }}
-                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <div className="pm-problem-num">{p.num}</div>
-                                <div className="pm-problem-title"><Editorial text={p.title} /></div>
-                                <p className="pm-problem-body">{p.body}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                    </Panel>
-                </section>
-                    )}
-                </Collapsible>
 
                 {/* Track record */}
                 <Collapsible
@@ -1313,6 +1230,89 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         </div>
                         );
                     })}
+                    </div>
+                    </Panel>
+                </section>
+                    )}
+                </Collapsible>
+
+                {/* Selected Projects */}
+                <ProjectsBento data={data.projects} lang={lang} />
+
+                {/* AI end-to-end (elevated) */}
+                <Collapsible
+                    id="ai"
+                    lang={lang}
+                    kicker={data.ai.eyebrow}
+                    title={plainHeading(data.ai.heading)}
+                    preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
+                >
+                    {({ open, Fold, Panel }) => (
+                <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
+                    <div className={open ? 'pm-card' : undefined}>
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
+                    <Panel>
+                    <p className="pm-ai-lead">{data.ai.lead}</p>
+                    <div className="pm-ai-flow">
+                        {data.ai.flow.map((f, i) => (
+                            <React.Fragment key={i}>
+                                <span>{f}</span>
+                                {i < data.ai.flow.length - 1 && <span className="arrow">&rarr;</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="pm-ai-stack">
+                        {data.ai.steps.map((s, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-ai-step"
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                            >
+                                <div className="pm-ai-step-num">{s.num}</div>
+                                <h3>{s.title}</h3>
+                                <p>{s.body}</p>
+                                <div className="pm-ai-tools">{s.tools}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                    </Panel>
+                    </div>
+                </section>
+                    )}
+                </Collapsible>
+
+                {/* Problems */}
+                <Collapsible
+                    id="problems"
+                    lang={lang}
+                    kicker={data.problems.eyebrow}
+                    title={plainHeading(data.problems.heading)}
+                    preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
+                >
+                    {({ open, Fold, Panel }) => (
+                <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
+                    <Fold />
+                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
+                    <Panel>
+                    <div className="pm-problem-grid">
+                        {data.problems.items.map((p, i) => (
+                            <motion.div
+                                key={i}
+                                className="pm-problem"
+                                initial={{ opacity: 0, x: -16, y: 12 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="pm-problem-num">{p.num}</div>
+                                <div className="pm-problem-title"><Editorial text={p.title} /></div>
+                                <p className="pm-problem-body">{p.body}</p>
+                            </motion.div>
+                        ))}
                     </div>
                     </Panel>
                 </section>
