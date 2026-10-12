@@ -266,17 +266,26 @@
     animation: pm-cue-point 2.4s ease-in-out infinite;
 }
 
-.pm-fold-cue--look .pm-cue-arm {
-    transform-origin: 15px 23px;
+.pm-cue-wave {
+    transform-origin: 15px 22.5px;
+    animation: pm-cue-wave 1.8s ease-in-out infinite;
 }
 
-.pm-fold-cue--lean .pm-cue-arm {
-    transform-origin: 18px 22.5px;
+.pm-cue-up {
+    transform-origin: 16px 23px;
+    animation: pm-cue-up 2.2s ease-in-out infinite;
 }
 
-.pm-fold-cue--lean .pm-cue-bob {
-    transform-origin: 20px 55px;
-}
+.pm-fold-cue--lean .pm-cue-arm { transform-origin: 18px 22.5px; }
+.pm-fold-cue--lean .pm-cue-bob { transform-origin: 20px 55px; }
+.pm-fold-cue--think .pm-cue-arm { transform-origin: 16px 23.5px; }
+.pm-fold-cue--look .pm-cue-arm { transform-origin: 16px 23px; }
+.pm-fold-cue--hip .pm-cue-arm { transform-origin: 14px 23px; }
+.pm-fold-cue--hip .pm-cue-bob { transform-origin: 14px 55px; }
+.pm-fold-cue--reach .pm-cue-arm { transform-origin: 17px 21px; }
+.pm-fold-cue--reach .pm-cue-bob { transform-origin: 18px 55px; }
+.pm-fold-cue--aha .pm-cue-arm { transform-origin: 16px 23px; }
+.pm-fold-cue--wave .pm-cue-arm { transform-origin: 15px 22.5px; }
 
 @keyframes pm-cue-bob {
     0%, 100% { transform: translateY(0); }
@@ -286,6 +295,16 @@
 @keyframes pm-cue-point {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(-7deg); }
+}
+
+@keyframes pm-cue-wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(16deg); }
+}
+
+@keyframes pm-cue-up {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -3489,7 +3508,9 @@
     }
 
     .pm-cue-bob,
-    .pm-cue-arm {
+    .pm-cue-arm,
+    .pm-cue-wave,
+    .pm-cue-up {
         animation: none !important;
         transform: none !important;
     }
