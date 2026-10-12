@@ -276,16 +276,18 @@
     animation: pm-cue-up 2.2s ease-in-out infinite;
 }
 
-.pm-fold-cue--lean .pm-cue-arm { transform-origin: 18px 22.5px; }
-.pm-fold-cue--lean .pm-cue-bob { transform-origin: 20px 55px; }
-.pm-fold-cue--think .pm-cue-arm { transform-origin: 16px 23.5px; }
+.pm-fold-cue--lean .pm-cue-arm { transform-origin: 21px 24px; }
+.pm-fold-cue--lean .pm-cue-bob { transform-origin: 24px 55px; }
+.pm-fold-cue--think .pm-cue-arm { transform-origin: 16px 24px; }
 .pm-fold-cue--look .pm-cue-arm { transform-origin: 16px 23px; }
-.pm-fold-cue--hip .pm-cue-arm { transform-origin: 14px 23px; }
-.pm-fold-cue--hip .pm-cue-bob { transform-origin: 14px 55px; }
-.pm-fold-cue--reach .pm-cue-arm { transform-origin: 17px 21px; }
-.pm-fold-cue--reach .pm-cue-bob { transform-origin: 18px 55px; }
-.pm-fold-cue--aha .pm-cue-arm { transform-origin: 16px 23px; }
-.pm-fold-cue--wave .pm-cue-arm { transform-origin: 15px 22.5px; }
+.pm-fold-cue--hip .pm-cue-arm { transform-origin: 13px 23px; }
+.pm-fold-cue--hip .pm-cue-bob { transform-origin: 13px 55px; }
+.pm-fold-cue--kneel .pm-cue-arm { transform-origin: 17.5px 28px; }
+.pm-fold-cue--kneel .pm-cue-bob { transform-origin: 17px 55px; }
+.pm-fold-cue--aha .pm-cue-arm { transform-origin: 18px 26px; }
+.pm-fold-cue--aha .pm-cue-up { transform-origin: 18px 26px; }
+.pm-fold-cue--wave .pm-cue-arm { transform-origin: 16px 22.5px; }
+.pm-fold-cue--wave .pm-cue-wave { transform-origin: 16px 22.5px; }
 
 @keyframes pm-cue-bob {
     0%, 100% { transform: translateY(0); }
