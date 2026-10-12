@@ -466,17 +466,19 @@
     }
     .pm-fold-cue--figure {
         position: absolute;
-        right: 16px;
+        right: 12px;
         bottom: 8px;
-        width: 48px;
+        width: auto;
+        max-width: calc(100% - 24px);
         margin: 0;
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: flex-end;
         gap: 8px;
     }
     .pm-cue-svg {
         width: 40px;
         height: 48px;
+        flex: none;
     }
     .pm-fold-cue--dossier .pm-cue-svg {
         width: 44px;
@@ -484,6 +486,8 @@
     }
     .pm-fold-cue-caption {
         font-size: 0.72rem;
+        max-width: 9.5rem;
+        white-space: nowrap;
     }
 }
 
