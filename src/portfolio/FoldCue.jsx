@@ -95,33 +95,33 @@ export function cueVariant(sectionId) {
 const ink = {
     fill: 'none',
     stroke: 'currentColor',
-    strokeWidth: 1.7,
+    strokeWidth: 1.9,
     strokeLinecap: 'round',
     strokeLinejoin: 'round'
 };
 
 function PeekFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 72 88" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 78 90" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="28" cy="17" r="10.5" {...ink} />
-                <path d="M21.5 12.5c3.5-6 13-6.5 16.5.5" {...ink} />
-                <circle className="pm-cue-eye" cx="24.5" cy="16.5" r="1.15" fill="currentColor" stroke="none" />
-                <circle className="pm-cue-eye" cx="31.5" cy="16.5" r="1.15" fill="currentColor" stroke="none" />
-                <path d="M24.5 21q3.5 2.4 7 0" {...ink} />
-                <path d="M28 27.5v5" {...ink} />
-                <path d="M16 38c2-6 8.5-9.5 12-9.5S38 32 40 38" {...ink} />
-                <path d="M16 38c1.5 18 3 28 7 36M40 38c.2 16 1.2 28 2 36" {...ink} />
-                <path d="M28 36.5v18" {...ink} />
-                <path d="M23 74l-2.5 12M33 74l3 12" {...ink} />
+                <circle cx="30" cy="16" r="11" {...ink} fill="var(--paper-2)" />
+                <path d="M22 11c4-6.5 16-6.5 18.5 1" {...ink} />
+                <circle cx="26.2" cy="15.6" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="33.6" cy="15.6" r="1.2" fill="currentColor" stroke="none" />
+                <path d="M26.2 20.4q3.8 2.6 7.6 0" {...ink} />
+                <path d="M30 27v4.5" {...ink} />
+                <path d="M17 40c2.2-8 8.8-12 13-12s10.8 4 13 12v34H17V40z" {...ink} fill="var(--paper-2)" />
+                <path d="M30 32.5v20" {...ink} />
+                <path d="M22 74l-2 13M38 74l3 13" {...ink} />
                 <g className="pm-cue-folder">
-                    <path d="M7 54.5h15.5v12.5H7z" {...ink} />
-                    <path d="M7 54.5l3.2-3.8h7.4L14 54.5" {...ink} />
+                    <rect x="6" y="54" width="16" height="13" rx="1.4" {...ink} fill="var(--card-bg)" />
+                    <path d="M6 54l3.4-4h7.2L14 54" {...ink} />
                 </g>
-                <path d="M16 42c-6 6-9 12-7.5 16" {...ink} />
+                <path d="M17 44c-6 6-8.5 12-6.5 16.5" {...ink} />
                 <g className="pm-cue-arm">
-                    <path d="M40 41c10-3 18-11 24-19" {...ink} />
-                    <path d="M62.5 24.5l7.5-8.5M64 27.5l8.5-4" {...ink} />
+                    <path d="M43 42c11-2 20-10 26-18" {...ink} />
+                    <path d="M67 26l9-9" {...ink} />
+                    <path className="pm-cue-accent" d="M72 14l8 1.5-4.5 6.5" fill="none" />
                 </g>
             </g>
         </svg>
@@ -130,19 +130,18 @@ function PeekFigure() {
 
 function DossierFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 76 72" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 80 74" aria-hidden="true">
             <g className="pm-cue-bob">
-                <path d="M10 58h42l4-28H18L10 58z" {...ink} />
-                <path d="M18 30l-2.5-7.5h28L46 30" {...ink} />
+                <path d="M8 60h46l5-32H18L8 60z" {...ink} fill="var(--paper-2)" />
+                <path d="M18 28l-3-8h30l4 8" {...ink} fill="var(--card-bg)" />
                 <g className="pm-cue-sheet">
-                    <path d="M22 28l18-16 16 6-14 18" {...ink} />
-                    <path d="M28 18.5l12 4.5" {...ink} />
-                    <path d="M30.5 23l9 3.5" {...ink} />
+                    <path d="M24 28l20-18 18 7-15 20" {...ink} fill="var(--card-bg)" />
+                    <path d="M32 17.5l12 4.8M34 22.5l10 4" {...ink} />
                 </g>
                 <g className="pm-cue-arm">
-                    <path d="M48 40c8 2 14 1 18-4" {...ink} />
-                    <circle cx="68" cy="34" r="4.5" {...ink} />
-                    <path d="M70.5 31.5c2-3 5-4 7-2.5" {...ink} />
+                    <path d="M52 42c9 1 16 0 21-5" {...ink} />
+                    <circle cx="74" cy="35" r="5" {...ink} fill="var(--paper-2)" />
+                    <path className="pm-cue-accent" d="M77 31c2.4-3.4 6-4.2 8.5-2" fill="none" />
                 </g>
             </g>
         </svg>
@@ -151,25 +150,23 @@ function DossierFigure() {
 
 function ReaderFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 72 88" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 78 90" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="30" cy="18" r="10.5" {...ink} />
-                <path d="M23 13c3.2-5.5 12-6 16 0" {...ink} />
-                <circle className="pm-cue-eye" cx="26.5" cy="18" r="1.15" fill="currentColor" stroke="none" />
-                <circle className="pm-cue-eye" cx="33.5" cy="18" r="1.15" fill="currentColor" stroke="none" />
-                <path d="M23.5 18.2h6M30.5 18.2h6" {...ink} strokeWidth="1.35" />
-                <path d="M29.5 18.2h1.2" {...ink} />
-                <path d="M26 22.5q4 1.8 8 0" {...ink} />
-                <path d="M30 28.5v5" {...ink} />
-                <path d="M18 39c2-6.5 8-10 12-10s10 3.5 12 10" {...ink} />
-                <path d="M18 39c1.2 18 2.8 28 6.5 36M42 39c.4 16 1 28 1.6 36" {...ink} />
-                <path d="M30 37.5v17" {...ink} />
-                <path d="M24.5 75l-2 11M35.5 75l2.6 11" {...ink} />
-                <path d="M18 43c-5 8-6 14-3 18" {...ink} />
+                <circle cx="30" cy="17" r="11" {...ink} fill="var(--paper-2)" />
+                <path d="M22 12c4-6 16-6.2 18.5 1.2" {...ink} />
+                <circle cx="26.4" cy="16.8" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="33.8" cy="16.8" r="1.2" fill="currentColor" stroke="none" />
+                <path d="M23.5 17h6.2M31.2 17h6.2" {...ink} strokeWidth="1.4" />
+                <path d="M26.4 21.6q3.8 2.2 7.4 0" {...ink} />
+                <path d="M30 28v4.5" {...ink} />
+                <path d="M17 41c2.2-8 8.8-12 13-12s10.8 4 13 12v34H17V41z" {...ink} fill="var(--paper-2)" />
+                <path d="M30 33.5v20" {...ink} />
+                <path d="M22 75l-2 12M38 75l3 12" {...ink} />
+                <path d="M17 45c-5.5 8-6.5 14-3.5 18" {...ink} />
                 <g className="pm-cue-arm">
-                    <path d="M42 42c9 2 16 8 20 16" {...ink} />
-                    <path d="M60 56h10.5v9.5H60z" {...ink} />
-                    <path d="M62 56v9.5M68.5 56v9.5" {...ink} />
+                    <path d="M43 43c10 3 17 10 20 18" {...ink} />
+                    <path d="M58 58l14-6 3 8-14 6z" {...ink} fill="var(--card-bg)" />
+                    <path d="M62 61.5l10-4.2" {...ink} />
                 </g>
             </g>
         </svg>

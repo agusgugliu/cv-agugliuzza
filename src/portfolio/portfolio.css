@@ -276,15 +276,15 @@
     position: absolute;
     top: -1px;
     right: -1px;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     transform-origin: 100% 0;
     animation: pm-cue-dogear 2.5s ease-in-out infinite;
 }
 
 .pm-cue-dogear-svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     display: block;
     overflow: visible;
 }
@@ -305,6 +305,13 @@
     stroke: var(--blue);
     stroke-width: 1.15;
     stroke-linecap: round;
+}
+
+.pm-cue-accent {
+    stroke: var(--blue);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .pm-fold.has-cue:not(.is-open) .pm-fold-action {
