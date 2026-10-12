@@ -1,92 +1,17 @@
-import React, { useEffect, useState } from 'react';
-
-export const FOLD_CUE_KEY = 'ag.foldCue';
-export const FOLD_CUE_EVENT = 'pm-fold-cue';
+import React from 'react';
 
 const COPY = {
     en: { more: "There's more." },
     es: { more: 'Hay m\u00e1s.' }
 };
 
-/* First collapsed cards a visitor meets get a small ink figure.
-   The rest get a paper dog-ear — same lesson, less noise. */
+/* Featured folded cards get a small ink figure; the rest a paper dog-ear. */
 const FIGURE = {
     projects: 'peek',
     ai: 'dossier',
     skills: 'reader',
     ideas: 'peek'
 };
-
-const listeners = new Set();
-let cueActive = false;
-let cueShown = false;
-
-function readForced() {
-    if (typeof window === 'undefined') return null;
-    const q = new URLSearchParams(window.location.search).get('guide');
-    if (q === '1') return true;
-    if (q === '0') return false;
-    return null;
-}
-
-function readInitial() {
-    const forced = readForced();
-    if (forced !== null) return forced;
-    try {
-        return localStorage.getItem(FOLD_CUE_KEY) !== '1';
-    } catch {
-        return true;
-    }
-}
-
-if (typeof window !== 'undefined') {
-    cueActive = readInitial();
-    window.addEventListener('pagehide', () => {
-        if (!cueShown) return;
-        try {
-            localStorage.setItem(FOLD_CUE_KEY, '1');
-        } catch {
-            /* ignore quota / private mode */
-        }
-    });
-}
-
-function notify() {
-    listeners.forEach((fn) => fn());
-}
-
-export function dismissFoldCue() {
-    if (!cueActive) return;
-    cueActive = false;
-    try {
-        localStorage.setItem(FOLD_CUE_KEY, '1');
-    } catch {
-        /* ignore */
-    }
-    notify();
-    window.dispatchEvent(new CustomEvent(FOLD_CUE_EVENT, { detail: false }));
-}
-
-export function useFoldCue() {
-    const [active, setActive] = useState(cueActive);
-
-    useEffect(() => {
-        const sync = () => setActive(cueActive);
-        listeners.add(sync);
-        const onEvent = (e) => setActive(Boolean(e.detail));
-        window.addEventListener(FOLD_CUE_EVENT, onEvent);
-        return () => {
-            listeners.delete(sync);
-            window.removeEventListener(FOLD_CUE_EVENT, onEvent);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (active) cueShown = true;
-    }, [active]);
-
-    return active;
-}
 
 export function cueVariant(sectionId) {
     return FIGURE[sectionId] || 'dogear';

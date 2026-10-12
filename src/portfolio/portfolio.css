@@ -226,9 +226,9 @@
     border: 0;
 }
 
-/* First-visit illustrated cues on folded cards. Quiet margin cartoons,
-   not a product-tour overlay. Decorative (aria-hidden); the button
-   still carries the expand hint for keyboard and AT. */
+/* Illustrated cues on folded cards. Quiet margin cartoons, not a
+   product-tour overlay. Decorative (aria-hidden); the button still
+   carries the expand hint for keyboard and AT. */
 .pm-fold.has-cue {
     overflow: visible;
 }

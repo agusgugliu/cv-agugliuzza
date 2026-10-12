@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import FoldCue, { cueVariant, dismissFoldCue, useFoldCue } from './FoldCue';
+import FoldCue, { cueVariant } from './FoldCue';
 
 export const EXPAND_SECTION_EVENT = 'pm-expand-section';
 
@@ -36,12 +36,7 @@ function useSectionCollapse(id, defaultOpen = false) {
     }, [id, open]);
 
     useEffect(() => {
-        const expand = () => {
-            setOpen((was) => {
-                if (!was) dismissFoldCue();
-                return true;
-            });
-        };
+        const expand = () => setOpen(true);
         const onEvent = (e) => {
             if (e.detail === id) expand();
         };
@@ -58,12 +53,7 @@ function useSectionCollapse(id, defaultOpen = false) {
         };
     }, [id]);
 
-    const toggle = useCallback(() => {
-        setOpen((v) => {
-            if (!v) dismissFoldCue();
-            return !v;
-        });
-    }, []);
+    const toggle = useCallback(() => setOpen((v) => !v), []);
     return { open, setOpen, toggle };
 }
 
@@ -81,8 +71,7 @@ export function FoldButton({
     const t = COPY[lang] || COPY.en;
     const action = open ? t.hide : t.show;
     const hint = open ? t.collapse : t.expand;
-    const cueActive = useFoldCue();
-    const variant = !open && cueActive ? cueVariant(sectionId) : null;
+    const variant = !open ? cueVariant(sectionId) : null;
     return (
         <button
             type="button"
