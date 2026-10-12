@@ -64,7 +64,7 @@ function PointingArm({ fromX, fromY, toX = 38, toY = 20.5 }) {
     );
 }
 
-/* Selected projects — four tiles, strategy meeting execution. */
+/* Selected projects — planting a flag: strategy that actually lands. */
 function ExecuteFigure() {
     return (
         <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
@@ -72,12 +72,10 @@ function ExecuteFigure() {
                 <circle cx="20" cy="10" r="7" {...ink} />
                 <Face cx={20} cy={10} mouth="smile" />
                 <path d="M20 17v16" {...ink} />
-                <path d="M20 23L11 32" {...ink} />
+                <path d="M20 23L11 34" {...ink} />
                 <g className="pm-cue-prop">
-                    <rect x="3.5" y="30" width="5.2" height="5.2" rx="0.6" {...fine} />
-                    <rect x="9.5" y="30" width="5.2" height="5.2" rx="0.6" {...fine} />
-                    <rect x="3.5" y="36.2" width="5.2" height="5.2" rx="0.6" {...fine} />
-                    <rect x="9.5" y="36.2" width="5.2" height="5.2" rx="0.6" {...fine} />
+                    <path d="M11 34V18" {...fine} />
+                    <path d="M11 18l11 4.5-11 4.5" {...fine} />
                 </g>
                 <PointingArm fromX={20} fromY={23} toX={40} toY={19} />
                 <path d="M20 33L12 55M20 33L29 50" {...ink} />
@@ -86,41 +84,39 @@ function ExecuteFigure() {
     );
 }
 
-/* Transformation — walking the steps from boardroom to shop floor. */
+/* Transformation — walking the stairs from boardroom to shop floor. */
 function StairsFigure() {
     return (
         <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <path d="M2 52h12v-7H8V38H2v14z" {...fine} />
-                <path d="M8 45h12M2 52h18" {...fine} />
-                <circle cx="22" cy="12" r="7" {...ink} />
-                <Face cx={22} cy={12} mouth="grin" />
-                <path d="M22 19L24 34" {...ink} />
-                <path d="M22 25L14 22" {...ink} />
-                <PointingArm fromX={23.5} fromY={25} toX={40} toY={21} />
-                <path d="M24 34L16 45M24 34L30 52" {...ink} />
+                <path d="M3 34h9v7h9v7h9" {...fine} />
+                <circle cx="22" cy="11" r="7" {...ink} />
+                <Face cx={22} cy={11} mouth="grin" />
+                <path d="M22 18L24 33" {...ink} />
+                <path d="M22 24L15 21" {...ink} />
+                <PointingArm fromX={23.5} fromY={24} toX={41} toY={21} />
+                <path d="M24 33L18 41M24 33L30 48" {...ink} />
             </g>
         </svg>
     );
 }
 
-/* Problems I solve — a knot in one hand, pointing at the answer. */
+/* Problems I solve — holding the question, pointing at Show. */
 function KnotFigure() {
     return (
         <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <g transform="rotate(-12 18 11)">
-                    <circle cx="18" cy="11" r="7" {...ink} />
-                    <Face cx={18} cy={11} mouth="flat" />
-                    <path d="M14 6.6q2.6-1.5 6.2 0" {...ink} />
-                </g>
-                <path d="M18 18.5v16" {...ink} />
-                <path d="M18 24L10 30" {...ink} />
+                <circle cx="20" cy="12" r="7" {...ink} />
+                <Face cx={20} cy={12} mouth="flat" />
+                <path d="M16.2 7.4q2.6-1.4 6 0" {...ink} />
+                <path d="M20 19v15.5" {...ink} />
+                <path d="M20 25L10 18" {...ink} />
                 <g className="pm-cue-knot">
-                    <path d="M10 30c-4-5 5-8 2-3c-4 5 7 6 3 1c-3 5 6 2 2-1" {...fine} />
+                    <path d="M5.5 7.5q0-4.2 4.4-4.2q4.4 0 4.4 4q0 2.8-4.4 3.8v3" {...ink} />
+                    <circle cx="9.9" cy="18.6" r="1.15" fill="currentColor" stroke="none" />
                 </g>
-                <PointingArm fromX={18} fromY={24} toX={40} toY={24} />
-                <path d="M18 34.5L14 55M18 34.5L22.5 55" {...ink} />
+                <PointingArm fromX={20} fromY={25} toX={40} toY={24} />
+                <path d="M20 34.5L15 55M20 34.5L25.5 55" {...ink} />
             </g>
         </svg>
     );
@@ -146,7 +142,7 @@ function ReadFigure() {
     );
 }
 
-/* Skills & tools — a wrench, the toolkit. */
+/* Skills & tools — a hammer from the toolkit. */
 function WrenchFigure() {
     return (
         <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
@@ -154,11 +150,11 @@ function WrenchFigure() {
                 <circle cx="18" cy="10" r="7" {...ink} />
                 <Face cx={18} cy={10} mouth="smirk" />
                 <path d="M18 17v18" {...ink} />
-                <path d="M18 23L10 30" {...ink} />
+                <path d="M18 23L11 22" {...ink} />
                 <g className="pm-cue-wrench">
-                    <circle cx="8.5" cy="26.5" r="3.2" {...fine} />
-                    <path d="M6.2 24.2L4.4 22.4M10.8 29L16 36.5" {...fine} />
-                    <path d="M14.2 34.8h4.2v2.6h-4.2z" {...fine} />
+                    <path d="M4 18h12" {...ink} />
+                    <path d="M10 18v16" {...ink} />
+                    <path d="M4 18l-2 3M16 18l2 3" {...fine} />
                 </g>
                 <PointingArm fromX={18} fromY={23} toX={40} toY={20} />
                 <path d="M18 35L10 55M18 35L27 53" {...ink} />
@@ -167,20 +163,21 @@ function WrenchFigure() {
     );
 }
 
-/* Prototypes — holding a wireframe, pressure-testing an idea. */
+/* Prototypes — a phone wireframe, not another page. */
 function ProtoFigure() {
     return (
         <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="20" cy="14" r="7" {...ink} />
-                <Face cx={20} cy={14} eyes="wide" mouth="oh" />
-                <path d="M20 21v14" {...ink} />
-                <path d="M20 27L12 32" {...ink} />
+                <circle cx="20" cy="12" r="7" {...ink} />
+                <Face cx={20} cy={12} eyes="wide" mouth="oh" />
+                <path d="M20 19v16" {...ink} />
+                <path d="M20 25L12 30" {...ink} />
                 <g className="pm-cue-prop">
-                    <rect x="3.5" y="18" width="13" height="17" rx="1.6" {...fine} strokeDasharray="2.4 1.6" />
-                    <path d="M6 23h8M6 27h8M6 31h5" {...fine} />
+                    <rect x="4" y="20" width="11" height="18" rx="2" {...fine} />
+                    <circle cx="9.5" cy="35.5" r="1.1" {...fine} />
+                    <path d="M7.4 27.5l5.2 3-5.2 3z" {...fine} />
                 </g>
-                <PointingArm fromX={20.5} fromY={27} toX={40} toY={22} />
+                <PointingArm fromX={20.5} fromY={25} toX={40} toY={21} />
                 <path d="M20 35L13 55M20 35L28 48L26 55" {...ink} />
             </g>
         </svg>

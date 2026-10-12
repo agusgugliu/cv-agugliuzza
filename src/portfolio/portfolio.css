@@ -286,12 +286,13 @@
     animation: pm-cue-bubble 2.6s ease-in-out infinite;
 }
 
-.pm-fold-cue--stairs .pm-cue-arm { transform-origin: 23.5px 25px; }
-.pm-fold-cue--stairs .pm-cue-bob { transform-origin: 22px 52px; }
-.pm-fold-cue--knot .pm-cue-arm { transform-origin: 18px 24px; }
+.pm-fold-cue--stairs .pm-cue-arm { transform-origin: 23.5px 24px; }
+.pm-fold-cue--stairs .pm-cue-bob { transform-origin: 24px 48px; }
+.pm-fold-cue--knot .pm-cue-arm { transform-origin: 20px 25px; }
+.pm-fold-cue--knot .pm-cue-knot { transform-origin: 10px 12px; }
 .pm-fold-cue--read .pm-cue-arm { transform-origin: 20px 23px; }
 .pm-fold-cue--wrench .pm-cue-arm { transform-origin: 18px 23px; }
-.pm-fold-cue--proto .pm-cue-arm { transform-origin: 20.5px 27px; }
+.pm-fold-cue--proto .pm-cue-arm { transform-origin: 20.5px 25px; }
 .pm-fold-cue--campus .pm-cue-arm { transform-origin: 24px 23px; }
 .pm-fold-cue--campus .pm-cue-bob { transform-origin: 24px 55px; }
 .pm-fold-cue--bulb .pm-cue-arm { transform-origin: 22px 26px; }
