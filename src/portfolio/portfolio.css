@@ -226,9 +226,8 @@
     border: 0;
 }
 
-/* First-visit illustrated cues on folded cards. Quiet margin cartoons,
-   not a product-tour overlay. Decorative (aria-hidden); the button
-   still carries the expand hint for keyboard and AT. */
+/* Illustrated cues on folded cards: an unfolding brief on a few
+   sections, a paper curl on the rest. Decorative (aria-hidden). */
 .pm-fold.has-cue {
     overflow: visible;
 }
@@ -241,56 +240,37 @@
 
 .pm-fold-cue--figure {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 2px;
-    width: auto;
-    min-width: 64px;
-    margin: -6px 0;
+    margin: 0 2px 0 -4px;
 }
 
 .pm-cue-svg {
-    width: 56px;
-    height: 68px;
+    width: 46px;
+    height: 34px;
     display: block;
     overflow: visible;
-}
-
-.pm-fold-cue--dossier .pm-cue-svg {
-    width: 60px;
-    height: 56px;
-}
-
-.pm-fold-cue-caption {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.78rem;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
-    color: var(--slate-2);
-    white-space: nowrap;
-    animation: pm-cue-caption 0.7s ease 0.4s both;
 }
 
 .pm-fold-cue--dogear {
     position: absolute;
     top: -1px;
     right: -1px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     transform-origin: 100% 0;
-    animation: pm-cue-dogear 2.5s ease-in-out infinite;
+    animation: pm-cue-dogear 3.2s ease-in-out infinite;
 }
 
 .pm-cue-dogear-svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     display: block;
     overflow: visible;
 }
 
 .pm-cue-dogear-back {
-    fill: var(--paper-2);
+    fill: var(--blue);
+    opacity: 0.22;
     stroke: none;
 }
 
@@ -303,86 +283,40 @@
 .pm-cue-dogear-crease {
     fill: none;
     stroke: var(--blue);
-    stroke-width: 1.15;
+    stroke-width: 1.1;
     stroke-linecap: round;
 }
 
 .pm-cue-accent {
+    fill: var(--blue);
     stroke: var(--blue);
-    stroke-width: 1.9;
-    stroke-linecap: round;
+    stroke-width: 1.2;
     stroke-linejoin: round;
 }
 
-.pm-fold.has-cue:not(.is-open) .pm-fold-action {
-    border-color: var(--blue);
-}
-
 .pm-cue-bob {
-    transform-origin: 50% 100%;
-    animation: pm-cue-bob 2.6s ease-in-out infinite;
-}
-
-.pm-cue-arm {
-    transform-origin: 40px 42px;
-    animation: pm-cue-point 2.2s ease-in-out infinite;
-}
-
-.pm-fold-cue--dossier .pm-cue-arm {
-    transform-origin: 48px 40px;
-}
-
-.pm-fold-cue--reader .pm-cue-arm {
-    transform-origin: 42px 42px;
+    transform-origin: 8px 35px;
+    animation: pm-cue-bob 3.2s ease-in-out infinite;
 }
 
 .pm-cue-sheet {
-    transform-origin: 22px 28px;
-    animation: pm-cue-sheet 2.4s ease-in-out infinite;
-}
-
-.pm-cue-folder {
-    transform-origin: 14px 66px;
-    animation: pm-cue-folder 2.8s ease-in-out infinite;
-}
-
-.pm-fold.has-cue:not(.is-open) .pm-fold-chevron {
-    animation: pm-cue-chevron 1.8s ease-in-out infinite;
+    transform-origin: 20px 28px;
+    animation: pm-cue-sheet 2.8s ease-in-out infinite;
 }
 
 @keyframes pm-cue-bob {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-}
-
-@keyframes pm-cue-point {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-7deg); }
+    50% { transform: translateY(-1.5px); }
 }
 
 @keyframes pm-cue-sheet {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-8deg) translateY(-2px); }
-}
-
-@keyframes pm-cue-folder {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-4deg); }
+    50% { transform: rotate(-5deg) translate(1px, -1.5px); }
 }
 
 @keyframes pm-cue-dogear {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-6deg); }
-}
-
-@keyframes pm-cue-chevron {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(3px); }
-}
-
-@keyframes pm-cue-caption {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: none; }
+    50% { transform: rotate(-4deg); }
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -459,35 +393,12 @@
         width: 48px;
         height: 48px;
     }
-    .pm-fold.has-cue--peek,
-    .pm-fold.has-cue--dossier,
-    .pm-fold.has-cue--reader {
-        padding-bottom: 58px;
-    }
     .pm-fold-cue--figure {
-        position: absolute;
-        right: 12px;
-        bottom: 8px;
-        width: auto;
-        max-width: calc(100% - 24px);
-        margin: 0;
-        flex-direction: row-reverse;
-        align-items: flex-end;
-        gap: 8px;
+        margin: 2px 0 0;
     }
     .pm-cue-svg {
         width: 40px;
-        height: 48px;
-        flex: none;
-    }
-    .pm-fold-cue--dossier .pm-cue-svg {
-        width: 44px;
-        height: 40px;
-    }
-    .pm-fold-cue-caption {
-        font-size: 0.72rem;
-        max-width: 9.5rem;
-        white-space: nowrap;
+        height: 30px;
     }
 }
 
@@ -3608,12 +3519,8 @@
     }
 
     .pm-cue-bob,
-    .pm-cue-arm,
     .pm-cue-sheet,
-    .pm-cue-folder,
-    .pm-fold-cue--dogear,
-    .pm-fold-cue-caption,
-    .pm-fold.has-cue:not(.is-open) .pm-fold-chevron {
+    .pm-fold-cue--dogear {
         animation: none !important;
         transform: none !important;
     }
