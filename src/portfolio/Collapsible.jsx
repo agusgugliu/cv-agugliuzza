@@ -89,10 +89,12 @@ export function FoldButton({
                 {!open && title && <span className="pm-fold-title">{title}</span>}
                 {!open && preview && <span className="pm-fold-preview">{preview}</span>}
             </span>
-            {variant && <FoldCue variant={variant} lang={lang} />}
-            <span className="pm-fold-action">
-                {action}
-                <ChevronDown className="pm-fold-chevron" aria-hidden="true" strokeWidth={2.25} />
+            <span className="pm-fold-end">
+                {variant && <FoldCue variant={variant} />}
+                <span className="pm-fold-action">
+                    {action}
+                    <ChevronDown className="pm-fold-chevron" aria-hidden="true" strokeWidth={2.25} />
+                </span>
             </span>
             <span className="pm-fold-hint">{hint}</span>
         </button>

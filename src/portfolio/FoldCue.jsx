@@ -1,66 +1,102 @@
 import React from 'react';
 
-/* A quiet unfolding brief on a few folded cards; a paper curl on the rest.
-   Same family — no stick figures, no caption. */
-const FOLIO = new Set(['projects', 'ai', 'skills', 'ideas']);
+/* Stick figures sit in the Show cluster and point at it.
+   Poses vary so the row doesn't look stamped, but every arm aims right. */
+const POSE = {
+    projects: 'point',
+    ai: 'lean',
+    problems: 'point',
+    notes: 'look',
+    skills: 'look',
+    apps: 'lean',
+    logos: 'point',
+    ideas: 'point',
+    reviews: 'look'
+};
 
 export function cueVariant(sectionId) {
-    return FOLIO.has(sectionId) ? 'folio' : 'dogear';
+    return POSE[sectionId] || 'point';
 }
 
 const ink = {
     fill: 'none',
     stroke: 'currentColor',
-    strokeWidth: 1.7,
+    strokeWidth: 1.85,
     strokeLinecap: 'round',
     strokeLinejoin: 'round'
 };
 
-function Folio() {
+function PointFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 56 42" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <path
-                    d="M6 12.5h28.5c1.2 0 2.2.9 2.2 2.1V35H8.2C7 35 6 34.1 6 32.9V12.5z"
-                    {...ink}
-                    fill="var(--paper-2)"
-                />
-                <path d="M6 12.5l3.4-4.6h16.8L22.5 12.5" {...ink} fill="var(--card-bg)" />
-                <g className="pm-cue-sheet">
-                    <path
-                        d="M18 14.5l20.5-9.5 11 8.2-16.8 14.2H20.2c-1.2 0-2.2-.9-2.2-2.1V14.5z"
-                        {...ink}
-                        fill="var(--card-bg)"
-                    />
-                    <path className="pm-cue-accent" d="M38.5 5.2l11 8.2-7.4 1.6z" />
-                    <path d="M24 16.2h14.5M25.5 20.2h12.2M27 24.2h9.5" {...ink} strokeWidth="1.35" />
+                <circle cx="15" cy="10" r="7" {...ink} />
+                <circle cx="13" cy="9.3" r="1.05" fill="currentColor" stroke="none" />
+                <circle cx="17.3" cy="9.3" r="1.05" fill="currentColor" stroke="none" />
+                <path d="M12.7 12.7q2.4 1.55 4.8 0" {...ink} />
+                <path d="M15 17v18" {...ink} />
+                <path d="M15 22.5L7.5 33" {...ink} />
+                <g className="pm-cue-arm">
+                    <path d="M15 22.5L34 20.5" {...ink} />
+                    <path d="M34 20.5l6.5-2" {...ink} />
                 </g>
+                <path d="M15 35L11 55M15 35L21.5 55" {...ink} />
             </g>
         </svg>
     );
 }
 
-function DogEar() {
+function LookFigure() {
     return (
-        <svg className="pm-cue-dogear-svg" viewBox="0 0 26 26" aria-hidden="true">
-            <path className="pm-cue-dogear-back" d="M26 0v16.5A7.5 7.5 0 0 1 18.5 24H0L26 0z" />
-            <path className="pm-cue-dogear-face" d="M26 0L11.5 14.5H18A7.5 7.5 0 0 0 26 7V0z" />
-            <path className="pm-cue-dogear-crease" d="M11.5 14.5L26 0" />
+        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+            <g className="pm-cue-bob">
+                <circle cx="15" cy="10.2" r="7" {...ink} />
+                <circle cx="15.4" cy="9.4" r="1.05" fill="currentColor" stroke="none" />
+                <circle cx="19.4" cy="9.4" r="1.05" fill="currentColor" stroke="none" />
+                <path d="M14.4 12.8q2.6 1.45 5 0" {...ink} />
+                <path d="M15 17.2v17.8" {...ink} />
+                <path d="M15 23L8 32.5" {...ink} />
+                <g className="pm-cue-arm">
+                    <path d="M15 23L33 24.5" {...ink} />
+                    <path d="M33 24.5l7 1.2" {...ink} />
+                </g>
+                <path d="M15 35L11.2 55M15 35L21.2 55" {...ink} />
+            </g>
         </svg>
     );
 }
 
-const FoldCue = ({ variant }) => {
-    if (variant === 'dogear') {
-        return (
-            <span className="pm-fold-cue pm-fold-cue--dogear" aria-hidden="true">
-                <DogEar />
-            </span>
-        );
-    }
+function LeanFigure() {
     return (
-        <span className="pm-fold-cue pm-fold-cue--figure pm-fold-cue--folio" aria-hidden="true">
-            <Folio />
+        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+            <g className="pm-cue-bob">
+                <circle cx="17" cy="10" r="7" {...ink} />
+                <circle cx="15.4" cy="9.2" r="1.05" fill="currentColor" stroke="none" />
+                <circle cx="19.6" cy="9.2" r="1.05" fill="currentColor" stroke="none" />
+                <path d="M15 12.6q2.4 1.55 4.8 0" {...ink} />
+                <path d="M17 17.2L20 35" {...ink} />
+                <path d="M17.4 23Q11 27 12.5 34" {...ink} />
+                <g className="pm-cue-arm">
+                    <path d="M17.6 22.5L35 19.8" {...ink} />
+                    <path d="M35 19.8l6.2-2.2" {...ink} />
+                </g>
+                <path d="M20 35L13.5 55M20 35L26 53" {...ink} />
+            </g>
+        </svg>
+    );
+}
+
+const FIGURES = {
+    point: PointFigure,
+    look: LookFigure,
+    lean: LeanFigure
+};
+
+const FoldCue = ({ variant }) => {
+    const Figure = FIGURES[variant] || PointFigure;
+    return (
+        <span className={`pm-fold-cue pm-fold-cue--figure pm-fold-cue--${variant}`} aria-hidden="true">
+            <Figure />
         </span>
     );
 };

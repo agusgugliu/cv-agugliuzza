@@ -226,82 +226,56 @@
     border: 0;
 }
 
-/* Illustrated cues on folded cards: an unfolding brief on a few
-   sections, a paper curl on the rest. Decorative (aria-hidden). */
+/* Stick figures sit in a cluster with Show — same slot on every
+   collapsed card, never a corner dog-ear. Decorative (aria-hidden). */
 .pm-fold.has-cue {
     overflow: visible;
+}
+
+.pm-fold-end {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    align-self: center;
 }
 
 .pm-fold-cue {
     flex: none;
     pointer-events: none;
     color: var(--ink);
-}
-
-.pm-fold-cue--figure {
     display: flex;
     align-items: center;
-    margin: 0 2px 0 -4px;
+    line-height: 0;
 }
 
 .pm-cue-svg {
-    width: 46px;
-    height: 34px;
+    width: 36px;
+    height: 48px;
     display: block;
     overflow: visible;
-}
-
-.pm-fold-cue--dogear {
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 16px;
-    height: 16px;
-    transform-origin: 100% 0;
-    animation: pm-cue-dogear 3.2s ease-in-out infinite;
-}
-
-.pm-cue-dogear-svg {
-    width: 16px;
-    height: 16px;
-    display: block;
-    overflow: visible;
-}
-
-.pm-cue-dogear-back {
-    fill: var(--blue);
-    opacity: 0.22;
-    stroke: none;
-}
-
-.pm-cue-dogear-face {
-    fill: var(--card-bg);
-    stroke: var(--hairline-strong);
-    stroke-width: 1;
-}
-
-.pm-cue-dogear-crease {
-    fill: none;
-    stroke: var(--blue);
-    stroke-width: 1.1;
-    stroke-linecap: round;
-}
-
-.pm-cue-accent {
-    fill: var(--blue);
-    stroke: var(--blue);
-    stroke-width: 1.2;
-    stroke-linejoin: round;
 }
 
 .pm-cue-bob {
-    transform-origin: 8px 35px;
-    animation: pm-cue-bob 3.2s ease-in-out infinite;
+    transform-origin: 16px 55px;
+    animation: pm-cue-bob 2.8s ease-in-out infinite;
 }
 
-.pm-cue-sheet {
-    transform-origin: 20px 28px;
-    animation: pm-cue-sheet 2.8s ease-in-out infinite;
+.pm-cue-arm {
+    transform-origin: 15px 22.5px;
+    animation: pm-cue-point 2.4s ease-in-out infinite;
+}
+
+.pm-fold-cue--look .pm-cue-arm {
+    transform-origin: 15px 23px;
+}
+
+.pm-fold-cue--lean .pm-cue-arm {
+    transform-origin: 18px 22.5px;
+}
+
+.pm-fold-cue--lean .pm-cue-bob {
+    transform-origin: 20px 55px;
 }
 
 @keyframes pm-cue-bob {
@@ -309,14 +283,9 @@
     50% { transform: translateY(-1.5px); }
 }
 
-@keyframes pm-cue-sheet {
+@keyframes pm-cue-point {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-5deg) translate(1px, -1.5px); }
-}
-
-@keyframes pm-cue-dogear {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-4deg); }
+    50% { transform: rotate(-7deg); }
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -386,19 +355,20 @@
         gap: 12px;
     }
     .pm-fold-action {
-        margin-top: 2px;
+        margin-top: 0;
         padding: 7px 12px;
     }
     .pm-fold-avatar {
         width: 48px;
         height: 48px;
     }
-    .pm-fold-cue--figure {
-        margin: 2px 0 0;
+    .pm-fold-end {
+        align-self: flex-start;
+        gap: 0;
     }
     .pm-cue-svg {
-        width: 40px;
-        height: 30px;
+        width: 28px;
+        height: 38px;
     }
 }
 
@@ -3519,8 +3489,7 @@
     }
 
     .pm-cue-bob,
-    .pm-cue-sheet,
-    .pm-fold-cue--dogear {
+    .pm-cue-arm {
         animation: none !important;
         transform: none !important;
     }
