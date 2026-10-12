@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import FoldCue, { cueVariant, dismissFoldCue, useFoldCue } from './FoldCue';
 
 export const EXPAND_SECTION_EVENT = 'pm-expand-section';
 
@@ -35,7 +36,12 @@ function useSectionCollapse(id, defaultOpen = false) {
     }, [id, open]);
 
     useEffect(() => {
-        const expand = () => setOpen(true);
+        const expand = () => {
+            setOpen((was) => {
+                if (!was) dismissFoldCue();
+                return true;
+            });
+        };
         const onEvent = (e) => {
             if (e.detail === id) expand();
         };
@@ -52,7 +58,12 @@ function useSectionCollapse(id, defaultOpen = false) {
         };
     }, [id]);
 
-    const toggle = useCallback(() => setOpen((v) => !v), []);
+    const toggle = useCallback(() => {
+        setOpen((v) => {
+            if (!v) dismissFoldCue();
+            return !v;
+        });
+    }, []);
     return { open, setOpen, toggle };
 }
 
@@ -64,15 +75,18 @@ export function FoldButton({
     kicker,
     title,
     preview,
-    avatar
+    avatar,
+    sectionId
 }) {
     const t = COPY[lang] || COPY.en;
     const action = open ? t.hide : t.show;
     const hint = open ? t.collapse : t.expand;
+    const cueActive = useFoldCue();
+    const variant = !open && cueActive ? cueVariant(sectionId) : null;
     return (
         <button
             type="button"
-            className={`pm-fold${open ? ' is-open' : ''}${avatar ? ' pm-fold--portrait' : ''}`}
+            className={`pm-fold${open ? ' is-open' : ''}${avatar ? ' pm-fold--portrait' : ''}${variant ? ` has-cue has-cue--${variant}` : ''}`}
             aria-expanded={open}
             aria-controls={panelId}
             title={hint}
@@ -86,6 +100,7 @@ export function FoldButton({
                 {!open && title && <span className="pm-fold-title">{title}</span>}
                 {!open && preview && <span className="pm-fold-preview">{preview}</span>}
             </span>
+            {variant && <FoldCue variant={variant} lang={lang} />}
             <span className="pm-fold-action">
                 {action}
                 <ChevronDown className="pm-fold-chevron" aria-hidden="true" strokeWidth={2.25} />
@@ -120,8 +135,8 @@ const Collapsible = ({
 }) => {
     const { open, toggle } = useSectionCollapse(id, defaultOpen);
     const panelId = `${id}-panel`;
-    const apiRef = useRef({ open, toggle, panelId, lang, kicker, title, preview });
-    apiRef.current = { open, toggle, panelId, lang, kicker, title, preview };
+    const apiRef = useRef({ open, toggle, panelId, lang, kicker, title, preview, id });
+    apiRef.current = { open, toggle, panelId, lang, kicker, title, preview, id };
     const usedId = useRef(false);
     usedId.current = false;
 
@@ -137,6 +152,7 @@ const Collapsible = ({
                 title={api.title}
                 preview={api.preview}
                 avatar={avatar}
+                sectionId={api.id}
             />
         );
     }, []);
