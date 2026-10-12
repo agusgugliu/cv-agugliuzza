@@ -1,21 +1,21 @@
 import React from 'react';
 
-/* One stick figure per collapsed card. Same slot (glued to Show,
-   pointing at it) but each posture and face is distinct. */
+/* Each collapsed card gets a stick figure whose pose/prop belongs
+   to that section. Same slot: glued to Show, pointing at the pill. */
 const POSE = {
-    projects: 'stride',
-    ai: 'lean',
-    problems: 'think',
-    notes: 'look',
-    skills: 'hip',
-    apps: 'kneel',
-    logos: 'heels',
-    ideas: 'aha',
-    reviews: 'wave'
+    projects: 'execute',
+    ai: 'stairs',
+    problems: 'knot',
+    notes: 'read',
+    skills: 'wrench',
+    apps: 'proto',
+    logos: 'campus',
+    ideas: 'bulb',
+    reviews: 'speak'
 };
 
 export function cueVariant(sectionId) {
-    return POSE[sectionId] || 'stride';
+    return POSE[sectionId] || 'execute';
 }
 
 const ink = {
@@ -25,6 +25,8 @@ const ink = {
     strokeLinecap: 'round',
     strokeLinejoin: 'round'
 };
+
+const fine = { ...ink, strokeWidth: 1.4 };
 
 function Face({ cx, cy, eyes = 'front', mouth = 'smile' }) {
     const eyeY = cy - 0.7;
@@ -53,172 +55,214 @@ function Face({ cx, cy, eyes = 'front', mouth = 'smile' }) {
     );
 }
 
-function PointingArm({ fromX, fromY, toX = 34, toY = 20.5 }) {
+function PointingArm({ fromX, fromY, toX = 38, toY = 20.5 }) {
     return (
         <g className="pm-cue-arm">
             <path d={`M${fromX} ${fromY}L${toX} ${toY}`} {...ink} />
-            <path d={`M${toX} ${toY}l6.5 -2.1`} {...ink} />
+            <path d={`M${toX} ${toY}l6.2 -2`} {...ink} />
         </g>
     );
 }
 
-function StrideFigure() {
+/* Selected projects — planting a flag: strategy that actually lands. */
+function ExecuteFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="16" cy="10" r="7" {...ink} />
-                <Face cx={16} cy={10} mouth="smile" />
-                <path d="M16 17v16" {...ink} />
-                <path d="M16 22L7 31" {...ink} />
-                <PointingArm fromX={16} fromY={22} toX={34} toY={18.5} />
-                <path d="M16 33L7 54M16 33L27 50" {...ink} />
-            </g>
-        </svg>
-    );
-}
-
-function LeanFigure() {
-    return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
-            <g className="pm-cue-bob">
-                <circle cx="19" cy="11" r="7" {...ink} />
-                <Face cx={19} cy={11} mouth="grin" />
-                <path d="M19 18L24 36" {...ink} />
-                <path d="M20 24L12 22" {...ink} />
-                <PointingArm fromX={21} fromY={24} toX={36} toY={20} />
-                <path d="M24 36L16 55M24 36L31 52" {...ink} />
-            </g>
-        </svg>
-    );
-}
-
-function ThinkFigure() {
-    return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
-            <g className="pm-cue-bob">
-                <g transform="rotate(-14 15 12)">
-                    <circle cx="15" cy="12" r="7" {...ink} />
-                    <Face cx={15} cy={12} mouth="flat" />
-                    <path d="M11 7.4q2.6-1.6 6.2 0" {...ink} />
+                <circle cx="20" cy="10" r="7" {...ink} />
+                <Face cx={20} cy={10} mouth="smile" />
+                <path d="M20 17v16" {...ink} />
+                <path d="M20 23L11 34" {...ink} />
+                <g className="pm-cue-prop">
+                    <path d="M11 34V18" {...fine} />
+                    <path d="M11 18l11 4.5-11 4.5" {...fine} />
                 </g>
-                <path d="M16 19.2v15" {...ink} />
-                <path d="M16 24Q8 19 12.5 13" {...ink} />
-                <PointingArm fromX={16} fromY={24} toX={34} toY={24} />
-                <path d="M16 34.2L13.2 55M16 34.2L19.2 55" {...ink} />
+                <PointingArm fromX={20} fromY={23} toX={40} toY={19} />
+                <path d="M20 33L12 55M20 33L29 50" {...ink} />
             </g>
         </svg>
     );
 }
 
-function LookFigure() {
+/* Transformation — walking the stairs from boardroom to shop floor. */
+function StairsFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="16" cy="10" r="7" {...ink} />
-                <Face cx={16} cy={10} eyes="right" mouth="smile" />
-                <path d="M16 17v17.5" {...ink} />
-                <path d="M16 23L9 12L14 7.5" {...ink} />
-                <PointingArm fromX={16} fromY={23} toX={34} toY={23.5} />
-                <path d="M16 34.5L11.5 55M16 34.5L21.5 55" {...ink} />
+                <path d="M3 34h9v7h9v7h9" {...fine} />
+                <circle cx="22" cy="11" r="7" {...ink} />
+                <Face cx={22} cy={11} mouth="grin" />
+                <path d="M22 18L24 33" {...ink} />
+                <path d="M22 24L15 21" {...ink} />
+                <PointingArm fromX={23.5} fromY={24} toX={41} toY={21} />
+                <path d="M24 33L18 41M24 33L30 48" {...ink} />
             </g>
         </svg>
     );
 }
 
-function HipFigure() {
+/* Problems I solve — holding the question, pointing at Show. */
+function KnotFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="13" cy="10" r="7" {...ink} />
-                <Face cx={13} cy={10} mouth="smirk" />
-                <path d="M13 17v18" {...ink} />
-                <path d="M13 23L6 28L11 35" {...ink} />
-                <PointingArm fromX={13} fromY={23} toX={33} toY={19.5} />
-                <path d="M13 35L5 55M13 35L24 53" {...ink} />
+                <circle cx="20" cy="12" r="7" {...ink} />
+                <Face cx={20} cy={12} mouth="flat" />
+                <path d="M16.2 7.4q2.6-1.4 6 0" {...ink} />
+                <path d="M20 19v15.5" {...ink} />
+                <path d="M20 25L10 18" {...ink} />
+                <g className="pm-cue-knot">
+                    <path d="M5.5 7.5q0-4.2 4.4-4.2q4.4 0 4.4 4q0 2.8-4.4 3.8v3" {...ink} />
+                    <circle cx="9.9" cy="18.6" r="1.15" fill="currentColor" stroke="none" />
+                </g>
+                <PointingArm fromX={20} fromY={25} toX={40} toY={24} />
+                <path d="M20 34.5L15 55M20 34.5L25.5 55" {...ink} />
             </g>
         </svg>
     );
 }
 
-function KneelFigure() {
+/* Notes / blog — reading a page, not a sealed envelope. */
+function ReadFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="17" cy="16" r="7" {...ink} />
-                <Face cx={17} cy={16} eyes="wide" mouth="oh" />
-                <path d="M17 23v12" {...ink} />
-                <path d="M17 28L10 36" {...ink} />
-                <PointingArm fromX={17.5} fromY={28} toX={35} toY={22} />
-                <path d="M17 35L10 35L9 55M17 35L26 46L24 55" {...ink} />
+                <circle cx="20" cy="10" r="7" {...ink} />
+                <Face cx={20} cy={10} eyes="right" mouth="smile" />
+                <path d="M20 17v17.5" {...ink} />
+                <path d="M20 23L12 30" {...ink} />
+                <g className="pm-cue-prop">
+                    <rect x="4" y="20" width="11" height="15" rx="1" {...fine} />
+                    <path d="M6.2 24h6.6M6.2 27.5h6.6M6.2 31h4.8" {...fine} />
+                </g>
+                <PointingArm fromX={20} fromY={23} toX={40} toY={23} />
+                <path d="M20 34.5L14 55M20 34.5L26 54" {...ink} />
             </g>
         </svg>
     );
 }
 
-function HeelsFigure() {
+/* Skills & tools — a hammer from the toolkit. */
+function WrenchFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="15" cy="10" r="7" {...ink} />
-                <Face cx={15} cy={10} mouth="flat" />
-                <path d="M15 17v18" {...ink} />
-                <path d="M15 22.5L15 36" {...ink} />
-                <PointingArm fromX={15} fromY={22.5} toX={34} toY={21} />
-                <path d="M15 35L13.4 55M15 35L16.6 55" {...ink} />
+                <circle cx="18" cy="10" r="7" {...ink} />
+                <Face cx={18} cy={10} mouth="smirk" />
+                <path d="M18 17v18" {...ink} />
+                <path d="M18 23L11 22" {...ink} />
+                <g className="pm-cue-wrench">
+                    <path d="M4 18h12" {...ink} />
+                    <path d="M10 18v16" {...ink} />
+                    <path d="M4 18l-2 3M16 18l2 3" {...fine} />
+                </g>
+                <PointingArm fromX={18} fromY={23} toX={40} toY={20} />
+                <path d="M18 35L10 55M18 35L27 53" {...ink} />
             </g>
         </svg>
     );
 }
 
-function AhaFigure() {
+/* Prototypes — a phone wireframe, not another page. */
+function ProtoFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="18" cy="14" r="7" {...ink} />
-                <Face cx={18} cy={14} eyes="wide" mouth="oh" />
-                <path d="M18 21v14" {...ink} />
+                <circle cx="20" cy="12" r="7" {...ink} />
+                <Face cx={20} cy={12} eyes="wide" mouth="oh" />
+                <path d="M20 19v16" {...ink} />
+                <path d="M20 25L12 30" {...ink} />
+                <g className="pm-cue-prop">
+                    <rect x="4" y="20" width="11" height="18" rx="2" {...fine} />
+                    <circle cx="9.5" cy="35.5" r="1.1" {...fine} />
+                    <path d="M7.4 27.5l5.2 3-5.2 3z" {...fine} />
+                </g>
+                <PointingArm fromX={20.5} fromY={25} toX={40} toY={21} />
+                <path d="M20 35L13 55M20 35L28 48L26 55" {...ink} />
+            </g>
+        </svg>
+    );
+}
+
+/* Companies & institutions — a small building. */
+function CampusFigure() {
+    return (
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
+            <g className="pm-cue-bob">
+                <g className="pm-cue-prop">
+                    <path d="M4 34l7.5-9 7.5 9" {...fine} />
+                    <path d="M6 34v16M11.5 34v16M17 34v16" {...fine} />
+                    <path d="M4 50h15" {...fine} />
+                    <path d="M10 42h3v8h-3z" {...fine} />
+                </g>
+                <circle cx="24" cy="10" r="7" {...ink} />
+                <Face cx={24} cy={10} mouth="flat" />
+                <path d="M24 17v18" {...ink} />
+                <path d="M24 23L24 34" {...ink} />
+                <PointingArm fromX={24} fromY={23} toX={41} toY={21} />
+                <path d="M24 35L21.5 55M24 35L26.5 55" {...ink} />
+            </g>
+        </svg>
+    );
+}
+
+/* Beliefs / how I run a project — a lightbulb. */
+function BulbFigure() {
+    return (
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
+            <g className="pm-cue-bob">
+                <circle cx="22" cy="13" r="7" {...ink} />
+                <Face cx={22} cy={13} eyes="wide" mouth="oh" />
+                <path d="M22 20v15" {...ink} />
                 <g className="pm-cue-up">
-                    <path d="M18 26L8 8" {...ink} />
-                    <path d="M8 8L8 2" {...ink} />
+                    <path d="M22 26L11 14" {...ink} />
+                    <circle cx="8.5" cy="9" r="4.2" {...fine} />
+                    <path d="M6.6 13.4h3.8v2.4H6.6z" {...fine} />
+                    <path d="M8.5 6.6v3" {...fine} />
                 </g>
-                <PointingArm fromX={18} fromY={26} toX={35} toY={22} />
-                <path d="M18 35L13 55M18 35L23 55" {...ink} />
+                <PointingArm fromX={22} fromY={26} toX={40} toY={22} />
+                <path d="M22 35L16 55M22 35L28 55" {...ink} />
             </g>
         </svg>
     );
 }
 
-function WaveFigure() {
+/* What people say — a speech bubble. */
+function SpeakFigure() {
     return (
-        <svg className="pm-cue-svg" viewBox="0 0 44 58" aria-hidden="true">
+        <svg className="pm-cue-svg" viewBox="0 0 48 58" aria-hidden="true">
             <g className="pm-cue-bob">
-                <circle cx="16" cy="10" r="7" {...ink} />
-                <Face cx={16} cy={10} eyes="wink" mouth="grin" />
-                <path d="M16 17v18" {...ink} />
-                <g className="pm-cue-wave">
-                    <path d="M16 22.5L9 16L4 7" {...ink} />
+                <g className="pm-cue-bubble">
+                    <rect x="2.5" y="3" width="16" height="11" rx="3.5" {...fine} />
+                    <path d="M8 14l3 5 3.5-5" {...fine} />
+                    <path d="M6 8.5h9" {...fine} />
+                    <path d="M6 11h6" {...fine} />
                 </g>
-                <PointingArm fromX={16} fromY={22.5} toX={34} toY={21} />
-                <path d="M16 35L10 55M16 35L22 54" {...ink} />
+                <circle cx="20" cy="16" r="7" {...ink} />
+                <Face cx={20} cy={16} eyes="wink" mouth="grin" />
+                <path d="M20 23v14" {...ink} />
+                <path d="M20 28L12 34" {...ink} />
+                <PointingArm fromX={20} fromY={28} toX={40} toY={24} />
+                <path d="M20 37L14 55M20 37L27 54" {...ink} />
             </g>
         </svg>
     );
 }
 
 const FIGURES = {
-    stride: StrideFigure,
-    lean: LeanFigure,
-    think: ThinkFigure,
-    look: LookFigure,
-    hip: HipFigure,
-    kneel: KneelFigure,
-    heels: HeelsFigure,
-    aha: AhaFigure,
-    wave: WaveFigure
+    execute: ExecuteFigure,
+    stairs: StairsFigure,
+    knot: KnotFigure,
+    read: ReadFigure,
+    wrench: WrenchFigure,
+    proto: ProtoFigure,
+    campus: CampusFigure,
+    bulb: BulbFigure,
+    speak: SpeakFigure
 };
 
 const FoldCue = ({ variant }) => {
-    const Figure = FIGURES[variant] || StrideFigure;
+    const Figure = FIGURES[variant] || ExecuteFigure;
     return (
         <span className={`pm-fold-cue pm-fold-cue--figure pm-fold-cue--${variant}`} aria-hidden="true">
             <Figure />
