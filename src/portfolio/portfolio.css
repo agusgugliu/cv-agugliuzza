@@ -226,9 +226,9 @@
     border: 0;
 }
 
-/* Pixar-style figures sit in a cluster with Show/Hide — same slot on
-   every card, never a corner dog-ear. Decorative (aria-hidden). Track
-   Record and Contact keep the figure on the expanded eyebrow row. */
+/* Pixar-style figures cluster with Show/Hide — each in a different
+   spot around the pill (beside, on top, behind, bending over). Never
+   a corner dog-ear. Decorative (aria-hidden). */
 .pm-fold.has-cue {
     overflow: visible;
 }
@@ -239,6 +239,8 @@
     align-items: center;
     gap: 0;
     align-self: center;
+    position: relative;
+    overflow: visible;
 }
 
 .pm-fold-cue {
@@ -253,7 +255,7 @@
     width: 52px;
     height: 68px;
     object-fit: contain;
-    object-position: right bottom;
+    object-position: center bottom;
     display: block;
     filter: drop-shadow(0 3px 6px rgba(11, 14, 20, 0.16));
     transform-origin: 50% 100%;
@@ -267,6 +269,117 @@
 @keyframes pm-cue-bob {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-2px); }
+}
+
+/* Standing just left of the pill, pointing at it. */
+.pm-fold-cue--beside {
+    position: relative;
+    z-index: 3;
+}
+
+/* Sitting on top of the pill, feet just overlapping the rim. */
+.pm-fold-cue--atop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% - 6px);
+    transform: translateX(-50%);
+    z-index: 3;
+}
+.pm-fold-cue--atop .pm-cue-img {
+    width: 46px;
+    height: 60px;
+}
+
+/* Peeking from behind the left edge of the pill. */
+.pm-fold-cue--peek {
+    position: absolute;
+    right: 54px;
+    bottom: -10px;
+    z-index: 0;
+}
+.pm-fold-cue--peek .pm-cue-img {
+    width: 48px;
+    height: 64px;
+}
+
+/* Popping up from behind the pill. */
+.pm-fold-cue--pop {
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+.pm-fold-cue--pop .pm-cue-img {
+    width: 56px;
+    height: 64px;
+}
+
+/* Bending over the pill from the left, not covering the label. */
+.pm-fold-cue--bend {
+    position: absolute;
+    right: auto;
+    left: -40px;
+    bottom: -4px;
+    z-index: 3;
+}
+.pm-fold-cue--bend .pm-cue-img {
+    width: 50px;
+    height: 64px;
+}
+
+/* Climbing onto the left rim of the pill. */
+.pm-fold-cue--climb {
+    position: absolute;
+    right: auto;
+    left: -34px;
+    bottom: -2px;
+    z-index: 3;
+}
+.pm-fold-cue--climb .pm-cue-img {
+    width: 54px;
+    height: 70px;
+}
+
+/* Leaning on the pill from the left. */
+.pm-fold-cue--lean {
+    position: absolute;
+    right: auto;
+    left: -38px;
+    bottom: -8px;
+    z-index: 3;
+}
+
+/* Draped over the left of the pill. */
+.pm-fold-cue--drape {
+    position: absolute;
+    right: auto;
+    left: -36px;
+    bottom: -10px;
+    z-index: 3;
+}
+.pm-fold-cue--drape .pm-cue-img {
+    width: 50px;
+    height: 66px;
+}
+
+/* Peeking from the right side of the pill. */
+.pm-fold-cue--peek-right {
+    position: absolute;
+    left: auto;
+    right: -22px;
+    bottom: -8px;
+    z-index: 3;
+}
+.pm-fold-cue--peek-right .pm-cue-img {
+    width: 44px;
+    height: 62px;
+}
+
+.pm-fold.has-cue--read,
+.pm-fold.has-cue--track,
+.pm-fold.has-cue--bulb {
+    padding-top: 22px;
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -367,6 +480,12 @@
     .pm-fold.is-open .pm-cue-img {
         width: 36px;
         height: 48px;
+    }
+    .pm-fold-cue--peek-right {
+        right: -6px;
+    }
+    .pm-fold-cue--atop {
+        bottom: calc(100% - 10px);
     }
 }
 
