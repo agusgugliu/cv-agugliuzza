@@ -281,7 +281,7 @@
 .pm-fold-cue--atop {
     position: absolute;
     left: 50%;
-    bottom: calc(100% - 10px);
+    bottom: calc(100% - 18px);
     transform: translateX(-50%);
     z-index: 3;
 }
@@ -321,8 +321,8 @@
 .pm-fold-cue--bend {
     position: absolute;
     right: auto;
-    left: -46px;
-    bottom: -8px;
+    left: -36px;
+    bottom: -6px;
     z-index: 3;
 }
 .pm-fold-cue--bend .pm-cue-img {
@@ -336,8 +336,8 @@
 .pm-fold-cue--climb {
     position: absolute;
     right: auto;
-    left: -28px;
-    bottom: -6px;
+    left: -38px;
+    bottom: -4px;
     z-index: 3;
 }
 .pm-fold-cue--climb .pm-cue-img {
@@ -520,23 +520,23 @@
         right: -6px;
     }
     .pm-fold-cue--atop {
-        bottom: calc(100% - 8px);
+        bottom: calc(100% - 14px);
     }
     .pm-fold-cue--atop .pm-cue-img {
         width: 44px;
         height: 46px;
     }
     .pm-fold-cue--bend {
-        left: -36px;
-        bottom: -6px;
+        left: -28px;
+        bottom: -4px;
     }
     .pm-fold-cue--bend .pm-cue-img {
         width: 52px;
         height: 58px;
     }
     .pm-fold-cue--climb {
-        left: -22px;
-        bottom: -4px;
+        left: -30px;
+        bottom: -2px;
     }
     .pm-fold-cue--climb .pm-cue-img {
         width: 48px;
