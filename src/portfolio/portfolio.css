@@ -226,8 +226,9 @@
     border: 0;
 }
 
-/* Pixar-style figures sit in a cluster with Show — same slot on every
-   collapsed card, never a corner dog-ear. Decorative (aria-hidden). */
+/* Pixar-style figures sit in a cluster with Show/Hide — same slot on
+   every card, never a corner dog-ear. Decorative (aria-hidden). Track
+   Record and Contact keep the figure on the expanded eyebrow row. */
 .pm-fold.has-cue {
     overflow: visible;
 }
@@ -282,6 +283,19 @@
 .pm-fold.is-open:hover {
     box-shadow: none;
     border-bottom-color: var(--hairline-strong);
+}
+
+.pm-fold.is-open.has-cue {
+    align-items: flex-end;
+}
+
+.pm-fold.is-open .pm-fold-end {
+    align-self: flex-end;
+}
+
+.pm-fold.is-open .pm-cue-img {
+    width: 44px;
+    height: 58px;
 }
 
 .pm-fold.is-open .pm-fold-kicker {
@@ -349,6 +363,10 @@
     .pm-cue-img {
         width: 40px;
         height: 54px;
+    }
+    .pm-fold.is-open .pm-cue-img {
+        width: 36px;
+        height: 48px;
     }
 }
 
