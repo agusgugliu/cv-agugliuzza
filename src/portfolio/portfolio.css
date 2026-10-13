@@ -277,11 +277,11 @@
     z-index: 3;
 }
 
-/* Sitting on top of the pill, legs overlapping it. */
+/* Sitting on top of the pill, feet just overlapping the rim. */
 .pm-fold-cue--atop {
     position: absolute;
     left: 50%;
-    bottom: calc(100% - 14px);
+    bottom: calc(100% - 6px);
     transform: translateX(-50%);
     z-index: 3;
 }
@@ -293,7 +293,7 @@
 /* Peeking from behind the left edge of the pill. */
 .pm-fold-cue--peek {
     position: absolute;
-    right: 36px;
+    right: 54px;
     bottom: -10px;
     z-index: 0;
 }
@@ -315,11 +315,12 @@
     height: 64px;
 }
 
-/* Bending over the pill from above. */
+/* Bending over the pill from the left, not covering the label. */
 .pm-fold-cue--bend {
     position: absolute;
-    right: 8px;
-    bottom: -6px;
+    right: auto;
+    left: -40px;
+    bottom: -4px;
     z-index: 3;
 }
 .pm-fold-cue--bend .pm-cue-img {
@@ -327,10 +328,11 @@
     height: 64px;
 }
 
-/* Climbing onto the pill. */
+/* Climbing onto the left rim of the pill. */
 .pm-fold-cue--climb {
     position: absolute;
-    right: 22px;
+    right: auto;
+    left: -34px;
     bottom: -2px;
     z-index: 3;
 }
@@ -342,7 +344,8 @@
 /* Leaning on the pill from the left. */
 .pm-fold-cue--lean {
     position: absolute;
-    right: 28px;
+    right: auto;
+    left: -38px;
     bottom: -8px;
     z-index: 3;
 }
@@ -350,7 +353,8 @@
 /* Draped over the left of the pill. */
 .pm-fold-cue--drape {
     position: absolute;
-    right: 18px;
+    right: auto;
+    left: -36px;
     bottom: -10px;
     z-index: 3;
 }
