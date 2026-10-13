@@ -71,7 +71,7 @@ export function FoldButton({
     const t = COPY[lang] || COPY.en;
     const action = open ? t.hide : t.show;
     const hint = open ? t.collapse : t.expand;
-    const variant = !open ? cueVariant(sectionId) : null;
+    const variant = cueVariant(sectionId, { open });
     return (
         <button
             type="button"

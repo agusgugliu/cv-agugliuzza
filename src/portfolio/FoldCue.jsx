@@ -1,9 +1,10 @@
 import React from 'react';
 
-/* One Pixar-style figure per collapsed card — the portfolio portrait
-   as 3D clay, pose/prop matching the section. Glued to Show, pointing
-   at the pill. */
+/* One Pixar-style figure per section — the portfolio portrait as 3D
+   clay, pose/prop matching the section. Glued to Show/Hide, pointing
+   at the pill. Track Record and Contact keep theirs while expanded. */
 const POSE = {
+    work: 'track',
     projects: 'execute',
     ai: 'stairs',
     problems: 'knot',
@@ -12,10 +13,12 @@ const POSE = {
     apps: 'proto',
     logos: 'campus',
     ideas: 'bulb',
-    reviews: 'speak'
+    reviews: 'speak',
+    contact: 'coffee'
 };
 
 const SRC = {
+    track: '/assets/cues/track.webp',
     execute: '/assets/cues/execute.webp',
     stairs: '/assets/cues/stairs.webp',
     knot: '/assets/cues/knot.webp',
@@ -24,11 +27,15 @@ const SRC = {
     proto: '/assets/cues/proto.webp',
     campus: '/assets/cues/campus.webp',
     bulb: '/assets/cues/bulb.webp',
-    speak: '/assets/cues/speak.webp'
+    speak: '/assets/cues/speak.webp',
+    coffee: '/assets/cues/coffee.webp'
 };
 
-export function cueVariant(sectionId) {
-    return POSE[sectionId] || 'execute';
+const OPEN_CUES = new Set(['work', 'contact']);
+
+export function cueVariant(sectionId, { open = false } = {}) {
+    if (open && !OPEN_CUES.has(sectionId)) return null;
+    return POSE[sectionId] || null;
 }
 
 const FoldCue = ({ variant }) => {
