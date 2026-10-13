@@ -194,7 +194,7 @@
     font-weight: 500;
     white-space: nowrap;
     position: relative;
-    z-index: 1;
+    z-index: 5;
 }
 
 .pm-fold:hover .pm-fold-action {
@@ -277,17 +277,19 @@
     z-index: 3;
 }
 
-/* Sitting on top of the pill, feet just overlapping the rim. */
+/* Sitting on top of the pill — seat planted on the rim, no hover bob. */
 .pm-fold-cue--atop {
     position: absolute;
     left: 50%;
-    bottom: calc(100% - 6px);
+    bottom: calc(100% - 10px);
     transform: translateX(-50%);
     z-index: 3;
 }
 .pm-fold-cue--atop .pm-cue-img {
-    width: 46px;
-    height: 60px;
+    width: 54px;
+    height: 56px;
+    animation: none;
+    object-position: center bottom;
 }
 
 /* Peeking from behind the left edge of the pill. */
@@ -315,30 +317,34 @@
     height: 64px;
 }
 
-/* Bending over the pill from the left, not covering the label. */
+/* Bending over the pill from the left — planted hand rests on the left cap. */
 .pm-fold-cue--bend {
     position: absolute;
     right: auto;
-    left: -40px;
-    bottom: -4px;
+    left: -46px;
+    bottom: -8px;
     z-index: 3;
 }
 .pm-fold-cue--bend .pm-cue-img {
-    width: 50px;
-    height: 64px;
+    width: 64px;
+    height: 72px;
+    animation: none;
+    object-position: right bottom;
 }
 
 /* Climbing onto the left rim of the pill. */
 .pm-fold-cue--climb {
     position: absolute;
     right: auto;
-    left: -34px;
-    bottom: -2px;
+    left: -28px;
+    bottom: -6px;
     z-index: 3;
 }
 .pm-fold-cue--climb .pm-cue-img {
-    width: 54px;
-    height: 70px;
+    width: 60px;
+    height: 72px;
+    animation: none;
+    object-position: right bottom;
 }
 
 /* Leaning on the pill from the left. */
@@ -377,9 +383,23 @@
 }
 
 .pm-fold.has-cue--read,
-.pm-fold.has-cue--track,
+.pm-fold.has-cue--track {
+    padding-top: 40px;
+}
 .pm-fold.has-cue--bulb {
     padding-top: 22px;
+}
+.pm-fold.has-cue--wrench,
+.pm-fold.has-cue--coffee,
+.pm-fold.has-cue--stairs {
+    padding-top: 10px;
+}
+
+.pm-fold.is-open.has-cue--track {
+    padding-top: 36px;
+}
+.pm-fold.is-open.has-cue--coffee {
+    padding-top: 8px;
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -409,6 +429,21 @@
 .pm-fold.is-open .pm-cue-img {
     width: 44px;
     height: 58px;
+}
+
+.pm-fold.is-open .pm-fold-cue--atop .pm-cue-img {
+    width: 48px;
+    height: 50px;
+}
+
+.pm-fold.is-open .pm-fold-cue--bend .pm-cue-img {
+    width: 56px;
+    height: 64px;
+}
+
+.pm-fold.is-open .pm-fold-cue--climb .pm-cue-img {
+    width: 52px;
+    height: 64px;
 }
 
 .pm-fold.is-open .pm-fold-kicker {
@@ -485,7 +520,27 @@
         right: -6px;
     }
     .pm-fold-cue--atop {
-        bottom: calc(100% - 10px);
+        bottom: calc(100% - 8px);
+    }
+    .pm-fold-cue--atop .pm-cue-img {
+        width: 44px;
+        height: 46px;
+    }
+    .pm-fold-cue--bend {
+        left: -36px;
+        bottom: -6px;
+    }
+    .pm-fold-cue--bend .pm-cue-img {
+        width: 52px;
+        height: 58px;
+    }
+    .pm-fold-cue--climb {
+        left: -22px;
+        bottom: -4px;
+    }
+    .pm-fold-cue--climb .pm-cue-img {
+        width: 48px;
+        height: 58px;
     }
 }
 
