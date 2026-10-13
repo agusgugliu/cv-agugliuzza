@@ -1,7 +1,8 @@
 import React from 'react';
 
-/* One Pixar-style figure per collapsed card. Pose/prop matches the
-   section. Same slot: glued to Show, pointing at the pill. */
+/* One Pixar-style figure per collapsed card — the portfolio portrait
+   as 3D clay, pose/prop matching the section. Glued to Show, pointing
+   at the pill. */
 const POSE = {
     projects: 'execute',
     ai: 'stairs',
