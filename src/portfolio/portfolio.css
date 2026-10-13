@@ -226,7 +226,7 @@
     border: 0;
 }
 
-/* Stick figures sit in a cluster with Show — same slot on every
+/* Pixar-style figures sit in a cluster with Show — same slot on every
    collapsed card, never a corner dog-ear. Decorative (aria-hidden). */
 .pm-fold.has-cue {
     overflow: visible;
@@ -236,96 +236,36 @@
     flex: none;
     display: inline-flex;
     align-items: center;
-    gap: 2px;
+    gap: 0;
     align-self: center;
 }
 
 .pm-fold-cue {
     flex: none;
     pointer-events: none;
-    color: var(--ink);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     line-height: 0;
 }
 
-.pm-cue-svg {
-    width: 42px;
-    height: 52px;
+.pm-cue-img {
+    width: 52px;
+    height: 68px;
+    object-fit: contain;
+    object-position: right bottom;
     display: block;
-    overflow: visible;
-}
-
-.pm-cue-bob {
-    transform-origin: 20px 55px;
+    filter: drop-shadow(0 3px 6px rgba(11, 14, 20, 0.16));
+    transform-origin: 50% 100%;
     animation: pm-cue-bob 2.8s ease-in-out infinite;
 }
 
-.pm-cue-arm {
-    transform-origin: 20px 23px;
-    animation: pm-cue-point 2.4s ease-in-out infinite;
+:root[data-theme="dark"] .portfolio-mode .pm-cue-img {
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
 }
-
-.pm-cue-up {
-    transform-origin: 22px 26px;
-    animation: pm-cue-up 2.2s ease-in-out infinite;
-}
-
-.pm-cue-knot {
-    transform-origin: 10px 30px;
-    animation: pm-cue-knot 2.6s ease-in-out infinite;
-}
-
-.pm-cue-wrench {
-    transform-origin: 10px 30px;
-    animation: pm-cue-wrench 2.8s ease-in-out infinite;
-}
-
-.pm-cue-bubble {
-    transform-origin: 10px 14px;
-    animation: pm-cue-bubble 2.6s ease-in-out infinite;
-}
-
-.pm-fold-cue--stairs .pm-cue-arm { transform-origin: 23.5px 24px; }
-.pm-fold-cue--stairs .pm-cue-bob { transform-origin: 24px 48px; }
-.pm-fold-cue--knot .pm-cue-arm { transform-origin: 20px 25px; }
-.pm-fold-cue--knot .pm-cue-knot { transform-origin: 10px 12px; }
-.pm-fold-cue--read .pm-cue-arm { transform-origin: 20px 23px; }
-.pm-fold-cue--wrench .pm-cue-arm { transform-origin: 18px 23px; }
-.pm-fold-cue--proto .pm-cue-arm { transform-origin: 20.5px 25px; }
-.pm-fold-cue--campus .pm-cue-arm { transform-origin: 24px 23px; }
-.pm-fold-cue--campus .pm-cue-bob { transform-origin: 24px 55px; }
-.pm-fold-cue--bulb .pm-cue-arm { transform-origin: 22px 26px; }
-.pm-fold-cue--speak .pm-cue-arm { transform-origin: 20px 28px; }
 
 @keyframes pm-cue-bob {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-1.5px); }
-}
-
-@keyframes pm-cue-point {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-7deg); }
-}
-
-@keyframes pm-cue-up {
-    0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-2px); }
-}
-
-@keyframes pm-cue-knot {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-12deg); }
-}
-
-@keyframes pm-cue-wrench {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(8deg); }
-}
-
-@keyframes pm-cue-bubble {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-1.5px); }
 }
 
 /* Expanded: slim eyebrow-row control, original headings do the reading. */
@@ -406,9 +346,9 @@
         align-self: flex-start;
         gap: 0;
     }
-    .pm-cue-svg {
-        width: 32px;
-        height: 40px;
+    .pm-cue-img {
+        width: 40px;
+        height: 54px;
     }
 }
 
@@ -3528,12 +3468,7 @@
         transform: none;
     }
 
-    .pm-cue-bob,
-    .pm-cue-arm,
-    .pm-cue-up,
-    .pm-cue-knot,
-    .pm-cue-wrench,
-    .pm-cue-bubble {
+    .pm-cue-img {
         animation: none !important;
         transform: none !important;
     }
