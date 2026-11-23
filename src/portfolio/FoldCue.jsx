@@ -59,7 +59,7 @@ const FoldCue = ({ variant }) => {
     const place = PLACE[variant] || 'beside';
     return (
         <span className={`pm-fold-cue pm-fold-cue--figure pm-fold-cue--${variant} pm-fold-cue--${place}`} aria-hidden="true">
-            <img className="pm-cue-img" src={src} alt="" width="48" height="64" draggable="false" />
+            <img className="pm-cue-img" src={src} alt="" width="48" height="64" loading="lazy" decoding="async" draggable="false" />
         </span>
     );
 };

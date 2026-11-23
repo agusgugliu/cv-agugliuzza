@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Portfolio from './portfolio/Portfolio';
 import CVMode from './modes/CVMode';
+import { applyDocumentHead, setThemeColor, SITE } from './lib/documentHead';
 
 const BlogList = lazy(() => import('./blog/BlogList'));
 const BlogPost = lazy(() => import('./blog/BlogPost'));
@@ -14,19 +15,36 @@ const RouteFallback = () => (
 const getInitialState = () => {
     if (typeof window === 'undefined') return { mode: 'portfolio', lang: 'en', theme: 'light' };
     const params = new URLSearchParams(window.location.search);
+    const pathIsEs = window.location.pathname === '/es' || window.location.pathname.startsWith('/es/');
     const urlMode = params.get('mode');
     const urlLang = params.get('lang');
     const storedMode = localStorage.getItem('ag.mode');
     const storedLang = localStorage.getItem('ag.lang');
     const storedTheme = localStorage.getItem('ag.theme');
     const browserLang = (navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return {
+  return {
         mode: urlMode === 'cv' || urlMode === 'portfolio' ? urlMode : (storedMode || 'portfolio'),
-        lang: urlLang === 'es' || urlLang === 'en' ? urlLang : (storedLang || browserLang),
-        theme: storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : (prefersDark ? 'dark' : 'light')
+        lang: pathIsEs || urlLang === 'es' ? 'es' : urlLang === 'en' ? 'en' : (storedLang || browserLang),
+        theme: storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
     };
 };
+
+const HOME_DESC = {
+    en: 'Project and strategy leadership for companies turning operations into outcomes. Digital transformation, AI ops and data, across LATAM and Europe.',
+    es: 'Liderazgo de proyectos y estrategia para empresas que convierten operaciones en resultados. Transformación digital, AI ops y datos, en LATAM y Europa.'
+};
+
+const hreflangsForHome = () => [
+    { hreflang: 'en', href: `${SITE}/` },
+    { hreflang: 'es', href: `${SITE}/es` },
+    { hreflang: 'x-default', href: `${SITE}/` }
+];
+
+const hreflangsForBlog = () => [
+    { hreflang: 'en', href: `${SITE}/blog` },
+    { hreflang: 'es', href: `${SITE}/es/blog` },
+    { hreflang: 'x-default', href: `${SITE}/blog` }
+];
 
 const App = () => {
     const initial = getInitialState();
@@ -40,7 +58,17 @@ const App = () => {
         if (/^\/blog\/.+/.test(path)) return;
         const name = 'Agustín Gugliuzza';
         if (path === '/blog' || path === '/blog/') {
-            document.title = lang === 'es' ? `Notas · ${name}` : `Notes · ${name}`;
+            const title = lang === 'es' ? `Notas · ${name}` : `Notes · ${name}`;
+            const desc = lang === 'es'
+                ? "Cosas en las que estoy pensando — IA, el MBA, lo que termina en LinkedIn."
+                : "Things I'm thinking about — AI, the MBA, whatever ends up on LinkedIn.";
+            applyDocumentHead({
+                title,
+                description: desc,
+                canonical: `${SITE}/blog`,
+                locale: lang === 'es' ? 'es_ES' : 'en_US',
+                hreflangs: hreflangsForBlog()
+            });
             return;
         }
         if (path.startsWith('/admin')) {
@@ -51,9 +79,17 @@ const App = () => {
             document.title = `CV · ${name}`;
             return;
         }
-        document.title = lang === 'es'
-            ? `${name} · PM, Estrategia y AI Ops · Madrid`
-            : `${name} · PM, Strategy & AI Ops · Madrid`;
+        const title = lang === 'es'
+            ? `${name} · PM, Estrategia y AI Ops · Buenos Aires`
+            : `${name} · PM, Strategy & AI Ops · Buenos Aires`;
+        const canonical = lang === 'es' ? `${SITE}/es` : `${SITE}/`;
+        applyDocumentHead({
+            title,
+            description: HOME_DESC[lang] || HOME_DESC.en,
+            canonical,
+            locale: lang === 'es' ? 'es_ES' : 'en_US',
+            hreflangs: hreflangsForHome()
+        });
     }, [location.pathname, lang, mode]);
 
     useEffect(() => {
@@ -71,6 +107,7 @@ const App = () => {
     useEffect(() => {
         localStorage.setItem('ag.theme', theme);
         document.documentElement.setAttribute('data-theme', theme);
+        setThemeColor(theme);
     }, [theme]);
 
     const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
@@ -111,6 +148,7 @@ const App = () => {
                 <Route path="/blog" element={<BlogList {...blogProps} />} />
                 <Route path="/blog/:slug" element={<BlogPost {...blogProps} />} />
                 <Route path="/admin/blog" element={<AdminBlog />} />
+                <Route path="/es/*" element={<Home />} />
                 <Route path="*" element={<Home />} />
             </Routes>
         </Suspense>

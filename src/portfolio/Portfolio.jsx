@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef, Suspense, lazy } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig, useScroll, useSpring } from 'framer-motion';
-import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles, MoreHorizontal } from 'lucide-react';
+import { Download, ExternalLink, ChevronDown, Twitter, Github, Linkedin, Sun, Moon, Calendar, BriefcaseBusiness, GraduationCap, BadgeCheck, Trophy, Compass, HeartPulse, Recycle, BookOpenText, Sparkles, MoreHorizontal, Menu, X } from 'lucide-react';
 
 /* Map a grade chip (IE band or numeric 0-10) to a color tier. */
 const gradeTier = (band) => {
@@ -34,8 +34,8 @@ import HeroBackdrop from './HeroBackdrop';
 import Magnetic from './Magnetic';
 import Editorial from './Editorial';
 import ProjectsBento from './ProjectsBento';
-import ReviewsSection from './ReviewsSection';
-import LatestPosts from './LatestPosts';
+const ReviewsSection = lazy(() => import('./ReviewsSection'));
+const LatestPosts = lazy(() => import('./LatestPosts'));
 import FloatingWhatsApp from './FloatingWhatsApp';
 const CommandPalette = lazy(() => import('./CommandPalette'));
 import Collapsible, { expandSection, plainHeading } from './Collapsible';
@@ -321,8 +321,10 @@ const InfoBlock = ({ info, lang, variant = 'inline' }) => {
 
 const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
     const data = lang === 'en' ? portfolioEN : portfolioES;
+    const navigate = useNavigate();
     const [toast, setToast] = useState(null);
     const [cmdOpen, setCmdOpen] = useState(false);
+    const [mobileNavOpen, setMobileNavOpen] = useState(false);
     const [showCredentials, setShowCredentials] = useState(false);
     const [openCredential, setOpenCredential] = useState(null);
     const [openClient, setOpenClient] = useState({ caseIdx: null, clientIdx: null });
@@ -545,6 +547,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
         { id: 'theme', label: lang === 'es' ? 'Cambiar tema' : 'Toggle theme', hint: theme === 'dark' ? 'Light' : 'Dark', run: toggleTheme },
         { id: 'work', label: lang === 'es' ? 'Ir a Trabajo' : 'Go to Work', run: () => scrollToId('work') },
         { id: 'projects', label: lang === 'es' ? 'Ir a Proyectos' : 'Go to Projects', run: () => scrollToId('projects') },
+        { id: 'skills', label: lang === 'es' ? 'Ir a Skills' : 'Go to Skills', run: () => scrollToId('skills') },
+        { id: 'apps', label: lang === 'es' ? 'Ir a Apps' : 'Go to Apps', run: () => scrollToId('apps') },
+        { id: 'ideas', label: lang === 'es' ? 'Ir a Ideas' : 'Go to Ideas', run: () => scrollToId('ideas') },
+        { id: 'reviews', label: lang === 'es' ? 'Ir a Reseñas' : 'Go to Reviews', run: () => scrollToId('reviews') },
+        { id: 'blog', label: lang === 'es' ? 'Ir al Blog' : 'Go to Blog', run: () => navigate('/blog') },
         { id: 'ai', label: lang === 'es' ? 'Ir a IA' : 'Go to AI', run: () => scrollToId('ai') },
         { id: 'contact', label: lang === 'es' ? 'Ir a Contacto' : 'Go to Contact', run: () => scrollToId('contact') }
     ];
@@ -569,6 +576,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 )}
             </AnimatePresence>
 
+            <a className="pm-skip-link" href="#main-content">
+                {lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}
+            </a>
             {/* Nav */}
             <nav className={`pm-nav ${navCompact ? 'pm-nav--compact' : ''}`}>
                 <div className="pm-nav-inner">
@@ -610,6 +620,16 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     <span className="pm-nav-divider" aria-hidden="true" />
 
                     <div className="pm-nav-actions">
+                        <button
+                            type="button"
+                            className="pm-nav-btn pm-nav-icon pm-nav-menu-btn"
+                            aria-expanded={mobileNavOpen}
+                            aria-controls="pm-mobile-nav"
+                            aria-label={lang === 'es' ? 'Menú de secciones' : 'Section menu'}
+                            onClick={() => setMobileNavOpen((open) => !open)}
+                        >
+                            {mobileNavOpen ? <X size={18} /> : <Menu size={18} />}
+                        </button>
                         <div className="pm-nav-utils-menu" ref={utilsMenuRef}>
                             <button
                                 type="button"
@@ -675,7 +695,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                             className="pm-nav-btn pm-cmdk-chip"
                             onClick={() => setCmdOpen(true)}
                             title={lang === 'es' ? 'Abrir paleta de comandos' : 'Open command palette'}
-                            aria-label="Command palette"
+                            aria-label={lang === 'es' ? 'Paleta de comandos, Command+K' : 'Command palette, Command+K'}
                         >
                             <span className="pm-cmdk-chip-key">&#8984;K</span>
                         </button>
@@ -690,7 +710,13 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         <button className="pm-nav-btn pm-nav-icon pm-nav-download pm-nav-util" onClick={downloadPDF} title="Print / PDF">
                             <Download size={15} />
                         </button>
-                        <a className="pm-nav-cta" href={RECLAIM_URL} target="_blank" rel="noreferrer" aria-label={data.hero.cta}>
+                        <a
+                            className="pm-nav-cta"
+                            href={RECLAIM_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={lang === 'es' ? 'Agendar llamada' : 'Book a call'}
+                        >
                             <Calendar className="pm-nav-cta-icon" size={14} aria-hidden="true" /> <span>{data.hero.cta}</span>
                         </a>
                         <button className="pm-mode-pill pm-nav-util" onClick={onSwitchToCV}>
@@ -699,9 +725,21 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     </div>
                 </div>
             </nav>
+            {mobileNavOpen && (
+                <div id="pm-mobile-nav" className="pm-mobile-nav" role="navigation" aria-label={lang === 'es' ? 'Secciones' : 'Sections'}>
+                    <a className="pm-mobile-nav-link" href="#work" onClick={(e) => { smoothScrollTo('work')(e); setMobileNavOpen(false); }}>{data.nav.work}</a>
+                    <a className="pm-mobile-nav-link" href="#projects" onClick={(e) => { smoothScrollTo('projects')(e); setMobileNavOpen(false); }}>{data.nav.projects}</a>
+                    <a className="pm-mobile-nav-link" href="#skills" onClick={(e) => { smoothScrollTo('skills')(e); setMobileNavOpen(false); }}>{data.nav.skills}</a>
+                    <a className="pm-mobile-nav-link" href="#apps" onClick={(e) => { smoothScrollTo('apps')(e); setMobileNavOpen(false); }}>{data.nav.apps}</a>
+                    <a className="pm-mobile-nav-link" href="#ideas" onClick={(e) => { smoothScrollTo('ideas')(e); setMobileNavOpen(false); }}>{data.nav.ideas}</a>
+                    <a className="pm-mobile-nav-link" href="#reviews" onClick={(e) => { smoothScrollTo('reviews')(e); setMobileNavOpen(false); }}>{data.nav.reviews}</a>
+                    <Link className="pm-mobile-nav-link" to="/blog" onClick={() => setMobileNavOpen(false)}>{data.nav.blog}</Link>
+                    <a className="pm-mobile-nav-link" href="#contact" onClick={(e) => { smoothScrollTo('contact')(e); setMobileNavOpen(false); }}>{data.nav.contact}</a>
+                </div>
+            )}
 
             <div className="pm-shell" id="top">
-            <main>
+            <main id="main-content">
                 {/* Hero — always open; the statement is the page idea, not a section. */}
                 <section className="pm-section pm-hero">
                     <HeroBackdrop theme={theme} />
@@ -778,11 +816,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                                 </span>
                             ))}
                         </motion.div>
-                        <motion.h1
-                            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-                        >
+                        <h1 className="pm-hero-title">
                             <Editorial text={data.hero.statement} />
-                        </motion.h1>
+                        </h1>
                         {data.hero.substatement && (
                             <motion.p
                                 className="pm-hero-sub"
@@ -815,7 +851,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.track.heading)}
                     preview={data.track.cta}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section${open ? '' : ' is-collapsed'}`} id="work">
                     <Fold />
                     <motion.div
@@ -825,7 +861,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.55 }}
                     >
-                        <h2><Editorial text={data.track.heading} /></h2>
+                        <h2 id={headingId}><Editorial text={data.track.heading} /></h2>
                         <button className="pm-mode-pill pm-pill--solid" onClick={onSwitchToCV}>
                             {data.track.cta} &rarr;
                         </button>
@@ -1247,11 +1283,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.ai.heading)}
                     preview={lang === 'es' ? `${data.ai.steps.length} pasos` : `${data.ai.steps.length} steps`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-ai pm-card-section${open ? '' : ' is-collapsed'}`} id="ai">
                     <div className={open ? 'pm-card' : undefined}>
                     <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
+                    <h2 id={headingId} className="pm-fold-reading-head"><Editorial text={data.ai.heading} /></h2>
                     <Panel>
                     <p className="pm-ai-lead">{data.ai.lead}</p>
                     <div className="pm-ai-flow">
@@ -1293,10 +1329,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.problems.heading)}
                     preview={lang === 'es' ? `${data.problems.items.length} problemas` : `${data.problems.items.length} problems`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-problems${open ? '' : ' is-collapsed'}`} id="problems">
                     <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
+                    <h2 id={headingId} className="pm-fold-reading-head"><Editorial text={data.problems.heading} /></h2>
                     <Panel>
                     <div className="pm-problem-grid">
                         {data.problems.items.map((p, i) => (
@@ -1319,7 +1355,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     )}
                 </Collapsible>
 
-                <LatestPosts lang={lang} />
+                <Suspense fallback={null}>
+                    <LatestPosts lang={lang} />
+                </Suspense>
 
                 {/* Skills */}
                 <Collapsible
@@ -1329,12 +1367,12 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.skills.heading)}
                     preview={lang === 'es' ? `${data.skills.groups.length} grupos` : `${data.skills.groups.length} groups`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-skills pm-card-section${open ? '' : ' is-collapsed'}`} id="skills">
                     <div className={open ? 'pm-card' : undefined}>
                         <Fold />
                         <div className="pm-skills-head pm-fold-reading-head">
-                            <h2><Editorial text={data.skills.heading} /></h2>
+                            <h2 id={headingId}><Editorial text={data.skills.heading} /></h2>
                             <p>{data.skills.lead}</p>
                         </div>
                         <Panel>
@@ -1396,10 +1434,10 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.apps.heading)}
                     preview={lang === 'es' ? `${data.apps.items.length} prototipos` : `${data.apps.items.length} prototypes`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-apps${open ? '' : ' is-collapsed'}`} id="apps">
                     <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.apps.heading} /></h2>
+                    <h2 id={headingId} className="pm-fold-reading-head"><Editorial text={data.apps.heading} /></h2>
                     <Panel>
                     <p className="pm-ai-lead">{data.apps.lead}</p>
                     <div className="pm-apps-grid">
@@ -1446,7 +1484,7 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                         ? `${data.logos.groups.reduce((n, g) => n + g.items.length, 0)} organizaciones`
                         : `${data.logos.groups.reduce((n, g) => n + g.items.length, 0)} organizations`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-logos${open ? '' : ' is-collapsed'}`} id="logos">
                     <Fold />
                     <Panel>
@@ -1502,11 +1540,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.principles.heading)}
                     preview={lang === 'es' ? `${data.principles.items.length} creencias` : `${data.principles.items.length} beliefs`}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-principles pm-card-section${open ? '' : ' is-collapsed'}`} id="ideas">
                     <div className={open ? 'pm-card' : undefined}>
                     <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.principles.heading} /></h2>
+                    <h2 id={headingId} className="pm-fold-reading-head"><Editorial text={data.principles.heading} /></h2>
                     <Panel>
                     <div className="pm-principle-list">
                         {data.principles.items.map((p, i) => (
@@ -1531,7 +1569,9 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                 </Collapsible>
 
                 {/* Reviews (Supabase-backed, moderated) */}
-                <ReviewsSection lang={lang} />
+                <Suspense fallback={null}>
+                    <ReviewsSection lang={lang} />
+                </Suspense>
 
                 {/* Contact */}
                 <Collapsible
@@ -1542,11 +1582,11 @@ const Portfolio = ({ lang, setLang, theme, toggleTheme, onSwitchToCV }) => {
                     title={plainHeading(data.contact.heading)}
                     preview={data.contact.lead}
                 >
-                    {({ open, Fold, Panel }) => (
+                    {({ open, Fold, Panel, headingId }) => (
                 <section className={`pm-section pm-contact pm-card-section${open ? '' : ' is-collapsed'}`} id="contact">
                     <div className={open ? 'pm-card' : undefined}>
                     <Fold />
-                    <h2 className="pm-fold-reading-head"><Editorial text={data.contact.heading} /></h2>
+                    <h2 id={headingId} className="pm-fold-reading-head"><Editorial text={data.contact.heading} /></h2>
                     <Panel>
                     <p className="pm-contact-lead">{data.contact.lead}</p>
                     <div className="pm-contact-links">

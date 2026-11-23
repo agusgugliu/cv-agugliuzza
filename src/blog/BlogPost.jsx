@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import { Linkedin } from 'lucide-react';
 import BlogLayout from './BlogLayout';
 import { fetchPostBySlug } from './loadPosts';
+import { applyDocumentHead, SITE, DEFAULT_OG } from '../lib/documentHead';
 
 const COPY = {
     en: { back: '← All notes', linkedin: 'Also on LinkedIn' },
@@ -31,8 +32,19 @@ const BlogPost = ({ lang, setLang, theme, toggleTheme }) => {
     }, [slug]);
 
     useEffect(() => {
-        if (post) document.title = `${post.title} — Agustín Gugliuzza`;
-    }, [post]);
+        if (!post) return;
+        const title = `${post.title} — Agustín Gugliuzza`;
+        const description = post.excerpt || post.title;
+        const ogImage = post.thumbnail || DEFAULT_OG;
+        applyDocumentHead({
+            title,
+            description,
+            canonical: `${SITE}/blog/${slug}`,
+            ogImage,
+            ogType: 'article',
+            locale: lang === 'es' ? 'es_ES' : 'en_US'
+        });
+    }, [post, slug, lang]);
 
     if (post === undefined) return null;
     if (!post) return <Navigate to="/blog" replace />;

@@ -171,15 +171,61 @@ const AdminBlog = () => {
         });
     };
 
+    const compressImageFile = (file) =>
+        new Promise((resolve, reject) => {
+            const img = new Image();
+            const url = URL.createObjectURL(file);
+            img.onload = () => {
+                const maxEdge = 1600;
+                let { width, height } = img;
+                if (width > maxEdge || height > maxEdge) {
+                    const scale = maxEdge / Math.max(width, height);
+                    width = Math.round(width * scale);
+                    height = Math.round(height * scale);
+                }
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                URL.revokeObjectURL(url);
+                canvas.toBlob(
+                    (blob) => {
+                        if (!blob) {
+                            reject(new Error('Image compression failed'));
+                            return;
+                        }
+                        const base = file.name.replace(/\.[^.]+$/, '');
+                        resolve(new File([blob], `${base}.webp`, { type: 'image/webp' }));
+                    },
+                    'image/webp',
+                    0.82
+                );
+            };
+            img.onerror = () => {
+                URL.revokeObjectURL(url);
+                reject(new Error('Could not load image for compression'));
+            };
+            img.src = url;
+        });
+
     const uploadImage = async (file) => {
         if (!file) return;
         setUploading(true);
         setError('');
-        const ext = file.name.split('.').pop().toLowerCase();
+        let uploadFile = file;
+        if (file.type.startsWith('image/')) {
+            try {
+                uploadFile = await compressImageFile(file);
+            } catch {
+                uploadFile = file;
+            }
+        }
+        const ext = uploadFile.name.split('.').pop().toLowerCase();
         const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
         const { error: uploadErr } = await supabase.storage
             .from(BLOG_IMAGES_BUCKET)
-            .upload(path, file, { contentType: file.type });
+            .upload(path, uploadFile, { contentType: uploadFile.type });
         setUploading(false);
         if (uploadErr) {
             setError(uploadErr.message);

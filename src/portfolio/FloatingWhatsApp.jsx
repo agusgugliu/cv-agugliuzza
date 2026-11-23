@@ -2,18 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
-const WA_NUMBER = '34610010576';
+const WA_NUMBER = '5491165063175';
 
-/* Fixed bottom-right WhatsApp button (+34), appears after the user scrolls.
+/* Fixed bottom-right WhatsApp button (+54), appears after the user scrolls.
    Opens wa.me with a language-aware prefilled greeting. */
 const FloatingWhatsApp = ({ lang }) => {
     const [show, setShow] = useState(false);
+    const [contactVisible, setContactVisible] = useState(false);
 
     useEffect(() => {
         const onScroll = () => setShow(window.scrollY > 400);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    useEffect(() => {
+        const contact = document.getElementById('contact');
+        if (!contact || typeof IntersectionObserver === 'undefined') return undefined;
+        const obs = new IntersectionObserver(
+            ([entry]) => setContactVisible(entry.isIntersecting),
+            { rootMargin: '-20% 0px -30% 0px', threshold: 0.1 }
+        );
+        obs.observe(contact);
+        return () => obs.disconnect();
     }, []);
 
     const text = lang === 'es'
@@ -24,7 +36,7 @@ const FloatingWhatsApp = ({ lang }) => {
 
     return (
         <AnimatePresence>
-            {show && (
+            {show && !contactVisible && (
                 <motion.a
                     className="pm-fab-whatsapp"
                     href={href}

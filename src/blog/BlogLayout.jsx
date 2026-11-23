@@ -40,7 +40,7 @@ const BlogLayout = ({ lang, setLang, theme, toggleTheme, children }) => {
                     </button>
                 </div>
             </nav>
-            {children}
+            <main id="main-content">{children}</main>
         </div>
     );
 };
