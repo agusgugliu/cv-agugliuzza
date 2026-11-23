@@ -21,7 +21,7 @@ export const dataEN = {
     experience: [
         {
             company: "KS Advisory",
-            location: "Madrid, Spain (Cross-Border)",
+            location: "Madrid, Spain & Buenos Aires, Argentina",
             roles: [
                 {
                     title: "Strategy & Deal Advisor",
@@ -155,7 +155,7 @@ export const dataES = {
     experience: [
         {
             company: "KS Advisory",
-            location: "Madrid, España (Cross-Border)",
+            location: "Madrid, España & Buenos Aires, Argentina",
             roles: [
                 {
                     title: "Strategy & Deal Advisor",
