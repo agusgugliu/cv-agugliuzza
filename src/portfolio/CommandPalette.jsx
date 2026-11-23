@@ -74,6 +74,7 @@ const CommandPalette = ({ open, setOpen, actions, lang }) => {
                         className="pm-cmdk"
                         role="dialog"
                         aria-modal="true"
+                        aria-label={lang === 'es' ? 'Paleta de comandos' : 'Command palette'}
                         initial={{ opacity: 0, scale: 0.97, y: -8 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.97, y: -8 }}

@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://agustin-gugliuzza.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://agustin-gugliuzza.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://agustin-gugliuzza.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://agustin-gugliuzza.com/"/>
+  </url>
+  <url>
+    <loc>https://agustin-gugliuzza.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://agustin-gugliuzza.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://agustin-gugliuzza.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://agustin-gugliuzza.com/"/>
   </url>
   <url>
     <loc>https://agustin-gugliuzza.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://agustin-gugliuzza.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://agustin-gugliuzza.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://agustin-gugliuzza.com/blog"/>
+  </url>
+  <url>
+    <loc>https://agustin-gugliuzza.com/blog/mba-graduation</loc>
+  </url>
+  <url>
+    <loc>https://agustin-gugliuzza.com/blog/three-forces-shaping-the-next-era-of-artificial-intelligence</loc>
+  </url>
+  <url>
+    <loc>https://agustin-gugliuzza.com/blog/tech-lab-almazara-copilot</loc>
   </url>
 </urlset>

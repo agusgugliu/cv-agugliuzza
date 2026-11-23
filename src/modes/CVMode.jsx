@@ -110,7 +110,7 @@ const CVMode = ({ lang, setLang, onSwitchToPortfolio }) => {
                         <div className="contact-list">
                             {[
                                 { icon: MapPin, val: data.location, label: lang === 'en' ? 'Location' : 'Ubicación' },
-                                { icon: Flag, val: data.nationality, label: lang === 'en' ? 'Nationality' : 'Nacionalidad' },
+                                { icon: Flag, val: data.nationality, label: lang === 'en' ? 'Nationality' : 'Nacionalidad', fullWidth: true },
                                 { icon: Linkedin, val: data.linkedin, label: 'LinkedIn', link: data.linkedinUrl },
                                 {
                                     icon: Mail,

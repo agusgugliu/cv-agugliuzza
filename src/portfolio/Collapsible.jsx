@@ -101,12 +101,13 @@ export function FoldButton({
     );
 }
 
-export function SectionPanel({ id, open, children, className = '' }) {
+export function SectionPanel({ id, open, children, className = '', ariaLabelledBy }) {
     return (
         <div
             id={id}
             className={`pm-section-panel${open ? ' is-open' : ''}${className ? ` ${className}` : ''}`}
             role="region"
+            aria-labelledby={ariaLabelledBy}
             aria-hidden={!open}
             {...(!open ? { inert: '' } : {})}
         >
@@ -148,18 +149,20 @@ const Collapsible = ({
         );
     }, []);
 
+    const headingId = `${id}-heading`;
+
     const Panel = useCallback(({ children: body, className }) => {
         const api = apiRef.current;
         const thisId = usedId.current ? undefined : api.panelId;
         usedId.current = true;
         return (
-            <SectionPanel id={thisId} open={api.open} className={className}>
+            <SectionPanel id={thisId} open={api.open} className={className} ariaLabelledBy={headingId}>
                 {body}
             </SectionPanel>
         );
-    }, []);
+    }, [headingId]);
 
-    return children({ open, Fold, Panel, panelId });
+    return children({ open, Fold, Panel, panelId, headingId });
 };
 
 export default Collapsible;

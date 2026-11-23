@@ -428,7 +428,7 @@ export const portfolioEN = {
         contact: 'Contact'
     },
     hero: {
-        meta: ['Madrid, Spain', 'Digital Transformation · Strategy · Data · AI Ops'],
+        meta: ['Buenos Aires, Argentina', 'Digital Transformation · Strategy · Data · AI Ops'],
         credential: 'IE IMBA · Partner, KS Advisory · ex-MicroStrategy BI · IT PM, Life Seguros/Prudential',
         statement: 'I help companies turn digital ambition into {operations} that actually {change}.',
         substatement: 'Strategy first, with the rare edge of being able to build what I propose.',
@@ -526,13 +526,13 @@ export const portfolioEN = {
                 startDate: 'Apr 2026',
                 from: 'Apr 2026',
                 until: 'Present',
-                location: 'Madrid',
+                location: 'Madrid, Spain & Buenos Aires, Argentina',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
                 logo: EXP_LOGO('ksadvisory_logo.png'),
                 info: INFO.ks_advisory,
-                dates: 'Apr 2026 – Present · Madrid',
+                dates: 'Apr 2026 – Present · Madrid, Spain & Buenos Aires, Argentina',
                 stat: '5+',
                 statLabel: 'Live mandates',
                 heading: 'Advising on {deal screening, buyer matching, and fundraising diagnostics} for SMEs in LATAM and EU.',
@@ -962,11 +962,11 @@ export const portfolioEN = {
     },
     contact: {
         eyebrow: 'Start a conversation',
-        heading: 'For work, advisory, or a {coffee} in Madrid.',
-        lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Recently completed the IMBA at IE Business School (Excellence, GPA 3.62/4) and based in Madrid.',
+        heading: 'For work, advisory, or a {coffee} in Buenos Aires.',
+        lead: 'Open to advisory and project leadership in digital transformation, AI ops and data, across LATAM and Europe. Recently completed the IMBA at IE Business School (Excellence, GPA 3.62/4) and based in Buenos Aires, Argentina.',
         links: [
-            { label: 'Email', value: 'agustin@gugliupicci.com', href: 'mailto:agustin@gugliupicci.com', action: 'Write' },
-            { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Message' },
+            { label: 'Email', value: 'agugliuzza@alumni.ie.edu', href: 'mailto:agugliuzza@alumni.ie.edu', action: 'Write' },
+            { label: 'WhatsApp', value: '+54 9 11 6506-3175', href: 'https://wa.me/5491165063175', action: 'Message' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Connect' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Follow' },
             { label: 'Schedule', value: 'Book a 30-min call', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
@@ -974,7 +974,7 @@ export const portfolioEN = {
     },
     footer: {
         name: 'Agustín Gugliuzza.',
-        meta: 'Madrid · 2026',
+        meta: 'Buenos Aires · 2026',
         credit: 'Crafted with React + Vite, hosted on Vercel.',
         backToTop: 'Back to top',
         socials: [
@@ -1000,7 +1000,7 @@ export const portfolioES = {
         contact: 'Contacto'
     },
     hero: {
-        meta: ['Madrid, España', 'Transformación Digital · Estrategia · Datos · AI Ops'],
+        meta: ['Buenos Aires, Argentina', 'Transformación Digital · Estrategia · Datos · AI Ops'],
         credential: 'IE IMBA · Socio, KS Advisory · ex-MicroStrategy BI · IT PM, Life Seguros/Prudential',
         statement: 'Ayudo a empresas a convertir la ambición digital en {operación} que de verdad {cambia}.',
         substatement: 'Estrategia primero, con la ventaja rara de poder construir lo que propongo.',
@@ -1098,13 +1098,13 @@ export const portfolioES = {
                 startDate: 'Abr 2026',
                 from: 'Abr 2026',
                 until: 'Presente',
-                location: 'Madrid',
+                location: 'Madrid, España & Buenos Aires, Argentina',
                 role: 'Strategy & Deal Advisor',
                 org: 'KS Advisory',
                 domain: null,
                 logo: EXP_LOGO('ksadvisory_logo.png'),
                 info: INFO.ks_advisory,
-                dates: 'Abr 2026 – Presente · Madrid',
+                dates: 'Abr 2026 – Presente · Madrid, España & Buenos Aires, Argentina',
                 stat: '5+',
                 statLabel: 'Mandatos vivos',
                 heading: 'Asesoría en {screening de deals, matching de buyers y diagnóstico de fundraising} para PyMEs en LATAM y UE.',
@@ -1409,11 +1409,11 @@ export const portfolioES = {
     },
     contact: {
         eyebrow: 'Hablemos',
-        heading: 'Para trabajo, advisory o un {café} en Madrid.',
-        lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Completé recientemente el IMBA en IE Business School (Excellence, GPA 3.62/4), con base en Madrid.',
+        heading: 'Para trabajo, advisory o un {café} en Buenos Aires.',
+        lead: 'Abierto a advisory y project leadership en transformación digital, AI ops y datos, en LATAM y Europa. Completé recientemente el IMBA en IE Business School (Excellence, GPA 3.62/4), con base en Buenos Aires, Argentina.',
         links: [
-            { label: 'Email', value: 'agustin@gugliupicci.com', href: 'mailto:agustin@gugliupicci.com', action: 'Escribir' },
-            { label: 'WhatsApp', value: '+34 610 01 05 76', href: 'https://wa.me/34610010576', action: 'Mensaje' },
+            { label: 'Email', value: 'agugliuzza@alumni.ie.edu', href: 'mailto:agugliuzza@alumni.ie.edu', action: 'Escribir' },
+            { label: 'WhatsApp', value: '+54 9 11 6506-3175', href: 'https://wa.me/5491165063175', action: 'Mensaje' },
             { label: 'LinkedIn', value: '/in/agustin-gugliuzza', href: 'https://linkedin.com/in/agustin-gugliuzza', action: 'Conectar' },
             { label: 'Twitter', value: '@agusgugliu', href: 'https://x.com/agusgugliu', action: 'Seguir' },
             { label: 'Agenda', value: 'Reservar 30 min', href: 'https://app.reclaim.ai/m/agustin-gugliuzza/high-priority', action: 'Reclaim' }
@@ -1421,7 +1421,7 @@ export const portfolioES = {
     },
     footer: {
         name: 'Agustín Gugliuzza.',
-        meta: 'Madrid · 2026',
+        meta: 'Buenos Aires · 2026',
         credit: 'Hecho con React + Vite, hosteado en Vercel.',
         backToTop: 'Volver arriba',
         socials: [

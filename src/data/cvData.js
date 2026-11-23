@@ -4,9 +4,9 @@ export const dataEN = {
     nationality: "Argentine & Italian (EU work authorization)",
     birthDate: "April 9th, 1995",
     dob: "1995-04-09",
-    location: "Madrid, Spain",
-    phone: "+34 610 01 05 76",
-    email: "agustin@gugliupicci.com",
+    location: "Buenos Aires, Argentina",
+    phone: "+54 9 11 6506-3175",
+    email: "agugliuzza@alumni.ie.edu",
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
@@ -21,7 +21,7 @@ export const dataEN = {
     experience: [
         {
             company: "KS Advisory",
-            location: "Madrid, Spain (Cross-Border)",
+            location: "Madrid, Spain & Buenos Aires, Argentina",
             roles: [
                 {
                     title: "Strategy & Deal Advisor",
@@ -138,9 +138,9 @@ export const dataES = {
     nationality: "Argentina e Italia (autorización de trabajo en la UE)",
     birthDate: "9 de Abril de 1995",
     dob: "1995-04-09",
-    location: "Madrid, España",
-    phone: "+34 610 01 05 76",
-    email: "agustin@gugliupicci.com",
+    location: "Buenos Aires, Argentina",
+    phone: "+54 9 11 6506-3175",
+    email: "agugliuzza@alumni.ie.edu",
     linkedin: "agustin-gugliuzza",
     linkedinUrl: "https://linkedin.com/in/agustin-gugliuzza",
     calendly: "https://app.reclaim.ai/m/agustin-gugliuzza/meeting",
@@ -155,7 +155,7 @@ export const dataES = {
     experience: [
         {
             company: "KS Advisory",
-            location: "Madrid, España (Cross-Border)",
+            location: "Madrid, España & Buenos Aires, Argentina",
             roles: [
                 {
                     title: "Strategy & Deal Advisor",

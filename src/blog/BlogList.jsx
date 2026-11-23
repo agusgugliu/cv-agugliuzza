@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BlogLayout from './BlogLayout';
 import { fetchPosts } from './loadPosts';
+import { applyDocumentHead, SITE } from '../lib/documentHead';
 
 const COPY = {
     en: {
@@ -41,6 +42,22 @@ const BlogList = ({ lang, setLang, theme, toggleTheme }) => {
     useEffect(() => {
         fetchPosts().then(setPosts);
     }, []);
+
+    useEffect(() => {
+        const name = 'Agustín Gugliuzza';
+        const title = lang === 'es' ? `Notas · ${name}` : `Notes · ${name}`;
+        applyDocumentHead({
+            title,
+            description: t.subtitle,
+            canonical: `${SITE}/blog`,
+            locale: lang === 'es' ? 'es_ES' : 'en_US',
+            hreflangs: [
+                { hreflang: 'en', href: `${SITE}/blog` },
+                { hreflang: 'es', href: `${SITE}/es/blog` },
+                { hreflang: 'x-default', href: `${SITE}/blog` }
+            ]
+        });
+    }, [lang, t.subtitle]);
 
     const toggleSource = (source) => {
         setSources((current) => {
